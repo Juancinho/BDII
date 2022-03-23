@@ -6,6 +6,7 @@
 
 //Hola guapo Viva milladoiro
 //ME gustas
+//dasd
 package BaseDatos;
 
 /**
@@ -13,5 +14,5 @@ package BaseDatos;
  * @author alumnogreibd
  */
 public abstract class AbstractDAO {
-    
+   public String seco;
 }
