@@ -15,5 +15,5 @@ package BaseDatos;
  * @author alumnogreibd
  */
 public abstract class AbstractDAO {
-   public String seco;
+
 }
