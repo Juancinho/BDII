@@ -21,7 +21,7 @@ public class ProyectoBasesDatos {
  private java.sql.Connection conexion;
    public ProyectoBasesDatos(){
    //CONEXION
-        Properties configuracion = new Properties();        
+       Properties configuracion = new Properties();        
        FileInputStream arqConfiguracion;
      try {
              arqConfiguracion = new FileInputStream("baseDatos.properties");
