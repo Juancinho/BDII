@@ -12,19 +12,22 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
-
+import BaseDatos.AtraccionesDAO;
 /**
  *
  * @author alumnogreibd
  */
 public class ProyectoBasesDatos {
- private java.sql.Connection conexion;
+  private java.sql.Connection conexion;
+   private GUI.FachadaGui fgui;
+   private AtraccionesDAO atraccionesDAO;
    public ProyectoBasesDatos(){
+       fgui=new GUI.FachadaGui(this);//Inicializar la fachada GUI enlazandola con este "main" de la aplicacion
    //CONEXION
        Properties configuracion = new Properties();        
        FileInputStream arqConfiguracion;
      try {
-             arqConfiguracion = new FileInputStream("baseDatos.properties");
+            arqConfiguracion = new FileInputStream("baseDatos.properties");
             configuracion.load(arqConfiguracion);
             arqConfiguracion.close();
 
@@ -39,7 +42,9 @@ public class ProyectoBasesDatos {
                     configuracion.getProperty("servidor")+":"+
                     configuracion.getProperty("puerto")+"/"+
                     configuracion.getProperty("baseDatos"),
-                    usuario);} catch (FileNotFoundException f) {
+                    usuario);
+     } 
+     catch (FileNotFoundException f) {
             System.out.println(f.getMessage());
            
         } catch (IOException i) {
@@ -47,9 +52,14 @@ public class ProyectoBasesDatos {
         } catch (java.sql.SQLException e) {
             System.out.println(e.getMessage());
         }
+      atraccionesDAO = new AtraccionesDAO(conexion);
    }
+   public AtraccionesDAO getAtraccionesDAO() {
+        return atraccionesDAO;
+    }
     public static void main(String[] args) {
-        // TODO code application logic here
+        proyectobasesdatos.ProyectoBasesDatos fa = new ProyectoBasesDatos();
+        fa.fgui.iniciaVista();
     }
     
 }
