@@ -10,5 +10,5 @@ package proyectobasesdatos;
  * Hola
  */
 public class Asistir {
-    
+    private String nombre;  
 }
