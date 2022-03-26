@@ -10,4 +10,5 @@ package proyectobasesdatos;
  */
 public class Espectaculo {
     private String nombre;
+    
 }
