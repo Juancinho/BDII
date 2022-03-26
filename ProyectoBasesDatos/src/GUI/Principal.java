@@ -231,7 +231,8 @@ public class Principal extends javax.swing.JFrame {
         m = (ModeloTablaAtraccion) tablaAtracciones.getModel();
         m.setFilas(fa.getAtraccionesDAO().consultarAtraccionPorAltura(buscaNombre.getText(), altura));
         if (m.getRowCount() > 0) {
-            tablaAtracciones.setRowSelectionInterval(0, 0);
+            tablaAtracciones.setRowSelectionInterval(0, 0); 
+            
         }
     }
 }
