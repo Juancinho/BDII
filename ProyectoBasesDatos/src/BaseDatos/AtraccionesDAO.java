@@ -46,6 +46,34 @@ public class AtraccionesDAO {
      }   
     return resultado;
     }
+      public java.util.List<Atraccion> consultarAtraccionPorAltura(String nombre, int alturaMin){
+     java.util.List<Atraccion> resultado = new java.util.ArrayList<Atraccion>();
+     Atraccion atraccionActual;
+     
+     ResultSet rsAtracciones ;
+     PreparedStatement  stmAtracciones = null;
+     
+     String consulta = "select nombre, aforo, alturamin, ubicacion,descripcion "
+             + " from atracciones "
+             + " where nombre like ? "
+             + " and alturamin <= ?";
+             
+     
+     try{
+     stmAtracciones = conexion.prepareStatement(consulta);
+     stmAtracciones.setString(1, "%"+nombre+"%");
+     stmAtracciones.setInt(2, alturaMin);
+     rsAtracciones=stmAtracciones.executeQuery();
+     while(rsAtracciones.next()){
+     atraccionActual = new Atraccion(rsAtracciones.getString("nombre"), rsAtracciones.getInt("aforo"), rsAtracciones.getInt("alturamin"), rsAtracciones.getString("ubicacion"), rsAtracciones.getString("descripcion"));
+     resultado.add(atraccionActual);     
+     
+     }
+     }catch (SQLException e){
+              System.out.println(e.getMessage());
+     }   
+    return resultado;
+    }
        
     
 }
