@@ -27,8 +27,8 @@ public class AtraccionesDAO {
      ResultSet rsAtracciones ;
      PreparedStatement  stmAtracciones = null;
      
-     String consulta = "select nombre, aforo, alturaminima, ubicacion,descripcion "
-             + " from jugadores "
+     String consulta = "select nombre, aforo, alturamin, ubicacion,descripcion "
+             + " from atracciones "
              + " where nombre like ? ";
              
      
