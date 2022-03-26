@@ -12,19 +12,24 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
-
+import BaseDatos.AtraccionesDAO;
+import java.sql.*;
 /**
  *
  * @author alumnogreibd
  */
 public class ProyectoBasesDatos {
- private java.sql.Connection conexion;
-   public ProyectoBasesDatos(){
+  private java.sql.Connection conexion;
+   private GUI.FachadaGui fgui;
+   private AtraccionesDAO atraccionesDAO;
+   public ProyectoBasesDatos() throws SQLException{
+       fgui=new GUI.FachadaGui(this);//Inicializar la fachada GUI enlazandola con este "main" de la aplicacion
    //CONEXION
-        Properties configuracion = new Properties();        
+   /*
+       Properties configuracion = new Properties();        
        FileInputStream arqConfiguracion;
      try {
-             arqConfiguracion = new FileInputStream("baseDatos.properties");
+            arqConfiguracion = new FileInputStream("baseDatos.properties");
             configuracion.load(arqConfiguracion);
             arqConfiguracion.close();
 
@@ -39,7 +44,9 @@ public class ProyectoBasesDatos {
                     configuracion.getProperty("servidor")+":"+
                     configuracion.getProperty("puerto")+"/"+
                     configuracion.getProperty("baseDatos"),
-                    usuario);} catch (FileNotFoundException f) {
+                    usuario);
+     } 
+     catch (FileNotFoundException f) {
             System.out.println(f.getMessage());
            
         } catch (IOException i) {
@@ -47,9 +54,24 @@ public class ProyectoBasesDatos {
         } catch (java.sql.SQLException e) {
             System.out.println(e.getMessage());
         }
+*/
+   try{
+   Class.forName("org.postgresql.Driver");     
+   }catch(ClassNotFoundException ex){
+       System.out.println("Error");
    }
-    public static void main(String[] args) {
-        // TODO code application logic here
+   String url = "jdbc:postgresql://localhost:5432/Parque";
+   String usuario = "alumnogreibd";
+   String contrasenha = "greibd2021";
+   this.conexion = DriverManager.getConnection(url,usuario,contrasenha);
+      atraccionesDAO = new AtraccionesDAO(conexion);
+   }
+   public AtraccionesDAO getAtraccionesDAO() {
+        return atraccionesDAO;
+    }
+    public static void main(String[] args) throws SQLException {
+        proyectobasesdatos.ProyectoBasesDatos fa = new ProyectoBasesDatos();
+        fa.fgui.iniciaVista();
     }
     
 }
