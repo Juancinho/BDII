@@ -9,5 +9,5 @@ package proyectobasesdatos;
  * @author alumnogreibd
  */
 public class Espectaculo {
-    
+    private String nombre;
 }
