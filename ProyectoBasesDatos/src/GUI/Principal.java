@@ -60,8 +60,6 @@ public class Principal extends javax.swing.JFrame {
         tablaAtracciones.setModel(new ModeloTablaAtraccion());
         jScrollPane1.setViewportView(tablaAtracciones);
 
-        buscaNombre.setText("introduce atraccion");
-
         jLabel1.setText("Nombre:");
 
         buscarAtraccion.setText("Buscar");
@@ -89,7 +87,8 @@ public class Principal extends javax.swing.JFrame {
                             .addComponent(buscaNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 569, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createSequentialGroup()
                             .addGap(347, 347, 347)
-                            .addComponent(buscarAtraccion))))
+                            .addComponent(buscarAtraccion)
+                            .addGap(10, 10, 10))))
                 .addContainerGap(109, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(

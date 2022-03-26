@@ -40,6 +40,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="347" max="-2" attributes="0"/>
                           <Component id="buscarAtraccion" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -92,9 +93,6 @@
       </SubComponents>
     </Container>
     <Component class="javax.swing.JTextField" name="buscaNombre">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="introduce atraccion"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>

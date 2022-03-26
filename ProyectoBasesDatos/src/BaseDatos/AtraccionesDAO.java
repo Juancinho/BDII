@@ -37,7 +37,7 @@ public class AtraccionesDAO {
      stmAtracciones.setString(1, "%"+nombre+"%");
      rsAtracciones=stmAtracciones.executeQuery();
      while(rsAtracciones.next()){
-     atraccionActual = new Atraccion(rsAtracciones.getString("nombre"), rsAtracciones.getInt("aforo"), rsAtracciones.getInt("alturaminima"), rsAtracciones.getString("ubicacion"), rsAtracciones.getString("descripcion"));
+     atraccionActual = new Atraccion(rsAtracciones.getString("nombre"), rsAtracciones.getInt("aforo"), rsAtracciones.getInt("alturamin"), rsAtracciones.getString("ubicacion"), rsAtracciones.getString("descripcion"));
      resultado.add(atraccionActual);     
      
      }
