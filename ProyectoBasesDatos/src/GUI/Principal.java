@@ -11,16 +11,19 @@ import BaseDatos.AtraccionesDAO;
  * @author alumnogreibd
  */
 public class Principal extends javax.swing.JFrame {
-  private BaseDatos.AtraccionesDAO dao;    
-  private proyectobasesdatos.ProyectoBasesDatos fa; 
+
+    private BaseDatos.AtraccionesDAO dao;
+    private proyectobasesdatos.ProyectoBasesDatos fa;
+
     public Principal() {
         initComponents();
-    }     
-   
-    public Principal(proyectobasesdatos.ProyectoBasesDatos fa) {   
-        this.fa=fa;
+    }
+
+    public Principal(proyectobasesdatos.ProyectoBasesDatos fa) {
+        this.fa = fa;
         initComponents();
     }
+
     /*public Principal(baseDatos.DAOJugadores dao) {
         this.dao=dao;
         initComponents();
@@ -47,6 +50,9 @@ public class Principal extends javax.swing.JFrame {
         buscaNombre = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         buscarAtraccion = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        buscarAltura = new javax.swing.JTextField();
+        buscarConAltura = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -69,27 +75,48 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setText("Altura(cm):");
+
+        buscarAltura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarAlturaActionPerformed(evt);
+            }
+        });
+
+        buscarConAltura.setText("Buscar Por Altura");
+        buscarConAltura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarConAlturaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 596, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(347, 347, 347)
-                            .addComponent(salir))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(22, 22, 22)
-                            .addComponent(jLabel1)
-                            .addGap(34, 34, 34)
-                            .addComponent(buscaNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 569, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(347, 347, 347)
-                            .addComponent(buscarAtraccion)
-                            .addGap(10, 10, 10))))
-                .addContainerGap(109, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(347, 347, 347)
+                                .addComponent(salir))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(22, 22, 22)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel2))
+                                .addGap(34, 34, 34)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(buscaNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 569, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(buscarAltura, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 596, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(246, 246, 246)
+                        .addComponent(buscarAtraccion)
+                        .addGap(117, 117, 117)
+                        .addComponent(buscarConAltura)))
+                .addContainerGap(93, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -98,9 +125,15 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buscaNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
-                .addGap(49, 49, 49)
-                .addComponent(buscarAtraccion)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(buscarAltura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buscarAtraccion)
+                    .addComponent(buscarConAltura))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(salir)
@@ -115,8 +148,16 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_salirActionPerformed
 
     private void buscarAtraccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarAtraccionActionPerformed
-       buscarAtraccion();
+        buscarAtraccion();
     }//GEN-LAST:event_buscarAtraccionActionPerformed
+
+    private void buscarAlturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarAlturaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buscarAlturaActionPerformed
+
+    private void buscarConAlturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarConAlturaActionPerformed
+        buscarAtraccionPorAltura();
+    }//GEN-LAST:event_buscarConAlturaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -152,26 +193,45 @@ public class Principal extends javax.swing.JFrame {
             }
         });
     }
+
     public void setDao(AtraccionesDAO dao) {
         this.dao = dao;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField buscaNombre;
+    private javax.swing.JTextField buscarAltura;
     private javax.swing.JButton buscarAtraccion;
+    private javax.swing.JButton buscarConAltura;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton salir;
     private javax.swing.JTable tablaAtracciones;
     // End of variables declaration//GEN-END:variables
 
-public void buscarAtraccion(){
+    public void buscarAtraccion() {
 
         ModeloTablaAtraccion m;
+
         m = (ModeloTablaAtraccion) tablaAtracciones.getModel();
         m.setFilas(fa.getAtraccionesDAO().consultarAtraccion(buscaNombre.getText()));
-         if (m.getRowCount() > 0) {
-            tablaAtracciones.setRowSelectionInterval(0, 0);           
+        if (m.getRowCount() > 0) {
+            tablaAtracciones.setRowSelectionInterval(0, 0);
         }
-}
+    }
+
+    public void buscarAtraccionPorAltura() {
+
+        ModeloTablaAtraccion m;
+        int altura = 2000; //Si el campo esta vacio, ponemos una altura que permita enseñar todas las atracciones
+        if (!buscarAltura.getText().isBlank()) {
+            altura = Integer.parseInt(buscarAltura.getText());
+        } 
+        m = (ModeloTablaAtraccion) tablaAtracciones.getModel();
+        m.setFilas(fa.getAtraccionesDAO().consultarAtraccionPorAltura(buscaNombre.getText(), altura));
+        if (m.getRowCount() > 0) {
+            tablaAtracciones.setRowSelectionInterval(0, 0);
+        }
+    }
 }
