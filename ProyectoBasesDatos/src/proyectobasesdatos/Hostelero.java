@@ -1,19 +1,17 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package proyectobasesdatos;
 
 /**
  *
  * @author alumnogreibd
  */
-public class Trabajador {
+public class Hostelero {
+    
     private String DNI, nombre, direccion;
     private float salario;
-    private String telefono, fechaInicio, fechaNacimiento, nombreAtraccion, nombreEspectaculo;
+    private String telefono, fechaInicio, fechaNacimiento, nombreEstablecimiento;
 
-    public Trabajador(String DNI, String nombre, String direccion, float salario, String telefono, String fechaInicio, String fechaNacimiento, String nombreAtraccion, String nombreEspectaculo) {
+    public Hostelero(String DNI, String nombre, String direccion, float salario, String telefono, String fechaInicio, String fechaNacimiento, String nombreEstablecimiento) {
         this.DNI = DNI;
         this.nombre = nombre;
         this.direccion = direccion;
@@ -21,8 +19,7 @@ public class Trabajador {
         this.telefono = telefono;
         this.fechaInicio = fechaInicio;
         this.fechaNacimiento = fechaNacimiento;
-        this.nombreAtraccion = nombreAtraccion;
-        this.nombreEspectaculo = nombreEspectaculo;
+        this.nombreEstablecimiento = nombreEstablecimiento;
     }
 
     public String getDNI() {
@@ -53,16 +50,12 @@ public class Trabajador {
         return fechaNacimiento;
     }
 
-    public String getNombreAtraccion() {
-        return nombreAtraccion;
+    public String getNombreEstablecimiento() {
+        return nombreEstablecimiento;
     }
-
-    public String getNombreEspectaculo() {
-        return nombreEspectaculo;
-    }
-
     
     
+
     public void setDNI(String DNI) {
         this.DNI = DNI;
     }
@@ -91,13 +84,11 @@ public class Trabajador {
         this.fechaNacimiento = fechaNacimiento;
     }
 
-    public void setNombreAtraccion(String nombreAtraccion) {
-        this.nombreAtraccion = nombreAtraccion;
+    public void setNombreEstablecimiento(String nombreEstablecimiento) {
+        this.nombreEstablecimiento = nombreEstablecimiento;
     }
-
-    public void setNombreEspectaculo(String nombreEspectaculo) {
-        this.nombreEspectaculo = nombreEspectaculo;
-    }
+    
+    
     
     
     

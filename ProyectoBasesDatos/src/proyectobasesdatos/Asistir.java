@@ -10,5 +10,38 @@ package proyectobasesdatos;
  * Hola
  */
 public class Asistir {
-    private String nombre;  
+    private String fecha, visitante, espectaculo;
+
+    public Asistir(String fecha, String visitante, String espectaculo) {
+        this.fecha = fecha;
+        this.visitante = visitante;
+        this.espectaculo = espectaculo;
+    }
+
+    public String getFecha() {
+        return fecha;
+    }
+
+    public String getVisitante() {
+        return visitante;
+    }
+
+    public String getEspectaculo() {
+        return espectaculo;
+    }
+    
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
+
+    public void setVisitante(String visitante) {
+        this.visitante = visitante;
+    }
+
+    public void setEspectaculo(String espectaculo) {
+        this.espectaculo = espectaculo;
+    }
+    
+    
 }
