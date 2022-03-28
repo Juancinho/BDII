@@ -22,7 +22,7 @@ public class ComerDAO {
         PreparedStatement stmComer = null;
 
         //MANOTE: Falta ccomprobación de que ese DNI ya esté registrado (pendiente de que se implemente la parte de registro/validación usuarios)
-        //MANOTE: habría que pensar en un mecanismo para que no se sobrepase el aforo (función SQL, en java o cómo?? -quizás no es sencillo-
+        //MANOTE: habría que pensar en un mecanismo para que no se sobrepase el aforo (función SQL, en java o cómo?? -quizás no es sencillo- MARTIN: Supongo que sera en la consulta sql pero no lo tengo claro
         //MANOTE: FALTA CONTROLAR QUE EL ARRAYLIST DE DNIS (gente que va a comer procedente de esta reserva) ESTÁN REGISTRADOS/NO ESTÁN REPETIDOS/NO SON NULOS
         try {  //MANOTE: No es muy ortodoxo este try exterior al bucle, pero no se puede poner un finally fuera de un bucle donde está en catch. No sé si funcionará esto :'(
             for (String dni : dnis) {
