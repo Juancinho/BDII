@@ -76,8 +76,8 @@ public class ProyectoBasesDatos {
     }
    
     public static void main(String[] args) throws SQLException {
-        //proyectobasesdatos.ProyectoBasesDatos fa = new ProyectoBasesDatos();
-        //fa.fgui.iniciaVista();
+        proyectobasesdatos.ProyectoBasesDatos fa = new ProyectoBasesDatos();
+        fa.fgui.iniciaVista();
     }
     
 }
