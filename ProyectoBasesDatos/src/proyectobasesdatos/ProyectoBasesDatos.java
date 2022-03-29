@@ -12,6 +12,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
+import BaseDatos.DAOUsuarios;
 import BaseDatos.AtraccionesDAO;
 import java.sql.*;
 /**
@@ -22,6 +23,7 @@ public class ProyectoBasesDatos {
   private java.sql.Connection conexion;
    private GUI.FachadaGui fgui;
    private AtraccionesDAO atraccionesDAO;
+   private DAOUsuarios daoUsuarios;
    public ProyectoBasesDatos() throws SQLException{
        fgui=new GUI.FachadaGui(this);//Inicializar la fachada GUI enlazandola con este "main" de la aplicacion
    //CONEXION
@@ -65,13 +67,20 @@ public class ProyectoBasesDatos {
    String contrasenha = "greibd2021";
    this.conexion = DriverManager.getConnection(url,usuario,contrasenha);
       atraccionesDAO = new AtraccionesDAO(conexion);
+      daoUsuarios = new DAOUsuarios(conexion);
    }
    public AtraccionesDAO getAtraccionesDAO() {
         return atraccionesDAO;
     }
+   
+   
+   public Usuario validarUsuario(String idUsuario, String clave){
+        return daoUsuarios.validarUsuario(idUsuario, clave);
+    }
+   
     public static void main(String[] args) throws SQLException {
-        proyectobasesdatos.ProyectoBasesDatos fa = new ProyectoBasesDatos();
-        fa.fgui.iniciaVista();
+        //proyectobasesdatos.ProyectoBasesDatos fa = new ProyectoBasesDatos();
+        //fa.fgui.iniciaVista();
     }
     
 }
