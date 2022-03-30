@@ -10,10 +10,12 @@ package GUI;
  */
 public class Inicio extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Inicio
-     */
+    private proyectobasesdatos.ProyectoBasesDatos pr;
     public Inicio() {
+        initComponents();
+    }
+     public Inicio(proyectobasesdatos.ProyectoBasesDatos pr) {
+         this.pr = pr;
         initComponents();
     }
 
@@ -86,6 +88,7 @@ public class Inicio extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
@@ -93,7 +96,7 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_salirActionPerformed
 
     private void usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuarioActionPerformed
-       AccesoUsuario au = new AccesoUsuario();
+       AccesoUsuario au = new AccesoUsuario(pr);
        this.setVisible(false);
        au.setVisible(true);
     }//GEN-LAST:event_usuarioActionPerformed

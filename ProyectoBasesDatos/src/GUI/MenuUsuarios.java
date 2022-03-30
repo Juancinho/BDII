@@ -10,10 +10,13 @@ package GUI;
  */
 public class MenuUsuarios extends javax.swing.JFrame {
 
-    /**
-     * Creates new form MenuUsuarios
-     */
+    private proyectobasesdatos.ProyectoBasesDatos pr;
+    
     public MenuUsuarios() {
+        initComponents();
+    }
+      public MenuUsuarios(proyectobasesdatos.ProyectoBasesDatos pr) {
+          this.pr = pr;
         initComponents();
     }
 //
@@ -119,6 +122,7 @@ public class MenuUsuarios extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void cancelacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelacionesActionPerformed
@@ -147,7 +151,7 @@ MenuCancelaciones mc= new MenuCancelaciones();
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        MenuBusquedas menuBusquedas = new MenuBusquedas();
+        MenuBusquedas menuBusquedas = new MenuBusquedas(pr);
         menuBusquedas.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 

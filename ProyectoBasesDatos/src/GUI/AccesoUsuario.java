@@ -10,10 +10,12 @@ package GUI;
  */
 public class AccesoUsuario extends javax.swing.JFrame {
 
-    /**
-     * Creates new form AccesoUsuario
-     */
+    private  proyectobasesdatos.ProyectoBasesDatos pr;
     public AccesoUsuario() {
+        initComponents();
+    }
+     public AccesoUsuario(proyectobasesdatos.ProyectoBasesDatos pr) {
+         this.pr = pr;
         initComponents();
     }
 
@@ -119,10 +121,11 @@ public class AccesoUsuario extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void EntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EntrarActionPerformed
-        MenuUsuarios mu = new MenuUsuarios();
+        MenuUsuarios mu = new MenuUsuarios(pr);
         this.setVisible(false);
         mu.setVisible(true);
     }//GEN-LAST:event_EntrarActionPerformed
@@ -134,7 +137,7 @@ public class AccesoUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_RegistrarmeActionPerformed
 
     private void AtrásActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtrásActionPerformed
-        Inicio in = new Inicio();
+        Inicio in = new Inicio(pr);
        this.setVisible(false);
        in.setVisible(true);
     }//GEN-LAST:event_AtrásActionPerformed
