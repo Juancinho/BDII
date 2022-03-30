@@ -93,9 +93,9 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_salirActionPerformed
 
     private void usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuarioActionPerformed
-       MenuUsuarios mu = new MenuUsuarios();
+       AccesoUsuario au = new AccesoUsuario();
        this.setVisible(false);
-       mu.setVisible(true);
+       au.setVisible(true);
     }//GEN-LAST:event_usuarioActionPerformed
 
     /**

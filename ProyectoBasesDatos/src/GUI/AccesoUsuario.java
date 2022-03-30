@@ -50,8 +50,18 @@ public class AccesoUsuario extends javax.swing.JFrame {
         jTextField1.setText("Introduzca su contraseña");
 
         Entrar.setText("Entrar");
+        Entrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EntrarActionPerformed(evt);
+            }
+        });
 
         Registrarme.setText("Registrarme");
+        Registrarme.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RegistrarmeActionPerformed(evt);
+            }
+        });
 
         Atrás.setText("Atrás");
 
@@ -107,6 +117,18 @@ public class AccesoUsuario extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void EntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EntrarActionPerformed
+        MenuUsuarios mu = new MenuUsuarios();
+        this.setVisible(false);
+        mu.setVisible(true);
+    }//GEN-LAST:event_EntrarActionPerformed
+
+    private void RegistrarmeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarmeActionPerformed
+        RegistroUsuarios mu = new RegistroUsuarios();
+        this.setVisible(false);
+        mu.setVisible(true);
+    }//GEN-LAST:event_RegistrarmeActionPerformed
 
     /**
      * @param args the command line arguments

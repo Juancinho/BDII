@@ -44,8 +44,18 @@ public class MenuComprasReservas extends javax.swing.JFrame {
         });
 
         Reservarenrestaurante.setText("Reservar en Restaurante");
+        Reservarenrestaurante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ReservarenrestauranteActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("Comprar Entrada Espectáculo");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Atrás");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -101,13 +111,27 @@ public class MenuComprasReservas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ComprarEntradasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComprarEntradasActionPerformed
-        // TODO add your handling code here:
+        ComprarEntradasAtracciones mu = new ComprarEntradasAtracciones();
+        this.setVisible(false);
+        mu.setVisible(true);
     }//GEN-LAST:event_ComprarEntradasActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         MenuUsuarios mu = new MenuUsuarios();
+        this.setVisible(false);
+        mu.setVisible(true);
         
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+ ComprarEntradaEspectaculo mu = new ComprarEntradaEspectaculo();
+        this.setVisible(false);
+        mu.setVisible(true);    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void ReservarenrestauranteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReservarenrestauranteActionPerformed
+ ReservarEnRestaurante mu = new ReservarEnRestaurante();
+        this.setVisible(false);
+        mu.setVisible(true);    }//GEN-LAST:event_ReservarenrestauranteActionPerformed
 
     /**
      * @param args the command line arguments

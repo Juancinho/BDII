@@ -58,6 +58,11 @@ public class ComprarEntradasAtracciones extends javax.swing.JPanel {
         Comprar.setText("Comprar");
 
         Atrás.setText("Atrás");
+        Atrás.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AtrásActionPerformed(evt);
+            }
+        });
 
         jLabel5.setText("Pase VIP");
 
@@ -131,6 +136,12 @@ public class ComprarEntradasAtracciones extends javax.swing.JPanel {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void AtrásActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtrásActionPerformed
+        MenuComprasReservas mu = new MenuComprasReservas();
+        this.setVisible(false);
+        mu.setVisible(true); 
+    }//GEN-LAST:event_AtrásActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
