@@ -117,8 +117,9 @@ public class MenuUsuarios extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+MenuCancelaciones mc= new MenuCancelaciones();
+        this.setVisible(false);
+        mc.setVisible(true);    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void PuntuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PuntuarActionPerformed
         // TODO add your handling code here:
