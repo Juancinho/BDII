@@ -56,7 +56,7 @@ public class RegistroUsuarios extends javax.swing.JFrame {
         nameapellidos.setText("Introduzca su nombre y apellidos");
 
         nacionalidad.setForeground(new java.awt.Color(204, 204, 204));
-        nacionalidad.setText("Introduza su nacionalidad");
+        nacionalidad.setText("Introduzca su nacionalidad");
 
         jLabel2.setText("Nacionalidad");
 
