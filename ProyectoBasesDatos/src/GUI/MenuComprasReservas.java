@@ -8,12 +8,12 @@ package GUI;
  *
  * @author alumnogreibd
  */
-public class MenúComprasReservas extends javax.swing.JFrame {
+public class MenuComprasReservas extends javax.swing.JFrame {
 
     /**
      * Creates new form ComprarReservarEntrada
      */
-    public MenúComprasReservas() {
+    public MenuComprasReservas() {
         initComponents();
     }
 
@@ -48,6 +48,11 @@ public class MenúComprasReservas extends javax.swing.JFrame {
         jButton1.setText("Comprar Entrada Espectáculo");
 
         jButton2.setText("Atrás");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -99,6 +104,11 @@ public class MenúComprasReservas extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_ComprarEntradasActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        MenuUsuarios mu = new MenuUsuarios();
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -116,21 +126,23 @@ public class MenúComprasReservas extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MenúComprasReservas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuComprasReservas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MenúComprasReservas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuComprasReservas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MenúComprasReservas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuComprasReservas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MenúComprasReservas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuComprasReservas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MenúComprasReservas().setVisible(true);
+                new MenuComprasReservas().setVisible(true);
             }
         });
     }

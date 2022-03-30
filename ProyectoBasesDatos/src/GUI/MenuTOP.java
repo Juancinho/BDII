@@ -8,12 +8,12 @@ package GUI;
  *
  * @author alumnogreibd
  */
-public class MenúCancelaciones extends javax.swing.JFrame {
+public class MenuTOP extends javax.swing.JFrame {
 
     /**
-     * Creates new form CancelarEntradas
+     * Creates new form MenuTOP
      */
-    public MenúCancelaciones() {
+    public MenuTOP() {
         initComponents();
     }
 
@@ -26,23 +26,23 @@ public class MenúCancelaciones extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Cancelaciones = new javax.swing.JLabel();
-        cancelarentradaatraccion = new javax.swing.JButton();
-        Cancelarentradaespectaculo = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        Cancelaciones.setText("Cancelaciones");
+        jLabel1.setText("Lugares TOP");
 
-        cancelarentradaatraccion.setText("Cancelar Entrada Atracción");
+        jButton1.setText("Restaurantes");
 
-        Cancelarentradaespectaculo.setText("Cancelar Entrada Espectáculo");
+        jButton2.setText("Atracciones");
 
-        jButton1.setText("Cancelar Reserva Restaurante");
+        jButton3.setText("Espectáculos");
 
-        jButton2.setText("Atrás");
+        jButton4.setText("Atrás");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -51,35 +51,33 @@ public class MenúCancelaciones extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(149, 149, 149)
-                        .addComponent(Cancelaciones))
+                        .addGap(152, 152, 152)
+                        .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(96, 96, 96)
-                        .addComponent(cancelarentradaatraccion))
+                        .addGap(135, 135, 135)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(87, 87, 87)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1)
-                            .addComponent(Cancelarentradaespectaculo)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(154, 154, 154)
-                        .addComponent(jButton2)))
-                .addContainerGap(90, Short.MAX_VALUE))
+                        .addGap(157, 157, 157)
+                        .addComponent(jButton4)))
+                .addContainerGap(150, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(Cancelaciones)
-                .addGap(42, 42, 42)
-                .addComponent(cancelarentradaatraccion)
-                .addGap(34, 34, 34)
-                .addComponent(Cancelarentradaespectaculo)
-                .addGap(38, 38, 38)
+                .addGap(29, 29, 29)
+                .addComponent(jLabel1)
+                .addGap(30, 30, 30)
                 .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addGap(30, 30, 30)
                 .addComponent(jButton2)
-                .addGap(23, 23, 23))
+                .addGap(31, 31, 31)
+                .addComponent(jButton3)
+                .addGap(30, 30, 30)
+                .addComponent(jButton4)
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         pack();
@@ -102,30 +100,29 @@ public class MenúCancelaciones extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MenúCancelaciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuTOP.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MenúCancelaciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuTOP.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MenúCancelaciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuTOP.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MenúCancelaciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuTOP.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MenúCancelaciones().setVisible(true);
+                new MenuTOP().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Cancelaciones;
-    private javax.swing.JButton Cancelarentradaespectaculo;
-    private javax.swing.JButton cancelarentradaatraccion;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

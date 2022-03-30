@@ -8,12 +8,12 @@ package GUI;
  *
  * @author alumnogreibd
  */
-public class MenúUsuarios extends javax.swing.JFrame {
+public class MenuUsuarios extends javax.swing.JFrame {
 
     /**
-     * Creates new form MenúUsuarios
+     * Creates new form MenuUsuarios
      */
-    public MenúUsuarios() {
+    public MenuUsuarios() {
         initComponents();
     }
 
@@ -38,9 +38,13 @@ public class MenúUsuarios extends javax.swing.JFrame {
         MenúUsuarios.setText("Menú Usuarios");
 
         compraroreservar.setText("Comprar o Reservar");
+        compraroreservar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                compraroreservarActionPerformed(evt);
+            }
+        });
 
         Puntuar.setText("Puntuar Restaurantes");
-        Puntuar.setActionCommand("Puntuar Restaurantes");
         Puntuar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PuntuarActionPerformed(evt);
@@ -56,6 +60,11 @@ public class MenúUsuarios extends javax.swing.JFrame {
         });
 
         jButton2.setText("Atrás");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Búsquedas");
 
@@ -115,6 +124,18 @@ public class MenúUsuarios extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_PuntuarActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+       Inicio in = new Inicio();
+       this.setVisible(false);
+       in.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void compraroreservarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_compraroreservarActionPerformed
+        MenuComprasReservas mc= new MenuComprasReservas();
+        this.setVisible(false);
+        mc.setVisible(true);
+    }//GEN-LAST:event_compraroreservarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -132,20 +153,20 @@ public class MenúUsuarios extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MenúUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MenúUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MenúUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MenúUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MenúUsuarios().setVisible(true);
+                new MenuUsuarios().setVisible(true);
             }
         });
     }
