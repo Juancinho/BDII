@@ -3,11 +3,11 @@ package GUI;
 
 
 public class FachadaGui {
-    proyectobasesdatos.ProyectoBasesDatos fa;
+    proyectobasesdatos.ProyectoBasesDatos pr;
         Inicio in;
-     public FachadaGui(proyectobasesdatos.ProyectoBasesDatos fa){
-     this.fa=fa;
-     this.in = new Inicio();
+     public FachadaGui(proyectobasesdatos.ProyectoBasesDatos pr){
+     this.pr=pr;
+     this.in = new Inicio(pr);
    } 
      public void iniciaVista(){  
           

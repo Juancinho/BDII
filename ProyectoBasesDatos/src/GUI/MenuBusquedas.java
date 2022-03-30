@@ -10,10 +10,12 @@ package GUI;
  */
 public class MenuBusquedas extends javax.swing.JFrame {
 
-    /**
-     * Creates new form MenuBusquedas
-     */
+    private proyectobasesdatos.ProyectoBasesDatos pr;
     public MenuBusquedas() {
+        initComponents();
+    }
+    public MenuBusquedas(proyectobasesdatos.ProyectoBasesDatos pr) {
+        this.pr=pr;
         initComponents();
     }
 
@@ -29,7 +31,7 @@ public class MenuBusquedas extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         atraccionesPorAltura = new javax.swing.JButton();
         espectaculoPopular = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        datos = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         atras = new javax.swing.JButton();
 
@@ -51,10 +53,10 @@ public class MenuBusquedas extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText("Consultar Datos");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        datos.setText("Consultar Datos");
+        datos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                datosActionPerformed(evt);
             }
         });
 
@@ -82,7 +84,7 @@ public class MenuBusquedas extends javax.swing.JFrame {
                         .addComponent(espectaculoPopular))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(134, 134, 134)
-                        .addComponent(jButton3))
+                        .addComponent(datos))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(145, 145, 145)
                         .addComponent(jButton4))
@@ -104,7 +106,7 @@ public class MenuBusquedas extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(espectaculoPopular)
                 .addGap(18, 18, 18)
-                .addComponent(jButton3)
+                .addComponent(datos)
                 .addGap(18, 18, 18)
                 .addComponent(jButton4)
                 .addGap(18, 18, 18)
@@ -113,6 +115,7 @@ public class MenuBusquedas extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void atrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasActionPerformed
@@ -122,7 +125,7 @@ public class MenuBusquedas extends javax.swing.JFrame {
     }//GEN-LAST:event_atrasActionPerformed
 
     private void atraccionesPorAlturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atraccionesPorAlturaActionPerformed
-        AtraccionesporAltura mu = new AtraccionesporAltura();
+        AtraccionesporAltura mu = new AtraccionesporAltura(pr);
         this.setVisible(false);        
                mu.setVisible(true);    }//GEN-LAST:event_atraccionesPorAlturaActionPerformed
 
@@ -131,11 +134,11 @@ public class MenuBusquedas extends javax.swing.JFrame {
         this.setVisible(false);
         mu.setVisible(true);    }//GEN-LAST:event_espectaculoPopularActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-       MenuConsultarDatos mu = new MenuConsultarDatos();
+    private void datosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_datosActionPerformed
+       MenuConsultarDatosPrueba mu = new MenuConsultarDatosPrueba(pr);
         this.setVisible(false);
         mu.setVisible(true);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_datosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -175,8 +178,8 @@ public class MenuBusquedas extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton atraccionesPorAltura;
     private javax.swing.JButton atras;
+    private javax.swing.JButton datos;
     private javax.swing.JButton espectaculoPopular;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables

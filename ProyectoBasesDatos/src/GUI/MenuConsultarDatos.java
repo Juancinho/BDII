@@ -27,20 +27,20 @@ public class MenuConsultarDatos extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        restauran = new javax.swing.JButton();
+        espectaculos = new javax.swing.JButton();
+        atracciones = new javax.swing.JButton();
         atras = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("Consultar Datos");
 
-        jButton1.setText("Restaurantes");
+        restauran.setText("Restaurantes");
 
-        jButton2.setText("Espectáculos");
+        espectaculos.setText("Espectáculos");
 
-        jButton3.setText("Atracciones");
+        atracciones.setText("Atracciones");
 
         atras.setText("Atrás");
         atras.addActionListener(new java.awt.event.ActionListener() {
@@ -61,9 +61,9 @@ public class MenuConsultarDatos extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(133, 133, 133)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(restauran, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
+                            .addComponent(espectaculos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(atracciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(159, 159, 159)
                         .addComponent(atras)))
@@ -75,11 +75,11 @@ public class MenuConsultarDatos extends javax.swing.JFrame {
                 .addGap(23, 23, 23)
                 .addComponent(jLabel1)
                 .addGap(34, 34, 34)
-                .addComponent(jButton1)
+                .addComponent(restauran)
                 .addGap(31, 31, 31)
-                .addComponent(jButton2)
+                .addComponent(espectaculos)
                 .addGap(36, 36, 36)
-                .addComponent(jButton3)
+                .addComponent(atracciones)
                 .addGap(31, 31, 31)
                 .addComponent(atras)
                 .addContainerGap(36, Short.MAX_VALUE))
@@ -130,10 +130,10 @@ public class MenuConsultarDatos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton atracciones;
     private javax.swing.JButton atras;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton espectaculos;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton restauran;
     // End of variables declaration//GEN-END:variables
 }

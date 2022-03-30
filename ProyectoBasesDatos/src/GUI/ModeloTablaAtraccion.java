@@ -76,7 +76,7 @@ public class ModeloTablaAtraccion extends AbstractTableModel {
         }
         return clase;
     }
-
+   
    
     @Override
     public boolean isCellEditable(int row, int col) {
