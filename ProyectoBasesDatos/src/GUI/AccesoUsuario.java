@@ -42,12 +42,10 @@ public class AccesoUsuario extends javax.swing.JFrame {
         jLabel2.setText("DNI");
 
         DNI.setForeground(new java.awt.Color(204, 204, 204));
-        DNI.setText("Introduzca su DNI");
 
         Contraseña.setText("Contraseña");
 
         jTextField1.setForeground(new java.awt.Color(204, 204, 204));
-        jTextField1.setText("Introduzca su contraseña");
 
         Entrar.setText("Entrar");
         Entrar.addActionListener(new java.awt.event.ActionListener() {

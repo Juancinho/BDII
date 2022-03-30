@@ -48,7 +48,6 @@ public class ComprarEntradasAtracciones extends javax.swing.JPanel {
         jLabel3.setText("DNI");
 
         DNI.setForeground(new java.awt.Color(204, 204, 204));
-        DNI.setText("Introduzca su DNI");
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Fecha");
@@ -78,11 +77,7 @@ public class ComprarEntradasAtracciones extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(48, 48, 48)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jLabel5)
-                                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jLabel2)
                                 .addGap(36, 36, 36))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addContainerGap()
@@ -90,12 +85,7 @@ public class ComprarEntradasAtracciones extends javax.swing.JPanel {
                                 .addGap(56, 56, 56)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(Atraccion, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(DNI, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(33, 33, 33)
-                                .addComponent(VIPsi)
-                                .addGap(35, 35, 35)
-                                .addComponent(vipNO))))
+                            .addComponent(DNI, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(136, 136, 136)
                         .addComponent(jLabel1))
@@ -103,7 +93,16 @@ public class ComprarEntradasAtracciones extends javax.swing.JPanel {
                         .addGap(84, 84, 84)
                         .addComponent(Comprar)
                         .addGap(69, 69, 69)
-                        .addComponent(Atrás)))
+                        .addComponent(Atrás))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(55, 55, 55)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5))
+                        .addGap(73, 73, 73)
+                        .addComponent(VIPsi)
+                        .addGap(35, 35, 35)
+                        .addComponent(vipNO)))
                 .addContainerGap(62, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -119,24 +118,28 @@ public class ComprarEntradasAtracciones extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(DNI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 56, Short.MAX_VALUE)
-                        .addComponent(jLabel4)
-                        .addGap(32, 32, 32)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Atrás)
-                            .addComponent(Comprar))
-                        .addGap(34, 34, 34))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(VIPsi)
-                            .addComponent(vipNO))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(VIPsi)
+                    .addComponent(vipNO))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel4)
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Atrás)
+                    .addComponent(Comprar))
+                .addGap(34, 34, 34))
         );
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    private void compraraatraccionActionPerformed(java.awt.event.ActionEvent evt) {                                                 
+        ComprarEntradasAtracciones mc= new ComprarEntradasAtracciones();
+        this.setVisible(false);
+        mc.setVisible(true);
+    }    
+    
+    
     private void AtrásActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtrásActionPerformed
         MenuComprasReservas mu = new MenuComprasReservas();
         this.setVisible(false);
