@@ -29,20 +29,40 @@ public class MenuCancelaciones extends javax.swing.JFrame {
         Cancelaciones = new javax.swing.JLabel();
         cancelarentradaatraccion = new javax.swing.JButton();
         Cancelarentradaespectaculo = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        cancelarRestaurante = new javax.swing.JButton();
+        atras = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         Cancelaciones.setText("Cancelaciones");
 
         cancelarentradaatraccion.setText("Cancelar Entrada Atracción");
+        cancelarentradaatraccion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelarentradaatraccionActionPerformed(evt);
+            }
+        });
 
         Cancelarentradaespectaculo.setText("Cancelar Entrada Espectáculo");
+        Cancelarentradaespectaculo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CancelarentradaespectaculoActionPerformed(evt);
+            }
+        });
 
-        jButton1.setText("Cancelar Reserva Restaurante");
+        cancelarRestaurante.setText("Cancelar Reserva Restaurante");
+        cancelarRestaurante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelarRestauranteActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Atrás");
+        atras.setText("Atrás");
+        atras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                atrasActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -59,11 +79,11 @@ public class MenuCancelaciones extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(87, 87, 87)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1)
+                            .addComponent(cancelarRestaurante)
                             .addComponent(Cancelarentradaespectaculo)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(154, 154, 154)
-                        .addComponent(jButton2)))
+                        .addComponent(atras)))
                 .addContainerGap(90, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -76,14 +96,37 @@ public class MenuCancelaciones extends javax.swing.JFrame {
                 .addGap(34, 34, 34)
                 .addComponent(Cancelarentradaespectaculo)
                 .addGap(38, 38, 38)
-                .addComponent(jButton1)
+                .addComponent(cancelarRestaurante)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(atras)
                 .addGap(23, 23, 23))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void atrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasActionPerformed
+        MenuUsuarios mu = new MenuUsuarios();
+        this.setVisible(false);
+        mu.setVisible(true);
+    }//GEN-LAST:event_atrasActionPerformed
+
+    private void cancelarRestauranteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarRestauranteActionPerformed
+       CancelarReservaRestaurante cr= new CancelarReservaRestaurante();
+        this.setVisible(false);
+        cr.setVisible(true);
+    }//GEN-LAST:event_cancelarRestauranteActionPerformed
+
+    private void CancelarentradaespectaculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarentradaespectaculoActionPerformed
+        CancelarEntradaEspectaculo cr= new CancelarEntradaEspectaculo();
+        this.setVisible(false);
+        cr.setVisible(true);    }//GEN-LAST:event_CancelarentradaespectaculoActionPerformed
+
+    private void cancelarentradaatraccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarentradaatraccionActionPerformed
+        CancelarEntradaAtraccion cr= new CancelarEntradaAtraccion();
+        this.setVisible(false);
+        cr.setVisible(true);
+    }//GEN-LAST:event_cancelarentradaatraccionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -124,8 +167,8 @@ public class MenuCancelaciones extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Cancelaciones;
     private javax.swing.JButton Cancelarentradaespectaculo;
+    private javax.swing.JButton atras;
+    private javax.swing.JButton cancelarRestaurante;
     private javax.swing.JButton cancelarentradaatraccion;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     // End of variables declaration//GEN-END:variables
 }

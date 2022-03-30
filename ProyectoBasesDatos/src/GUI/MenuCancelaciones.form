@@ -36,13 +36,13 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                          <Component id="cancelarRestaurante" min="-2" max="-2" attributes="0"/>
                           <Component id="Cancelarentradaespectaculo" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="154" max="-2" attributes="0"/>
-                      <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                      <Component id="atras" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="90" max="32767" attributes="0"/>
@@ -59,9 +59,9 @@
               <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
               <Component id="Cancelarentradaespectaculo" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+              <Component id="cancelarRestaurante" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="31" max="32767" attributes="0"/>
-              <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+              <Component id="atras" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -77,21 +77,33 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Cancelar Entrada Atracci&#xf3;n"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cancelarentradaatraccionActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="Cancelarentradaespectaculo">
       <Properties>
         <Property name="text" type="java.lang.String" value="Cancelar Entrada Espect&#xe1;culo"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CancelarentradaespectaculoActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="cancelarRestaurante">
       <Properties>
         <Property name="text" type="java.lang.String" value="Cancelar Reserva Restaurante"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cancelarRestauranteActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton2">
+    <Component class="javax.swing.JButton" name="atras">
       <Properties>
         <Property name="text" type="java.lang.String" value="Atr&#xe1;s"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="atrasActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

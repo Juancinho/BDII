@@ -118,11 +118,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Entrar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EntrarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="Registrarme">
       <Properties>
         <Property name="text" type="java.lang.String" value="Registrarme"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RegistrarmeActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="Atr&#xe1;s">
       <Properties>
