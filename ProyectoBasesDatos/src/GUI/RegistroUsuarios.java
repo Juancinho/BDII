@@ -48,27 +48,22 @@ public class RegistroUsuarios extends javax.swing.JFrame {
         MADA.setText("DNI");
 
         DNI.setForeground(new java.awt.Color(204, 204, 204));
-        DNI.setText("Introduzca su DNI");
 
         jLabel1.setText("Nombre");
 
         nameapellidos.setForeground(new java.awt.Color(204, 204, 204));
-        nameapellidos.setText("Introduzca su nombre y apellidos");
 
         nacionalidad.setForeground(new java.awt.Color(204, 204, 204));
-        nacionalidad.setText("Introduzca su nacionalidad");
 
         jLabel2.setText("Nacionalidad");
 
         jLabel3.setText("Correo");
 
         correoelectro.setForeground(new java.awt.Color(204, 204, 204));
-        correoelectro.setText("Introduzca su correo electrónico");
 
         jLabel4.setText("Teléfono");
 
         jTextField1.setForeground(new java.awt.Color(204, 204, 204));
-        jTextField1.setText("Introduzca su número de teléfono");
 
         jLabel5.setText("Fecha Nacimiento");
 

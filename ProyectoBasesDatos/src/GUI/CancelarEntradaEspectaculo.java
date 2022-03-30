@@ -46,7 +46,6 @@ public class CancelarEntradaEspectaculo extends javax.swing.JFrame {
         jLabel3.setText("DNI");
 
         jTextField1.setForeground(new java.awt.Color(204, 204, 204));
-        jTextField1.setText("Introduzca su DNI");
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Fecha");

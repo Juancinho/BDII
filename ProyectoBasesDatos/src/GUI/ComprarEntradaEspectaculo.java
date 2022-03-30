@@ -46,7 +46,6 @@ public class ComprarEntradaEspectaculo extends javax.swing.JFrame {
         jLabel2.setText("DNI");
 
         jTextField1.setForeground(new java.awt.Color(204, 204, 204));
-        jTextField1.setText("Introduzca su DNI");
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Fecha");
