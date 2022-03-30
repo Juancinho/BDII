@@ -75,6 +75,11 @@ public class RegistroUsuarios extends javax.swing.JFrame {
         Registrarme.setText("Registrarme");
 
         Atrás.setText("Atrás");
+        Atrás.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AtrásActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -156,6 +161,14 @@ public class RegistroUsuarios extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void AtrásActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtrásActionPerformed
+                                     
+        AccesoUsuario in = new AccesoUsuario();
+       this.setVisible(false);
+       in.setVisible(true);
+    
+    }//GEN-LAST:event_AtrásActionPerformed
 
     /**
      * @param args the command line arguments

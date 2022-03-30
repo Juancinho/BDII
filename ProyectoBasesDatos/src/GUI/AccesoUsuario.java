@@ -64,6 +64,11 @@ public class AccesoUsuario extends javax.swing.JFrame {
         });
 
         Atrás.setText("Atrás");
+        Atrás.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AtrásActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -130,6 +135,12 @@ public class AccesoUsuario extends javax.swing.JFrame {
         mu.setVisible(true);
     }//GEN-LAST:event_RegistrarmeActionPerformed
 
+    private void AtrásActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtrásActionPerformed
+        Inicio in = new Inicio();
+       this.setVisible(false);
+       in.setVisible(true);
+    }//GEN-LAST:event_AtrásActionPerformed
+    
     /**
      * @param args the command line arguments
      */
