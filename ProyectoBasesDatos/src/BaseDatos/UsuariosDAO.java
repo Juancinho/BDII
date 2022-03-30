@@ -12,7 +12,7 @@ import java.sql.*;
  *
  * @author basesdatos
  */
-public class DAOUsuarios extends AbstractDAO {
+public class UsuariosDAO extends AbstractDAO {
     private java.sql.Connection conexion;
 /*
    public DAOUsuarios (Connection conexion, aplicacion.FachadaAplicacion fa){
@@ -21,7 +21,7 @@ public class DAOUsuarios extends AbstractDAO {
     }
 */
    
-   public DAOUsuarios (Connection conexion){
+   public UsuariosDAO (Connection conexion){
         this.conexion = conexion;
      }  
 
