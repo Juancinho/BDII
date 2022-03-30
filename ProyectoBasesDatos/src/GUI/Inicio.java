@@ -61,15 +61,15 @@ public class Inicio extends javax.swing.JFrame {
                         .addGap(147, 147, 147)
                         .addComponent(usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(135, 135, 135)
-                        .addComponent(administrador))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(159, 159, 159)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(158, 158, 158)
-                        .addComponent(salir)))
-                .addContainerGap(145, Short.MAX_VALUE))
+                        .addComponent(salir))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(134, 134, 134)
+                        .addComponent(administrador)))
+                .addContainerGap(146, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -78,11 +78,11 @@ public class Inicio extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(52, 52, 52)
                 .addComponent(usuario)
-                .addGap(48, 48, 48)
+                .addGap(44, 44, 44)
                 .addComponent(administrador)
-                .addGap(45, 45, 45)
+                .addGap(38, 38, 38)
                 .addComponent(salir)
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
 
         pack();
