@@ -67,6 +67,11 @@ public class MenuUsuarios extends javax.swing.JFrame {
         });
 
         jButton3.setText("Búsquedas");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -122,6 +127,8 @@ public class MenuUsuarios extends javax.swing.JFrame {
 
     private void PuntuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PuntuarActionPerformed
         // TODO add your handling code here:
+        
+        
     }//GEN-LAST:event_PuntuarActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -135,6 +142,13 @@ public class MenuUsuarios extends javax.swing.JFrame {
         this.setVisible(false);
         mc.setVisible(true);
     }//GEN-LAST:event_compraroreservarActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        MenuBusquedas menuBusquedas = new MenuBusquedas();
+        menuBusquedas.setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
