@@ -10,38 +10,40 @@ package proyectobasesdatos;
  * Hola
  */
 public class Asistir {
-    private String fecha, visitante, espectaculo;
+    private String nombre, horaInicio;
+    private int asistencia;
 
-    public Asistir(String fecha, String visitante, String espectaculo) {
-        this.fecha = fecha;
-        this.visitante = visitante;
-        this.espectaculo = espectaculo;
+    public Asistir(String nombre, String horaInicio, int asistencia) {
+        this.nombre = nombre;
+        this.horaInicio = horaInicio;
+        this.asistencia = asistencia;
     }
 
-    public String getFecha() {
-        return fecha;
+    public String getNombre() {
+        return nombre;
     }
 
-    public String getVisitante() {
-        return visitante;
+    public String getHoraInicio() {
+        return horaInicio;
     }
 
-    public String getEspectaculo() {
-        return espectaculo;
-    }
-    
-
-    public void setFecha(String fecha) {
-        this.fecha = fecha;
+    public int getAsistencia() {
+        return asistencia;
     }
 
-    public void setVisitante(String visitante) {
-        this.visitante = visitante;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public void setEspectaculo(String espectaculo) {
-        this.espectaculo = espectaculo;
+    public void setHoraInicio(String horaInicio) {
+        this.horaInicio = horaInicio;
     }
+
+    public void setAsistencia(int asistencia) {
+        this.asistencia = asistencia;
+    }
+
+   
     
     
 }

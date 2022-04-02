@@ -33,20 +33,14 @@ public class ModeloTablaAsistir extends AbstractTableModel {
 
         switch (col) {
             case 0:
-                nombre = "Fecha";
+                nombre = "Nombre";
                 break;
             case 1:
-                nombre = "Visitante";
+                nombre = "Hora";
                 break;
             case 2:
-                nombre = "Altura Mínima";
-                break;
-            case 3:
-                nombre = "Ubicación";
-                break;
-            case 4:
-                nombre = "Descripción";
-                break;            
+                nombre = "Asistencia";
+                break;           
         }
         return nombre;
     }
@@ -83,26 +77,27 @@ public class ModeloTablaAsistir extends AbstractTableModel {
 
         switch (col) {
             case 0:
-                resultado = asistencia.get(row).getFecha();
+                resultado = asistencia.get(row).getNombre();
                 break;
             case 1:
-                resultado = asistencia.get(row).getVisitante();
+                resultado = asistencia.get(row).getHoraInicio();
                 break;
             case 2:
-                resultado = asistencia.get(row).getEspectaculo();
+                resultado = asistencia.get(row).getAsistencia();
                 break;
 
         }
         return resultado;
     }
     
-    /*
-    public void setFilas(java.util.List<Asistir> atracciones) {
-        this.asistencia = atracciones;
+    
+    public void setFilas(java.util.List<Asistir> asistencias) {
+        this.asistencia = asistencias;
         fireTableDataChanged();
     }
-      public Asistir obtenerAtraccion(int i){
+    
+      public Asistir obtenerAsistencia(int i){
         return this.asistencia.get(i);
     }
-*/
+
 }

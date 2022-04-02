@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.util.Properties;
 import BaseDatos.DAOUsuarios;
 import BaseDatos.AtraccionesDAO;
+import BaseDatos.EspectaculosDAO;
 import java.sql.*;
 /**
  *
@@ -20,6 +21,7 @@ public class ProyectoBasesDatos {
   private java.sql.Connection conexion;
    private GUI.FachadaGui fgui;
    private AtraccionesDAO atraccionesDAO;
+   private EspectaculosDAO espectaculosDAO;
    private DAOUsuarios daoUsuarios;
    public ProyectoBasesDatos() throws SQLException{
        fgui=new GUI.FachadaGui(this);//Inicializar la fachada GUI enlazandola con este "main" de la aplicacion
@@ -65,9 +67,14 @@ public class ProyectoBasesDatos {
    this.conexion = DriverManager.getConnection(url,usuario,contrasenha);
       atraccionesDAO = new AtraccionesDAO(conexion);
       daoUsuarios = new DAOUsuarios(conexion);
+      espectaculosDAO = new EspectaculosDAO(conexion);
    }
    public AtraccionesDAO getAtraccionesDAO() {
         return atraccionesDAO;
+    }
+   
+   public EspectaculosDAO getEspectaculosDAO() {
+        return espectaculosDAO;
     }
    
    
