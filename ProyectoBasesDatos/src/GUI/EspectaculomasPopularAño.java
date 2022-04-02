@@ -9,11 +9,17 @@ package GUI;
  * @author alumnogreibd
  */
 public class EspectaculomasPopularAño extends javax.swing.JFrame {
+    private proyectobasesdatos.ProyectoBasesDatos pr;
 
     /**
      * Creates new form EspectaculomasPopularAño
      */
     public EspectaculomasPopularAño() {
+        initComponents();
+    }
+    
+    public EspectaculomasPopularAño(proyectobasesdatos.ProyectoBasesDatos pr) {
+        this.pr = pr;
         initComponents();
     }
 
@@ -30,6 +36,8 @@ public class EspectaculomasPopularAño extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jTabbedPane1 = new javax.swing.JTabbedPane();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tablaEspectaculo = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -38,7 +46,17 @@ public class EspectaculomasPopularAño extends javax.swing.JFrame {
 
         jLabel2.setText("Año");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2015", "2016", "2017", "2018", "2019", "2020", "2021" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+
+        tablaEspectaculo.setModel(new ModeloTablaAsistir());
+        jScrollPane1.setViewportView(tablaEspectaculo);
+
+        jTabbedPane1.addTab("tab1", jScrollPane1);
 
         jButton1.setText("Atrás");
 
@@ -84,6 +102,10 @@ public class EspectaculomasPopularAño extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        consultarEspectaculo();
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -124,6 +146,31 @@ public class EspectaculomasPopularAño extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTable tablaEspectaculo;
     // End of variables declaration//GEN-END:variables
+    public void consultarEspectaculo() {
+        
+        
+        ModeloTablaAsistir m;
+        String anho;
+        anho = (String)jComboBox1.getSelectedItem(); 
+        System.out.println(anho);
+
+        m = (ModeloTablaAsistir) tablaEspectaculo.getModel();
+        System.out.println(anho);
+        m.setFilas(pr.getEspectaculosDAO().espectaculoMasPopularPorAnho(anho));
+       
+        
+        if (m.getRowCount() >= 0) {
+            tablaEspectaculo.setRowSelectionInterval(0, 0); 
+            
+        }
+
+        
+    }
+
+
+
 }
