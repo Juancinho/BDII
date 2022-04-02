@@ -29,7 +29,7 @@ public class MenuComprasReservas extends javax.swing.JFrame {
         bienvenido = new javax.swing.JLabel();
         ComprarEntradas = new javax.swing.JButton();
         Reservarenrestaurante = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        comprarEspectaculo = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -50,10 +50,10 @@ public class MenuComprasReservas extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Comprar Entrada Espectáculo");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        comprarEspectaculo.setText("Comprar Entrada Espectáculo");
+        comprarEspectaculo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                comprarEspectaculoActionPerformed(evt);
             }
         });
 
@@ -82,7 +82,7 @@ public class MenuComprasReservas extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(90, 90, 90)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1)
+                            .addComponent(comprarEspectaculo)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(ComprarEntradas)
                                 .addGap(8, 8, 8))))
@@ -99,7 +99,7 @@ public class MenuComprasReservas extends javax.swing.JFrame {
                 .addGap(36, 36, 36)
                 .addComponent(ComprarEntradas)
                 .addGap(29, 29, 29)
-                .addComponent(jButton1)
+                .addComponent(comprarEspectaculo)
                 .addGap(32, 32, 32)
                 .addComponent(Reservarenrestaurante)
                 .addGap(29, 29, 29)
@@ -108,6 +108,7 @@ public class MenuComprasReservas extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void ComprarEntradasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComprarEntradasActionPerformed
@@ -123,10 +124,10 @@ public class MenuComprasReservas extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void comprarEspectaculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comprarEspectaculoActionPerformed
  ComprarEntradaEspectaculo mu = new ComprarEntradaEspectaculo();
         this.setVisible(false);
-        mu.setVisible(true);    }//GEN-LAST:event_jButton1ActionPerformed
+        mu.setVisible(true);    }//GEN-LAST:event_comprarEspectaculoActionPerformed
 
     private void ReservarenrestauranteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReservarenrestauranteActionPerformed
  ReservarEnRestaurante mu = new ReservarEnRestaurante();
@@ -175,7 +176,7 @@ public class MenuComprasReservas extends javax.swing.JFrame {
     private javax.swing.JButton ComprarEntradas;
     private javax.swing.JButton Reservarenrestaurante;
     private javax.swing.JLabel bienvenido;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton comprarEspectaculo;
     private javax.swing.JButton jButton2;
     // End of variables declaration//GEN-END:variables
 }

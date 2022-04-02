@@ -1,6 +1,6 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package GUI;
 
@@ -8,10 +8,10 @@ package GUI;
  *
  * @author alumnogreibd
  */
-public class ComprarEntradasAtracciones extends javax.swing.JPanel {
+public class ComprarEntradasAtracciones extends javax.swing.JFrame {
 
     /**
-     * Creates new form ComprarEntradas
+     * Creates new form ComprarEntradasAtracciones2
      */
     public ComprarEntradasAtracciones() {
         initComponents();
@@ -27,136 +27,176 @@ public class ComprarEntradasAtracciones extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        Atraccion = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
+        elegirAtraccion = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
-        DNI = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        javax.swing.JRadioButton VIPsi = new javax.swing.JRadioButton();
-        Comprar = new javax.swing.JButton();
-        Atrás = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        vipNO = new javax.swing.JRadioButton();
+        VIPsi = new javax.swing.JRadioButton();
+        VIPno = new javax.swing.JRadioButton();
+        textoDNI = new javax.swing.JTextField();
+        comprar = new javax.swing.JButton();
+        atras = new javax.swing.JButton();
 
-        jLabel1.setFont(new java.awt.Font("Noto Sans CJK HK", 0, 13)); // NOI18N
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
         jLabel1.setText("Entradas Atracciones");
 
-        Atraccion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jLabel2.setText("Atacción:");
 
-        jLabel2.setText("Atracción");
+        elegirAtraccion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jLabel3.setText("DNI");
+        jLabel3.setText("DNI:");
 
-        DNI.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel4.setText("Pase VIP:");
 
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Fecha");
+        jLabel5.setText("Fecha:");
 
         VIPsi.setText("Sí");
-
-        Comprar.setText("Comprar");
-
-        Atrás.setText("Atrás");
-        Atrás.addActionListener(new java.awt.event.ActionListener() {
+        VIPsi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AtrásActionPerformed(evt);
+                VIPsiActionPerformed(evt);
             }
         });
 
-        jLabel5.setText("Pase VIP");
+        VIPno.setText("No");
 
-        vipNO.setText("No");
+        comprar.setText("Comprar");
+        comprar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comprarActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
+        atras.setText("Atrás");
+        atras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                atrasActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(43, 43, 43)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(48, 48, 48)
-                                .addComponent(jLabel2)
-                                .addGap(36, 36, 36))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel3)
-                                .addGap(56, 56, 56)))
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel3))
+                        .addGap(48, 48, 48)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(Atraccion, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(DNI, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(136, 136, 136)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(84, 84, 84)
-                        .addComponent(Comprar)
-                        .addGap(69, 69, 69)
-                        .addComponent(Atrás))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(55, 55, 55)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5))
-                        .addGap(73, 73, 73)
-                        .addComponent(VIPsi)
-                        .addGap(35, 35, 35)
-                        .addComponent(vipNO)))
-                .addContainerGap(62, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(VIPsi)
+                                .addGap(40, 40, 40)
+                                .addComponent(VIPno))
+                            .addComponent(jLabel1)
+                            .addComponent(elegirAtraccion, 0, 172, Short.MAX_VALUE)
+                            .addComponent(textoDNI))))
+                .addContainerGap(82, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(68, 68, 68)
+                .addComponent(comprar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(atras)
+                .addGap(60, 60, 60))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(21, 21, 21)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(16, 16, 16)
                 .addComponent(jLabel1)
-                .addGap(29, 29, 29)
+                .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Atraccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(18, 18, 18)
+                    .addComponent(jLabel2)
+                    .addComponent(elegirAtraccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(DNI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                    .addComponent(textoDNI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
+                    .addComponent(jLabel4)
                     .addComponent(VIPsi)
-                    .addComponent(vipNO))
+                    .addComponent(VIPno))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel4)
-                .addGap(32, 32, 32)
+                .addComponent(jLabel5)
+                .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Atrás)
-                    .addComponent(Comprar))
-                .addGap(34, 34, 34))
+                    .addComponent(comprar)
+                    .addComponent(atras))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
+
+        pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-    
-    private void compraraatraccionActionPerformed(java.awt.event.ActionEvent evt) {                                                 
-        ComprarEntradasAtracciones mc= new ComprarEntradasAtracciones();
-        this.setVisible(false);
-        mc.setVisible(true);
-    }    
-    
-    
-    private void AtrásActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtrásActionPerformed
+
+    private void VIPsiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VIPsiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_VIPsiActionPerformed
+
+    private void comprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comprarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comprarActionPerformed
+
+    private void atrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasActionPerformed
         MenuComprasReservas mu = new MenuComprasReservas();
         this.setVisible(false);
         mu.setVisible(true); 
-    }//GEN-LAST:event_AtrásActionPerformed
+    }//GEN-LAST:event_atrasActionPerformed
 
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(ComprarEntradasAtracciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(ComprarEntradasAtracciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(ComprarEntradasAtracciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(ComprarEntradasAtracciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new ComprarEntradasAtracciones().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> Atraccion;
-    private javax.swing.JButton Atrás;
-    private javax.swing.JButton Comprar;
-    private javax.swing.JTextField DNI;
+    private javax.swing.JRadioButton VIPno;
+    private javax.swing.JRadioButton VIPsi;
+    private javax.swing.JButton atras;
+    private javax.swing.JButton comprar;
+    private javax.swing.JComboBox<String> elegirAtraccion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JRadioButton vipNO;
+    private javax.swing.JTextField textoDNI;
     // End of variables declaration//GEN-END:variables
 }
