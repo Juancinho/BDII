@@ -107,19 +107,7 @@ public class EspectaculosDAO {
         PreparedStatement stmEspectaculo = null;
         String inicioAnho = anho + "-01" + "-01";   //MANOTE: hay que comporbar que esto funcione bien!!!
         String finAnho = anho + "-12" + "-31";
-        /*
-        String consulta = "SELECT e.nombre, e.horaInicio,count(e.nombre) as asistencia FROM espectaculos e, asistir a"+
-                    "WHERE e.nombre = a.espectaculo"+
-                    "AND  a.fecha >= ?"+
-                    "AND a.fecha <=?"+
-                    "GROUP BY e.nombre"+
-                    "HAVING count(e.nombre) >= all (SELECT count(e.nombre)"+
-                    "FROM espectaculos e, asistir a"+
-                    "WHERE e.nombre = a.espectaculo"+
-                    "AND a.fecha >= ?"+
-                    "AND a.fecha <= ?"+
-                    "GROUP BY  e.nombre)"+
-                    "LIMIT 1";*/
+
         try {
             stmEspectaculo = conexion.prepareStatement("SELECT e.nombre, e.horaInicio, count(e.nombre) as asistencia FROM espectaculos e, asistir a WHERE e.nombre = a.espectaculo AND  a.fecha >= ? AND a.fecha <=? GROUP BY e.nombre HAVING count(e.nombre) >= all (SELECT count(e.nombre)  FROM espectaculos e, asistir a  WHERE e.nombre = a.espectaculo  AND a.fecha >= ? AND a.fecha <= ? GROUP BY  e.nombre) LIMIT 1");
             /*stmEspectaculo = conexion.prepareStatement("SELECT e.nombre, e.horaInicio, count(e.nombre) as asistencia"
@@ -145,7 +133,7 @@ public class EspectaculosDAO {
             while (rsConsultaEspectaculo.next()) {
                
                 Asistir asistencia = new Asistir(rsConsultaEspectaculo.getString(1),rsConsultaEspectaculo.getString(2), rsConsultaEspectaculo.getInt(3));
-                System.out.println(asistencia.getNombre());
+                
                 resultado.add(asistencia);
             }
 
