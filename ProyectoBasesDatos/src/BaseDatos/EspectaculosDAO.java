@@ -103,27 +103,16 @@ public class EspectaculosDAO {
         //Nótese que no puedo devolver tampoco un espectáculo porque dicha clase no tiene un campo que se corresponda con un count
 
         //No sé si tendria sentido hacer comprobaciones aquí sobre el año
+        
+        ArrayList<Asistir> resultado = new java.util.ArrayList<>();
         ResultSet rsConsultaEspectaculo = null;
         PreparedStatement stmEspectaculo = null;
-        ArrayList<Asistir> resultado = new java.util.ArrayList<>();
         String inicioAnho = anho + "-01" + "-01";   //MANOTE: hay que comporbar que esto funcione bien!!!
         String finAnho = anho + "-12" + "-31";
         Asistir asistencia;
-
+        System.out.println("HOLA");
         try {
-            stmEspectaculo = conexion.prepareStatement("SELECT e.nombre, e.horaInicio, count(e.nombre) as asistencia"
-                    + "FROM espectaculos e, asistir a"
-                    + "WHERE e.nombre = a.espectaculo "
-                    + "AND  a.fecha >= ?"
-                    + "AND a.fecha <=,?"
-                    + "GROUP BY e.nombre"
-                    + "HAVING count(e.nombre) >= all (SELECT count(e.nombre) "
-                    + "FROM espectaculos e, asistir a "
-                    + "WHERE e.nombre = a.espectaculo "
-                    + "AND a.fecha >= ?"
-                    + "AND a.fecha <= ?"
-                    + "GROUP BY  e.nombre)"
-                    + "LIMIT 1");
+            stmEspectaculo = conexion.prepareStatement("SELECT e.nombre, e.horaInicio, count(e.nombre) as asistencia FROM espectaculos e, asistir a WHERE e.nombre = a.espectaculo AND  a.fecha >= ? AND a.fecha <=? GROUP BY e.nombre HAVING count(e.nombre) >= all (SELECT count(e.nombre)  FROM espectaculos e, asistir a  WHERE e.nombre = a.espectaculo  AND a.fecha >= ? AND a.fecha <= ? GROUP BY  e.nombre) LIMIT 1");
 
             stmEspectaculo.setDate(1, java.sql.Date.valueOf(inicioAnho));
             stmEspectaculo.setDate(2, java.sql.Date.valueOf(finAnho));
@@ -133,6 +122,7 @@ public class EspectaculosDAO {
             while (rsConsultaEspectaculo.next()) {
                
                 asistencia = new Asistir(rsConsultaEspectaculo.getString("nombre"),rsConsultaEspectaculo.getString("horaInicio"), rsConsultaEspectaculo.getInt("asistencia"));
+                System.out.println(asistencia.getNombre());
                 resultado.add(asistencia);
             }
 
