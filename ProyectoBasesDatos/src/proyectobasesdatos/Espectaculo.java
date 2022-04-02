@@ -10,6 +10,7 @@ package proyectobasesdatos;
  */
 public class Espectaculo {
     private String nombre, horaInicio, horaFin, tematica, descripcion, ubicacion, activo;
+    
 
     public Espectaculo(String nombre, String horaInicio, String horaFin, String tematica, String descripcion, String ubicacion, String activo) {
         this.nombre = nombre;
@@ -19,6 +20,15 @@ public class Espectaculo {
         this.descripcion = descripcion;
         this.ubicacion = ubicacion;
         this.activo = activo;
+    }
+    
+    public Espectaculo(String nombre, String horaInicio, String horaFin, String tematica, String descripcion, String ubicacion) {
+        this.nombre = nombre;
+        this.horaInicio = horaInicio;
+        this.horaFin = horaFin;
+        this.tematica = tematica;
+        this.descripcion = descripcion;
+        this.ubicacion = ubicacion;
     }
 
     public String getNombre() {

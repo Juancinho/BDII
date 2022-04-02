@@ -135,7 +135,7 @@ public class MenuBusquedas extends javax.swing.JFrame {
         mu.setVisible(true);    }//GEN-LAST:event_espectaculoPopularActionPerformed
 
     private void datosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_datosActionPerformed
-       MenuConsultarDatosPrueba mu = new MenuConsultarDatosPrueba(pr);
+       MenuConsultarDatos mu = new MenuConsultarDatos(pr);
         this.setVisible(false);
         mu.setVisible(true);
     }//GEN-LAST:event_datosActionPerformed
