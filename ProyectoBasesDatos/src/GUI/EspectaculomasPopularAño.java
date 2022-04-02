@@ -151,22 +151,15 @@ public class EspectaculomasPopularAño extends javax.swing.JFrame {
     private javax.swing.JTable tablaEspectaculo;
     // End of variables declaration//GEN-END:variables
     public void consultarEspectaculo() {
-        
-        
         ModeloTablaAsistir m;
         String anho;
         anho = (String)jComboBox1.getSelectedItem(); 
         System.out.println(anho);
-
-        m = (ModeloTablaAsistir) tablaEspectaculo.getModel();
-        System.out.println(anho);
-        m.setFilas(pr.getEspectaculosDAO().espectaculoMasPopularPorAnho(anho));
-       
         
-        if (m.getRowCount() >= 0) {
-            tablaEspectaculo.setRowSelectionInterval(0, 0); 
-            
-        }
+        m = (ModeloTablaAsistir) tablaEspectaculo.getModel();     
+        m.setFilas(pr.getEspectaculosDAO().espectaculoMasPopularPorAnho(anho));
+        
+        
 
         
     }
