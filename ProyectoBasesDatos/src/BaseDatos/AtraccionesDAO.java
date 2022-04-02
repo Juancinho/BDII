@@ -20,7 +20,7 @@ public class AtraccionesDAO {
     }
 
     public java.util.List<Atraccion> consultarAtraccion(String nombre) {
-        java.util.List<Atraccion> resultado = new java.util.ArrayList<Atraccion>();
+        java.util.List<Atraccion> resultado = new java.util.ArrayList<>();
         Atraccion atraccionActual;
 
         ResultSet rsAtracciones;

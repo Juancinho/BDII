@@ -12,6 +12,7 @@ import java.util.Properties;
 import BaseDatos.DAOUsuarios;
 import BaseDatos.AtraccionesDAO;
 import BaseDatos.EspectaculosDAO;
+import BaseDatos.HosteleriaDAO;
 import java.sql.*;
 /**
  *
@@ -23,39 +24,10 @@ public class ProyectoBasesDatos {
    private AtraccionesDAO atraccionesDAO;
    private EspectaculosDAO espectaculosDAO;
    private DAOUsuarios daoUsuarios;
+   private HosteleriaDAO hosteleriaDAO;
    public ProyectoBasesDatos() throws SQLException{
        fgui=new GUI.FachadaGui(this);//Inicializar la fachada GUI enlazandola con este "main" de la aplicacion
-   //CONEXION
-   /*
-       Properties configuracion = new Properties();        
-       FileInputStream arqConfiguracion;
-     try {
-            arqConfiguracion = new FileInputStream("baseDatos.properties");
-            configuracion.load(arqConfiguracion);
-            arqConfiguracion.close();
-
-            Properties usuario = new Properties();
-     
-
-            String gestor = configuracion.getProperty("gestor");
-
-            usuario.setProperty("user", configuracion.getProperty("usuario"));
-            usuario.setProperty("password", configuracion.getProperty("clave"));
-            this.conexion=java.sql.DriverManager.getConnection("jdbc:"+gestor+"://"+
-                    configuracion.getProperty("servidor")+":"+
-                    configuracion.getProperty("puerto")+"/"+
-                    configuracion.getProperty("baseDatos"),
-                    usuario);
-     } 
-     catch (FileNotFoundException f) {
-            System.out.println(f.getMessage());
-           
-        } catch (IOException i) {
-            System.out.println(i.getMessage());            
-        } catch (java.sql.SQLException e) {
-            System.out.println(e.getMessage());
-        }
-*/
+   
    try{
    Class.forName("org.postgresql.Driver");     
    }catch(ClassNotFoundException ex){
@@ -68,13 +40,22 @@ public class ProyectoBasesDatos {
       atraccionesDAO = new AtraccionesDAO(conexion);
       daoUsuarios = new DAOUsuarios(conexion);
       espectaculosDAO = new EspectaculosDAO(conexion);
+      hosteleriaDAO = new HosteleriaDAO(conexion);
    }
    public AtraccionesDAO getAtraccionesDAO() {
         return atraccionesDAO;
     }
+   public HosteleriaDAO getHosteleriaDAO() {
+        return hosteleriaDAO;
+    }
+   
    
    public EspectaculosDAO getEspectaculosDAO() {
         return espectaculosDAO;
+    }
+
+    public Connection getConexion() {
+        return conexion;
     }
    
    
