@@ -22,6 +22,8 @@ public class MenuUsuarios extends javax.swing.JFrame {
         initComponents();
     }
       
+
+      
       public MenuUsuarios(proyectobasesdatos.ProyectoBasesDatos pr, Inicio padre, String dni) {
           this.pr = pr;
           this.padre = padre;
@@ -140,8 +142,9 @@ public class MenuUsuarios extends javax.swing.JFrame {
     }//GEN-LAST:event_PuntuarActionPerformed
 
     private void atrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasActionPerformed
-       this.setVisible(false);
-       padre.setVisible(true);
+       Inicio init = new Inicio();
+        this.setVisible(false);
+       init.setVisible(true);
     }//GEN-LAST:event_atrasActionPerformed
 
     private void comprarReservarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comprarReservarActionPerformed
