@@ -20,6 +20,31 @@ public class EspectaculosDAO {
         this.conexion = conexion;
     }
     
+    
+    public ArrayList<String> añosRegistrados() {
+        ArrayList<String> resultado = new java.util.ArrayList<>();
+
+        ResultSet rsAtracciones;
+        PreparedStatement stmAtracciones = null;
+
+        try {
+            stmAtracciones = conexion.prepareStatement("select distinct (EXTRACT(YEAR FROM fecha)) as ano from asistir order by  ano asc;"); 
+            rsAtracciones = stmAtracciones.executeQuery();
+            while (rsAtracciones.next()) {   //MANOTE: Este next devuelve un booleano pero también coloca el cursor en la siguiente fila (la primera vez que se le llama en la primera, la segunda en la segunda,...)
+                resultado.add(String.valueOf(rsAtracciones.getFloat(1)));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            try {
+                stmAtracciones.close();
+            } catch (SQLException e) {
+                System.out.println("Imposible cerrar cursores");
+            }
+        }
+        return resultado;
+    }
+    
     public  java.util.List<Espectaculo> datosBasicosEspectaculo(String nombreEspectaculo,String tematica) {  //FU4  
         java.util.List<Espectaculo> resultado = new java.util.ArrayList<>();
         Espectaculo espectaculo = null;

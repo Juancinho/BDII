@@ -85,22 +85,16 @@
     </Component>
     <Component class="javax.swing.JComboBox" name="jComboBox1">
       <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="7">
-            <StringItem index="0" value="2015"/>
-            <StringItem index="1" value="2016"/>
-            <StringItem index="2" value="2017"/>
-            <StringItem index="3" value="2018"/>
-            <StringItem index="4" value="2019"/>
-            <StringItem index="5" value="2020"/>
-            <StringItem index="6" value="2021"/>
-          </StringArray>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(array)" type="code"/>
         </Property>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox1ActionPerformed"/>
       </Events>
       <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JComboBox&lt;&gt;()"/>
+        <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="String [] array = pr.getEspectaculosDAO().a&#xf1;osRegistrados().toArray(new String[pr.getEspectaculosDAO().a&#xf1;osRegistrados().size()]);"/>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>

@@ -34,6 +34,7 @@ public class EspectaculomasPopularAño extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        String [] array = pr.getEspectaculosDAO().añosRegistrados().toArray(new String[pr.getEspectaculosDAO().añosRegistrados().size()]);
         jComboBox1 = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -45,7 +46,7 @@ public class EspectaculomasPopularAño extends javax.swing.JFrame {
 
         jLabel2.setText("Año");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2015", "2016", "2017", "2018", "2019", "2020", "2021" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(array));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
