@@ -4,10 +4,10 @@ package GUI;
 
 public class FachadaGui {
     proyectobasesdatos.ProyectoBasesDatos pr;
-        Inicio in;
+        MenuUsuarios in;
      public FachadaGui(proyectobasesdatos.ProyectoBasesDatos pr){
      this.pr=pr;
-     this.in = new Inicio(pr);
+     this.in = new MenuUsuarios(pr);
    } 
      public void iniciaVista(){  
           

@@ -10,13 +10,14 @@ package GUI;
  */
 public class AccesoUsuario extends javax.swing.JFrame {
 
-    private  proyectobasesdatos.ProyectoBasesDatos pr;
+    private proyectobasesdatos.ProyectoBasesDatos pr;
     private String dni;
     private Inicio padre;
-    
+
     public AccesoUsuario() {
         initComponents();
     }
+
      public AccesoUsuario(proyectobasesdatos.ProyectoBasesDatos pr, Inicio padre) {
         this.pr = pr;
         this.padre = padre;
@@ -157,19 +158,19 @@ public class AccesoUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_EntrarActionPerformed
 
     private void RegistrarmeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarmeActionPerformed
-        RegistroUsuarios mu = new RegistroUsuarios(pr);
+        RegistroUsuarios mu = new RegistroUsuarios(pr, padre, dni);
         this.setVisible(false);
         mu.setVisible(true);
     }//GEN-LAST:event_RegistrarmeActionPerformed
 
     private void AtrásActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtrásActionPerformed
-       this.setVisible(false); 
-       padre.setVisible(true);
+        this.setVisible(false);
+        padre.setVisible(true);
     }//GEN-LAST:event_AtrásActionPerformed
 
     private void DNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DNIActionPerformed
     }//GEN-LAST:event_DNIActionPerformed
-    
+
     /**
      * @param args the command line arguments
      */
