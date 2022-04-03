@@ -10,7 +10,7 @@ package GUI;
  */
 public class EspectaculomasPopularAño extends javax.swing.JFrame {
     private proyectobasesdatos.ProyectoBasesDatos pr;
-    private Inicio padre;
+    private MenuBusquedas padre;
     /**
      * Creates new form EspectaculomasPopularAño
      */
@@ -18,7 +18,7 @@ public class EspectaculomasPopularAño extends javax.swing.JFrame {
         initComponents();
     }
     
-    public EspectaculomasPopularAño(proyectobasesdatos.ProyectoBasesDatos pr, Inicio padre) {
+    public EspectaculomasPopularAño(proyectobasesdatos.ProyectoBasesDatos pr, MenuBusquedas padre) {
         this.pr = pr;
         this.padre=padre;
         initComponents();
@@ -114,9 +114,9 @@ public class EspectaculomasPopularAño extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       MenuBusquedas mb = new MenuBusquedas(pr,padre);
+       
        this.setVisible(false);
-       mb.setVisible(true);
+       padre.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

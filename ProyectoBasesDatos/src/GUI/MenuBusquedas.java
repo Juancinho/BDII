@@ -132,7 +132,7 @@ public class MenuBusquedas extends javax.swing.JFrame {
                mu.setVisible(true);    }//GEN-LAST:event_atraccionesPorAlturaActionPerformed
 
     private void espectaculoPopularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_espectaculoPopularActionPerformed
-        EspectaculomasPopularAño mu = new EspectaculomasPopularAño(pr,padre);
+        EspectaculomasPopularAño mu = new EspectaculomasPopularAño(pr,this);
         this.setVisible(false);
         mu.setVisible(true);    }//GEN-LAST:event_espectaculoPopularActionPerformed
 
