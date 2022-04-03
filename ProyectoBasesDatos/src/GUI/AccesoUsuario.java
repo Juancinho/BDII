@@ -13,13 +13,13 @@ public class AccesoUsuario extends javax.swing.JFrame {
     private proyectobasesdatos.ProyectoBasesDatos pr;
     private String dni;
 
-    private MenuUsuarios padre;
+    private Inicio padre;
     
     public AccesoUsuario() {
         initComponents();
     }
 
-     public AccesoUsuario(proyectobasesdatos.ProyectoBasesDatos pr, MenuUsuarios padre) {
+     public AccesoUsuario(proyectobasesdatos.ProyectoBasesDatos pr, Inicio padre) {
 
         this.pr = pr;
         this.padre = padre;
