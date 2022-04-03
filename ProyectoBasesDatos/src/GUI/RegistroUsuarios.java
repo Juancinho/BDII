@@ -215,11 +215,11 @@ public class RegistroUsuarios extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void AtrásActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtrásActionPerformed
-
-        AccesoUsuario in = new AccesoUsuario();
-        this.setVisible(false);
-        in.setVisible(true);
-
+                                     
+       AccesoUsuario in = new AccesoUsuario();
+       this.setVisible(false);
+       in.setVisible(true);
+    
     }//GEN-LAST:event_AtrásActionPerformed
 
     private void RegistrarmeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarmeActionPerformed
