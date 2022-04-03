@@ -11,11 +11,15 @@ package GUI;
 public class AccesoUsuario extends javax.swing.JFrame {
 
     private  proyectobasesdatos.ProyectoBasesDatos pr;
+    private String dni;
+    private Inicio padre;
+    
     public AccesoUsuario() {
         initComponents();
     }
-     public AccesoUsuario(proyectobasesdatos.ProyectoBasesDatos pr) {
+     public AccesoUsuario(proyectobasesdatos.ProyectoBasesDatos pr, Inicio padre) {
          this.pr = pr;
+         this.padre = padre;
         initComponents();
     }
 
@@ -29,10 +33,10 @@ public class AccesoUsuario extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        DNI_Label = new javax.swing.JLabel();
         DNI = new javax.swing.JTextField();
-        Contraseña = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        Contraseña_Label = new javax.swing.JLabel();
+        Contraseña = new javax.swing.JTextField();
         Entrar = new javax.swing.JButton();
         Registrarme = new javax.swing.JButton();
         Atrás = new javax.swing.JButton();
@@ -41,13 +45,18 @@ public class AccesoUsuario extends javax.swing.JFrame {
 
         jLabel1.setText("Acceso Usuarios");
 
-        jLabel2.setText("DNI");
+        DNI_Label.setText("DNI");
 
         DNI.setForeground(new java.awt.Color(204, 204, 204));
+        DNI.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DNIActionPerformed(evt);
+            }
+        });
 
-        Contraseña.setText("Contraseña");
+        Contraseña_Label.setText("Contraseña");
 
-        jTextField1.setForeground(new java.awt.Color(204, 204, 204));
+        Contraseña.setForeground(new java.awt.Color(204, 204, 204));
 
         Entrar.setText("Entrar");
         Entrar.addActionListener(new java.awt.event.ActionListener() {
@@ -79,12 +88,12 @@ public class AccesoUsuario extends javax.swing.JFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                             .addGap(21, 21, 21)
-                            .addComponent(Contraseña)
+                            .addComponent(Contraseña_Label)
                             .addGap(18, 18, 18)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(Contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                             .addGap(50, 50, 50)
-                            .addComponent(jLabel2)
+                            .addComponent(DNI_Label)
                             .addGap(42, 42, 42)
                             .addComponent(DNI, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
@@ -106,12 +115,12 @@ public class AccesoUsuario extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(46, 46, 46)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
+                    .addComponent(DNI_Label)
                     .addComponent(DNI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Contraseña)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Contraseña_Label)
+                    .addComponent(Contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(41, 41, 41)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Entrar)
@@ -125,7 +134,8 @@ public class AccesoUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void EntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EntrarActionPerformed
-        MenuUsuarios mu = new MenuUsuarios(pr);
+        dni = DNI.getText();
+        MenuUsuarios mu = new MenuUsuarios(pr, padre, dni);
         this.setVisible(false);
         mu.setVisible(true);
     }//GEN-LAST:event_EntrarActionPerformed
@@ -137,10 +147,12 @@ public class AccesoUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_RegistrarmeActionPerformed
 
     private void AtrásActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtrásActionPerformed
-        Inicio in = new Inicio(pr);
-       this.setVisible(false);
-       in.setVisible(true);
+       this.setVisible(false); 
+       padre.setVisible(true);
     }//GEN-LAST:event_AtrásActionPerformed
+
+    private void DNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DNIActionPerformed
+    }//GEN-LAST:event_DNIActionPerformed
     
     /**
      * @param args the command line arguments
@@ -179,12 +191,12 @@ public class AccesoUsuario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Atrás;
-    private javax.swing.JLabel Contraseña;
+    private javax.swing.JTextField Contraseña;
+    private javax.swing.JLabel Contraseña_Label;
     private javax.swing.JTextField DNI;
+    private javax.swing.JLabel DNI_Label;
     private javax.swing.JButton Entrar;
     private javax.swing.JButton Registrarme;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

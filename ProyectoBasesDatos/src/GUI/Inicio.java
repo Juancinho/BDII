@@ -11,6 +11,7 @@ package GUI;
 public class Inicio extends javax.swing.JFrame {
 
     private proyectobasesdatos.ProyectoBasesDatos pr;
+
     public Inicio() {
         initComponents();
     }
@@ -96,7 +97,7 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_salirActionPerformed
 
     private void usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuarioActionPerformed
-       AccesoUsuario au = new AccesoUsuario(pr);
+        AccesoUsuario au = new AccesoUsuario(pr, this);
        this.setVisible(false);
        au.setVisible(true);
     }//GEN-LAST:event_usuarioActionPerformed

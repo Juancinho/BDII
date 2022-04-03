@@ -9,7 +9,16 @@ package GUI;
  * @author alumnogreibd
  */
 public class MenuCancelaciones extends javax.swing.JFrame {
-
+    private proyectobasesdatos.ProyectoBasesDatos pr;
+    private MenuUsuarios padre;
+    private String dni;
+    
+    public MenuCancelaciones(proyectobasesdatos.ProyectoBasesDatos pr, MenuUsuarios padre, String dni) {
+        this.pr = pr;
+        this.padre = padre;
+        this.dni = dni;
+        initComponents();
+    }
     /**
      * Creates new form CancelarEntradas
      */
@@ -107,15 +116,15 @@ public class MenuCancelaciones extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void atrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasActionPerformed
-        MenuUsuarios mu = new MenuUsuarios();
         this.setVisible(false);
-        mu.setVisible(true);
+        padre.setVisible(true);
     }//GEN-LAST:event_atrasActionPerformed
 
     private void cancelarRestauranteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarRestauranteActionPerformed
-       CancelarReservaRestaurante cr= new CancelarReservaRestaurante();
+       CancelarReservaRestaurante Crr= new CancelarReservaRestaurante(pr, this, dni);
         this.setVisible(false);
-        cr.setVisible(true);
+        Crr.setVisible(true);
+       
     }//GEN-LAST:event_cancelarRestauranteActionPerformed
 
     private void CancelarentradaespectaculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarentradaespectaculoActionPerformed

@@ -30,10 +30,6 @@
                       <Component id="MenúUsuarios" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
-                      <Component id="cancelaciones" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="112" max="-2" attributes="0"/>
                       <Component id="Puntuar" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -49,10 +45,14 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="116" max="-2" attributes="0"/>
-                      <Component id="compraroreservar" min="-2" max="-2" attributes="0"/>
+                      <Component id="comprarReservar" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="95" max="-2" attributes="0"/>
+                      <Component id="CancelarCompraReserva" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="99" max="32767" attributes="0"/>
+              <EmptySpace pref="102" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -62,9 +62,9 @@
               <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
               <Component id="MenúUsuarios" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-              <Component id="compraroreservar" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="cancelaciones" min="-2" max="-2" attributes="0"/>
+              <Component id="comprarReservar" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+              <Component id="CancelarCompraReserva" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="Puntuar" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -82,12 +82,12 @@
         <Property name="text" type="java.lang.String" value="Men&#xfa; Usuarios"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="compraroreservar">
+    <Component class="javax.swing.JButton" name="comprarReservar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Comprar o Reservar"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="compraroreservarActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="comprarReservarActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="Puntuar">
@@ -96,15 +96,6 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PuntuarActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="cancelaciones">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Cancelar Compra o Reserva"/>
-        <Property name="actionCommand" type="java.lang.String" value="Cancelar Compras o Reservas"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cancelacionesActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="atras">
@@ -121,6 +112,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="CancelarCompraReserva">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Cancelar compra o reserva"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CancelarCompraReservaActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

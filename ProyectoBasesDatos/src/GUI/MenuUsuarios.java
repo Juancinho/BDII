@@ -11,12 +11,21 @@ package GUI;
 public class MenuUsuarios extends javax.swing.JFrame {
 
     private proyectobasesdatos.ProyectoBasesDatos pr;
+    private String dni;
+    private Inicio padre;
     
     public MenuUsuarios() {
         initComponents();
     }
       public MenuUsuarios(proyectobasesdatos.ProyectoBasesDatos pr) {
           this.pr = pr;
+        initComponents();
+    }
+      
+      public MenuUsuarios(proyectobasesdatos.ProyectoBasesDatos pr, Inicio padre, String dni) {
+          this.pr = pr;
+          this.padre = padre;
+          this.dni=dni;
         initComponents();
     }
 //
@@ -30,20 +39,20 @@ public class MenuUsuarios extends javax.swing.JFrame {
     private void initComponents() {
 
         MenúUsuarios = new javax.swing.JLabel();
-        compraroreservar = new javax.swing.JButton();
+        comprarReservar = new javax.swing.JButton();
         Puntuar = new javax.swing.JButton();
-        cancelaciones = new javax.swing.JButton();
         atras = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        CancelarCompraReserva = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         MenúUsuarios.setText("Menú Usuarios");
 
-        compraroreservar.setText("Comprar o Reservar");
-        compraroreservar.addActionListener(new java.awt.event.ActionListener() {
+        comprarReservar.setText("Comprar o Reservar");
+        comprarReservar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                compraroreservarActionPerformed(evt);
+                comprarReservarActionPerformed(evt);
             }
         });
 
@@ -51,14 +60,6 @@ public class MenuUsuarios extends javax.swing.JFrame {
         Puntuar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PuntuarActionPerformed(evt);
-            }
-        });
-
-        cancelaciones.setText("Cancelar Compra o Reserva");
-        cancelaciones.setActionCommand("Cancelar Compras o Reservas");
-        cancelaciones.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cancelacionesActionPerformed(evt);
             }
         });
 
@@ -76,6 +77,13 @@ public class MenuUsuarios extends javax.swing.JFrame {
             }
         });
 
+        CancelarCompraReserva.setText("Cancelar compra o reserva");
+        CancelarCompraReserva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CancelarCompraReservaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -85,9 +93,6 @@ public class MenuUsuarios extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(148, 148, 148)
                         .addComponent(MenúUsuarios))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(93, 93, 93)
-                        .addComponent(cancelaciones))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(112, 112, 112)
                         .addComponent(Puntuar))
@@ -100,8 +105,11 @@ public class MenuUsuarios extends javax.swing.JFrame {
                                 .addComponent(atras))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(116, 116, 116)
-                        .addComponent(compraroreservar)))
-                .addContainerGap(99, Short.MAX_VALUE))
+                        .addComponent(comprarReservar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(95, 95, 95)
+                        .addComponent(CancelarCompraReserva)))
+                .addContainerGap(102, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -109,9 +117,9 @@ public class MenuUsuarios extends javax.swing.JFrame {
                 .addGap(24, 24, 24)
                 .addComponent(MenúUsuarios)
                 .addGap(25, 25, 25)
-                .addComponent(compraroreservar)
+                .addComponent(comprarReservar)
                 .addGap(18, 18, 18)
-                .addComponent(cancelaciones)
+                .addComponent(CancelarCompraReserva)
                 .addGap(18, 18, 18)
                 .addComponent(Puntuar)
                 .addGap(18, 18, 18)
@@ -125,11 +133,6 @@ public class MenuUsuarios extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cancelacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelacionesActionPerformed
-MenuCancelaciones mc= new MenuCancelaciones();
-        this.setVisible(false);
-        mc.setVisible(true);    }//GEN-LAST:event_cancelacionesActionPerformed
-
     private void PuntuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PuntuarActionPerformed
         // TODO add your handling code here:
         
@@ -137,16 +140,15 @@ MenuCancelaciones mc= new MenuCancelaciones();
     }//GEN-LAST:event_PuntuarActionPerformed
 
     private void atrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasActionPerformed
-        AccesoUsuario in = new AccesoUsuario();
        this.setVisible(false);
-       in.setVisible(true);
+       padre.setVisible(true);
     }//GEN-LAST:event_atrasActionPerformed
 
-    private void compraroreservarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_compraroreservarActionPerformed
-        MenuComprasReservas mc= new MenuComprasReservas();
+    private void comprarReservarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comprarReservarActionPerformed
+        MenuComprasReservas Mcr= new MenuComprasReservas(pr, this, dni);
         this.setVisible(false);
-        mc.setVisible(true);
-    }//GEN-LAST:event_compraroreservarActionPerformed
+        Mcr.setVisible(true);
+    }//GEN-LAST:event_comprarReservarActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
@@ -154,6 +156,12 @@ MenuCancelaciones mc= new MenuCancelaciones();
         MenuBusquedas menuBusquedas = new MenuBusquedas(pr);
         menuBusquedas.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void CancelarCompraReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarCompraReservaActionPerformed
+        MenuCancelaciones Mc = new MenuCancelaciones(pr, this, dni);
+        this.setVisible(false);
+        Mc.setVisible(true);
+    }//GEN-LAST:event_CancelarCompraReservaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -191,11 +199,11 @@ MenuCancelaciones mc= new MenuCancelaciones();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton CancelarCompraReserva;
     private javax.swing.JLabel MenúUsuarios;
     private javax.swing.JButton Puntuar;
     private javax.swing.JButton atras;
-    private javax.swing.JButton cancelaciones;
-    private javax.swing.JButton compraroreservar;
+    private javax.swing.JButton comprarReservar;
     private javax.swing.JButton jButton3;
     // End of variables declaration//GEN-END:variables
 }

@@ -10,9 +10,17 @@ package GUI;
  */
 public class CancelarEntradaAtraccion extends javax.swing.JFrame {
 
-    /**
-     * Creates new form CancelarEntradaAtraccion
-     */
+    private proyectobasesdatos.ProyectoBasesDatos pr;
+    private MenuCancelaciones padre;
+    String dni;
+    
+    public CancelarEntradaAtraccion(proyectobasesdatos.ProyectoBasesDatos pr, MenuCancelaciones padre, String dni) {
+        this.pr = pr;
+        this.padre = padre;
+        this.dni = dni;
+        initComponents();
+    }
+    
     public CancelarEntradaAtraccion() {
         initComponents();
     }
@@ -119,9 +127,8 @@ public class CancelarEntradaAtraccion extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void atrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasActionPerformed
-        MenuCancelaciones mu = new MenuCancelaciones();
         this.setVisible(false);
-        mu.setVisible(true);
+        padre.setVisible(true);
     }//GEN-LAST:event_atrasActionPerformed
 
     /**

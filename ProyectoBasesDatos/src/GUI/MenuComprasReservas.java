@@ -9,14 +9,23 @@ package GUI;
  * @author alumnogreibd
  */
 public class MenuComprasReservas extends javax.swing.JFrame {
-
+    private proyectobasesdatos.ProyectoBasesDatos pr;
+    private MenuUsuarios padre;
+    private String dni;
+    
+    public MenuComprasReservas(proyectobasesdatos.ProyectoBasesDatos pr, MenuUsuarios padre, String dni) {
+        this.pr = pr;
+        this.padre = padre;
+        this.dni = dni;
+        initComponents();
+    }
     /**
      * Creates new form ComprarReservarEntrada
      */
     public MenuComprasReservas() {
         initComponents();
     }
-
+ 
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,40 +36,40 @@ public class MenuComprasReservas extends javax.swing.JFrame {
     private void initComponents() {
 
         bienvenido = new javax.swing.JLabel();
-        ComprarEntradas = new javax.swing.JButton();
-        Reservarenrestaurante = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        Atras = new javax.swing.JButton();
+        ComprarEntradasEspectaculo = new javax.swing.JButton();
+        ReservarEnRestaurante = new javax.swing.JButton();
+        ComprarEntradaAtraccion = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         bienvenido.setText("Compras y Reservas");
 
-        ComprarEntradas.setText("Comprar Entrada Atracción");
-        ComprarEntradas.addActionListener(new java.awt.event.ActionListener() {
+        Atras.setText("Atrás");
+        Atras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ComprarEntradasActionPerformed(evt);
+                AtrasActionPerformed(evt);
             }
         });
 
-        Reservarenrestaurante.setText("Reservar en Restaurante");
-        Reservarenrestaurante.addActionListener(new java.awt.event.ActionListener() {
+        ComprarEntradasEspectaculo.setText("Comprar Entradas Espectáculo");
+        ComprarEntradasEspectaculo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ReservarenrestauranteActionPerformed(evt);
+                ComprarEntradasEspectaculoActionPerformed(evt);
             }
         });
 
-        jButton1.setText("Comprar Entrada Espectáculo");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        ReservarEnRestaurante.setText("Reservar en Restaurante");
+        ReservarEnRestaurante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                ReservarEnRestauranteActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Atrás");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        ComprarEntradaAtraccion.setText("Comprar Entradas Atracción");
+        ComprarEntradaAtraccion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                ComprarEntradaAtraccionActionPerformed(evt);
             }
         });
 
@@ -68,70 +77,70 @@ public class MenuComprasReservas extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(Reservarenrestaurante)
-                        .addGap(104, 104, 104))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton2)
-                        .addGap(161, 161, 161))))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(90, 90, 90)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(ComprarEntradas)
-                                .addGap(8, 8, 8))))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(133, 133, 133)
-                        .addComponent(bienvenido)))
-                .addContainerGap(89, Short.MAX_VALUE))
+                        .addComponent(bienvenido))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(104, 104, 104)
+                        .addComponent(ReservarEnRestaurante)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 87, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(ComprarEntradaAtraccion)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(ComprarEntradasEspectaculo)
+                            .addGap(85, 85, 85))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(Atras)
+                            .addGap(161, 161, 161)))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addComponent(bienvenido)
-                .addGap(36, 36, 36)
-                .addComponent(ComprarEntradas)
                 .addGap(29, 29, 29)
-                .addComponent(jButton1)
+                .addComponent(ComprarEntradaAtraccion)
+                .addGap(39, 39, 39)
+                .addComponent(ComprarEntradasEspectaculo)
                 .addGap(32, 32, 32)
-                .addComponent(Reservarenrestaurante)
-                .addGap(29, 29, 29)
-                .addComponent(jButton2)
+                .addComponent(ReservarEnRestaurante)
+                .addGap(26, 26, 26)
+                .addComponent(Atras)
                 .addContainerGap(34, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ComprarEntradasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComprarEntradasActionPerformed
-        ComprarEntradasAtracciones mu = new ComprarEntradasAtracciones();
+    private void AtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtrasActionPerformed
         this.setVisible(false);
-        mu.setVisible(true);
-    }//GEN-LAST:event_ComprarEntradasActionPerformed
+        padre.setVisible(true);
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        MenuUsuarios mu = new MenuUsuarios();
-        this.setVisible(false);
-        mu.setVisible(true);
         
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_AtrasActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
- ComprarEntradaEspectaculo mu = new ComprarEntradaEspectaculo();
+    private void ComprarEntradasEspectaculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComprarEntradasEspectaculoActionPerformed
+        ComprarEntradaEspectaculo Cee = new ComprarEntradaEspectaculo(pr, this, dni);
         this.setVisible(false);
-        mu.setVisible(true);    }//GEN-LAST:event_jButton1ActionPerformed
+        Cee.setVisible(true);
+    }//GEN-LAST:event_ComprarEntradasEspectaculoActionPerformed
 
-    private void ReservarenrestauranteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReservarenrestauranteActionPerformed
- ReservarEnRestaurante mu = new ReservarEnRestaurante();
+    private void ReservarEnRestauranteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReservarEnRestauranteActionPerformed
+        ReservarEnRestaurante Rer = new ReservarEnRestaurante(pr, this, dni);
         this.setVisible(false);
-        mu.setVisible(true);    }//GEN-LAST:event_ReservarenrestauranteActionPerformed
+        Rer.setVisible(true);
+    }//GEN-LAST:event_ReservarEnRestauranteActionPerformed
+
+    private void ComprarEntradaAtraccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComprarEntradaAtraccionActionPerformed
+        ComprarEntradasAtracciones Cea = new ComprarEntradasAtracciones(pr, this, dni);
+        this.setVisible(false);
+        Cea.setVisible(true);
+    }//GEN-LAST:event_ComprarEntradaAtraccionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -172,10 +181,10 @@ public class MenuComprasReservas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton ComprarEntradas;
-    private javax.swing.JButton Reservarenrestaurante;
+    private javax.swing.JButton Atras;
+    private javax.swing.JButton ComprarEntradaAtraccion;
+    private javax.swing.JButton ComprarEntradasEspectaculo;
+    private javax.swing.JButton ReservarEnRestaurante;
     private javax.swing.JLabel bienvenido;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     // End of variables declaration//GEN-END:variables
 }
