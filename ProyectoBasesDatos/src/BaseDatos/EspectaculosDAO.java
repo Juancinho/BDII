@@ -31,7 +31,7 @@ public class EspectaculosDAO {
             stmAtracciones = conexion.prepareStatement("select distinct (EXTRACT(YEAR FROM fecha)) as ano from asistir order by  ano asc;"); 
             rsAtracciones = stmAtracciones.executeQuery();
             while (rsAtracciones.next()) {   //MANOTE: Este next devuelve un booleano pero también coloca el cursor en la siguiente fila (la primera vez que se le llama en la primera, la segunda en la segunda,...)
-                resultado.add(String.valueOf(rsAtracciones.getFloat(1)));
+                resultado.add(String.valueOf(rsAtracciones.getInt(1)));
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
