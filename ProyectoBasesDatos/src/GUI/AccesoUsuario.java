@@ -135,7 +135,8 @@ public class AccesoUsuario extends javax.swing.JFrame {
 
     private void EntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EntrarActionPerformed
         dni = DNI.getText();
-        MenuUsuarios mu = new MenuUsuarios(pr, padre, dni);
+        MenuUsuarios mu;
+        mu = new MenuUsuarios(pr, padre, dni);
         this.setVisible(false);
         mu.setVisible(true);
     }//GEN-LAST:event_EntrarActionPerformed
