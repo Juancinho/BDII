@@ -24,6 +24,7 @@
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
     <Property name="useNullLayout" type="boolean" value="false"/>
+
   </Layout>
   <SubComponents>
     <Component class="javax.swing.JToggleButton" name="jToggleButton1">
@@ -159,6 +160,7 @@
         </Constraint>
       </Constraints>
     </Component>
+
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -168,11 +170,13 @@
           <Image iconType="3" name="/Imagenes/Negro-Puro-Web.jpg"/>
         </Property>
       </Properties>
+
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="0" y="0" width="1010" height="90"/>
         </Constraint>
       </Constraints>
+
     </Component>
     <Component class="javax.swing.JButton" name="CancelarCompraReserva">
       <Properties>

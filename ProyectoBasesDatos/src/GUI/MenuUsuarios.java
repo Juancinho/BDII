@@ -30,6 +30,7 @@ public class MenuUsuarios extends javax.swing.JFrame {
           this.dni=dni;
         initComponents();
     }
+      
 //
     /**
      * This method is called from within the constructor to initialize the form.
@@ -46,7 +47,9 @@ public class MenuUsuarios extends javax.swing.JFrame {
         comprarReservar = new javax.swing.JButton();
         Puntuar = new javax.swing.JButton();
         atras = new javax.swing.JButton();
+
         jLabel3 = new javax.swing.JLabel();
+
         CancelarCompraReserva = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -121,6 +124,7 @@ public class MenuUsuarios extends javax.swing.JFrame {
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Negro-Puro-Web.jpg"))); // NOI18N
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 90));
 
+
         CancelarCompraReserva.setBackground(new java.awt.Color(0, 0, 0));
         CancelarCompraReserva.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/warph1_1.jpg"))); // NOI18N
         CancelarCompraReserva.addActionListener(new java.awt.event.ActionListener() {
@@ -150,6 +154,7 @@ public class MenuUsuarios extends javax.swing.JFrame {
         MenúUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo-de-pantalla-verde-liso-3840x2160.-wallpaper-para-escritorio-4k-ultra-hd-verde-liso-1024x576.jpg"))); // NOI18N
         getContentPane().add(MenúUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 570));
 
+
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
@@ -172,6 +177,7 @@ public class MenuUsuarios extends javax.swing.JFrame {
         Mcr.setVisible(true);
     }//GEN-LAST:event_comprarReservarActionPerformed
 
+
     private void CancelarCompraReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarCompraReservaActionPerformed
         MenuCancelaciones Mc = new MenuCancelaciones(pr, this, dni);
         this.setVisible(false);
@@ -179,11 +185,12 @@ public class MenuUsuarios extends javax.swing.JFrame {
     }//GEN-LAST:event_CancelarCompraReservaActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+
         // TODO add your handling code here:
         this.setVisible(false);
-        MenuBusquedas menuBusquedas = new MenuBusquedas(pr,padre);
+        MenuBusquedas menuBusquedas = new MenuBusquedas(pr,this);
         menuBusquedas.setVisible(true);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_busquedasActionPerformed
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         AccesoUsuario Mcr= new AccesoUsuario();
@@ -231,7 +238,9 @@ public class MenuUsuarios extends javax.swing.JFrame {
     private javax.swing.JLabel MenúUsuarios;
     private javax.swing.JButton Puntuar;
     private javax.swing.JButton atras;
+    private javax.swing.JButton busquedas;
     private javax.swing.JButton comprarReservar;
+
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -240,5 +249,4 @@ public class MenuUsuarios extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JToggleButton jToggleButton1;
-    // End of variables declaration//GEN-END:variables
-}
+
