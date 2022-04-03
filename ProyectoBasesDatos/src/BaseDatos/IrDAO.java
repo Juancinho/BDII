@@ -8,6 +8,7 @@ package BaseDatos;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Date;
 
 public class IrDAO {
 
@@ -17,16 +18,16 @@ public class IrDAO {
         this.conexion = conexion;
     }
 
-    public void comprarEntrada(String fecha, String vip, String dni, String nombreAtraccion) {  //FU1
+    public void comprarEntrada(Date fecha, String vip, String dni, String nombreAtraccion) {  //FU1
 
         PreparedStatement stmIr = null;
 
         //MANOTE: Falta ccomprobación de que ese DNI ya esté registrado (pendiente de que se implemente la parte de registro/validación usuarios)
         try {
-            stmIr = conexion.prepareStatement("INSERT INTO ir (fecha,vip, dni, nombreAtraccion) values (?,?,?,?)");
-            stmIr.setString(1, fecha);
+            stmIr = conexion.prepareStatement("INSERT INTO ir (fechavisita,vip, visitante, atraccion) values (?,?,?,?)");
+            stmIr.setDate(1, fecha);
             stmIr.setString(2, vip);
-            stmIr.setString(3, dni);
+            stmIr.setString(3, dni);            
             stmIr.setString(4, nombreAtraccion);
             stmIr.executeUpdate();
 
@@ -47,7 +48,7 @@ public class IrDAO {
 
         //MANOTE: De nuevo faltan comprobaciones de que esta compra se pueda cancelar (que no haya pasado el evento)
         try {
-            stmIr = conexion.prepareStatement("DELETE FROM ir WHERE (fecha, dni, nombreAtraccion) = ('?','?','?')");
+            stmIr = conexion.prepareStatement("DELETE FROM ir WHERE (fechavisita, visitante, atraccion) = ('?','?','?')");
             stmIr.setString(1, fecha);
             stmIr.setString(2, dni);
             stmIr.setString(3, nombreAtraccion);

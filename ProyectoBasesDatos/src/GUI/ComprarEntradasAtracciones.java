@@ -191,8 +191,8 @@ public class ComprarEntradasAtracciones extends javax.swing.JFrame {
                     vip = "NO";
                 }
                 java.sql.Date sqlDate = new java.sql.Date(date.getTime());
-                fecha = sqlDate.toString();
-                pr.getIrDAO().comprarEntrada(fecha, vip, dni, atraccion);
+                //fecha = sqlDate.toString();
+                pr.getIrDAO().comprarEntrada(sqlDate, vip, dni, atraccion);
                 MensajeError.setVisible(false);
 
                 JOptionPane.showMessageDialog(rootPane, "Compra realizada");
