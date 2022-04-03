@@ -30,6 +30,7 @@ public class MenuUsuarios extends javax.swing.JFrame {
           this.dni=dni;
         initComponents();
     }
+      
 //
     /**
      * This method is called from within the constructor to initialize the form.
@@ -44,7 +45,7 @@ public class MenuUsuarios extends javax.swing.JFrame {
         comprarReservar = new javax.swing.JButton();
         Puntuar = new javax.swing.JButton();
         atras = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        busquedas = new javax.swing.JButton();
         CancelarCompraReserva = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -72,10 +73,10 @@ public class MenuUsuarios extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText("Búsquedas");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        busquedas.setText("Búsquedas");
+        busquedas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                busquedasActionPerformed(evt);
             }
         });
 
@@ -101,7 +102,7 @@ public class MenuUsuarios extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(146, 146, 146)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton3)
+                            .addComponent(busquedas)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(15, 15, 15)
                                 .addComponent(atras))))
@@ -125,7 +126,7 @@ public class MenuUsuarios extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(Puntuar)
                 .addGap(18, 18, 18)
-                .addComponent(jButton3)
+                .addComponent(busquedas)
                 .addGap(18, 18, 18)
                 .addComponent(atras)
                 .addContainerGap(47, Short.MAX_VALUE))
@@ -153,12 +154,12 @@ public class MenuUsuarios extends javax.swing.JFrame {
         Mcr.setVisible(true);
     }//GEN-LAST:event_comprarReservarActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void busquedasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_busquedasActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        MenuBusquedas menuBusquedas = new MenuBusquedas(pr,padre);
+        MenuBusquedas menuBusquedas = new MenuBusquedas(pr,this);
         menuBusquedas.setVisible(true);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_busquedasActionPerformed
 
     private void CancelarCompraReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarCompraReservaActionPerformed
         MenuCancelaciones Mc = new MenuCancelaciones(pr, this, dni);
@@ -206,7 +207,7 @@ public class MenuUsuarios extends javax.swing.JFrame {
     private javax.swing.JLabel MenúUsuarios;
     private javax.swing.JButton Puntuar;
     private javax.swing.JButton atras;
+    private javax.swing.JButton busquedas;
     private javax.swing.JButton comprarReservar;
-    private javax.swing.JButton jButton3;
     // End of variables declaration//GEN-END:variables
 }

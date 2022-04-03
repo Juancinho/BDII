@@ -13,13 +13,20 @@ import java.util.logging.Logger;
  * @author alumnogreibd
  */
 public class RegistroUsuarios extends javax.swing.JFrame {
-    private AccesoUsuario padre;
+    private Inicio padre;
     private proyectobasesdatos.ProyectoBasesDatos pr;
+    private String dni;
     /**
      * Creates new form RegistroUsuarios
      */
     public RegistroUsuarios(proyectobasesdatos.ProyectoBasesDatos pr) {
         this.pr = pr;
+        initComponents();
+    }
+     public RegistroUsuarios(proyectobasesdatos.ProyectoBasesDatos pr, Inicio padre, String dni) {
+        this.pr = pr;
+        this.padre = padre;          
+        this.dni = dni;
         initComponents();
     }
     
@@ -203,7 +210,7 @@ public class RegistroUsuarios extends javax.swing.JFrame {
         try {
             pr.getDaoUsuarios().registrarUsuario(DNI.getText(), nameapellidos.getText(), nacionalidad.getText(), correoelectro.getText(), contraseña.getText(), telefono.getText(), fecha.getText());
             this.setVisible(false);
-            MenuUsuarios nm = new MenuUsuarios(pr);
+            MenuUsuarios nm = new MenuUsuarios(pr,padre,dni);
             nm.setVisible(true);
         } catch (SQLException ex) {
             Logger.getLogger(RegistroUsuarios.class.getName()).log(Level.SEVERE, null, ex);
