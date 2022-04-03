@@ -160,8 +160,9 @@ public class MenuUsuarios extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void PuntuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PuntuarActionPerformed
-        // TODO add your handling code here:
-        
+        PuntuacionRestaurante pr = new PuntuacionRestaurante();
+        this.setVisible(false);
+        pr.setVisible(true);
         
     }//GEN-LAST:event_PuntuarActionPerformed
 
@@ -184,13 +185,13 @@ public class MenuUsuarios extends javax.swing.JFrame {
         Mc.setVisible(true);
     }//GEN-LAST:event_CancelarCompraReservaActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {                                         
 
         // TODO add your handling code here:
         this.setVisible(false);
         MenuBusquedas menuBusquedas = new MenuBusquedas(pr,this);
         menuBusquedas.setVisible(true);
-    }//GEN-LAST:event_busquedasActionPerformed
+    }                                         
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         AccesoUsuario Mcr= new AccesoUsuario();
@@ -233,7 +234,7 @@ public class MenuUsuarios extends javax.swing.JFrame {
         });
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // Variables declaration - do not modify                     
     private javax.swing.JButton CancelarCompraReserva;
     private javax.swing.JLabel MenúUsuarios;
     private javax.swing.JButton Puntuar;
@@ -249,4 +250,5 @@ public class MenuUsuarios extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JToggleButton jToggleButton1;
+}
 
