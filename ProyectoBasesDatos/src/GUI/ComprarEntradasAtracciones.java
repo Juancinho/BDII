@@ -74,6 +74,11 @@ public class ComprarEntradasAtracciones extends javax.swing.JFrame {
         });
 
         Comprar.setText("Comprar");
+        Comprar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComprarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -136,6 +141,10 @@ public class ComprarEntradasAtracciones extends javax.swing.JFrame {
        this.setVisible(false);
        padre.setVisible(true);
     }//GEN-LAST:event_AtrasActionPerformed
+
+    private void ComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComprarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ComprarActionPerformed
 
     /**
      * @param args the command line arguments

@@ -141,7 +141,7 @@ public class AccesoUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_EntrarActionPerformed
 
     private void RegistrarmeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarmeActionPerformed
-        RegistroUsuarios mu = new RegistroUsuarios();
+        RegistroUsuarios mu = new RegistroUsuarios(pr);
         this.setVisible(false);
         mu.setVisible(true);
     }//GEN-LAST:event_RegistrarmeActionPerformed

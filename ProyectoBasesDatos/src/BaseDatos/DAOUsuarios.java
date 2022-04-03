@@ -55,6 +55,35 @@ public class DAOUsuarios extends AbstractDAO {
         }
         return resultado;
     }
-
+    
+    public void registrarUsuario(String DNI, String Nombre, String Nacionalidad, String correo, String contraseña, String telefono, String fecha) throws SQLException{
+        
+        Connection con;
+        PreparedStatement stmUsuario = null;
+        PreparedStatement stmUsuario1 = null;
+        con = conexion;
+        
+        stmUsuario = con.prepareStatement("INSERT INTO visitantes(DNI, Nombre, Nacionalidad, correoelectronico, telefono)" +
+                "VALUES (?, ?, ?, ?, ?)");
+        
+        stmUsuario.setString(1, DNI);
+        stmUsuario.setString(2, Nombre);
+        stmUsuario.setString(3, Nacionalidad);
+        stmUsuario.setString(4, correo);
+        stmUsuario.setString(5, telefono);
+        //stmUsuario.setString(6, fecha);
+        stmUsuario.executeUpdate();
+        
+        stmUsuario1 = con.prepareStatement("INSERT INTO usuario(DNI, Nombre, clave, tipo_usuario)" +
+                "VALUES (?, ?, ?, ?)");
+        
+        stmUsuario1.setString(1, DNI);
+        stmUsuario1.setString(2, Nombre);
+        stmUsuario1.setString(3, contraseña);
+        stmUsuario1.setString(4, "Normal");
+        stmUsuario1.executeUpdate();
+        
+        
+    }
    
 }

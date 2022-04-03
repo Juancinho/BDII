@@ -63,6 +63,9 @@ public class ProyectoBasesDatos {
         return daoUsuarios.validarUsuario(idUsuario, clave);
     }
    
+   public DAOUsuarios getDaoUsuarios(){
+       return daoUsuarios;
+   }
     public static void main(String[] args) throws SQLException {
         proyectobasesdatos.ProyectoBasesDatos fa = new ProyectoBasesDatos();
         fa.fgui.iniciaVista();
