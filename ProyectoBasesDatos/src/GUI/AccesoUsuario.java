@@ -12,12 +12,15 @@ public class AccesoUsuario extends javax.swing.JFrame {
 
     private proyectobasesdatos.ProyectoBasesDatos pr;
     private String dni;
+
     private MenuUsuarios padre;
     
     public AccesoUsuario() {
         initComponents();
     }
+
      public AccesoUsuario(proyectobasesdatos.ProyectoBasesDatos pr, MenuUsuarios padre) {
+
         this.pr = pr;
         this.padre = padre;
         initComponents();
@@ -147,17 +150,18 @@ public class AccesoUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     
     private void EntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EntrarActionPerformed
+
         dni=DNI.getText();
         if (pr.validarUsuario(dni, Contraseña.getText())) {
             MenuUsuarios mu = new MenuUsuarios();
             this.setVisible(false);
             mu.setVisible(true);
         }    
-        else etiquetaFallo.setVisible(true);
+        else etiquetaFallo.setVisible(true);      
     }//GEN-LAST:event_EntrarActionPerformed
 
     private void RegistrarmeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarmeActionPerformed
-        RegistroUsuarios mu = new RegistroUsuarios(pr, padre,dni);
+        RegistroUsuarios mu = new RegistroUsuarios(pr, padre, dni);
         this.setVisible(false);
         mu.setVisible(true);
     }//GEN-LAST:event_RegistrarmeActionPerformed
@@ -170,7 +174,7 @@ public class AccesoUsuario extends javax.swing.JFrame {
 
     private void DNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DNIActionPerformed
     }//GEN-LAST:event_DNIActionPerformed
-    
+
     /**
      * @param args the command line arguments
      */

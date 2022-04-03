@@ -14,14 +14,22 @@ public class MenuUsuarios extends javax.swing.JFrame {
     private String dni;
     private MenuUsuarios padre;
     
+    /**
+     *
+     */
     public MenuUsuarios() {
         initComponents();
     }
-      public MenuUsuarios(proyectobasesdatos.ProyectoBasesDatos pr) {
+
+    /**
+     *
+     * @param pr
+     */
+    public MenuUsuarios(proyectobasesdatos.ProyectoBasesDatos pr) {
           this.pr = pr;
         initComponents();
     }
-      
+
 
       
       public MenuUsuarios(proyectobasesdatos.ProyectoBasesDatos pr, MenuUsuarios padre, String dni) {
