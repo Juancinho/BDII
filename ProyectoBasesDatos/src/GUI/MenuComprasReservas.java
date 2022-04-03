@@ -36,10 +36,12 @@ public class MenuComprasReservas extends javax.swing.JFrame {
     private void initComponents() {
 
         bienvenido = new javax.swing.JLabel();
+
         Atras = new javax.swing.JButton();
         ComprarEntradasEspectaculo = new javax.swing.JButton();
         ReservarEnRestaurante = new javax.swing.JButton();
         ComprarEntradaAtraccion = new javax.swing.JButton();
+
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -63,6 +65,7 @@ public class MenuComprasReservas extends javax.swing.JFrame {
         ReservarEnRestaurante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ReservarEnRestauranteActionPerformed(evt);
+
             }
         });
 
@@ -80,6 +83,8 @@ public class MenuComprasReservas extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+
+
                         .addGap(133, 133, 133)
                         .addComponent(bienvenido))
                     .addGroup(layout.createSequentialGroup()
@@ -104,9 +109,11 @@ public class MenuComprasReservas extends javax.swing.JFrame {
                 .addGap(31, 31, 31)
                 .addComponent(bienvenido)
                 .addGap(29, 29, 29)
+
                 .addComponent(ComprarEntradaAtraccion)
                 .addGap(39, 39, 39)
                 .addComponent(ComprarEntradasEspectaculo)
+
                 .addGap(32, 32, 32)
                 .addComponent(ReservarEnRestaurante)
                 .addGap(26, 26, 26)
@@ -115,6 +122,7 @@ public class MenuComprasReservas extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void AtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtrasActionPerformed
@@ -135,6 +143,7 @@ public class MenuComprasReservas extends javax.swing.JFrame {
         this.setVisible(false);
         Rer.setVisible(true);
     }//GEN-LAST:event_ReservarEnRestauranteActionPerformed
+
 
     private void ComprarEntradaAtraccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComprarEntradaAtraccionActionPerformed
         ComprarEntradasAtracciones Cea = new ComprarEntradasAtracciones(pr, this, dni);
@@ -186,5 +195,6 @@ public class MenuComprasReservas extends javax.swing.JFrame {
     private javax.swing.JButton ComprarEntradasEspectaculo;
     private javax.swing.JButton ReservarEnRestaurante;
     private javax.swing.JLabel bienvenido;
+
     // End of variables declaration//GEN-END:variables
 }

@@ -1,6 +1,6 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package GUI;
 
@@ -8,7 +8,8 @@ package GUI;
  *
  * @author alumnogreibd
  */
-public class ComprarEntradasAtracciones extends javax.swing.JPanel {
+public class ComprarEntradasAtracciones extends javax.swing.JFrame {
+
 
     private proyectobasesdatos.ProyectoBasesDatos pr;
     private MenuComprasReservas padre;
@@ -18,6 +19,7 @@ public class ComprarEntradasAtracciones extends javax.swing.JPanel {
         this.pr = pr;
         this.padre = padre;
         this.dni = dni;
+
         initComponents();
     }
     
@@ -35,8 +37,8 @@ public class ComprarEntradasAtracciones extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        Atraccion = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
+
         jLabel4 = new javax.swing.JLabel();
         javax.swing.JRadioButton VIPsi = new javax.swing.JRadioButton();
         Comprar = new javax.swing.JButton();
@@ -44,9 +46,12 @@ public class ComprarEntradasAtracciones extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         vipNO = new javax.swing.JRadioButton();
         jComboBox1 = new javax.swing.JComboBox<>();
+      
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Noto Sans CJK HK", 0, 13)); // NOI18N
+
         jLabel1.setText("Entradas Atracciones");
+
 
         String[] array = pr.getAtraccionesDAO().atraccionesActivas().toArray(new String[pr.getAtraccionesDAO().atraccionesActivas().size()]);  //MANOTE: hay que pasarle al toArray un array de la misma longitud para que no lo convierta en un array de Objects
         Atraccion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -56,10 +61,13 @@ public class ComprarEntradasAtracciones extends javax.swing.JPanel {
             }
         });
 
-        jLabel2.setText("Atracción");
+
+        elegirAtraccion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Fecha");
+
 
         VIPsi.setText("Sí");
         VIPsi.addActionListener(new java.awt.event.ActionListener() {
@@ -67,6 +75,7 @@ public class ComprarEntradasAtracciones extends javax.swing.JPanel {
                 VIPsiActionPerformed(evt);
             }
         });
+
 
         Comprar.setText("Comprar");
         Comprar.addActionListener(new java.awt.event.ActionListener() {
@@ -79,17 +88,23 @@ public class ComprarEntradasAtracciones extends javax.swing.JPanel {
         Atras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AtrasActionPerformed(evt);
+
             }
         });
 
-        jLabel5.setText("Pase VIP");
+        atras.setText("Atrás");
+        atras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                atrasActionPerformed(evt);
+            }
+        });
 
-        vipNO.setText("No");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
+
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -99,11 +114,14 @@ public class ComprarEntradasAtracciones extends javax.swing.JPanel {
                 .addComponent(Comprar)
                 .addGap(44, 44, 44))
             .addGroup(layout.createSequentialGroup()
+                .addGap(43, 43, 43)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(48, 48, 48)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
+
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -120,22 +138,26 @@ public class ComprarEntradasAtracciones extends javax.swing.JPanel {
                         .addGap(136, 136, 136)
                         .addComponent(jLabel1)))
                 .addGap(0, 62, Short.MAX_VALUE))
+
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(21, 21, 21)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(16, 16, 16)
                 .addComponent(jLabel1)
-                .addGap(29, 29, 29)
+                .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+
                     .addComponent(Atraccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+
                     .addComponent(VIPsi)
-                    .addComponent(vipNO))
+                    .addComponent(VIPno))
                 .addGap(18, 18, 18)
+
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -144,8 +166,13 @@ public class ComprarEntradasAtracciones extends javax.swing.JPanel {
                     .addComponent(Atras)
                     .addComponent(Comprar))
                 .addGap(46, 46, 46))
+
         );
+
+        pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
       
     
     
@@ -159,9 +186,11 @@ public class ComprarEntradasAtracciones extends javax.swing.JPanel {
        padre.setVisible(true);
     }//GEN-LAST:event_AtraccionActionPerformed
 
+
     private void VIPsiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VIPsiActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_VIPsiActionPerformed
+
 
     
     
@@ -170,15 +199,53 @@ public class ComprarEntradasAtracciones extends javax.swing.JPanel {
     }//GEN-LAST:event_ComprarActionPerformed
 
 
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(ComprarEntradasAtracciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(ComprarEntradasAtracciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(ComprarEntradasAtracciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(ComprarEntradasAtracciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new ComprarEntradasAtracciones().setVisible(true);
+            }
+        });
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+
     private javax.swing.JComboBox<String> Atraccion;
     private javax.swing.JButton Atras;
     private javax.swing.JButton Comprar;
     private javax.swing.JComboBox<String> jComboBox1;
+
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JRadioButton vipNO;
+    private javax.swing.JTextField textoDNI;
     // End of variables declaration//GEN-END:variables
 }

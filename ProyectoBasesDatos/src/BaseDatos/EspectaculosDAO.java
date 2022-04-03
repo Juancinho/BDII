@@ -20,19 +20,23 @@ public class EspectaculosDAO {
         this.conexion = conexion;
     }
     
-    public Espectaculo datosBasicosEspectaculo(String nombreEspectaculo) {  //FU4  
-
+    public  java.util.List<Espectaculo> datosBasicosEspectaculo(String nombreEspectaculo,String tematica) {  //FU4  
+        java.util.List<Espectaculo> resultado = new java.util.ArrayList<>();
         Espectaculo espectaculo = null;
 
         ResultSet rsEspectaculos;
         PreparedStatement stmEspectaculos = null;
 
         try {
-            stmEspectaculos = conexion.prepareStatement("SELECT activo, nombre, horaInicio, horaFin, tematica, descripcion, ubicacion FROM espectaculos WHERE  nombre = ?");
-            stmEspectaculos.setString(1, nombreEspectaculo);
+            stmEspectaculos = conexion.prepareStatement("SELECT nombre, horaInicio, horaFin, tematica, descripcion, ubicacion FROM espectaculos WHERE  activo = 'SI' AND nombre LIKE ? AND tematica LIKE ?");
+            stmEspectaculos.setString(1, '%'+nombreEspectaculo+'%');
+            stmEspectaculos.setString(2, '%'+tematica+'%');
+            
             rsEspectaculos = stmEspectaculos.executeQuery();
-
-            espectaculo = new Espectaculo(rsEspectaculos.getString("activo"), rsEspectaculos.getString("nombre"), rsEspectaculos.getString("horaInicio"), rsEspectaculos.getString("horaFin"),  rsEspectaculos.getString("tematica"),  rsEspectaculos.getString("descripcion"),  rsEspectaculos.getString("ubicacion"));
+            while(rsEspectaculos.next()){
+            espectaculo = new Espectaculo(rsEspectaculos.getString("nombre"), rsEspectaculos.getString("horaInicio"), rsEspectaculos.getString("horaFin"),  rsEspectaculos.getString("tematica"),  rsEspectaculos.getString("descripcion"),  rsEspectaculos.getString("ubicacion"));
+            resultado.add(espectaculo);
+            }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         } finally {
@@ -42,9 +46,37 @@ public class EspectaculosDAO {
                 System.out.println("Imposible cerrar cursores");
             }
         }
-        return espectaculo;   //MANOTE: Esto supongo que lo tiene que recoger algo de la interfaz y darle un tratamiento adecuado
+        return resultado;   //MANOTE: Esto supongo que lo tiene que recoger algo de la interfaz y darle un tratamiento adecuado
     }
+     
     
+    public  java.util.List<Espectaculo> datosBasicosEspectaculoSinTematica(String nombreEspectaculo) {  //FU4  
+        java.util.List<Espectaculo> resultado = new java.util.ArrayList<>();
+        Espectaculo espectaculo = null;
+
+        ResultSet rsEspectaculos;
+        PreparedStatement stmEspectaculos = null;
+
+        try {
+            stmEspectaculos = conexion.prepareStatement("SELECT nombre, horaInicio, horaFin, tematica, descripcion, ubicacion FROM espectaculos WHERE  activo = 'SI' AND nombre LIKE ?");
+            stmEspectaculos.setString(1, '%'+nombreEspectaculo+'%');
+            
+            rsEspectaculos = stmEspectaculos.executeQuery();
+            while(rsEspectaculos.next()){
+            espectaculo = new Espectaculo(rsEspectaculos.getString("nombre"), rsEspectaculos.getString("horaInicio"), rsEspectaculos.getString("horaFin"),  rsEspectaculos.getString("tematica"),  rsEspectaculos.getString("descripcion"),  rsEspectaculos.getString("ubicacion"));
+            resultado.add(espectaculo);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            try {
+                stmEspectaculos.close();
+            } catch (SQLException e) {
+                System.out.println("Imposible cerrar cursores");
+            }
+        }
+        return resultado;   //MANOTE: Esto supongo que lo tiene que recoger algo de la interfaz y darle un tratamiento adecuado
+    }
     
     
     
