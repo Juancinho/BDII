@@ -110,7 +110,7 @@ public class EspectaculomasPopularAño extends javax.swing.JFrame {
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         consultarEspectaculo();
     }//GEN-LAST:event_jComboBox1ActionPerformed
-
+    
     private void atrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasActionPerformed
         MenuBusquedas mb = new MenuBusquedas(pr);
         this.setVisible(false);
@@ -143,7 +143,7 @@ public class EspectaculomasPopularAño extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(EspectaculomasPopularAño.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -164,9 +164,7 @@ public class EspectaculomasPopularAño extends javax.swing.JFrame {
     public void consultarEspectaculo() {
         ModeloTablaAsistir m;
         String anho;
-        anho = (String)jComboBox1.getSelectedItem(); 
-        System.out.println(anho);
-        
+        anho = (String)jComboBox1.getSelectedItem();        
         m = (ModeloTablaAsistir) tablaEspectaculo.getModel();     
         m.setFilas(pr.getEspectaculosDAO().espectaculoMasPopularPorAnho(anho));
         
