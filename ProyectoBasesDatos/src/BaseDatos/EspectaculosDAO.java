@@ -16,7 +16,7 @@ public class EspectaculosDAO {
 
     private final java.sql.Connection conexion;
 
-    public EspectaculosDAO(Connection conexion) { //MANOTE: Para quien se encargue de la interfaz, aquí quizás falta una fachada
+    public EspectaculosDAO(Connection conexion) {
         this.conexion = conexion;
     }
     
@@ -26,11 +26,11 @@ public class EspectaculosDAO {
 
         ResultSet rsAtracciones;
         PreparedStatement stmAtracciones = null;
-
+        
         try {
             stmAtracciones = conexion.prepareStatement("select distinct (EXTRACT(YEAR FROM fecha)) as ano from asistir order by  ano asc;"); 
             rsAtracciones = stmAtracciones.executeQuery();
-            while (rsAtracciones.next()) {   //MANOTE: Este next devuelve un booleano pero también coloca el cursor en la siguiente fila (la primera vez que se le llama en la primera, la segunda en la segunda,...)
+            while (rsAtracciones.next()) {  
                 resultado.add(String.valueOf(rsAtracciones.getInt(1)));
             }
         } catch (SQLException e) {
@@ -71,7 +71,7 @@ public class EspectaculosDAO {
                 System.out.println("Imposible cerrar cursores");
             }
         }
-        return resultado;   //MANOTE: Esto supongo que lo tiene que recoger algo de la interfaz y darle un tratamiento adecuado
+        return resultado;  
     }
      
     
