@@ -192,7 +192,7 @@ public class RegistroUsuarios extends javax.swing.JFrame {
 
     private void AtrásActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtrásActionPerformed
                                      
-        AccesoUsuario in = new AccesoUsuario();
+       AccesoUsuario in = new AccesoUsuario();
        this.setVisible(false);
        in.setVisible(true);
     

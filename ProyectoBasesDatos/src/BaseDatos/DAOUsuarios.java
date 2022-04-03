@@ -34,22 +34,19 @@ public class DAOUsuarios extends AbstractDAO {
         con=conexion;
 
         try {
-        stmUsuario=con.prepareStatement("select id_usuario, clave, nombre, direccion, email, tipo_usuario "+
+        stmUsuario=con.prepareStatement("select dni, clave, tipo_usuario "+
                                         "from usuario "+
-                                        "where id_usuario = ? and clave = ?");
+                                        "where dni = ? and clave = ?");
         stmUsuario.setString(1, idUsuario);
         stmUsuario.setString(2, clave);
         rsUsuario=stmUsuario.executeQuery();
         if (rsUsuario.next())
         {
-            resultado = new Usuario(rsUsuario.getString("id_usuario"), rsUsuario.getString("clave"),
-                                      rsUsuario.getString("nombre"), rsUsuario.getString("direccion"),
-                                      rsUsuario.getString("email"), TipoUsuario.valueOf(rsUsuario.getString("tipo_usuario")));
-
+            resultado = new Usuario(rsUsuario.getString("dni"), rsUsuario.getString("clave"),
+                                    TipoUsuario.valueOf(rsUsuario.getString("tipo_usuario")));
         }
         } catch (SQLException e){
           System.out.println(e.getMessage());
-       
         }finally{
           try {stmUsuario.close();} catch (SQLException e){System.out.println("Imposible cerrar cursores");}
         }
@@ -74,13 +71,12 @@ public class DAOUsuarios extends AbstractDAO {
         //stmUsuario.setString(6, fecha);
         stmUsuario.executeUpdate();
         
-        stmUsuario1 = con.prepareStatement("INSERT INTO usuario(DNI, Nombre, clave, tipo_usuario)" +
-                "VALUES (?, ?, ?, ?)");
+        stmUsuario1 = con.prepareStatement("INSERT INTO usuario(DNI, clave, tipo_usuario)" +
+                "VALUES (?, ?, ?)");
         
         stmUsuario1.setString(1, DNI);
-        stmUsuario1.setString(2, Nombre);
-        stmUsuario1.setString(3, contraseña);
-        stmUsuario1.setString(4, "Normal");
+        stmUsuario1.setString(2, contraseña);
+        stmUsuario1.setString(3, "Normal");
         stmUsuario1.executeUpdate();
         
         
