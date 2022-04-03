@@ -21,6 +21,30 @@ public class EspectaculosDAO {
     }
     
     
+     public ArrayList<String> espectaculosActivos() {
+        ArrayList<String> resultado = new java.util.ArrayList<>();
+
+        ResultSet rsEspectaculos;
+        PreparedStatement stmEspectaculos = null;
+
+        try {
+            stmEspectaculos = conexion.prepareStatement("SELECT nombre FROM espectaculos WHERE activo LIKE 'SI'"); 
+            rsEspectaculos = stmEspectaculos.executeQuery();
+            while (rsEspectaculos.next()) {   //MANOTE: Este next devuelve un booleano pero también coloca el cursor en la siguiente fila (la primera vez que se le llama en la primera, la segunda en la segunda,...)
+                resultado.add(rsEspectaculos.getString("nombre"));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            try {
+                stmEspectaculos.close();
+            } catch (SQLException e) {
+                System.out.println("Imposible cerrar cursores");
+            }
+        }
+        return resultado;
+    }
+    
     public ArrayList<String> añosRegistrados() {
         ArrayList<String> resultado = new java.util.ArrayList<>();
 
