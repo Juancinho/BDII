@@ -14,17 +14,29 @@ public class MenuUsuarios extends javax.swing.JFrame {
     private String dni;
     private Inicio padre;
     
+    /**
+     *
+     */
     public MenuUsuarios() {
         initComponents();
     }
-      public MenuUsuarios(proyectobasesdatos.ProyectoBasesDatos pr) {
+
+    /**
+     *
+     * @param pr
+     */
+    public MenuUsuarios(proyectobasesdatos.ProyectoBasesDatos pr) {
           this.pr = pr;
         initComponents();
     }
       
-
-      
-      public MenuUsuarios(proyectobasesdatos.ProyectoBasesDatos pr, Inicio padre, String dni) {
+    /**
+     *
+     * @param pr
+     * @param padre
+     * @param dni
+     */
+    public MenuUsuarios(proyectobasesdatos.ProyectoBasesDatos pr, Inicio padre, String dni) {
           this.pr = pr;
           this.padre = padre;
           this.dni=dni;
@@ -194,7 +206,7 @@ public class MenuUsuarios extends javax.swing.JFrame {
     }                                         
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        AccesoUsuario Mcr= new AccesoUsuario();
+        AccesoUsuario Mcr= new AccesoUsuario(pr);
         this.setVisible(false);
         Mcr.setVisible(true);
     }//GEN-LAST:event_jToggleButton1ActionPerformed
