@@ -14,7 +14,7 @@ import java.util.logging.Logger;
  */
 public class RegistroUsuarios extends javax.swing.JFrame {
 
-    private Inicio padre;
+    private MenuUsuarios padre;
     private proyectobasesdatos.ProyectoBasesDatos pr;
     private String dni;
 
@@ -28,7 +28,7 @@ public class RegistroUsuarios extends javax.swing.JFrame {
 
     }
 
-    public RegistroUsuarios(proyectobasesdatos.ProyectoBasesDatos pr, Inicio padre, String dni) {
+    public RegistroUsuarios(proyectobasesdatos.ProyectoBasesDatos pr, MenuUsuarios padre, String dni) {
         this.pr = pr;
         this.padre = padre;
         this.dni = dni;

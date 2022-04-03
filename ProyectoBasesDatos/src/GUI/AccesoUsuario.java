@@ -12,13 +12,15 @@ public class AccesoUsuario extends javax.swing.JFrame {
 
     private proyectobasesdatos.ProyectoBasesDatos pr;
     private String dni;
-    private Inicio padre;
 
+    private MenuUsuarios padre;
+    
     public AccesoUsuario() {
         initComponents();
     }
 
-     public AccesoUsuario(proyectobasesdatos.ProyectoBasesDatos pr, Inicio padre) {
+     public AccesoUsuario(proyectobasesdatos.ProyectoBasesDatos pr, MenuUsuarios padre) {
+
         this.pr = pr;
         this.padre = padre;
         initComponents();
@@ -148,9 +150,10 @@ public class AccesoUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     
     private void EntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EntrarActionPerformed
-        etiquetaFallo.setVisible(false);
-        if (pr.validarUsuario(DNI.getText(), Contraseña.getText())!=null) {
-            MenuUsuarios mu = new MenuUsuarios(pr, padre, dni);
+
+        dni=DNI.getText();
+        if (pr.validarUsuario(dni, Contraseña.getText())) {
+            MenuUsuarios mu = new MenuUsuarios();
             this.setVisible(false);
             mu.setVisible(true);
         }    
@@ -164,8 +167,9 @@ public class AccesoUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_RegistrarmeActionPerformed
 
     private void AtrásActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtrásActionPerformed
-        this.setVisible(false);
-        padre.setVisible(true);
+       this.setVisible(false); 
+       MenuUsuarios mu= new MenuUsuarios();
+       mu.setVisible(true);
     }//GEN-LAST:event_AtrásActionPerformed
 
     private void DNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DNIActionPerformed

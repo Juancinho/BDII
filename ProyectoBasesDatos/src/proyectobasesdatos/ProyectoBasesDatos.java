@@ -78,7 +78,7 @@ public class ProyectoBasesDatos {
         return conexion;
     }
 
-    public Usuario validarUsuario(String idUsuario, String clave) {
+    public boolean validarUsuario(String idUsuario, String clave) {
         return daoUsuarios.validarUsuario(idUsuario, clave);
     }
 
