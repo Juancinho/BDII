@@ -10,7 +10,7 @@ package GUI;
  */
 public class EspectaculomasPopularAño extends javax.swing.JFrame {
     private proyectobasesdatos.ProyectoBasesDatos pr;
-
+    private Inicio padre;
     /**
      * Creates new form EspectaculomasPopularAño
      */
@@ -18,8 +18,9 @@ public class EspectaculomasPopularAño extends javax.swing.JFrame {
         initComponents();
     }
     
-    public EspectaculomasPopularAño(proyectobasesdatos.ProyectoBasesDatos pr) {
+    public EspectaculomasPopularAño(proyectobasesdatos.ProyectoBasesDatos pr, Inicio padre) {
         this.pr = pr;
+        this.padre=padre;
         initComponents();
     }
 
@@ -113,7 +114,7 @@ public class EspectaculomasPopularAño extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       MenuBusquedas mb = new MenuBusquedas(pr);
+       MenuBusquedas mb = new MenuBusquedas(pr,padre);
        this.setVisible(false);
        mb.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -164,9 +165,7 @@ public class EspectaculomasPopularAño extends javax.swing.JFrame {
     public void consultarEspectaculo() {
         ModeloTablaAsistir m;
         String anho;
-        anho = (String)jComboBox1.getSelectedItem(); 
-        System.out.println(anho);
-        
+        anho = (String)jComboBox1.getSelectedItem();        
         m = (ModeloTablaAsistir) tablaEspectaculo.getModel();     
         m.setFilas(pr.getEspectaculosDAO().espectaculoMasPopularPorAnho(anho));
         

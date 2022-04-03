@@ -153,7 +153,7 @@ public class MenuUsuarios extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        MenuBusquedas menuBusquedas = new MenuBusquedas(pr);
+        MenuBusquedas menuBusquedas = new MenuBusquedas(pr,padre);
         menuBusquedas.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
