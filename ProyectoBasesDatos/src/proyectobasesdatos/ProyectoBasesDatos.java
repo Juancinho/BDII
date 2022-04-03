@@ -9,7 +9,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
-import BaseDatos.UsuariosDAO;
+import BaseDatos.DAOUsuarios;
 import BaseDatos.AtraccionesDAO;
 import BaseDatos.EspectaculosDAO;
 import BaseDatos.HosteleriaDAO;
