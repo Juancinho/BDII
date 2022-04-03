@@ -28,6 +28,7 @@ public class MenuUsuarios extends javax.swing.JFrame {
           this.dni=dni;
         initComponents();
     }
+      
 //
     /**
      * This method is called from within the constructor to initialize the form.
