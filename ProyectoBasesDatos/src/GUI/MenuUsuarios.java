@@ -12,7 +12,7 @@ public class MenuUsuarios extends javax.swing.JFrame {
 
     private proyectobasesdatos.ProyectoBasesDatos pr;
     private String dni;
-    private MenuUsuarios padre;
+    private Inicio padre;
     
     /**
      *
@@ -32,7 +32,7 @@ public class MenuUsuarios extends javax.swing.JFrame {
 
 
       
-      public MenuUsuarios(proyectobasesdatos.ProyectoBasesDatos pr, MenuUsuarios padre, String dni) {
+      public MenuUsuarios(proyectobasesdatos.ProyectoBasesDatos pr, Inicio padre, String dni) {
           this.pr = pr;
           this.padre = padre;
           this.dni=dni;
