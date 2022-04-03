@@ -10,6 +10,7 @@ package GUI;
  */
 public class AtraccionesporAltura extends javax.swing.JFrame {
     private proyectobasesdatos.ProyectoBasesDatos pr;
+    private Inicio padre;
     /**
      * Creates new form AtraccionesporAltura
      */
@@ -17,8 +18,9 @@ public class AtraccionesporAltura extends javax.swing.JFrame {
         
         initComponents();
     }
-    public AtraccionesporAltura(proyectobasesdatos.ProyectoBasesDatos pr) {
+    public AtraccionesporAltura(proyectobasesdatos.ProyectoBasesDatos pr,Inicio padre) {
         this.pr = pr;
+        this.padre=padre;
         initComponents();
     }
 
@@ -125,7 +127,7 @@ public class AtraccionesporAltura extends javax.swing.JFrame {
     }//GEN-LAST:event_BuscarActionPerformed
 
     private void atrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasActionPerformed
-        MenuBusquedas mb = new MenuBusquedas(pr);
+        MenuBusquedas mb = new MenuBusquedas(pr,padre);
         this.setVisible(false);
         mb.setVisible(true);
     }//GEN-LAST:event_atrasActionPerformed
