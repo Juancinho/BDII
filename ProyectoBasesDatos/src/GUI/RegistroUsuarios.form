@@ -57,8 +57,8 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="DNI" alignment="0" min="-2" pref="263" max="-2" attributes="0"/>
                                   <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="fecha" alignment="0" max="32767" attributes="0"/>
                                       <Component id="contraseña" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="fecha" alignment="0" max="32767" attributes="0"/>
                                       <Component id="telefono" alignment="0" max="32767" attributes="0"/>
                                       <Component id="nameapellidos" alignment="0" max="32767" attributes="0"/>
                                       <Component id="nacionalidad" alignment="0" max="32767" attributes="0"/>
@@ -230,9 +230,9 @@
         <Property name="text" type="java.lang.String" value="Contrase&#xf1;a"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="contrase&#xf1;a">
-    </Component>
     <Component class="javax.swing.JTextField" name="fecha">
+    </Component>
+    <Component class="javax.swing.JPasswordField" name="contrase&#xf1;a">
     </Component>
   </SubComponents>
 </Form>

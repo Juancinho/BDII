@@ -50,8 +50,8 @@ public class RegistroUsuarios extends javax.swing.JFrame {
         Registrarme = new javax.swing.JButton();
         Atrás = new javax.swing.JButton();
         Contraseña = new javax.swing.JLabel();
-        contraseña = new javax.swing.JTextField();
         fecha = new javax.swing.JTextField();
+        contraseña = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -126,8 +126,8 @@ public class RegistroUsuarios extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(DNI, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(fecha, javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(contraseña, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(fecha, javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(telefono, javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(nameapellidos, javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(nacionalidad, javax.swing.GroupLayout.Alignment.LEADING)
@@ -199,7 +199,7 @@ public class RegistroUsuarios extends javax.swing.JFrame {
     }//GEN-LAST:event_AtrásActionPerformed
 
     private void RegistrarmeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarmeActionPerformed
-        
+
         try {
             pr.getDaoUsuarios().registrarUsuario(DNI.getText(), nameapellidos.getText(), nacionalidad.getText(), correoelectro.getText(), contraseña.getText(), telefono.getText(), fecha.getText());
             this.setVisible(false);
@@ -254,7 +254,7 @@ public class RegistroUsuarios extends javax.swing.JFrame {
     private javax.swing.JLabel MADA;
     private javax.swing.JButton Registrarme;
     private javax.swing.JLabel Registro;
-    private javax.swing.JTextField contraseña;
+    private javax.swing.JPasswordField contraseña;
     private javax.swing.JTextField correoelectro;
     private javax.swing.JTextField fecha;
     private javax.swing.JLabel jLabel1;
