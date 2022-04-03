@@ -10,13 +10,23 @@ package GUI;
  */
 public class ComprarEntradasAtracciones extends javax.swing.JFrame {
 
-    /**
-     * Creates new form ComprarEntradasAtracciones2
-     */
-    public ComprarEntradasAtracciones() {
+
+    private proyectobasesdatos.ProyectoBasesDatos pr;
+    private MenuComprasReservas padre;
+    String dni;
+    
+    public ComprarEntradasAtracciones(proyectobasesdatos.ProyectoBasesDatos pr, MenuComprasReservas padre, String dni) {
+        this.pr = pr;
+        this.padre = padre;
+        this.dni = dni;
+
         initComponents();
     }
-
+    
+        public ComprarEntradasAtracciones() {
+        initComponents();
+    }
+       
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -28,29 +38,36 @@ public class ComprarEntradasAtracciones extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        elegirAtraccion = new javax.swing.JComboBox<>();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        VIPsi = new javax.swing.JRadioButton();
-        VIPno = new javax.swing.JRadioButton();
-        textoDNI = new javax.swing.JTextField();
-        comprar = new javax.swing.JButton();
-        atras = new javax.swing.JButton();
 
+        jLabel4 = new javax.swing.JLabel();
+        javax.swing.JRadioButton VIPsi = new javax.swing.JRadioButton();
+        Comprar = new javax.swing.JButton();
+        Atras = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        vipNO = new javax.swing.JRadioButton();
+        jComboBox1 = new javax.swing.JComboBox<>();
+      
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
 
         jLabel1.setText("Entradas Atracciones");
 
-        jLabel2.setText("Atacción:");
+
+        String[] array = pr.getAtraccionesDAO().atraccionesActivas().toArray(new String[pr.getAtraccionesDAO().atraccionesActivas().size()]);  //MANOTE: hay que pasarle al toArray un array de la misma longitud para que no lo convierta en un array de Objects
+        Atraccion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        Atraccion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AtraccionActionPerformed(evt);
+            }
+        });
+
 
         elegirAtraccion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jLabel3.setText("DNI:");
 
-        jLabel4.setText("Pase VIP:");
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("Fecha");
 
-        jLabel5.setText("Fecha:");
 
         VIPsi.setText("Sí");
         VIPsi.addActionListener(new java.awt.event.ActionListener() {
@@ -59,12 +76,19 @@ public class ComprarEntradasAtracciones extends javax.swing.JFrame {
             }
         });
 
-        VIPno.setText("No");
 
-        comprar.setText("Comprar");
-        comprar.addActionListener(new java.awt.event.ActionListener() {
+        Comprar.setText("Comprar");
+        Comprar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comprarActionPerformed(evt);
+                ComprarActionPerformed(evt);
+            }
+        });
+
+        Atras.setText("Atrás");
+        Atras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AtrasActionPerformed(evt);
+
             }
         });
 
@@ -75,35 +99,46 @@ public class ComprarEntradasAtracciones extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(59, 59, 59)
+                .addComponent(Atras)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Comprar)
+                .addGap(44, 44, 44))
             .addGroup(layout.createSequentialGroup()
                 .addGap(43, 43, 43)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(48, 48, 48)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel3))
-                        .addGap(48, 48, 48)
+
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(36, 36, 36)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(Atraccion, 0, 194, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
+                                .addGap(22, 22, 22)
                                 .addComponent(VIPsi)
-                                .addGap(40, 40, 40)
-                                .addComponent(VIPno))
-                            .addComponent(jLabel1)
-                            .addComponent(elegirAtraccion, 0, 172, Short.MAX_VALUE)
-                            .addComponent(textoDNI))))
-                .addContainerGap(82, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(68, 68, 68)
-                .addComponent(comprar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(atras)
-                .addGap(60, 60, 60))
+                                .addGap(48, 48, 48)
+                                .addComponent(vipNO))
+                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(136, 136, 136)
+                        .addComponent(jLabel1)))
+                .addGap(0, 62, Short.MAX_VALUE))
+
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -112,43 +147,57 @@ public class ComprarEntradasAtracciones extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(elegirAtraccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
+
+                    .addComponent(Atraccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(textoDNI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+
                     .addComponent(VIPsi)
                     .addComponent(VIPno))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel5)
-                .addGap(27, 27, 27)
+
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(comprar)
-                    .addComponent(atras))
-                .addContainerGap(30, Short.MAX_VALUE))
+                    .addComponent(jLabel4)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(50, 50, 50)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Atras)
+                    .addComponent(Comprar))
+                .addGap(46, 46, 46))
+
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+      
+    
+    
+    private void AtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtrasActionPerformed
+        this.setVisible(false);
+        padre.setVisible(true); 
+    }//GEN-LAST:event_AtrasActionPerformed
+
+    private void AtraccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtraccionActionPerformed
+       this.setVisible(false);
+       padre.setVisible(true);
+    }//GEN-LAST:event_AtraccionActionPerformed
+
+
     private void VIPsiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VIPsiActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_VIPsiActionPerformed
 
-    private void comprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comprarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_comprarActionPerformed
 
-    private void atrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasActionPerformed
-        MenuComprasReservas mu = new MenuComprasReservas();
-        this.setVisible(false);
-        mu.setVisible(true); 
-    }//GEN-LAST:event_atrasActionPerformed
+    
+    
+    private void ComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComprarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ComprarActionPerformed
+
 
     /**
      * @param args the command line arguments
@@ -187,14 +236,14 @@ public class ComprarEntradasAtracciones extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JRadioButton VIPno;
-    private javax.swing.JRadioButton VIPsi;
-    private javax.swing.JButton atras;
-    private javax.swing.JButton comprar;
-    private javax.swing.JComboBox<String> elegirAtraccion;
+
+    private javax.swing.JComboBox<String> Atraccion;
+    private javax.swing.JButton Atras;
+    private javax.swing.JButton Comprar;
+    private javax.swing.JComboBox<String> jComboBox1;
+
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JTextField textoDNI;

@@ -10,9 +10,17 @@ package GUI;
  */
 public class CancelarEntradaEspectaculo extends javax.swing.JFrame {
 
-    /**
-     * Creates new form CancelarEntradaAtraccion
-     */
+     private proyectobasesdatos.ProyectoBasesDatos pr;
+    private MenuCancelaciones padre;
+    String dni;
+    
+    public CancelarEntradaEspectaculo(proyectobasesdatos.ProyectoBasesDatos pr, MenuCancelaciones padre, String dni) {
+        this.pr = pr;
+        this.padre = padre;
+        this.dni = dni;
+        initComponents();
+    }
+    
     public CancelarEntradaEspectaculo() {
         initComponents();
     }
@@ -33,7 +41,7 @@ public class CancelarEntradaEspectaculo extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        atras = new javax.swing.JButton();
+        Atras = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -53,10 +61,10 @@ public class CancelarEntradaEspectaculo extends javax.swing.JFrame {
 
         jButton1.setText("Cancelar");
 
-        atras.setText("Atrás");
-        atras.addActionListener(new java.awt.event.ActionListener() {
+        Atras.setText("Atrás");
+        Atras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                atrasActionPerformed(evt);
+                AtrasActionPerformed(evt);
             }
         });
 
@@ -67,30 +75,29 @@ public class CancelarEntradaEspectaculo extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(57, 57, 57)
-                                .addComponent(jLabel3))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(34, 34, 34)
-                                .addComponent(jLabel2))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(43, 43, 43)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(31, 31, 31)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)))
+                        .addGap(57, 57, 57)
+                        .addComponent(jLabel3))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(71, 71, 71)
-                        .addComponent(jButton1)
-                        .addGap(76, 76, 76)
-                        .addComponent(atras)))
+                        .addGap(34, 34, 34)
+                        .addComponent(jLabel2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE))
                 .addContainerGap(46, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 107, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(102, 102, 102))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(71, 71, 71)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Atras)
+                .addGap(54, 54, 54))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -110,7 +117,7 @@ public class CancelarEntradaEspectaculo extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(atras))
+                    .addComponent(Atras))
                 .addGap(25, 25, 25))
         );
 
@@ -118,10 +125,10 @@ public class CancelarEntradaEspectaculo extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void atrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasActionPerformed
- MenuCancelaciones mu = new MenuCancelaciones();
+    private void AtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtrasActionPerformed
         this.setVisible(false);
-        mu.setVisible(true);    }//GEN-LAST:event_atrasActionPerformed
+        padre.setVisible(true);
+    }//GEN-LAST:event_AtrasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -160,7 +167,7 @@ public class CancelarEntradaEspectaculo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton atras;
+    private javax.swing.JButton Atras;
     private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;

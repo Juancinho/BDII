@@ -10,9 +10,18 @@ package GUI;
  */
 public class ReservarEnRestaurante extends javax.swing.JFrame {
 
-    /**
-     * Creates new form ReservarEnRestaurante
-     */
+    private proyectobasesdatos.ProyectoBasesDatos pr;
+    private MenuComprasReservas padre;
+    String dni;
+    
+    public ReservarEnRestaurante(proyectobasesdatos.ProyectoBasesDatos pr, MenuComprasReservas padre, String dni) {
+        this.pr = pr;
+        this.padre = padre;
+        this.dni = dni;
+        initComponents();
+    }
+    
+    
     public ReservarEnRestaurante() {
         initComponents();
     }
@@ -118,9 +127,8 @@ public class ReservarEnRestaurante extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void atrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasActionPerformed
-         MenuComprasReservas mu = new MenuComprasReservas();
-        this.setVisible(false);
-        mu.setVisible(true); 
+       this.setVisible(false);
+       padre.setVisible(true);
     }//GEN-LAST:event_atrasActionPerformed
 
     /**

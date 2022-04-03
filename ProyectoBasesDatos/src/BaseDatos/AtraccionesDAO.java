@@ -18,6 +18,34 @@ public class AtraccionesDAO {
     public AtraccionesDAO(Connection conexion) {
         this.conexion = conexion;
     }
+    
+    public ArrayList<String> atraccionesActivas() {
+        ArrayList<String> resultado = new java.util.ArrayList<>();
+
+        ResultSet rsAtracciones;
+        PreparedStatement stmAtracciones = null;
+
+        try {
+            stmAtracciones = conexion.prepareStatement("SELECT nombre FROM atracciones"); 
+            rsAtracciones = stmAtracciones.executeQuery();
+            while (rsAtracciones.next()) {   //MANOTE: Este next devuelve un booleano pero también coloca el cursor en la siguiente fila (la primera vez que se le llama en la primera, la segunda en la segunda,...)
+                resultado.add(rsAtracciones.getString("nombre"));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            try {
+                stmAtracciones.close();
+            } catch (SQLException e) {
+                System.out.println("Imposible cerrar cursores");
+            }
+        }
+        return resultado;
+    }
+    
+    
+    
+    
 
     public java.util.List<Atraccion> consultarAtraccion(String nombre) {
         java.util.List<Atraccion> resultado = new java.util.ArrayList<>();
