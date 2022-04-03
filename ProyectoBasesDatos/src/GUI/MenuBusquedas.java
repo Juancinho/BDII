@@ -11,11 +11,11 @@ package GUI;
 public class MenuBusquedas extends javax.swing.JFrame {
 
     private proyectobasesdatos.ProyectoBasesDatos pr;
-    private Inicio padre;
+    private MenuUsuarios padre;
     public MenuBusquedas() {
         initComponents();
     }
-    public MenuBusquedas(proyectobasesdatos.ProyectoBasesDatos pr, Inicio padre) {
+    public MenuBusquedas(proyectobasesdatos.ProyectoBasesDatos pr, MenuUsuarios padre) {
         this.pr=pr;
         this.padre=padre;
         initComponents();
@@ -121,23 +121,23 @@ public class MenuBusquedas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void atrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasActionPerformed
-        MenuUsuarios mu = new MenuUsuarios(pr);
+        
         this.setVisible(false);
-        mu.setVisible(true);
+        padre.setVisible(true);
     }//GEN-LAST:event_atrasActionPerformed
 
     private void atraccionesPorAlturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atraccionesPorAlturaActionPerformed
-        AtraccionesporAltura mu = new AtraccionesporAltura(pr,padre);
+        AtraccionesporAltura mu = new AtraccionesporAltura(pr,this);
         this.setVisible(false);        
                mu.setVisible(true);    }//GEN-LAST:event_atraccionesPorAlturaActionPerformed
 
     private void espectaculoPopularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_espectaculoPopularActionPerformed
-        EspectaculomasPopularAño mu = new EspectaculomasPopularAño(pr,padre);
+        EspectaculomasPopularAño mu = new EspectaculomasPopularAño(pr,this);
         this.setVisible(false);
         mu.setVisible(true);    }//GEN-LAST:event_espectaculoPopularActionPerformed
 
     private void datosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_datosActionPerformed
-       MenuConsultarDatos mu = new MenuConsultarDatos(pr);
+       MenuConsultarDatos mu = new MenuConsultarDatos(pr,this);
         this.setVisible(false);
         mu.setVisible(true);
     }//GEN-LAST:event_datosActionPerformed

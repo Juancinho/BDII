@@ -128,12 +128,12 @@ public class MenuCancelaciones extends javax.swing.JFrame {
     }//GEN-LAST:event_cancelarRestauranteActionPerformed
 
     private void CancelarentradaespectaculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarentradaespectaculoActionPerformed
-        CancelarEntradaEspectaculo cr= new CancelarEntradaEspectaculo();
+        CancelarEntradaEspectaculo cr= new CancelarEntradaEspectaculo(pr, this, dni);
         this.setVisible(false);
         cr.setVisible(true);    }//GEN-LAST:event_CancelarentradaespectaculoActionPerformed
 
     private void cancelarentradaatraccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarentradaatraccionActionPerformed
-        CancelarEntradaAtraccion cr= new CancelarEntradaAtraccion();
+        CancelarEntradaAtraccion cr= new CancelarEntradaAtraccion(pr, this, dni);
         this.setVisible(false);
         cr.setVisible(true);
     }//GEN-LAST:event_cancelarentradaatraccionActionPerformed

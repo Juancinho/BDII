@@ -16,13 +16,15 @@ import javax.swing.table.TableColumnModel;
 public class MenuConsultarDatos extends javax.swing.JFrame {
 
     private proyectobasesdatos.ProyectoBasesDatos pr;
+    private MenuBusquedas padre;
 
     public MenuConsultarDatos() {
         initComponents();
     }
 
-    public MenuConsultarDatos(proyectobasesdatos.ProyectoBasesDatos pr) {
+    public MenuConsultarDatos(proyectobasesdatos.ProyectoBasesDatos pr, MenuBusquedas padre) {
         this.pr = pr;
+        this.padre = padre;
         initComponents();
     }
 
@@ -270,9 +272,8 @@ public class MenuConsultarDatos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void atrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasActionPerformed
-        MenuUsuarios mu = new MenuUsuarios();
         this.setVisible(false);
-        mu.setVisible(true);
+        padre.setVisible(true);
     }//GEN-LAST:event_atrasActionPerformed
 
     private void comboAtraccionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboAtraccionesActionPerformed

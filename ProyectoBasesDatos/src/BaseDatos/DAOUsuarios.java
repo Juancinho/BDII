@@ -25,8 +25,8 @@ public class DAOUsuarios extends AbstractDAO {
         this.conexion = conexion;
      }  
 
-    public Usuario validarUsuario(String idUsuario, String clave){
-        Usuario resultado=null;
+    public boolean validarUsuario(String idUsuario, String clave){
+        boolean resultado=false;
         Connection con;
         PreparedStatement stmUsuario=null;
         ResultSet rsUsuario;
@@ -41,10 +41,7 @@ public class DAOUsuarios extends AbstractDAO {
         stmUsuario.setString(2, clave);
         rsUsuario=stmUsuario.executeQuery();
         if (rsUsuario.next())
-        {
-            resultado = new Usuario(rsUsuario.getString("dni"), rsUsuario.getString("clave"),
-                                    TipoUsuario.valueOf(rsUsuario.getString("tipo_usuario")));
-        }
+            return true;
         } catch (SQLException e){
           System.out.println(e.getMessage());
         }finally{

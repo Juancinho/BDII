@@ -13,19 +13,33 @@ import java.util.logging.Logger;
  * @author alumnogreibd
  */
 public class RegistroUsuarios extends javax.swing.JFrame {
-    private AccesoUsuario padre;
+
+    private MenuUsuarios padre;
     private proyectobasesdatos.ProyectoBasesDatos pr;
+    private String dni;
+
     /**
      * Creates new form RegistroUsuarios
      */
     public RegistroUsuarios(proyectobasesdatos.ProyectoBasesDatos pr) {
         this.pr = pr;
         initComponents();
+                aviso.setVisible(false);
+
     }
-    
+
+    public RegistroUsuarios(proyectobasesdatos.ProyectoBasesDatos pr, MenuUsuarios padre, String dni) {
+        this.pr = pr;
+        this.padre = padre;
+        this.dni = dni;
+        initComponents();
+        aviso.setVisible(false);
+    }
+
     public RegistroUsuarios() {
         initComponents();
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -52,6 +66,7 @@ public class RegistroUsuarios extends javax.swing.JFrame {
         Contraseña = new javax.swing.JLabel();
         fecha = new javax.swing.JTextField();
         contraseña = new javax.swing.JPasswordField();
+        aviso = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -94,6 +109,9 @@ public class RegistroUsuarios extends javax.swing.JFrame {
         });
 
         Contraseña.setText("Contraseña");
+
+        aviso.setForeground(new java.awt.Color(255, 51, 51));
+        aviso.setText("Todos los campos son obligatorios");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -145,6 +163,10 @@ public class RegistroUsuarios extends javax.swing.JFrame {
                 .addGap(94, 94, 94)
                 .addComponent(Contraseña)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(aviso)
+                .addGap(160, 160, 160))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -179,7 +201,9 @@ public class RegistroUsuarios extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Contraseña)
                     .addComponent(contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addComponent(aviso, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Registrarme)
                     .addComponent(Atrás))
@@ -199,17 +223,22 @@ public class RegistroUsuarios extends javax.swing.JFrame {
     }//GEN-LAST:event_AtrásActionPerformed
 
     private void RegistrarmeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarmeActionPerformed
+        aviso.setVisible(false);
+        if (!DNI.getText().isBlank() && !nameapellidos.getText().isBlank() && !nacionalidad.getText().isBlank() && !contraseña.getText().isBlank() && !telefono.getText().isBlank() && !fecha.getText().isBlank()) {
+            try {
+                pr.getDaoUsuarios().registrarUsuario(DNI.getText(), nameapellidos.getText(), nacionalidad.getText(), correoelectro.getText(), contraseña.getText(), telefono.getText(), fecha.getText());
+                this.setVisible(false);
+                MenuUsuarios nm = new MenuUsuarios(pr, padre, dni);
+                nm.setVisible(true);
+            } catch (SQLException ex) {
+                Logger.getLogger(RegistroUsuarios.class.getName()).log(Level.SEVERE, null, ex);
 
-        try {
-            pr.getDaoUsuarios().registrarUsuario(DNI.getText(), nameapellidos.getText(), nacionalidad.getText(), correoelectro.getText(), contraseña.getText(), telefono.getText(), fecha.getText());
-            this.setVisible(false);
-            MenuUsuarios nm = new MenuUsuarios(pr);
-            nm.setVisible(true);
-        } catch (SQLException ex) {
-            Logger.getLogger(RegistroUsuarios.class.getName()).log(Level.SEVERE, null, ex);
-            
-        } 
-        
+            }
+        }else{        
+        aviso.setVisible(true);
+        }
+
+
     }//GEN-LAST:event_RegistrarmeActionPerformed
 
     /**
@@ -226,19 +255,27 @@ public class RegistroUsuarios extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RegistroUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroUsuarios.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RegistroUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroUsuarios.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RegistroUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroUsuarios.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RegistroUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroUsuarios.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+      
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -254,6 +291,7 @@ public class RegistroUsuarios extends javax.swing.JFrame {
     private javax.swing.JLabel MADA;
     private javax.swing.JButton Registrarme;
     private javax.swing.JLabel Registro;
+    private javax.swing.JLabel aviso;
     private javax.swing.JPasswordField contraseña;
     private javax.swing.JTextField correoelectro;
     private javax.swing.JTextField fecha;

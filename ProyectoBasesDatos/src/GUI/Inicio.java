@@ -18,6 +18,7 @@ public class Inicio extends javax.swing.JFrame {
      public Inicio(proyectobasesdatos.ProyectoBasesDatos pr) {
          this.pr = pr;
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -33,19 +34,35 @@ public class Inicio extends javax.swing.JFrame {
         usuario = new javax.swing.JButton();
         administrador = new javax.swing.JButton();
         salir = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setText("Bienvenido");
+        jLabel1.setFont(new java.awt.Font("Symbola", 3, 36)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Gallaecia");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 40, 540, 60));
 
+        usuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/png-clipart-computer-icons-hana-festa-memorial-park-amusement-park-ferris-wheel-ferris-wheel-building-photography.png"))); // NOI18N
         usuario.setText("Usuario");
         usuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 usuarioActionPerformed(evt);
             }
         });
+        getContentPane().add(usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, 290, 300));
 
-        administrador.setText("Administrador");
+        administrador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/34411ffe-7dc6-4624-8781-75f7431a3adf.png"))); // NOI18N
+        administrador.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        administrador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                administradorActionPerformed(evt);
+            }
+        });
+        getContentPane().add(administrador, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 170, 280, 270));
 
         salir.setText("Salir");
         salir.addActionListener(new java.awt.event.ActionListener() {
@@ -53,40 +70,13 @@ public class Inicio extends javax.swing.JFrame {
                 salirActionPerformed(evt);
             }
         });
+        getContentPane().add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 540, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(147, 147, 147)
-                        .addComponent(usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(159, 159, 159)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(158, 158, 158)
-                        .addComponent(salir))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(134, 134, 134)
-                        .addComponent(administrador)))
-                .addContainerGap(146, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jLabel1)
-                .addGap(52, 52, 52)
-                .addComponent(usuario)
-                .addGap(44, 44, 44)
-                .addComponent(administrador)
-                .addGap(38, 38, 38)
-                .addComponent(salir)
-                .addContainerGap(57, Short.MAX_VALUE))
-        );
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo-de-pantalla-verde-liso-3840x2160.-wallpaper-para-escritorio-4k-ultra-hd-verde-liso-1024x576.jpg"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jLabel3.setText("jLabel3");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
         setLocationRelativeTo(null);
@@ -98,9 +88,13 @@ public class Inicio extends javax.swing.JFrame {
 
     private void usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuarioActionPerformed
         AccesoUsuario au = new AccesoUsuario(pr, this);
-       this.setVisible(false);
-       au.setVisible(true);
+        this.setVisible(false);
+        au.setVisible(true);
     }//GEN-LAST:event_usuarioActionPerformed
+
+    private void administradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_administradorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_administradorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -140,6 +134,8 @@ public class Inicio extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton administrador;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JButton salir;
     private javax.swing.JButton usuario;
     // End of variables declaration//GEN-END:variables
