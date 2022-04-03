@@ -4,17 +4,20 @@
  */
 package GUI;
 
+import java.util.Calendar;
+import java.util.Date;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author alumnogreibd
  */
 public class ComprarEntradasAtracciones extends javax.swing.JFrame {
 
-    
     private proyectobasesdatos.ProyectoBasesDatos pr;
     private MenuComprasReservas padre;
     String dni;
-    
+
     public ComprarEntradasAtracciones(proyectobasesdatos.ProyectoBasesDatos pr, MenuComprasReservas padre, String dni) {
         this.pr = pr;
         this.padre = padre;
@@ -22,13 +25,11 @@ public class ComprarEntradasAtracciones extends javax.swing.JFrame {
 
         initComponents();
     }
-    
-        public ComprarEntradasAtracciones() {
+
+    public ComprarEntradasAtracciones() {
         initComponents();
     }
-       //String[] array = pr.getAtraccionesDAO().atraccionesActivas().toArray(new String[pr.getAtraccionesDAO().atraccionesActivas().size()]);  //MANOTE: hay que pasarle al toArray un array de la misma longitud para que no lo convierta en un array de Objects
-   
-
+    //String[] array = pr.getAtraccionesDAO().atraccionesActivas().toArray(new String[pr.getAtraccionesDAO().atraccionesActivas().size()]);  //MANOTE: hay que pasarle al toArray un array de la misma longitud para que no lo convierta en un array de Objects
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -39,29 +40,33 @@ public class ComprarEntradasAtracciones extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup = new javax.swing.ButtonGroup();
         String[] array = pr.getAtraccionesDAO().atraccionesActivas().toArray(new String[pr.getAtraccionesDAO().atraccionesActivas().size()]);  //MANOTE: hay que pasarle al toArray un array de la misma longitud para que no lo convierta en un array de Objects
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBoxAtracciones = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
+        VipSi = new javax.swing.JRadioButton();
+        VipNo = new javax.swing.JRadioButton();
         jLabel3 = new javax.swing.JLabel();
         Atras = new javax.swing.JButton();
         Comprar = new javax.swing.JButton();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jDateChooser = new com.toedter.calendar.JDateChooser();
         jLabel4 = new javax.swing.JLabel();
+        MensajeError = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(array));
+        jComboBoxAtracciones.setModel(new javax.swing.DefaultComboBoxModel<>(array));
 
         jLabel1.setText("Atracción");
 
         jLabel2.setText("VIP");
 
-        jRadioButton2.setText("Sí");
+        buttonGroup.add(VipSi);
+        VipSi.setText("Sí");
 
-        jRadioButton3.setText("No");
+        buttonGroup.add(VipNo);
+        VipNo.setText("No");
 
         jLabel3.setText("Fecha");
 
@@ -81,6 +86,10 @@ public class ComprarEntradasAtracciones extends javax.swing.JFrame {
 
         jLabel4.setText("Comprar entrada para atracción");
 
+        MensajeError.setVisible(false);
+        MensajeError.setForeground(new java.awt.Color(255, 0, 51));
+        MensajeError.setText("Debe cubrir todos los campos para poder comprar");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -89,32 +98,37 @@ public class ComprarEntradasAtracciones extends javax.swing.JFrame {
                 .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jRadioButton2)
-                        .addGap(35, 35, 35)
-                        .addComponent(jRadioButton3)
-                        .addGap(91, 91, 91))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(34, 34, 34)
                         .addComponent(Atras)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(Comprar)
                         .addGap(75, 75, 75))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addGap(64, 64, 64)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jComboBox1, 0, 178, Short.MAX_VALUE)
-                                    .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addComponent(jLabel3))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                    .addComponent(jComboBoxAtracciones, 0, 178, Short.MAX_VALUE)
+                                    .addComponent(jDateChooser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(VipSi)
+                        .addGap(70, 70, 70)
+                        .addComponent(VipNo)
+                        .addGap(132, 132, 132))))
             .addGroup(layout.createSequentialGroup()
-                .addGap(89, 89, 89)
-                .addComponent(jLabel4)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(89, 89, 89)
+                        .addComponent(jLabel4))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(63, 63, 63)
+                        .addComponent(MensajeError)))
+                .addGap(0, 66, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -123,18 +137,20 @@ public class ComprarEntradasAtracciones extends javax.swing.JFrame {
                 .addComponent(jLabel4)
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxAtracciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jRadioButton2)
-                    .addComponent(jRadioButton3))
+                    .addComponent(VipSi)
+                    .addComponent(VipNo))
                 .addGap(43, 43, 43)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 158, Short.MAX_VALUE)
+                    .addComponent(jDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 157, Short.MAX_VALUE)
+                .addComponent(MensajeError)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Atras)
                     .addComponent(Comprar))
@@ -145,12 +161,46 @@ public class ComprarEntradasAtracciones extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void AtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtrasActionPerformed
-       this.setVisible(false);
-       padre.setVisible(true);
+        this.setVisible(false);
+        padre.setVisible(true);
+
     }//GEN-LAST:event_AtrasActionPerformed
 
     private void ComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComprarActionPerformed
-        // TODO add your handling code here:
+        
+        Date date;
+        date = jDateChooser.getDate();
+        Object o = jComboBoxAtracciones.getSelectedItem();
+
+        if (o == null || (!VipSi.isSelected() && !VipNo.isSelected()) || date == null) {
+            MensajeError.setVisible(true);
+        } else {
+            Calendar cal = Calendar.getInstance();
+            Date hoy = cal.getTime();
+            cal.add(Calendar.YEAR, 1);
+            Date dentroDeUnAnho = cal.getTime();  //MANOTE: Se ha logrado tener la fecha actual y la del año que viene
+            if (date.after(dentroDeUnAnho) || date.before(hoy)) {
+                JOptionPane.showMessageDialog(rootPane, "Fecha inválida \n Antelación máxima para la compra de un año");
+            } else {
+                String vip, fecha, atraccion;
+                atraccion = o.toString();
+                
+                if (VipSi.isSelected()) {
+                    vip = "SI";
+                } else {
+                    vip = "NO";
+                }
+                java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+                fecha = sqlDate.toString();
+                pr.getIrDAO().comprarEntrada(fecha, vip, dni, atraccion);
+                MensajeError.setVisible(false);
+
+                JOptionPane.showMessageDialog(rootPane, "Compra realizada");
+                this.setVisible(false);
+                padre.setVisible(true);
+                
+            }
+        }
     }//GEN-LAST:event_ComprarActionPerformed
 
     /**
@@ -191,13 +241,15 @@ public class ComprarEntradasAtracciones extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Atras;
     private javax.swing.JButton Comprar;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private javax.swing.JLabel MensajeError;
+    private javax.swing.JRadioButton VipNo;
+    private javax.swing.JRadioButton VipSi;
+    private javax.swing.ButtonGroup buttonGroup;
+    private javax.swing.JComboBox<String> jComboBoxAtracciones;
+    private com.toedter.calendar.JDateChooser jDateChooser;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
     // End of variables declaration//GEN-END:variables
 }
