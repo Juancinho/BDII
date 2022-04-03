@@ -17,14 +17,14 @@ public class AsistirDAO {
         this.conexion = conexion;
     }
 
-    public void comprarEntrada(String fecha, String dni, String nombreEspectaculo) {  //FU1
+    public void comprarEntrada(java.sql.Date fecha, String dni, String nombreEspectaculo) {  //FU1
 
         PreparedStatement stmAsistir = null;
 
         //MANOTE: Falta ccomprobación de que ese DNI ya esté registrado (pendiente de que se implemente la parte de registro/validación usuarios)
         try {
-            stmAsistir = conexion.prepareStatement("INSERT INTO asistir (fecha, dni, nombreEspectaculo) values (?,?,?)");
-            stmAsistir.setString(1, fecha);
+            stmAsistir = conexion.prepareStatement("INSERT INTO asistir (fecha, visitante, espectaculo) values (?,?,?)");
+            stmAsistir.setDate(1, fecha);
             stmAsistir.setString(2, dni);
             stmAsistir.setString(3, nombreEspectaculo);
             stmAsistir.executeUpdate();
