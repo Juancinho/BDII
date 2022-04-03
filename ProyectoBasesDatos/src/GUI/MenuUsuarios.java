@@ -41,96 +41,119 @@ public class MenuUsuarios extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        MenúUsuarios = new javax.swing.JLabel();
+        jToggleButton1 = new javax.swing.JToggleButton();
+        jButton3 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         comprarReservar = new javax.swing.JButton();
         Puntuar = new javax.swing.JButton();
         atras = new javax.swing.JButton();
-        busquedas = new javax.swing.JButton();
+
+        jLabel3 = new javax.swing.JLabel();
+
         CancelarCompraReserva = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        MenúUsuarios = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        MenúUsuarios.setText("Menú Usuarios");
+        jToggleButton1.setBackground(new java.awt.Color(0, 0, 0));
+        jToggleButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/93016694-usuario-icono-de-ilustración-vectorial-sobre-fondo-negro.jpg"))); // NOI18N
+        jToggleButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 10, -1, -1));
 
-        comprarReservar.setText("Comprar o Reservar");
+        jButton3.setBackground(new java.awt.Color(0, 0, 0));
+        jButton3.setFont(new java.awt.Font("Century Schoolbook L", 1, 14)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/istockphoto-1161362999-170667a_1.jpg"))); // NOI18N
+        jButton3.setToolTipText("");
+        jButton3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jButton3.setMaximumSize(new java.awt.Dimension(131, 131));
+        jButton3.setMinimumSize(new java.awt.Dimension(131, 131));
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 20, 60, 50));
+
+        jLabel2.setFont(new java.awt.Font("Karumbi", 3, 48)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Gallaecia");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 240, -1));
+
+        comprarReservar.setBackground(new java.awt.Color(0, 0, 0));
+        comprarReservar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/warph1.jpg"))); // NOI18N
         comprarReservar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comprarReservarActionPerformed(evt);
             }
         });
+        getContentPane().add(comprarReservar, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 210, -1, -1));
 
-        Puntuar.setText("Puntuar Restaurantes");
+        Puntuar.setBackground(new java.awt.Color(0, 0, 0));
+        Puntuar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono-amarillo-calificacion-5-estrellas-sobre-fondo-negro-categoria-vip-puntaje-premium-primera-clase-superior_216606-148.jpg"))); // NOI18N
         Puntuar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PuntuarActionPerformed(evt);
             }
         });
+        getContentPane().add(Puntuar, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 210, -1, -1));
 
+        atras.setBackground(new java.awt.Color(0, 0, 0));
+        atras.setFont(new java.awt.Font("DejaVu Serif Condensed", 1, 18)); // NOI18N
+        atras.setForeground(new java.awt.Color(255, 255, 255));
         atras.setText("Atrás");
         atras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 atrasActionPerformed(evt);
             }
         });
+        getContentPane().add(atras, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 520, 90, 30));
 
-        busquedas.setText("Búsquedas");
-        busquedas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                busquedasActionPerformed(evt);
-            }
-        });
+        jLabel3.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Negro-Puro-Web.jpg"))); // NOI18N
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 90));
 
-        CancelarCompraReserva.setText("Cancelar compra o reserva");
+
+        CancelarCompraReserva.setBackground(new java.awt.Color(0, 0, 0));
+        CancelarCompraReserva.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/warph1_1.jpg"))); // NOI18N
         CancelarCompraReserva.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CancelarCompraReservaActionPerformed(evt);
             }
         });
+        getContentPane().add(CancelarCompraReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 210, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(148, 148, 148)
-                        .addComponent(MenúUsuarios))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(112, 112, 112)
-                        .addComponent(Puntuar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(146, 146, 146)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(busquedas)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(15, 15, 15)
-                                .addComponent(atras))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(116, 116, 116)
-                        .addComponent(comprarReservar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(95, 95, 95)
-                        .addComponent(CancelarCompraReserva)))
-                .addContainerGap(102, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(MenúUsuarios)
-                .addGap(25, 25, 25)
-                .addComponent(comprarReservar)
-                .addGap(18, 18, 18)
-                .addComponent(CancelarCompraReserva)
-                .addGap(18, 18, 18)
-                .addComponent(Puntuar)
-                .addGap(18, 18, 18)
-                .addComponent(busquedas)
-                .addGap(18, 18, 18)
-                .addComponent(atras)
-                .addContainerGap(47, Short.MAX_VALUE))
-        );
+        jLabel1.setFont(new java.awt.Font("DejaVu Serif Condensed", 1, 18)); // NOI18N
+        jLabel1.setText("Comprar o Reservar");
+        jLabel1.setToolTipText("");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 460, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("Khmer OS", 1, 24)); // NOI18N
+        jLabel4.setText("Bienvenido al parque de atracciones:");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, -1, -1));
+
+        jLabel5.setFont(new java.awt.Font("DejaVu Serif Condensed", 1, 18)); // NOI18N
+        jLabel5.setText("Cancelar Compras o Reservas");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 460, -1, -1));
+
+        jLabel6.setFont(new java.awt.Font("DejaVu Serif Condensed", 1, 18)); // NOI18N
+        jLabel6.setText("Puntuar Restaurantes");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 460, -1, -1));
+
+        MenúUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo-de-pantalla-verde-liso-3840x2160.-wallpaper-para-escritorio-4k-ultra-hd-verde-liso-1024x576.jpg"))); // NOI18N
+        getContentPane().add(MenúUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 570));
+
 
         pack();
         setLocationRelativeTo(null);
@@ -154,18 +177,26 @@ public class MenuUsuarios extends javax.swing.JFrame {
         Mcr.setVisible(true);
     }//GEN-LAST:event_comprarReservarActionPerformed
 
-    private void busquedasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_busquedasActionPerformed
-        // TODO add your handling code here:
-        this.setVisible(false);
-        MenuBusquedas menuBusquedas = new MenuBusquedas(pr,this);
-        menuBusquedas.setVisible(true);
-    }//GEN-LAST:event_busquedasActionPerformed
 
     private void CancelarCompraReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarCompraReservaActionPerformed
         MenuCancelaciones Mc = new MenuCancelaciones(pr, this, dni);
         this.setVisible(false);
         Mc.setVisible(true);
     }//GEN-LAST:event_CancelarCompraReservaActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+
+        // TODO add your handling code here:
+        this.setVisible(false);
+        MenuBusquedas menuBusquedas = new MenuBusquedas(pr,this);
+        menuBusquedas.setVisible(true);
+    }//GEN-LAST:event_busquedasActionPerformed
+
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+        AccesoUsuario Mcr= new AccesoUsuario();
+        this.setVisible(false);
+        Mcr.setVisible(true);
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -209,5 +240,13 @@ public class MenuUsuarios extends javax.swing.JFrame {
     private javax.swing.JButton atras;
     private javax.swing.JButton busquedas;
     private javax.swing.JButton comprarReservar;
-    // End of variables declaration//GEN-END:variables
-}
+
+    private javax.swing.JButton jButton3;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JToggleButton jToggleButton1;
+
