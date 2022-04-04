@@ -4,6 +4,10 @@
  */
 package GUI;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author alumnogreibd
@@ -183,6 +187,11 @@ public class MenuUsuarios extends javax.swing.JFrame {
     private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
         // TODO add your handling code here:
         System.exit(0);
+        try {
+            pr.getConexion().close();
+        } catch (SQLException ex) {
+            Logger.getLogger(MenuUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_SalirActionPerformed
 
     private void ComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComprarActionPerformed
