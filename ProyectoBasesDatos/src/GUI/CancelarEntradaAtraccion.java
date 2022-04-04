@@ -4,6 +4,10 @@
  */
 package GUI;
 
+import java.util.Calendar;
+import java.util.Date;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author alumnogreibd
@@ -13,14 +17,14 @@ public class CancelarEntradaAtraccion extends javax.swing.JFrame {
     private proyectobasesdatos.ProyectoBasesDatos pr;
     private MenuCancelaciones padre;
     String dni;
-    
+
     public CancelarEntradaAtraccion(proyectobasesdatos.ProyectoBasesDatos pr, MenuCancelaciones padre, String dni) {
         this.pr = pr;
         this.padre = padre;
         this.dni = dni;
         initComponents();
     }
-    
+
     public CancelarEntradaAtraccion() {
         initComponents();
     }
@@ -35,18 +39,20 @@ public class CancelarEntradaAtraccion extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBoxAtracciones = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        CancelarCompra = new javax.swing.JButton();
         atras = new javax.swing.JButton();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jDateChooser = new com.toedter.calendar.JDateChooser();
+        MensajeError = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("Cancelar Entrada Atracción");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        String[] array = pr.getAtraccionesDAO().atraccionesActivas().toArray(new String[pr.getAtraccionesDAO().atraccionesActivas().size()]);  //MANOTE: hay que pasarle al toArray un array de la misma longitud para que no lo convierta en un array de Objects
+        jComboBoxAtracciones.setModel(new javax.swing.DefaultComboBoxModel<>(array));
 
         jLabel2.setText("Atracción");
 
@@ -54,7 +60,12 @@ public class CancelarEntradaAtraccion extends javax.swing.JFrame {
         jLabel4.setText("Fecha");
         jLabel4.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
-        jButton1.setText("Cancelar");
+        CancelarCompra.setText("Cancelar compra");
+        CancelarCompra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CancelarCompraActionPerformed(evt);
+            }
+        });
 
         atras.setText("Atrás");
         atras.addActionListener(new java.awt.event.ActionListener() {
@@ -63,52 +74,60 @@ public class CancelarEntradaAtraccion extends javax.swing.JFrame {
             }
         });
 
+        MensajeError.setVisible(false);
+        MensajeError.setForeground(new java.awt.Color(255, 51, 51));
+        MensajeError.setText("Debe cubrir todos los campos para poder cancelar una compra");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(105, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(111, 111, 111))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(34, 34, 34)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(45, 45, 45)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel2))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(31, 31, 31)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(71, 71, 71)
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGap(64, 64, 64)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jComboBoxAtracciones, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(33, 33, 33))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(18, 18, 18)
+                            .addComponent(MensajeError)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(62, 62, 62)
                         .addComponent(atras)
-                        .addGap(30, 30, 30)))
-                .addContainerGap(53, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(CancelarCompra)
+                        .addGap(37, 37, 37)))
+                .addContainerGap(19, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(131, 131, 131))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
+                .addGap(31, 31, 31)
                 .addComponent(jLabel1)
-                .addGap(33, 33, 33)
+                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxAtracciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 157, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 168, Short.MAX_VALUE)
+                .addComponent(MensajeError)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(CancelarCompra)
                     .addComponent(atras))
                 .addGap(25, 25, 25))
         );
@@ -121,6 +140,41 @@ public class CancelarEntradaAtraccion extends javax.swing.JFrame {
         this.setVisible(false);
         padre.setVisible(true);
     }//GEN-LAST:event_atrasActionPerformed
+
+    private void CancelarCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarCompraActionPerformed
+        Date date;
+        date = jDateChooser.getDate();
+        Object o = jComboBoxAtracciones.getSelectedItem();
+        if (o == null || date == null) {
+            MensajeError.setVisible(true);
+        } else {
+            Calendar cal = Calendar.getInstance();
+            cal.set(Calendar.HOUR_OF_DAY, 0);
+            cal.set(Calendar.MINUTE, 0);
+            cal.set(Calendar.SECOND, 0);
+            cal.set(Calendar.MILLISECOND, 1);  //MANOTE: No se puede cancelar la compra el mismo día del evento (por cuestiones de administarción del parque)
+            Date hoy = cal.getTime();
+            if (date.before(hoy)) {
+                MensajeError.setVisible(false);
+                JOptionPane.showMessageDialog(rootPane, "Fecha anterior a la actual \n No se puede cancelar la compra");
+            } else {
+                String atraccion;
+                atraccion = o.toString();
+                java.sql.Date sqlDate = new java.sql.Date(date.getTime());
+                if (!pr.getIrDAO().hayEntradaComprada(sqlDate, dni, atraccion)) {
+                    MensajeError.setVisible(false);
+                    JOptionPane.showMessageDialog(rootPane, "La entrada indicada no fue adquirida por el usuario actual \n No se puede cancelar la compra");
+                } else {
+                    pr.getIrDAO().cancelarCompra(sqlDate, dni, atraccion);
+                    MensajeError.setVisible(false);
+                    JOptionPane.showMessageDialog(rootPane, "Cancelación realizada");
+                    this.setVisible(false);
+                    padre.setVisible(true);
+                }
+            }
+        }
+
+    }//GEN-LAST:event_CancelarCompraActionPerformed
 
     /**
      * @param args the command line arguments
@@ -158,10 +212,11 @@ public class CancelarEntradaAtraccion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton CancelarCompra;
+    private javax.swing.JLabel MensajeError;
     private javax.swing.JButton atras;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private javax.swing.JComboBox<String> jComboBoxAtracciones;
+    private com.toedter.calendar.JDateChooser jDateChooser;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;

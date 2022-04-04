@@ -4,6 +4,7 @@ package BaseDatos;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Date;
 
 /**
  *
@@ -41,17 +42,17 @@ public class AsistirDAO {
 
     }
 
-    public void cancelarCompra(String fecha, String dni, String nombreEspectaculo) {  //FU1
+    public void cancelarCompra(Date fecha, String dni, String nombreEspectaculo) {  //FU1
 
         PreparedStatement stmAsistir = null;
 
         //MANOTE: De nuevo faltan comprobaciones de que esta compra se pueda cancelar (que no haya pasado el evento)
         try {
             stmAsistir = conexion.prepareStatement("DELETE FROM asistir WHERE (fecha, dni, nombreEspectaculo) = ('?','?','?')");
-            stmAsistir.setString(1, fecha);
+            stmAsistir.setDate(1, fecha);
             stmAsistir.setString(2, dni);
             stmAsistir.setString(3, nombreEspectaculo);
-
+            stmAsistir.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         } finally {

@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.sql.Date;
 
 /**
  *
@@ -46,17 +47,18 @@ public class ComerDAO {
 
     }
 
-    public void cancelarReserva(String fecha, String dni, String nombreEstablecimiento) {  //FU1
+    public void cancelarReserva(Date fecha, String dni, String nombreEstablecimiento) {  //FU1
 
         PreparedStatement stmComer = null;
 
         //MANOTE: De nuevo faltan comprobaciones de que esta compra se pueda cancelar (que no haya pasado el evento)
         try {
             stmComer = conexion.prepareStatement("DELETE FROM comer WHERE (fecha, dni, nombreEstablecimiento) = ('?','?','?')");
-            stmComer.setString(1, fecha);
+            stmComer.setDate(1, fecha);
             stmComer.setString(2, dni);
             stmComer.setString(3, nombreEstablecimiento);
-
+            stmComer.executeUpdate();
+            
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         } finally {

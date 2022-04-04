@@ -167,7 +167,7 @@ public class ComprarEntradasAtracciones extends javax.swing.JFrame {
     }//GEN-LAST:event_AtrasActionPerformed
 
     private void ComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComprarActionPerformed
-        
+
         Date date;
         date = jDateChooser.getDate();
         Object o = jComboBoxAtracciones.getSelectedItem();
@@ -176,15 +176,19 @@ public class ComprarEntradasAtracciones extends javax.swing.JFrame {
             MensajeError.setVisible(true);
         } else {
             Calendar cal = Calendar.getInstance();
+            cal.set(Calendar.HOUR_OF_DAY, 0);
+            cal.set(Calendar.MINUTE, 0);
+            cal.set(Calendar.SECOND, 0);
+            cal.set(Calendar.MILLISECOND, 1);
             Date hoy = cal.getTime();
             cal.add(Calendar.YEAR, 1);
-            Date dentroDeUnAnho = cal.getTime();  //MANOTE: Se ha logrado tener la fecha actual y la del año que viene
+            Date dentroDeUnAnho = cal.getTime();  //MANOTE: Se ha logrado tener la fecha del fin del día de hoy (no se puede comprar si ha pasado el día) y la del año que viene
             if (date.after(dentroDeUnAnho) || date.before(hoy)) {
                 JOptionPane.showMessageDialog(rootPane, "Fecha inválida \n Antelación máxima para la compra de un año");
             } else {
                 String vip, fecha, atraccion;
                 atraccion = o.toString();
-                
+
                 if (VipSi.isSelected()) {
                     vip = "SI";
                 } else {
@@ -197,7 +201,7 @@ public class ComprarEntradasAtracciones extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(rootPane, "Compra realizada");
                 this.setVisible(false);
                 padre.setVisible(true);
-                
+
             }
         }
     }//GEN-LAST:event_ComprarActionPerformed

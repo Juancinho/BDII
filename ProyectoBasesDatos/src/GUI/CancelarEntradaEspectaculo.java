@@ -35,6 +35,7 @@ public class CancelarEntradaEspectaculo extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        String[] array = pr.getEspectaculosDAO().espectaculosActivos().toArray(new String[pr.getEspectaculosDAO().espectaculosActivos().size()]);  //MANOTE: hay que pasarle al toArray un array de la misma longitud para que no lo convierta en un array de Objects
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -46,7 +47,7 @@ public class CancelarEntradaEspectaculo extends javax.swing.JFrame {
 
         jLabel1.setText("Cancelar Entrada Espectáculo");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(array));
 
         jLabel2.setText("Espectáculo");
 
