@@ -179,9 +179,15 @@ public class MenuUsuarios extends javax.swing.JFrame {
 
     private void AccederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AccederActionPerformed
         // TODO add your handling code here:
-        AccesoUsuario ac= new AccesoUsuario(pr,padre);
-        this.setVisible(false);
-        ac.setVisible(true);
+        if(dni==null){
+            AccesoUsuario ac= new AccesoUsuario(pr,padre);
+            this.setVisible(false);
+            ac.setVisible(true);
+        }
+        else{
+            MenuUsuarios mu = new MenuUsuarios(pr);
+            mu.setVisible(true);
+        }
     }//GEN-LAST:event_AccederActionPerformed
 
     private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed

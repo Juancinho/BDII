@@ -17,6 +17,7 @@ public class AccesoUsuario extends javax.swing.JFrame {
     
     public AccesoUsuario() {
         initComponents();
+        etiquetaFallo.setVisible(false);
     }
 
      public AccesoUsuario(proyectobasesdatos.ProyectoBasesDatos pr, Inicio padre) {
@@ -148,16 +149,12 @@ public class AccesoUsuario extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-    
-    private void EntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EntrarActionPerformed
-        dni=DNI.getText();
-        if (pr.validarUsuario(dni, Contraseña.getText())) {
-            MenuUsuarios mu = new MenuUsuarios(pr,padre,dni);
-            this.setVisible(false);
-            mu.setVisible(true);
-        }    
-        else etiquetaFallo.setVisible(true);      
-    }//GEN-LAST:event_EntrarActionPerformed
+
+    private void AtrásActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtrásActionPerformed
+        this.setVisible(false);
+        MenuUsuarios mu= new MenuUsuarios(pr);
+        mu.setVisible(true);
+    }//GEN-LAST:event_AtrásActionPerformed
 
     private void RegistrarmeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarmeActionPerformed
         RegistroUsuarios mu = new RegistroUsuarios(pr, padre, dni);
@@ -165,15 +162,20 @@ public class AccesoUsuario extends javax.swing.JFrame {
         mu.setVisible(true);
     }//GEN-LAST:event_RegistrarmeActionPerformed
 
-    private void AtrásActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtrásActionPerformed
-       this.setVisible(false); 
-       MenuUsuarios mu= new MenuUsuarios(pr);
-       mu.setVisible(true);
-    }//GEN-LAST:event_AtrásActionPerformed
+    private void EntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EntrarActionPerformed
+        dni=DNI.getText();
+        if (pr.validarUsuario(dni, Contraseña.getText())) {
+            MenuUsuarios mu = new MenuUsuarios(pr,padre,dni);
+            this.setVisible(false);
+            mu.setVisible(true);
+        }
+        else etiquetaFallo.setVisible(true);
+    }//GEN-LAST:event_EntrarActionPerformed
 
     private void DNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DNIActionPerformed
-    }//GEN-LAST:event_DNIActionPerformed
 
+    }//GEN-LAST:event_DNIActionPerformed
+    
     /**
      * @param args the command line arguments
      */
