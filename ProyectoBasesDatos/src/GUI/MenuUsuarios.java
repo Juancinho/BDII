@@ -26,8 +26,12 @@ public class MenuUsuarios extends javax.swing.JFrame {
      * @param pr
      */
     public MenuUsuarios(proyectobasesdatos.ProyectoBasesDatos pr) {
-          this.pr = pr;
+        this.pr = pr;
         initComponents();
+        jLabel1.setVisible(false);
+        Comprar.setEnabled(false);
+        Cancelar.setEnabled(false);
+        Puntuar.setEnabled(false);
     }
 
 
@@ -37,9 +41,9 @@ public class MenuUsuarios extends javax.swing.JFrame {
           this.padre = padre;
           this.dni=dni;
         initComponents();
+        jLabel2.setVisible(false);
     }
-      
-//
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -49,164 +53,160 @@ public class MenuUsuarios extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jToggleButton1 = new javax.swing.JToggleButton();
-        jButton3 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        comprarReservar = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jLayeredPane1 = new javax.swing.JLayeredPane();
+        Buscar = new javax.swing.JButton();
+        Acceder = new javax.swing.JButton();
+        Comprar = new javax.swing.JButton();
+        Salir = new javax.swing.JButton();
+        Cancelar = new javax.swing.JButton();
         Puntuar = new javax.swing.JButton();
-        atras = new javax.swing.JButton();
-
-        jLabel3 = new javax.swing.JLabel();
-
-        CancelarCompraReserva = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        MenúUsuarios = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jToggleButton1.setBackground(new java.awt.Color(0, 0, 0));
-        jToggleButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/93016694-usuario-icono-de-ilustración-vectorial-sobre-fondo-negro.jpg"))); // NOI18N
-        jToggleButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
+        jLayeredPane1.setLayout(jLayeredPane1Layout);
+        jLayeredPane1Layout.setHorizontalGroup(
+            jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jLayeredPane1Layout.setVerticalGroup(
+            jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        jPanel1.add(jLayeredPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 300, -1, -1));
+
+        Buscar.setActionCommand("Buscar");
+        Buscar.setBorderPainted(false);
+        Buscar.setContentAreaFilled(false);
+        Buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton1ActionPerformed(evt);
+                BuscarActionPerformed(evt);
             }
         });
-        getContentPane().add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 10, -1, -1));
+        jPanel1.add(Buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 110, 30));
 
-        jButton3.setBackground(new java.awt.Color(0, 0, 0));
-        jButton3.setFont(new java.awt.Font("Century Schoolbook L", 1, 14)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/istockphoto-1161362999-170667a_1.jpg"))); // NOI18N
-        jButton3.setToolTipText("");
-        jButton3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jButton3.setMaximumSize(new java.awt.Dimension(131, 131));
-        jButton3.setMinimumSize(new java.awt.Dimension(131, 131));
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        Acceder.setActionCommand("Acceder");
+        Acceder.setBorderPainted(false);
+        Acceder.setContentAreaFilled(false);
+        Acceder.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                AccederActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 20, 60, 50));
+        jPanel1.add(Acceder, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 10, 140, 30));
 
-        jLabel2.setFont(new java.awt.Font("Karumbi", 3, 48)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Gallaecia");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 240, -1));
-
-        comprarReservar.setBackground(new java.awt.Color(0, 0, 0));
-        comprarReservar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/warph1.jpg"))); // NOI18N
-        comprarReservar.addActionListener(new java.awt.event.ActionListener() {
+        Comprar.setActionCommand("Comprar");
+        Comprar.setBorderPainted(false);
+        Comprar.setContentAreaFilled(false);
+        Comprar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comprarReservarActionPerformed(evt);
+                ComprarActionPerformed(evt);
             }
         });
-        getContentPane().add(comprarReservar, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 210, -1, -1));
+        jPanel1.add(Comprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 260, 210, 30));
 
-        Puntuar.setBackground(new java.awt.Color(0, 0, 0));
-        Puntuar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icono-amarillo-calificacion-5-estrellas-sobre-fondo-negro-categoria-vip-puntaje-premium-primera-clase-superior_216606-148.jpg"))); // NOI18N
+        Salir.setActionCommand("Salir");
+        Salir.setBorderPainted(false);
+        Salir.setContentAreaFilled(false);
+        Salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SalirActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(724, 400, 70, 30));
+
+        Cancelar.setActionCommand("Cancelar");
+        Cancelar.setBorderPainted(false);
+        Cancelar.setContentAreaFilled(false);
+        Cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CancelarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 260, 130, 40));
+
+        Puntuar.setActionCommand("Puntuar");
+        Puntuar.setBorderPainted(false);
+        Puntuar.setContentAreaFilled(false);
+        Puntuar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         Puntuar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PuntuarActionPerformed(evt);
             }
         });
-        getContentPane().add(Puntuar, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 210, -1, -1));
+        jPanel1.add(Puntuar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 260, 220, 40));
 
-        atras.setBackground(new java.awt.Color(0, 0, 0));
-        atras.setFont(new java.awt.Font("DejaVu Serif Condensed", 1, 18)); // NOI18N
-        atras.setForeground(new java.awt.Color(255, 255, 255));
-        atras.setText("Atrás");
-        atras.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                atrasActionPerformed(evt);
-            }
-        });
-        getContentPane().add(atras, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 520, 90, 30));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Portada2.jpeg"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 440));
 
-        jLabel3.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Negro-Puro-Web.jpg"))); // NOI18N
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 90));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Portada.jpeg"))); // NOI18N
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 440));
 
+        jButton1.setText("jButton1");
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 10, -1, -1));
 
-        CancelarCompraReserva.setBackground(new java.awt.Color(0, 0, 0));
-        CancelarCompraReserva.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/warph1_1.jpg"))); // NOI18N
-        CancelarCompraReserva.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CancelarCompraReservaActionPerformed(evt);
-            }
-        });
-        getContentPane().add(CancelarCompraReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 210, -1, -1));
-
-        jLabel1.setFont(new java.awt.Font("DejaVu Serif Condensed", 1, 18)); // NOI18N
-        jLabel1.setText("Comprar o Reservar");
-        jLabel1.setToolTipText("");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 460, -1, -1));
-
-        jLabel4.setFont(new java.awt.Font("Khmer OS", 1, 24)); // NOI18N
-        jLabel4.setText("Bienvenido al parque de atracciones:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, -1, -1));
-
-        jLabel5.setFont(new java.awt.Font("DejaVu Serif Condensed", 1, 18)); // NOI18N
-        jLabel5.setText("Cancelar Compras o Reservas");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 460, -1, -1));
-
-        jLabel6.setFont(new java.awt.Font("DejaVu Serif Condensed", 1, 18)); // NOI18N
-        jLabel6.setText("Puntuar Restaurantes");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 460, -1, -1));
-
-        MenúUsuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondo-de-pantalla-verde-liso-3840x2160.-wallpaper-para-escritorio-4k-ultra-hd-verde-liso-1024x576.jpg"))); // NOI18N
-        getContentPane().add(MenúUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1010, 570));
-
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
 
         pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void PuntuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PuntuarActionPerformed
-        PuntuacionRestaurante pr = new PuntuacionRestaurante();
-        this.setVisible(false);
-        pr.setVisible(true);
-        
-    }//GEN-LAST:event_PuntuarActionPerformed
-
-    private void atrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasActionPerformed
-       Inicio init = new Inicio();
-        this.setVisible(false);
-       init.setVisible(true);
-    }//GEN-LAST:event_atrasActionPerformed
-
-    private void comprarReservarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comprarReservarActionPerformed
-        MenuComprasReservas Mcr= new MenuComprasReservas(pr, this, dni);
-        this.setVisible(false);
-        Mcr.setVisible(true);
-    }//GEN-LAST:event_comprarReservarActionPerformed
-
-
-    private void CancelarCompraReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarCompraReservaActionPerformed
-        MenuCancelaciones Mc = new MenuCancelaciones(pr, this, dni);
-        this.setVisible(false);
-        Mc.setVisible(true);
-    }//GEN-LAST:event_CancelarCompraReservaActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-
+    private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
         MenuBusquedas menuBusquedas = new MenuBusquedas(pr,this);
         menuBusquedas.setVisible(true);
-    }                                         
+    }//GEN-LAST:event_BuscarActionPerformed
 
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        AccesoUsuario Mcr= new AccesoUsuario(pr,padre);
+    private void AccederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AccederActionPerformed
+        // TODO add your handling code here:
+        AccesoUsuario ac= new AccesoUsuario(pr,padre);
         this.setVisible(false);
-        Mcr.setVisible(true);
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
+        ac.setVisible(true);
+    }//GEN-LAST:event_AccederActionPerformed
 
+    private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_SalirActionPerformed
+
+    private void ComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComprarActionPerformed
+        // TODO add your handling code here:
+        MenuComprasReservas mcr= new MenuComprasReservas(pr, this, dni);
+        this.setVisible(false);
+        mcr.setVisible(true);
+    }//GEN-LAST:event_ComprarActionPerformed
+
+    private void CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarActionPerformed
+        // TODO add your handling code here:
+        MenuCancelaciones mc = new MenuCancelaciones(pr, this, dni);
+        this.setVisible(false);
+        mc.setVisible(true);
+    }//GEN-LAST:event_CancelarActionPerformed
+
+    private void PuntuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PuntuarActionPerformed
+        // TODO add your handling code here:
+        PuntuacionRestaurante pr = new PuntuacionRestaurante();
+        this.setVisible(false);
+        pr.setVisible(true);
+    }//GEN-LAST:event_PuntuarActionPerformed
+
+    
     /**
      * @param args the command line arguments
      */
@@ -239,24 +239,22 @@ public class MenuUsuarios extends javax.swing.JFrame {
             public void run() {
                 new MenuUsuarios().setVisible(true);
             }
-        });
+        });        
     }
+    
+    
 
-    // Variables declaration - do not modify                     
-    private javax.swing.JButton CancelarCompraReserva;
-    private javax.swing.JLabel MenúUsuarios;
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Acceder;
+    private javax.swing.JButton Buscar;
+    private javax.swing.JButton Cancelar;
+    private javax.swing.JButton Comprar;
     private javax.swing.JButton Puntuar;
-    private javax.swing.JButton atras;
-    private javax.swing.JButton busquedas;
-    private javax.swing.JButton comprarReservar;
-
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton Salir;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JLayeredPane jLayeredPane1;
+    private javax.swing.JPanel jPanel1;
+    // End of variables declaration//GEN-END:variables
 }
-

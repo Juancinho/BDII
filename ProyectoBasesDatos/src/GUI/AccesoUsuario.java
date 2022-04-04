@@ -150,10 +150,9 @@ public class AccesoUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     
     private void EntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EntrarActionPerformed
-
         dni=DNI.getText();
         if (pr.validarUsuario(dni, Contraseña.getText())) {
-            MenuUsuarios mu = new MenuUsuarios();
+            MenuUsuarios mu = new MenuUsuarios(pr,padre,dni);
             this.setVisible(false);
             mu.setVisible(true);
         }    
@@ -168,7 +167,7 @@ public class AccesoUsuario extends javax.swing.JFrame {
 
     private void AtrásActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtrásActionPerformed
        this.setVisible(false); 
-       MenuUsuarios mu= new MenuUsuarios();
+       MenuUsuarios mu= new MenuUsuarios(pr);
        mu.setVisible(true);
     }//GEN-LAST:event_AtrásActionPerformed
 
