@@ -32,89 +32,73 @@ public class MenuBusquedas extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         atraccionesPorAltura = new javax.swing.JButton();
         espectaculoPopular = new javax.swing.JButton();
         datos = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        Lugares = new javax.swing.JButton();
         atras = new javax.swing.JButton();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jLabel2 = new javax.swing.JLabel();
 
         jLabel1.setText("Búsquedas");
 
-        atraccionesPorAltura.setText("Atracciones por Altura");
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        atraccionesPorAltura.setBorderPainted(false);
+        atraccionesPorAltura.setContentAreaFilled(false);
         atraccionesPorAltura.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 atraccionesPorAlturaActionPerformed(evt);
             }
         });
+        jPanel1.add(atraccionesPorAltura, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 160, 230, 80));
 
-        espectaculoPopular.setText("Espectáculo Más Popular por Años");
+        espectaculoPopular.setBorderPainted(false);
+        espectaculoPopular.setContentAreaFilled(false);
         espectaculoPopular.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 espectaculoPopularActionPerformed(evt);
             }
         });
+        jPanel1.add(espectaculoPopular, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 160, 230, 80));
 
-        datos.setText("Consultar Datos");
+        datos.setBorderPainted(false);
+        datos.setContentAreaFilled(false);
         datos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 datosActionPerformed(evt);
             }
         });
+        jPanel1.add(datos, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 270, 230, 70));
 
-        jButton4.setText("Lugares TOP");
+        Lugares.setBorderPainted(false);
+        Lugares.setContentAreaFilled(false);
+        jPanel1.add(Lugares, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 260, 230, 90));
 
-        atras.setText("Atrás");
         atras.setAlignmentY(0.0F);
+        atras.setBorderPainted(false);
+        atras.setContentAreaFilled(false);
         atras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 atrasActionPerformed(evt);
             }
         });
+        jPanel1.add(atras, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 400, 80, 40));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Busquedas.jpeg"))); // NOI18N
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 450));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(112, 112, 112)
-                        .addComponent(atraccionesPorAltura))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(74, 74, 74)
-                        .addComponent(espectaculoPopular))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(134, 134, 134)
-                        .addComponent(datos))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(145, 145, 145)
-                        .addComponent(jButton4))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(163, 163, 163)
-                        .addComponent(atras))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(162, 162, 162)
-                        .addComponent(jLabel1)))
-                .addContainerGap(77, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 807, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(jLabel1)
-                .addGap(32, 32, 32)
-                .addComponent(atraccionesPorAltura)
-                .addGap(18, 18, 18)
-                .addComponent(espectaculoPopular)
-                .addGap(18, 18, 18)
-                .addComponent(datos)
-                .addGap(18, 18, 18)
-                .addComponent(jButton4)
-                .addGap(18, 18, 18)
-                .addComponent(atras)
-                .addContainerGap(38, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 451, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -179,11 +163,13 @@ public class MenuBusquedas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Lugares;
     private javax.swing.JButton atraccionesPorAltura;
     private javax.swing.JButton atras;
     private javax.swing.JButton datos;
     private javax.swing.JButton espectaculoPopular;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
