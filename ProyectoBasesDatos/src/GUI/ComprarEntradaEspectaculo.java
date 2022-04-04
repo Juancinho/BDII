@@ -55,6 +55,11 @@ private proyectobasesdatos.ProyectoBasesDatos pr;
         Entradasespectaculos.setText("Comprar Entrada para Espectáculo");
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(array));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Espectáculo");
 
@@ -146,9 +151,13 @@ private proyectobasesdatos.ProyectoBasesDatos pr;
             MensajeError.setVisible(true);
         } else {
             Calendar cal = Calendar.getInstance();
+            cal.set(Calendar.HOUR_OF_DAY, 0);
+            cal.set(Calendar.MINUTE, 0);
+            cal.set(Calendar.SECOND, 0);
+            cal.set(Calendar.MILLISECOND, 1);
             Date hoy = cal.getTime();
             cal.add(Calendar.YEAR, 1);
-            Date dentroDeUnAnho = cal.getTime();  //MANOTE: Se ha logrado tener la fecha actual y la del año que viene
+            Date dentroDeUnAnho = cal.getTime();  //MANOTE: Se ha logrado tener la fecha del inicio del día de hoy (no se puede comprar antes de ese instante porque ya ha pasado) y la del año que viene
             if (date.after(dentroDeUnAnho) || date.before(hoy)) {
                 JOptionPane.showMessageDialog(rootPane, "Fecha inválida \n Antelación máxima para la compra de un año");
             } else {
@@ -165,6 +174,10 @@ private proyectobasesdatos.ProyectoBasesDatos pr;
             }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+//MANOTE: si se puede que alguien elimine esta función de abajo
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
      * @param args the command line arguments

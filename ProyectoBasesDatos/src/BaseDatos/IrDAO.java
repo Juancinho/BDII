@@ -1,4 +1,3 @@
-
 package BaseDatos;
 
 /**
@@ -9,6 +8,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Date;
+import java.sql.ResultSet;
 
 public class IrDAO {
 
@@ -18,16 +18,44 @@ public class IrDAO {
         this.conexion = conexion;
     }
 
+    public boolean hayEntradaComprada(Date fecha, String dni, String nombreAtraccion) {
+
+        ResultSet rsIr;
+        PreparedStatement stmIr = null;
+        Boolean existe = false;
+
+        try {
+            stmIr = conexion.prepareStatement("SELECT visitante FROM ir WHERE fechavisita = ? AND visitante = ? AND  atraccion = ?");
+            stmIr.setDate(1, fecha);
+            stmIr.setString(2, dni);
+            stmIr.setString(3, nombreAtraccion);
+            rsIr = stmIr.executeQuery();
+            if (rsIr.next()) {   //MANOTE: Este next devuelve un booleano pero también coloca el cursor en la siguiente fila (la primera vez que se le llama en la primera, la segunda en la segunda,...)
+                existe=true;
+            } else {
+                existe=false;
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            try {
+                stmIr.close();
+            } catch (SQLException e) {
+                System.out.println("Imposible cerrar cursores");
+            }
+        }
+        return existe;   //MANOTE: Esto supongo que lo tiene que recoger algo de la interfaz y darle un tratamiento adecuado
+    }
+
     public void comprarEntrada(Date fecha, String vip, String dni, String nombreAtraccion) {  //FU1
 
         PreparedStatement stmIr = null;
 
-        //MANOTE: Falta ccomprobación de que ese DNI ya esté registrado (pendiente de que se implemente la parte de registro/validación usuarios)
         try {
             stmIr = conexion.prepareStatement("INSERT INTO ir (fechavisita,vip, visitante, atraccion) values (?,?,?,?)");
             stmIr.setDate(1, fecha);
             stmIr.setString(2, vip);
-            stmIr.setString(3, dni);            
+            stmIr.setString(3, dni);
             stmIr.setString(4, nombreAtraccion);
             stmIr.executeUpdate();
 
@@ -42,16 +70,17 @@ public class IrDAO {
         } //MANOTE: Al parecer el .close() también cerraría el resultSet en caso de haberlo 
     }
 
-    public void cancelarCompra(String fecha, String dni, String nombreAtraccion) {    //FU1
+    public void cancelarCompra(Date fecha, String dni, String nombreAtraccion) {    //FU1
 
         PreparedStatement stmIr = null;
 
         //MANOTE: De nuevo faltan comprobaciones de que esta compra se pueda cancelar (que no haya pasado el evento)
         try {
-            stmIr = conexion.prepareStatement("DELETE FROM ir WHERE (fechavisita, visitante, atraccion) = ('?','?','?')");
-            stmIr.setString(1, fecha);
+            stmIr = conexion.prepareStatement("DELETE FROM ir WHERE fechavisita = ? AND visitante = ? AND  atraccion = ?");
+            stmIr.setDate(1, fecha);
             stmIr.setString(2, dni);
             stmIr.setString(3, nombreAtraccion);
+            stmIr.executeUpdate();
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
