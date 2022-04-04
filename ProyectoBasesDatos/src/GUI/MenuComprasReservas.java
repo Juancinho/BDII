@@ -35,90 +35,65 @@ public class MenuComprasReservas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        bienvenido = new javax.swing.JLabel();
-
-        Atras = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        ComprarEntradaAtraccion = new javax.swing.JButton();
         ComprarEntradasEspectaculo = new javax.swing.JButton();
         ReservarEnRestaurante = new javax.swing.JButton();
-        ComprarEntradaAtraccion = new javax.swing.JButton();
-
+        Atras = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        bienvenido.setText("Compras y Reservas");
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Atras.setText("Atrás");
-        Atras.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AtrasActionPerformed(evt);
-            }
-        });
-
-        ComprarEntradasEspectaculo.setText("Comprar Entradas Espectáculo");
-        ComprarEntradasEspectaculo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ComprarEntradasEspectaculoActionPerformed(evt);
-            }
-        });
-
-        ReservarEnRestaurante.setText("Reservar en Restaurante");
-        ReservarEnRestaurante.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ReservarEnRestauranteActionPerformed(evt);
-
-            }
-        });
-
-        ComprarEntradaAtraccion.setText("Comprar Entradas Atracción");
+        ComprarEntradaAtraccion.setBorderPainted(false);
+        ComprarEntradaAtraccion.setContentAreaFilled(false);
         ComprarEntradaAtraccion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ComprarEntradaAtraccionActionPerformed(evt);
             }
         });
+        jPanel1.add(ComprarEntradaAtraccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 150, 310, 50));
+
+        ComprarEntradasEspectaculo.setBorderPainted(false);
+        ComprarEntradasEspectaculo.setContentAreaFilled(false);
+        ComprarEntradasEspectaculo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComprarEntradasEspectaculoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(ComprarEntradasEspectaculo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 220, 300, 50));
+
+        ReservarEnRestaurante.setBorderPainted(false);
+        ReservarEnRestaurante.setContentAreaFilled(false);
+        ReservarEnRestaurante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ReservarEnRestauranteActionPerformed(evt);
+            }
+        });
+        jPanel1.add(ReservarEnRestaurante, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 290, 310, 50));
+
+        Atras.setBorderPainted(false);
+        Atras.setContentAreaFilled(false);
+        Atras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AtrasActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Atras, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 390, 80, 40));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Compras.jpeg"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 430));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-
-
-                        .addGap(133, 133, 133)
-                        .addComponent(bienvenido))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(104, 104, 104)
-                        .addComponent(ReservarEnRestaurante)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 87, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ComprarEntradaAtraccion)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(ComprarEntradasEspectaculo)
-                            .addGap(85, 85, 85))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(Atras)
-                            .addGap(161, 161, 161)))))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(bienvenido)
-                .addGap(29, 29, 29)
-
-                .addComponent(ComprarEntradaAtraccion)
-                .addGap(39, 39, 39)
-                .addComponent(ComprarEntradasEspectaculo)
-
-                .addGap(32, 32, 32)
-                .addComponent(ReservarEnRestaurante)
-                .addGap(26, 26, 26)
-                .addComponent(Atras)
-                .addContainerGap(34, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -194,7 +169,7 @@ public class MenuComprasReservas extends javax.swing.JFrame {
     private javax.swing.JButton ComprarEntradaAtraccion;
     private javax.swing.JButton ComprarEntradasEspectaculo;
     private javax.swing.JButton ReservarEnRestaurante;
-    private javax.swing.JLabel bienvenido;
-
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
