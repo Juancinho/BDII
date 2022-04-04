@@ -150,7 +150,6 @@ public class AccesoUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     
     private void EntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EntrarActionPerformed
-
         dni=DNI.getText();
         if (pr.validarUsuario(dni, Contraseña.getText())) {
             MenuUsuarios mu = new MenuUsuarios();
