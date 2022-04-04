@@ -12,6 +12,7 @@ public class MenuBusquedas extends javax.swing.JFrame {
 
     private proyectobasesdatos.ProyectoBasesDatos pr;
     private MenuUsuarios padre;
+    
     public MenuBusquedas() {
         initComponents();
     }

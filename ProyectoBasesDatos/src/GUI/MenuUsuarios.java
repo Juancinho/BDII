@@ -29,22 +29,19 @@ public class MenuUsuarios extends javax.swing.JFrame {
         this.pr = pr;
         initComponents();
         jLabel1.setVisible(false);
-        Comprar.setVisible(false);
-        Cancelar.setVisible(false);
-        Puntuar.setVisible(false);
+        Comprar.setEnabled(false);
+        Cancelar.setEnabled(false);
+        Puntuar.setEnabled(false);
     }
 
 
       
       public MenuUsuarios(proyectobasesdatos.ProyectoBasesDatos pr, MenuUsuarios padre, String dni) {
-        this.pr = pr;
-        this.padre = padre;
-        this.dni=dni;
+          this.pr = pr;
+          this.padre = padre;
+          this.dni=dni;
         initComponents();
-        //jLabel1.setVisible(false);
-        Comprar.setEnabled(false);
-        Cancelar.setEnabled(false);
-        Puntuar.setEnabled(false);
+        jLabel2.setVisible(false);
     }
 
     /**
@@ -57,25 +54,20 @@ public class MenuUsuarios extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jLayeredPane1 = new javax.swing.JLayeredPane();
-        Salir = new javax.swing.JButton();
         Buscar = new javax.swing.JButton();
         Acceder = new javax.swing.JButton();
         Comprar = new javax.swing.JButton();
+        Salir = new javax.swing.JButton();
         Cancelar = new javax.swing.JButton();
         Puntuar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Portada2.jpeg"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 440));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Portada.jpeg"))); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 440));
 
         javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
         jLayeredPane1.setLayout(jLayeredPane1Layout);
@@ -89,16 +81,6 @@ public class MenuUsuarios extends javax.swing.JFrame {
         );
 
         jPanel1.add(jLayeredPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 300, -1, -1));
-
-        Salir.setActionCommand("Salir");
-        Salir.setBorderPainted(false);
-        Salir.setContentAreaFilled(false);
-        Salir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SalirActionPerformed(evt);
-            }
-        });
-        jPanel1.add(Salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(724, 400, 70, 30));
 
         Buscar.setActionCommand("Buscar");
         Buscar.setBorderPainted(false);
@@ -128,7 +110,17 @@ public class MenuUsuarios extends javax.swing.JFrame {
                 ComprarActionPerformed(evt);
             }
         });
-        jPanel1.add(Comprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 250, 210, 50));
+        jPanel1.add(Comprar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 260, 210, 30));
+
+        Salir.setActionCommand("Salir");
+        Salir.setBorderPainted(false);
+        Salir.setContentAreaFilled(false);
+        Salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SalirActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(724, 400, 70, 30));
 
         Cancelar.setActionCommand("Cancelar");
         Cancelar.setBorderPainted(false);
@@ -138,7 +130,7 @@ public class MenuUsuarios extends javax.swing.JFrame {
                 CancelarActionPerformed(evt);
             }
         });
-        jPanel1.add(Cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 250, 130, 50));
+        jPanel1.add(Cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 260, 130, 40));
 
         Puntuar.setActionCommand("Puntuar");
         Puntuar.setBorderPainted(false);
@@ -149,7 +141,16 @@ public class MenuUsuarios extends javax.swing.JFrame {
                 PuntuarActionPerformed(evt);
             }
         });
-        jPanel1.add(Puntuar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 250, 230, 50));
+        jPanel1.add(Puntuar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 260, 220, 40));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Portada2.jpeg"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 440));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Portada.jpeg"))); // NOI18N
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 440));
+
+        jButton1.setText("jButton1");
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 10, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -159,9 +160,7 @@ public class MenuUsuarios extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -173,6 +172,18 @@ public class MenuUsuarios extends javax.swing.JFrame {
         MenuBusquedas menuBusquedas = new MenuBusquedas(pr,this);
         menuBusquedas.setVisible(true);
     }//GEN-LAST:event_BuscarActionPerformed
+
+    private void AccederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AccederActionPerformed
+        // TODO add your handling code here:
+        AccesoUsuario ac= new AccesoUsuario(pr,padre);
+        this.setVisible(false);
+        ac.setVisible(true);
+    }//GEN-LAST:event_AccederActionPerformed
+
+    private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_SalirActionPerformed
 
     private void ComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComprarActionPerformed
         // TODO add your handling code here:
@@ -194,18 +205,6 @@ public class MenuUsuarios extends javax.swing.JFrame {
         this.setVisible(false);
         pr.setVisible(true);
     }//GEN-LAST:event_PuntuarActionPerformed
-
-    private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
-        // TODO add your handling code here:
-        System.exit(0);
-    }//GEN-LAST:event_SalirActionPerformed
-
-    private void AccederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AccederActionPerformed
-        // TODO add your handling code here:
-        AccesoUsuario ac= new AccesoUsuario(pr,padre);
-        this.setVisible(false);
-        ac.setVisible(true);
-    }//GEN-LAST:event_AccederActionPerformed
 
     
     /**
@@ -238,7 +237,7 @@ public class MenuUsuarios extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MenuUsuarios().setVisible(true);    
+                new MenuUsuarios().setVisible(true);
             }
         });        
     }
@@ -252,6 +251,7 @@ public class MenuUsuarios extends javax.swing.JFrame {
     private javax.swing.JButton Comprar;
     private javax.swing.JButton Puntuar;
     private javax.swing.JButton Salir;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLayeredPane jLayeredPane1;
