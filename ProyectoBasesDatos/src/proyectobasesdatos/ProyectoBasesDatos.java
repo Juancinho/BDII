@@ -12,6 +12,8 @@ import BaseDatos.EspectaculosDAO;
 import BaseDatos.HosteleriaDAO;
 import BaseDatos.IrDAO;
 import java.sql.*;
+import javax.swing.UIManager;
+import com.formdev.flatlaf.FlatLightLaf;
 
 /**
  *
@@ -30,6 +32,9 @@ public class ProyectoBasesDatos {
     private ComerDAO comerDAO;
 
     public ProyectoBasesDatos() throws SQLException {
+        
+        
+        
         fgui = new GUI.FachadaGui(this);//Inicializar la fachada GUI enlazandola con este "main" de la aplicacion
 
         try {
@@ -87,6 +92,16 @@ public class ProyectoBasesDatos {
     }
 
     public static void main(String[] args) throws SQLException {
+        
+        try{
+            UIManager.setLookAndFeel(new FlatLightLaf());
+            
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        
+        
+    
         proyectobasesdatos.ProyectoBasesDatos fa = new ProyectoBasesDatos();
         fa.fgui.iniciaVista();
     }
