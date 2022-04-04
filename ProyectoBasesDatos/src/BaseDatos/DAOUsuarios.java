@@ -2,81 +2,88 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package BaseDatos;
+
 import BaseDatos.AbstractDAO;
 import proyectobasesdatos.Usuario;
 import proyectobasesdatos.TipoUsuario;
 import java.sql.*;
+
 /**
  *
  * @author basesdatos
  */
 public class DAOUsuarios extends AbstractDAO {
+
     private java.sql.Connection conexion;
-/*
+
+    /*
    public DAOUsuarios (Connection conexion, aplicacion.FachadaAplicacion fa){
         super.setConexion(conexion);
         super.setFachadaAplicacion(fa);
     }
-*/
-   
-   public DAOUsuarios (Connection conexion){
-        this.conexion = conexion;
-     }  
+     */
 
-    public boolean validarUsuario(String idUsuario, String clave){
-        boolean resultado=false;
+    public DAOUsuarios(Connection conexion) {
+        this.conexion = conexion;
+    }
+
+    public boolean validarUsuario(String idUsuario, String clave) {
+        boolean resultado = false;
         Connection con;
-        PreparedStatement stmUsuario=null;
+        PreparedStatement stmUsuario = null;
         ResultSet rsUsuario;
 
-        con=conexion;
+        con = conexion;
 
         try {
-        stmUsuario=con.prepareStatement("select dni, clave, tipo_usuario "+
-                                        "from usuario "+
-                                        "where dni = ? and clave = ?");
-        stmUsuario.setString(1, idUsuario);
-        stmUsuario.setString(2, clave);
-        rsUsuario=stmUsuario.executeQuery();
-        if (rsUsuario.next())
-            return true;
-        } catch (SQLException e){
-          System.out.println(e.getMessage());
-        }finally{
-          try {stmUsuario.close();} catch (SQLException e){System.out.println("Imposible cerrar cursores");}
+            stmUsuario = con.prepareStatement("select dni, clave, tipo_usuario "
+                    + "from usuario "
+                    + "where dni = ? and clave = ?");
+            stmUsuario.setString(1, idUsuario);
+            stmUsuario.setString(2, clave);
+            rsUsuario = stmUsuario.executeQuery();
+            if (rsUsuario.next()) {
+                return true;
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            try {
+                stmUsuario.close();
+            } catch (SQLException e) {
+                System.out.println("Imposible cerrar cursores");
+            }
         }
         return resultado;
     }
-    
-    public void registrarUsuario(String DNI, String Nombre, String Nacionalidad, String correo, String contraseña, String telefono, String fecha) throws SQLException{
-        
+
+    public void registrarUsuario(String DNI, String Nombre, String Nacionalidad, String correo, String contraseña, String telefono, java.sql.Date fecha) throws SQLException {
+
         Connection con;
         PreparedStatement stmUsuario = null;
         PreparedStatement stmUsuario1 = null;
         con = conexion;
-        
-        stmUsuario = con.prepareStatement("INSERT INTO visitantes(DNI, Nombre, Nacionalidad, correoelectronico, telefono)" +
-                "VALUES (?, ?, ?, ?, ?)");
-        
+
+        stmUsuario = con.prepareStatement("INSERT INTO visitantes(DNI, Nombre, Nacionalidad, correoelectronico, telefono, fechanacimiento)"
+                + "VALUES (?, ?, ?, ?, ?, ?)");
+
         stmUsuario.setString(1, DNI);
         stmUsuario.setString(2, Nombre);
         stmUsuario.setString(3, Nacionalidad);
         stmUsuario.setString(4, correo);
         stmUsuario.setString(5, telefono);
-        //stmUsuario.setString(6, fecha);
+        stmUsuario.setDate(6, fecha);
         stmUsuario.executeUpdate();
-        
-        stmUsuario1 = con.prepareStatement("INSERT INTO usuario(DNI, clave, tipo_usuario)" +
-                "VALUES (?, ?, ?)");
-        
+
+        stmUsuario1 = con.prepareStatement("INSERT INTO usuario(DNI, clave, tipo_usuario)"
+                + "VALUES (?, ?, ?)");
+
         stmUsuario1.setString(1, DNI);
         stmUsuario1.setString(2, contraseña);
         stmUsuario1.setString(3, "Normal");
         stmUsuario1.executeUpdate();
-        
-        
+
     }
-   
+
 }
