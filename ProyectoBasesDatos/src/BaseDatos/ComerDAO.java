@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.sql.Date;
+import java.sql.ResultSet;
 
 /**
  *
@@ -19,6 +20,35 @@ public class ComerDAO {
         this.conexion = conexion;
     }
 
+    public boolean hayReservaHecha(Date fecha, String dni, String nombreRestaurante) {
+
+        ResultSet rsComer;
+        PreparedStatement stmComer = null;
+        Boolean existe = false;
+
+        try {
+            stmComer = conexion.prepareStatement("SELECT visitante FROM comer WHERE fecha = ? AND visitante = ? AND  establecimiento = ?");
+            stmComer.setDate(1, fecha);
+            stmComer.setString(2, dni);
+            stmComer.setString(3, nombreRestaurante);
+            rsComer = stmComer.executeQuery();
+            if (rsComer.next()) {   //MANOTE: Este next devuelve un booleano pero también coloca el cursor en la siguiente fila (la primera vez que se le llama en la primera, la segunda en la segunda,...)
+                existe=true;
+            } else {
+                existe=false;
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            try {
+                stmComer.close();
+            } catch (SQLException e) {
+                System.out.println("Imposible cerrar cursores");
+            }
+        }
+        return existe;   //MANOTE: Esto supongo que lo tiene que recoger algo de la interfaz y darle un tratamiento adecuado
+    }
+    
     public void reservar(java.sql.Date fecha, String dni, String nombreEstablecimiento) {   //FU1
         PreparedStatement stmComer = null;
 
@@ -53,7 +83,7 @@ public class ComerDAO {
 
         //MANOTE: De nuevo faltan comprobaciones de que esta compra se pueda cancelar (que no haya pasado el evento)
         try {
-            stmComer = conexion.prepareStatement("DELETE FROM comer WHERE (fecha, dni, nombreEstablecimiento) = ('?','?','?')");
+            stmComer = conexion.prepareStatement("DELETE FROM comer WHERE fecha = ? AND visitante = ? AND  establecimiento = ?");
             stmComer.setDate(1, fecha);
             stmComer.setString(2, dni);
             stmComer.setString(3, nombreEstablecimiento);

@@ -60,7 +60,7 @@ public class CancelarEntradaEspectaculo extends javax.swing.JFrame {
         jLabel4.setText("Fecha");
         jLabel4.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
-        CancelarEntrada.setText("Cancelar");
+        CancelarEntrada.setText("Cancelar compra");
         CancelarEntrada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CancelarEntradaActionPerformed(evt);
@@ -85,11 +85,11 @@ public class CancelarEntradaEspectaculo extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(66, 66, 66)
-                .addComponent(CancelarEntrada)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 132, Short.MAX_VALUE)
+                .addGap(59, 59, 59)
                 .addComponent(Atras)
-                .addGap(65, 65, 65))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(CancelarEntrada)
+                .addGap(70, 70, 70))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel1)
@@ -108,7 +108,7 @@ public class CancelarEntradaEspectaculo extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(15, 15, 15)
                         .addComponent(MensajeError)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
