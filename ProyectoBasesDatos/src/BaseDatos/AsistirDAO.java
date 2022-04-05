@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Date;
+import java.sql.ResultSet;
 
 /**
  *
@@ -16,6 +17,35 @@ public class AsistirDAO {
 
     public AsistirDAO(Connection conexion) { //MANOTE: Para quien se encargue de la interfaz, aquí quizás falta una fachada
         this.conexion = conexion;
+    }
+    
+    public boolean hayEntradaComprada(Date fecha, String dni, String nombreEspectaculo) {
+
+        ResultSet rsAsistir;
+        PreparedStatement stmAsistir = null;
+        Boolean existe = false;
+
+        try {
+            stmAsistir = conexion.prepareStatement("SELECT visitante FROM asistir WHERE fecha = ? AND visitante = ? AND  espectaculo = ?");
+            stmAsistir.setDate(1, fecha);
+            stmAsistir.setString(2, dni);
+            stmAsistir.setString(3, nombreEspectaculo);
+            rsAsistir = stmAsistir.executeQuery();
+            if (rsAsistir.next()) {   //MANOTE: Este next devuelve un booleano pero también coloca el cursor en la siguiente fila (la primera vez que se le llama en la primera, la segunda en la segunda,...)
+                existe=true;
+            } else {
+                existe=false;
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            try {
+                stmAsistir.close();
+            } catch (SQLException e) {
+                System.out.println("Imposible cerrar cursores");
+            }
+        }
+        return existe;   //MANOTE: Esto supongo que lo tiene que recoger algo de la interfaz y darle un tratamiento adecuado
     }
 
     public void comprarEntrada(java.sql.Date fecha, String dni, String nombreEspectaculo) {  //FU1
@@ -48,7 +78,7 @@ public class AsistirDAO {
 
         //MANOTE: De nuevo faltan comprobaciones de que esta compra se pueda cancelar (que no haya pasado el evento)
         try {
-            stmAsistir = conexion.prepareStatement("DELETE FROM asistir WHERE (fecha, dni, nombreEspectaculo) = ('?','?','?')");
+            stmAsistir = conexion.prepareStatement("DELETE FROM asistir WHERE fecha = ? AND visitante = ? AND  espectaculo = ?");
             stmAsistir.setDate(1, fecha);
             stmAsistir.setString(2, dni);
             stmAsistir.setString(3, nombreEspectaculo);
