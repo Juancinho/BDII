@@ -16,7 +16,7 @@ public class MenuUsuarios extends javax.swing.JFrame {
 
     private proyectobasesdatos.ProyectoBasesDatos pr;
     private String dni;
-    private Inicio padre;
+   // private Inicio padre;
     
     /**
      *
@@ -40,10 +40,11 @@ public class MenuUsuarios extends javax.swing.JFrame {
 
 
       
-    public MenuUsuarios(proyectobasesdatos.ProyectoBasesDatos pr, Inicio padre, String dni) {
-        this.pr = pr;
-        this.padre = padre;
-        this.dni=dni;
+
+      public MenuUsuarios(proyectobasesdatos.ProyectoBasesDatos pr, String dni) {
+          this.pr = pr;
+          this.dni=dni;
+
         initComponents();
         jLabel2.setVisible(false);
     }
@@ -180,7 +181,7 @@ public class MenuUsuarios extends javax.swing.JFrame {
     private void AccederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AccederActionPerformed
         // TODO add your handling code here:
         if(dni==null){
-            AccesoUsuario ac= new AccesoUsuario(pr,padre);
+            AccesoUsuario ac= new AccesoUsuario(pr,this);
             this.setVisible(false);
             ac.setVisible(true);
         }
@@ -216,9 +217,9 @@ public class MenuUsuarios extends javax.swing.JFrame {
 
     private void PuntuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PuntuarActionPerformed
         // TODO add your handling code here:
-        PuntuacionRestaurante pr = new PuntuacionRestaurante();
+        PuntuacionRestaurante pres = new PuntuacionRestaurante(pr,this);
         this.setVisible(false);
-        pr.setVisible(true);
+        pres.setVisible(true);
     }//GEN-LAST:event_PuntuarActionPerformed
 
     

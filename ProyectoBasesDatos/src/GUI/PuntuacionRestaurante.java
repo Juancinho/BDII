@@ -10,10 +10,16 @@ package GUI;
  */
 public class PuntuacionRestaurante extends javax.swing.JFrame {
 
-    /**
-     * Creates new form PuntuacionRestaurante
-     */
-    public PuntuacionRestaurante() {
+    private proyectobasesdatos.ProyectoBasesDatos pr;
+    private MenuUsuarios padre;
+
+     public PuntuacionRestaurante() {
+        
+        initComponents();
+    }
+    public PuntuacionRestaurante(proyectobasesdatos.ProyectoBasesDatos pr, MenuUsuarios padre) {
+        this.pr = pr;
+        this.padre = padre;
         initComponents();
     }
 
@@ -131,9 +137,9 @@ public class PuntuacionRestaurante extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       MenuUsuarios mu = new MenuUsuarios();
-       this.setVisible(false);
-       mu.setVisible(true);
+
+        this.setVisible(false);
+        padre.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
