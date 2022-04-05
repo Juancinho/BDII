@@ -315,8 +315,9 @@ public class RegistroUsuarios extends javax.swing.JFrame {
             }
             if (error == 0) {
                 try {
+                    dni=DNI.getText();
                     java.sql.Date sqlDate = new java.sql.Date(date.getTime());
-                    pr.getDaoUsuarios().registrarUsuario(DNI.getText(), nameapellidos.getText(), nacionalidad.getText(), correoelectro.getText(), contraseña.getText(), telefono.getText(), sqlDate);
+                    pr.getDaoUsuarios().registrarUsuario(dni, nameapellidos.getText(), nacionalidad.getText(), correoelectro.getText(), contraseña.getText(), telefono.getText(), sqlDate);
                     this.setVisible(false);
                     MenuUsuarios nm = new MenuUsuarios(pr,dni);
                     nm.setVisible(true);
