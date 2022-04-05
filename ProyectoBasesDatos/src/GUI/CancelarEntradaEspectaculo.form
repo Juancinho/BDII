@@ -142,6 +142,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Debe cubrir todos los campos para poder cancelar la compra"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="MensajeError.setVisible(false);"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

@@ -76,6 +76,7 @@ public class CancelarEntradaEspectaculo extends javax.swing.JFrame {
 
         MensajeError.setVisible(false);
 
+        MensajeError.setVisible(false);
         MensajeError.setForeground(new java.awt.Color(255, 0, 0));
         MensajeError.setText("Debe cubrir todos los campos para poder cancelar la compra");
 
