@@ -57,7 +57,7 @@ public class ComerDAO {
         //MANOTE: FALTA CONTROLAR QUE EL ARRAYLIST DE DNIS (gente que va a comer procedente de esta reserva) ESTÁN REGISTRADOS/NO ESTÁN REPETIDOS/NO SON NULOS
         try {  //MANOTE: No es muy ortodoxo este try exterior al bucle, pero no se puede poner un finally fuera de un bucle donde está en catch. No sé si funcionará esto :'(
                 try {
-                    stmComer = conexion.prepareStatement("INSERT INTO comer ('fecha', 'visitante', 'establecimiento') values (?,?,?)");  //MANOTE: No sé mucho cómo meter lo del NULL aquí, quizás así funcione al estar puntuacion de cuarto en la tabla
+                    stmComer = conexion.prepareStatement("INSERT INTO comer (fecha, visitante, establecimiento) values (?,?,?)");  //MANOTE: No sé mucho cómo meter lo del NULL aquí, quizás así funcione al estar puntuacion de cuarto en la tabla
                     stmComer.setDate(1, fecha);
                     stmComer.setString(2, dni);
                     stmComer.setString(3, nombreEstablecimiento);
