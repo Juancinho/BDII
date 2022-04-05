@@ -40,9 +40,11 @@ public class MenuUsuarios extends javax.swing.JFrame {
 
 
       
+
       public MenuUsuarios(proyectobasesdatos.ProyectoBasesDatos pr, String dni) {
           this.pr = pr;
           this.dni=dni;
+
         initComponents();
         jLabel2.setVisible(false);
     }
