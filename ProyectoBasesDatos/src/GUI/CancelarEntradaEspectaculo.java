@@ -23,12 +23,10 @@ public class CancelarEntradaEspectaculo extends javax.swing.JFrame {
         this.padre = padre;
         this.dni = dni;
         initComponents();
-        MensajeError.setVisible(false);
     }
     
     public CancelarEntradaEspectaculo() {
         initComponents();
-        MensajeError.setVisible(false);
     }
 
     /**
@@ -76,6 +74,8 @@ public class CancelarEntradaEspectaculo extends javax.swing.JFrame {
             }
         });
 
+        MensajeError.setVisible(false);
+
         MensajeError.setForeground(new java.awt.Color(255, 0, 0));
         MensajeError.setText("Debe cubrir todos los campos para poder cancelar la compra");
 
@@ -86,7 +86,7 @@ public class CancelarEntradaEspectaculo extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(66, 66, 66)
                 .addComponent(CancelarEntrada)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 132, Short.MAX_VALUE)
                 .addComponent(Atras)
                 .addGap(65, 65, 65))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -105,7 +105,7 @@ public class CancelarEntradaEspectaculo extends javax.swing.JFrame {
                             .addComponent(jComboBoxEspectaculos, 0, 212, Short.MAX_VALUE)
                             .addComponent(jDateChooser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
+                        .addGap(15, 15, 15)
                         .addComponent(MensajeError)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
