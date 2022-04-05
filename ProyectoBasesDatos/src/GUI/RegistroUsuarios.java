@@ -15,7 +15,7 @@ import java.util.logging.Logger;
  */
 public class RegistroUsuarios extends javax.swing.JFrame {
 
-    private Inicio padre;
+    private MenuUsuarios padre;
     private proyectobasesdatos.ProyectoBasesDatos pr;
     private String dni;
 
@@ -29,7 +29,7 @@ public class RegistroUsuarios extends javax.swing.JFrame {
 
     }
 
-    public RegistroUsuarios(proyectobasesdatos.ProyectoBasesDatos pr, Inicio padre, String dni) {
+    public RegistroUsuarios(proyectobasesdatos.ProyectoBasesDatos pr, MenuUsuarios padre, String dni) {
         this.pr = pr;
         this.padre = padre;
         this.dni = dni;
@@ -277,7 +277,7 @@ public class RegistroUsuarios extends javax.swing.JFrame {
 
     private void AtrásActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtrásActionPerformed
 
-        AccesoUsuario in = new AccesoUsuario();
+        AccesoUsuario in = new AccesoUsuario(pr,padre);
         this.setVisible(false);
         in.setVisible(true);
 
@@ -318,7 +318,7 @@ public class RegistroUsuarios extends javax.swing.JFrame {
                     java.sql.Date sqlDate = new java.sql.Date(date.getTime());
                     pr.getDaoUsuarios().registrarUsuario(DNI.getText(), nameapellidos.getText(), nacionalidad.getText(), correoelectro.getText(), contraseña.getText(), telefono.getText(), sqlDate);
                     this.setVisible(false);
-                    MenuUsuarios nm = new MenuUsuarios(pr, padre, dni);
+                    MenuUsuarios nm = new MenuUsuarios(pr,dni);
                     nm.setVisible(true);
                 } catch (SQLException ex) {
                     Logger.getLogger(RegistroUsuarios.class.getName()).log(Level.SEVERE, null, ex);

@@ -13,14 +13,14 @@ public class AccesoUsuario extends javax.swing.JFrame {
     private proyectobasesdatos.ProyectoBasesDatos pr;
     private String dni;
 
-    private Inicio padre;
+    private MenuUsuarios padre;
     
     public AccesoUsuario() {
         initComponents();
         etiquetaFallo.setVisible(false);
     }
 
-     public AccesoUsuario(proyectobasesdatos.ProyectoBasesDatos pr, Inicio padre) {
+     public AccesoUsuario(proyectobasesdatos.ProyectoBasesDatos pr, MenuUsuarios padre) {
 
         this.pr = pr;
         this.padre = padre;
@@ -165,7 +165,7 @@ public class AccesoUsuario extends javax.swing.JFrame {
     private void EntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EntrarActionPerformed
         dni=DNI.getText();
         if (pr.validarUsuario(dni, Contraseña.getText())) {
-            MenuUsuarios mu = new MenuUsuarios(pr,padre,dni);
+            MenuUsuarios mu = new MenuUsuarios(pr,dni);
             this.setVisible(false);
             mu.setVisible(true);
         }
