@@ -40,10 +40,10 @@ public class MenuUsuarios extends javax.swing.JFrame {
 
 
       
-      public MenuUsuarios(proyectobasesdatos.ProyectoBasesDatos pr, Inicio padre, String dni) {
-          this.pr = pr;
-          this.padre = padre;
-          this.dni=dni;
+    public MenuUsuarios(proyectobasesdatos.ProyectoBasesDatos pr, Inicio padre, String dni) {
+        this.pr = pr;
+        this.padre = padre;
+        this.dni=dni;
         initComponents();
         jLabel2.setVisible(false);
     }

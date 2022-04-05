@@ -106,7 +106,6 @@ public class MenuBusquedas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void atrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasActionPerformed
-        
         this.setVisible(false);
         padre.setVisible(true);
     }//GEN-LAST:event_atrasActionPerformed
