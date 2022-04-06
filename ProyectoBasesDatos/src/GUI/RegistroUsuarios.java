@@ -82,6 +82,7 @@ public class RegistroUsuarios extends javax.swing.JFrame {
         repetirContra = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         Registro.setText("Registro");
 

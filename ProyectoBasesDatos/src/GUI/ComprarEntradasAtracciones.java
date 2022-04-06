@@ -55,6 +55,7 @@ public class ComprarEntradasAtracciones extends javax.swing.JFrame {
         MensajeError = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jComboBoxAtracciones.setModel(new javax.swing.DefaultComboBoxModel<>(array));
 
@@ -158,6 +159,7 @@ public class ComprarEntradasAtracciones extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void AtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtrasActionPerformed

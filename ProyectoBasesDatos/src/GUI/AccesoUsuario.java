@@ -48,6 +48,7 @@ public class AccesoUsuario extends javax.swing.JFrame {
         Contraseña = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jLabel1.setText("Acceso Usuarios");
 

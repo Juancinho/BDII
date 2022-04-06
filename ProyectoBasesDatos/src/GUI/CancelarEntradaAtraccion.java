@@ -48,6 +48,7 @@ public class CancelarEntradaAtraccion extends javax.swing.JFrame {
         MensajeError = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jLabel1.setText("Cancelar Entrada Atracción");
 
@@ -93,8 +94,7 @@ public class CancelarEntradaAtraccion extends javax.swing.JFrame {
                             .addGap(64, 64, 64)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jComboBoxAtracciones, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(33, 33, 33))
+                                .addComponent(jComboBoxAtracciones, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(layout.createSequentialGroup()
                             .addGap(18, 18, 18)
                             .addComponent(MensajeError)))
