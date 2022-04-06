@@ -111,20 +111,19 @@
             <Component class="javax.swing.JComboBox" name="comboAtracciones">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="13">
-                    <StringItem index="0" value=""/>
-                    <StringItem index="1" value="TODAS"/>
-                    <StringItem index="2" value="VivaVigo"/>
-                    <StringItem index="3" value="Drakkar"/>
-                    <StringItem index="4" value="Agroterro"/>
-                    <StringItem index="5" value="O percebeiro"/>
-                    <StringItem index="6" value="Cuncas de queimada"/>
-                    <StringItem index="7" value="Fodechincho"/>
-                    <StringItem index="8" value="Horta encantada"/>
-                    <StringItem index="9" value="Carrusel"/>
-                    <StringItem index="10" value="Planadoras"/>
-                    <StringItem index="11" value="Meigas"/>
-                    <StringItem index="12" value="O segredo dos Celtas"/>
+                  <StringArray count="12">
+                    <StringItem index="0" value="TODAS"/>
+                    <StringItem index="1" value="VivaVigo"/>
+                    <StringItem index="2" value="Drakkar"/>
+                    <StringItem index="3" value="Agroterro"/>
+                    <StringItem index="4" value="O percebeiro"/>
+                    <StringItem index="5" value="Cuncas de queimada"/>
+                    <StringItem index="6" value="Fodechincho"/>
+                    <StringItem index="7" value="Horta encantada"/>
+                    <StringItem index="8" value="Carrusel"/>
+                    <StringItem index="9" value="Planadoras"/>
+                    <StringItem index="10" value="Meigas"/>
+                    <StringItem index="11" value="O segredo dos Celtas"/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -293,14 +292,14 @@
                       <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="textoRestaurante" min="-2" pref="343" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="145" max="32767" attributes="0"/>
                       <Component id="buscarRestaurante" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="114" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="16" max="32767" attributes="0"/>
-                      <Component id="jScrollPane3" min="-2" pref="766" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="jScrollPane3" min="-2" pref="781" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
