@@ -49,6 +49,7 @@ public class CancelarEntradaEspectaculo extends javax.swing.JFrame {
         MensajeError = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jLabel1.setText("Cancelar Entrada Espectáculo");
 

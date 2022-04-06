@@ -42,6 +42,7 @@ public class EspectaculomasPopularAño extends javax.swing.JFrame {
         tablaEspectaculo = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jLabel1.setText("Espectáculo Más Popular por Año");
 

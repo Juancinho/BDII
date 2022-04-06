@@ -51,6 +51,7 @@ private proyectobasesdatos.ProyectoBasesDatos pr;
         MensajeError = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         Entradasespectaculos.setText("Comprar Entrada para Espectáculo");
 

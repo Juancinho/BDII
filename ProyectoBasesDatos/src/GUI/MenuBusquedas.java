@@ -43,6 +43,7 @@ public class MenuBusquedas extends javax.swing.JFrame {
         jLabel1.setText("Búsquedas");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 

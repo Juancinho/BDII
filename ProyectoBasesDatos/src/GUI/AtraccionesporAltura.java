@@ -42,6 +42,7 @@ public class AtraccionesporAltura extends javax.swing.JFrame {
         tablaAtracciones = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jLabel1.setText("Atracciones por Altura");
 
