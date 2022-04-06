@@ -65,7 +65,7 @@ public class MenuConsultarDatos extends javax.swing.JFrame {
 
         jLabel2.setText("Atracción:");
 
-        comboAtracciones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "TODAS", "VivaVigo", "Drakkar", "Agroterro", "O percebeiro", "Cuncas de queimada", "Fodechincho", "Horta encantada", "Carrusel", "Planadoras", "Meigas", "O segredo dos Celtas" }));
+        comboAtracciones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "TODAS", "VivaVigo", "Drakkar", "Agroterro", "O percebeiro", "Cuncas de queimada", "Fodechincho", "Horta encantada", "Carrusel", "Planadoras", "Meigas", "O segredo dos Celtas" }));
         comboAtracciones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboAtraccionesActionPerformed(evt);
@@ -204,13 +204,13 @@ public class MenuConsultarDatos extends javax.swing.JFrame {
                 .addComponent(jLabel4)
                 .addGap(18, 18, 18)
                 .addComponent(textoRestaurante, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 145, Short.MAX_VALUE)
                 .addComponent(buscarRestaurante)
                 .addGap(114, 114, 114))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(16, Short.MAX_VALUE)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 766, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 781, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
