@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
  */
 public class ComprarEntradaEspectaculo extends javax.swing.JFrame {
     
-private proyectobasesdatos.ProyectoBasesDatos pr;
+    private proyectobasesdatos.ProyectoBasesDatos pr;
     private MenuComprasReservas padre;
     String dni;
     
