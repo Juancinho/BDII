@@ -59,6 +59,7 @@ public class MenuUsuarios extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLayeredPane1 = new javax.swing.JLayeredPane();
+        jButton3 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         Buscar = new javax.swing.JButton();
         Acceder = new javax.swing.JButton();
@@ -87,6 +88,14 @@ public class MenuUsuarios extends javax.swing.JFrame {
         );
 
         jPanel1.add(jLayeredPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 300, -1, -1));
+
+        jButton3.setText("jButton3");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 20, -1, -1));
 
         jButton2.setText("jButton2");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -238,6 +247,12 @@ public class MenuUsuarios extends javax.swing.JFrame {
        e.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+       this.setVisible(false);
+       DespedirEmpleados de = new DespedirEmpleados(pr);
+       de.setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
     
     /**
      * @param args the command line arguments
@@ -285,6 +300,7 @@ public class MenuUsuarios extends javax.swing.JFrame {
     private javax.swing.JButton Salir;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLayeredPane jLayeredPane1;

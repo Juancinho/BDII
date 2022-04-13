@@ -9,6 +9,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -29,6 +30,7 @@ public class AnhadirEmpleados extends javax.swing.JFrame {
         initComponents();
         jComboBoxAtraccion.setEnabled(false);
         jComboBoxEspectaculo.setEnabled(false);
+        jComboBoxRestaurante.setEnabled(false);
     }
 
     /**
@@ -47,7 +49,6 @@ public class AnhadirEmpleados extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         direccion = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        telefono = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         fechaNacimiento = new com.toedter.calendar.JDateChooser();
         jLabel6 = new javax.swing.JLabel();
@@ -58,12 +59,13 @@ public class AnhadirEmpleados extends javax.swing.JFrame {
         jComboBoxEspectaculo = new javax.swing.JComboBox<>();
         trabajadorAtra = new javax.swing.JRadioButton();
         trabajadorEsp = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
+        Hostelero = new javax.swing.JRadioButton();
         anhadir = new javax.swing.JButton();
         atras = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         String[] array3 = pr.getHosteleriaDAO().establecimientosActivos().toArray(new String[pr.getHosteleriaDAO().establecimientosActivos().size()]);
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBoxRestaurante = new javax.swing.JComboBox<>();
+        telefono = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -76,12 +78,6 @@ public class AnhadirEmpleados extends javax.swing.JFrame {
         jLabel3.setText("Dirección:");
 
         jLabel4.setText("Teléfono:");
-
-        telefono.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                telefonoActionPerformed(evt);
-            }
-        });
 
         jLabel5.setText("Fecha de Nacimiento:");
 
@@ -107,11 +103,11 @@ public class AnhadirEmpleados extends javax.swing.JFrame {
             }
         });
 
-        jRadioButton3.setText("Hostelero");
-        jRadioButton3.setActionCommand("Administrador");
-        jRadioButton3.addActionListener(new java.awt.event.ActionListener() {
+        Hostelero.setText("Hostelero");
+        Hostelero.setActionCommand("Administrador");
+        Hostelero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton3ActionPerformed(evt);
+                HosteleroActionPerformed(evt);
             }
         });
 
@@ -131,7 +127,13 @@ public class AnhadirEmpleados extends javax.swing.JFrame {
 
         jLabel8.setText("Restaurante:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(array3));
+        jComboBoxRestaurante.setModel(new javax.swing.DefaultComboBoxModel<>(array3));
+
+        telefono.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                telefonoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -155,13 +157,16 @@ public class AnhadirEmpleados extends javax.swing.JFrame {
                                 .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(direccion)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel7)
-                                        .addComponent(jLabel6)
-                                        .addComponent(jLabel8))
-                                    .addComponent(anhadir))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(50, 50, 50)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jLabel7)
+                                                .addComponent(jLabel6)
+                                                .addComponent(jLabel8))
+                                            .addComponent(anhadir)))
+                                    .addComponent(telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -176,7 +181,7 @@ public class AnhadirEmpleados extends javax.swing.JFrame {
                                             .addComponent(fechaNacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addGroup(layout.createSequentialGroup()
                                                 .addGap(16, 16, 16)
-                                                .addComponent(jRadioButton3)
+                                                .addComponent(Hostelero)
                                                 .addGap(0, 0, Short.MAX_VALUE))))
                                     .addGroup(layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -187,7 +192,7 @@ public class AnhadirEmpleados extends javax.swing.JFrame {
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addComponent(jComboBoxEspectaculo, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jComboBoxAtraccion, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(jComboBoxRestaurante, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(0, 0, Short.MAX_VALUE))))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(49, 49, 49)
@@ -209,16 +214,17 @@ public class AnhadirEmpleados extends javax.swing.JFrame {
                     .addComponent(direccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(telefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel5))
+                        .addComponent(jLabel4)
+                        .addComponent(telefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel5)
                     .addComponent(fechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(trabajadorAtra)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(trabajadorEsp)
-                    .addComponent(jRadioButton3))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(trabajadorAtra)
+                        .addComponent(Hostelero)))
                 .addGap(7, 7, 7)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBoxAtraccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -230,7 +236,7 @@ public class AnhadirEmpleados extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBoxRestaurante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(anhadir)
@@ -242,12 +248,8 @@ public class AnhadirEmpleados extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void telefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_telefonoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_telefonoActionPerformed
-
     private void trabajadorAtraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trabajadorAtraActionPerformed
-        if (trabajadorAtra.isSelected()) {
+        if (trabajadorAtra.isSelected() && !Hostelero.isSelected()) {
             jComboBoxAtraccion.setEnabled(true);
         } else {
             jComboBoxAtraccion.setEnabled(false);
@@ -256,15 +258,30 @@ public class AnhadirEmpleados extends javax.swing.JFrame {
     }//GEN-LAST:event_trabajadorAtraActionPerformed
 
     private void trabajadorEspActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trabajadorEspActionPerformed
-        if (trabajadorEsp.isSelected()) {
+        if (trabajadorEsp.isSelected() && !Hostelero.isSelected()) {
             jComboBoxEspectaculo.setEnabled(true);
         } else
             jComboBoxEspectaculo.setEnabled(false);
     }//GEN-LAST:event_trabajadorEspActionPerformed
 
-    private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton3ActionPerformed
+    private void HosteleroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HosteleroActionPerformed
+        if (Hostelero.isSelected()) {
+            jComboBoxRestaurante.setEnabled(true);
+            jComboBoxAtraccion.setEnabled(false);
+            jComboBoxEspectaculo.setEnabled(false);
+
+        } else {
+            jComboBoxRestaurante.setEnabled(false);
+            if (trabajadorAtra.isSelected()) {
+                jComboBoxAtraccion.setEnabled(true);
+
+            }
+            if (trabajadorEsp.isSelected()) {
+                jComboBoxEspectaculo.setEnabled(true);
+
+            }
+        }
+    }//GEN-LAST:event_HosteleroActionPerformed
 
     private void anhadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anhadirActionPerformed
         try {
@@ -277,6 +294,10 @@ public class AnhadirEmpleados extends javax.swing.JFrame {
     private void atrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_atrasActionPerformed
+
+    private void telefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_telefonoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_telefonoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -315,14 +336,15 @@ public class AnhadirEmpleados extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton Hostelero;
     private javax.swing.JButton anhadir;
     private javax.swing.JButton atras;
     private javax.swing.JTextField direccion;
     private javax.swing.JTextField dni;
     private com.toedter.calendar.JDateChooser fechaNacimiento;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBoxAtraccion;
     private javax.swing.JComboBox<String> jComboBoxEspectaculo;
+    private javax.swing.JComboBox<String> jComboBoxRestaurante;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -331,7 +353,6 @@ public class AnhadirEmpleados extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JTextField nombre;
     private javax.swing.JTextField telefono;
     private javax.swing.JRadioButton trabajadorAtra;
@@ -347,17 +368,23 @@ public class AnhadirEmpleados extends javax.swing.JFrame {
         Date hoy = cal.getTime();
         java.sql.Date hoy2 = new java.sql.Date(hoy.getTime());
         Date nacimiento = fechaNacimiento.getDate();
-        java.sql.Date nacimiento2 = new java.sql.Date(hoy.getTime());
-        if (trabajadorAtra.isSelected() && trabajadorEsp.isSelected()) {
-            pr.getTrabajadoresDAO().anhadirTrabajadorAtraEsp(dni.getText(), nombre.getText(), direccion.getText(), telefono.getText(), hoy2, nacimiento2, jComboBoxAtraccion.getSelectedItem().toString(), jComboBoxEspectaculo.getSelectedItem().toString());
-        } else if (trabajadorAtra.isSelected() && !trabajadorEsp.isSelected()) {
-            pr.getTrabajadoresDAO().anhadirTrabajadorAtra(dni.getText(), nombre.getText(), direccion.getText(), telefono.getText(), hoy2, nacimiento2, jComboBoxAtraccion.getSelectedItem().toString());
+        java.sql.Date nacimiento2 = new java.sql.Date(nacimiento.getTime());
+        if (!Hostelero.isSelected()) {
+            if (trabajadorAtra.isSelected() && trabajadorEsp.isSelected()) {
+                pr.getTrabajadoresDAO().anhadirTrabajadorAtraEsp(dni.getText(), nombre.getText(), direccion.getText(), telefono.getText(), hoy2, nacimiento2, jComboBoxAtraccion.getSelectedItem().toString(), jComboBoxEspectaculo.getSelectedItem().toString());
+            } else if (trabajadorAtra.isSelected() && !trabajadorEsp.isSelected()) {
+                pr.getTrabajadoresDAO().anhadirTrabajadorAtra(dni.getText(), nombre.getText(), direccion.getText(), telefono.getText(), hoy2, nacimiento2, jComboBoxAtraccion.getSelectedItem().toString());
 
-        } else if (!trabajadorAtra.isSelected() && trabajadorEsp.isSelected()) {
-            pr.getTrabajadoresDAO().anhadirTrabajadorEsp(dni.getText(), nombre.getText(), direccion.getText(), telefono.getText(), hoy2, nacimiento2, jComboBoxEspectaculo.getSelectedItem().toString());
+            } else if (!trabajadorAtra.isSelected() && trabajadorEsp.isSelected()) {
+                pr.getTrabajadoresDAO().anhadirTrabajadorEsp(dni.getText(), nombre.getText(), direccion.getText(), telefono.getText(), hoy2, nacimiento2, jComboBoxEspectaculo.getSelectedItem().toString());
 
+            } else {
+                pr.getTrabajadoresDAO().anhadirTrabajador(dni.getText(), nombre.getText(), direccion.getText(), telefono.getText(), hoy2, nacimiento2);
+            }
+            JOptionPane.showMessageDialog(rootPane, "Trabajador añadido");
         } else {
-            pr.getTrabajadoresDAO().anhadirTrabajador(dni.getText(), nombre.getText(), direccion.getText(), telefono.getText(), hoy2, nacimiento2);
+            pr.getHostelerosDAO().anhadirHostelero(dni.getText(), nombre.getText(), direccion.getText(), telefono.getText(), hoy2, nacimiento2, jComboBoxRestaurante.getSelectedItem().toString());
+            JOptionPane.showMessageDialog(rootPane, "Hostelero añadido");
         }
 
     }

@@ -9,7 +9,10 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.sql.Date;
-import proyectobasesdatos.Hostelero;
+import java.sql.ResultSet;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import proyectobasesdatos.Trabajador;
 
 /**
  *
@@ -81,6 +84,37 @@ public class TrabajadoresDAO {
          stmTrabajador.setInt(7, 2);
         stmTrabajador.executeUpdate();
         stmTrabajador.close();
+
+    }
+    public ArrayList<Trabajador> getTrabajadores() {
+        Trabajador trabajador;
+        ArrayList<Trabajador> resultado = new ArrayList<>();
+        ResultSet rsTrabajadores;
+        PreparedStatement stmTrabajadores = null;
+        try {
+            stmTrabajadores = conexion.prepareStatement("select * from trabajadoresparque");
+            rsTrabajadores = stmTrabajadores.executeQuery();
+            while (rsTrabajadores.next()) {
+                trabajador = new Trabajador(rsTrabajadores.getString("dni"), rsTrabajadores.getString("nombre"), rsTrabajadores.getString("direccion"), rsTrabajadores.getFloat("salario"), rsTrabajadores.getString("telefono"), rsTrabajadores.getString("fechainicio"), rsTrabajadores.getString("fechanacimiento"), rsTrabajadores.getString("nombreatraccion"),rsTrabajadores.getString("nombreespectaculo"));
+                resultado.add(trabajador);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(TrabajadoresDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return resultado;
+    }
+      public void despedirTrabajador(String dni) {
+
+        PreparedStatement stmTrabajadores = null;
+        try {
+            stmTrabajadores = conexion.prepareStatement("DELETE from trabajadoresparque where dni = ?");
+            stmTrabajadores.setString(1, dni);
+            stmTrabajadores.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(HostelerosDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }
 }
