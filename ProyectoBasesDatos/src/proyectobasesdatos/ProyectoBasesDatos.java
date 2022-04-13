@@ -10,6 +10,7 @@ import BaseDatos.AtraccionesDAO;
 import BaseDatos.ComerDAO;
 import BaseDatos.EspectaculosDAO;
 import BaseDatos.HosteleriaDAO;
+import BaseDatos.HostelerosDAO;
 import BaseDatos.IrDAO;
 import BaseDatos.TrabajadoresDAO;
 import java.sql.*;
@@ -32,10 +33,10 @@ public class ProyectoBasesDatos {
     private AsistirDAO asistirDAO;
     private ComerDAO comerDAO;
     private TrabajadoresDAO trabajadoresDAO;
+    private HostelerosDAO hostelerosDAO;
+
     public ProyectoBasesDatos() throws SQLException {
-        
-        
-        
+
         fgui = new GUI.FachadaGui(this);//Inicializar la fachada GUI enlazandola con este "main" de la aplicacion
 
         try {
@@ -55,6 +56,7 @@ public class ProyectoBasesDatos {
         asistirDAO = new AsistirDAO(conexion);
         comerDAO = new ComerDAO(conexion);
         trabajadoresDAO = new TrabajadoresDAO(conexion);
+        hostelerosDAO = new HostelerosDAO(conexion);
     }
 
     public IrDAO getIrDAO() {
@@ -97,17 +99,19 @@ public class ProyectoBasesDatos {
         return daoUsuarios;
     }
 
+    public HostelerosDAO getHostelerosDAO() {
+        return hostelerosDAO;
+    }
+
     public static void main(String[] args) throws SQLException {
-        
-        try{
+
+        try {
             UIManager.setLookAndFeel(new FlatLightLaf());
-            
-        }catch(Exception e){
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        
-        
-    
+
         proyectobasesdatos.ProyectoBasesDatos fa = new ProyectoBasesDatos();
         fa.fgui.iniciaVista();
     }

@@ -10,11 +10,19 @@ package GUI;
  */
 public class DespedirEmpleados extends javax.swing.JFrame {
 
-    /**
-     * Creates new form DespedirEmpleados
-     */
+    private proyectobasesdatos.ProyectoBasesDatos pr;
+
     public DespedirEmpleados() {
         initComponents();
+    }
+
+    public DespedirEmpleados(proyectobasesdatos.ProyectoBasesDatos pr) {
+        this.pr = pr;
+        initComponents();
+        ModeloTablaHosteleros th = (ModeloTablaHosteleros) tablaHosteleros.getModel();
+        th.setFilas(pr.getHostelerosDAO().getHosteleros());
+        ModeloTablaTrabajadores tt = (ModeloTablaTrabajadores) tablaTrabajadores.getModel();
+        tt.setFilas(pr.getTrabajadoresDAO().getTrabajadores());
     }
 
     /**
@@ -26,21 +34,127 @@ public class DespedirEmpleados extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tablaTrabajadores = new javax.swing.JTable();
+        despedirTrab = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tablaHosteleros = new javax.swing.JTable();
+        despedirHost = new javax.swing.JButton();
+        atras = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        tablaTrabajadores.setModel(new ModeloTablaTrabajadores()
+        );
+        jScrollPane2.setViewportView(tablaTrabajadores);
+
+        despedirTrab.setText("Despedir");
+        despedirTrab.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                despedirTrabActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 645, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(279, 279, 279)
+                .addComponent(despedirTrab)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 304, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(despedirTrab)
+                .addContainerGap())
+        );
+
+        jTabbedPane1.addTab("Trabajadores", jPanel1);
+
+        tablaHosteleros.setModel(new ModeloTablaHosteleros());
+        jScrollPane1.setViewportView(tablaHosteleros);
+
+        despedirHost.setText("Despedir");
+        despedirHost.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                despedirHostActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 654, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(279, 279, 279)
+                        .addComponent(despedirHost)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(despedirHost)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Hosteleros", jPanel2);
+
+        atras.setText("jButton1");
+        atras.setActionCommand("Atrás");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 657, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(297, 297, 297)
+                        .addComponent(atras)))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(atras)
+                .addContainerGap(11, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void despedirHostActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_despedirHostActionPerformed
+        despedirHostelero();
+    }//GEN-LAST:event_despedirHostActionPerformed
+
+    private void despedirTrabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_despedirTrabActionPerformed
+        despedirTrabajador();    }//GEN-LAST:event_despedirTrabActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +192,28 @@ public class DespedirEmpleados extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton atras;
+    private javax.swing.JButton despedirHost;
+    private javax.swing.JButton despedirTrab;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTable tablaHosteleros;
+    private javax.swing.JTable tablaTrabajadores;
     // End of variables declaration//GEN-END:variables
+public void despedirHostelero() {
+        pr.getHostelerosDAO().despedirHostelero(tablaHosteleros.getValueAt(tablaHosteleros.getSelectedRow(), 0).toString());
+        ModeloTablaHosteleros t = (ModeloTablaHosteleros) tablaHosteleros.getModel();
+        t.setFilas(pr.getHostelerosDAO().getHosteleros());
+
+    }
+public void despedirTrabajador() {
+        pr.getTrabajadoresDAO().despedirTrabajador(tablaTrabajadores.getValueAt(tablaTrabajadores.getSelectedRow(), 0).toString());
+        ModeloTablaTrabajadores t = (ModeloTablaTrabajadores) tablaTrabajadores.getModel();
+        t.setFilas(pr.getTrabajadoresDAO().getTrabajadores());
+
+    }
+
 }
