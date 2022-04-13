@@ -59,6 +59,7 @@ public class MenuUsuarios extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLayeredPane1 = new javax.swing.JLayeredPane();
+        jButton2 = new javax.swing.JButton();
         Buscar = new javax.swing.JButton();
         Acceder = new javax.swing.JButton();
         Comprar = new javax.swing.JButton();
@@ -86,6 +87,14 @@ public class MenuUsuarios extends javax.swing.JFrame {
         );
 
         jPanel1.add(jLayeredPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 300, -1, -1));
+
+        jButton2.setText("jButton2");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, -1, -1));
 
         Buscar.setActionCommand("Buscar");
         Buscar.setBorderPainted(false);
@@ -223,6 +232,12 @@ public class MenuUsuarios extends javax.swing.JFrame {
         pres.setVisible(true);
     }//GEN-LAST:event_PuntuarActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+       this.setVisible(false);
+       AnhadirEmpleados e =  new AnhadirEmpleados(pr);
+       e.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     
     /**
      * @param args the command line arguments
@@ -269,6 +284,7 @@ public class MenuUsuarios extends javax.swing.JFrame {
     private javax.swing.JButton Puntuar;
     private javax.swing.JButton Salir;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLayeredPane jLayeredPane1;
