@@ -130,6 +130,7 @@ public class AtraccionesDAO {
         return atraccion;   //MANOTE: Esto supongo que lo tiene que recoger algo de la interfaz y darle un tratamiento adecuado
     }
     
+
     
     public ArrayList<Atraccion> beneficiosPorAnho(String anho){
         ArrayList<Atraccion> resultado = new java.util.ArrayList<>();
@@ -216,5 +217,6 @@ public class AtraccionesDAO {
         
         }
     }
+
 
 }
