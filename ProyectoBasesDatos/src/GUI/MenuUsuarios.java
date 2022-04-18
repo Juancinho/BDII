@@ -59,8 +59,8 @@ public class MenuUsuarios extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLayeredPane1 = new javax.swing.JLayeredPane();
-        jButton3 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        despedir = new javax.swing.JButton();
+        contratar = new javax.swing.JButton();
         Buscar = new javax.swing.JButton();
         Acceder = new javax.swing.JButton();
         Comprar = new javax.swing.JButton();
@@ -91,21 +91,21 @@ public class MenuUsuarios extends javax.swing.JFrame {
 
         jPanel1.add(jLayeredPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 300, -1, -1));
 
-        jButton3.setText("jButton3");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        despedir.setText("Despedir");
+        despedir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                despedirActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 20, -1, -1));
+        jPanel1.add(despedir, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 20, -1, -1));
 
-        jButton2.setText("jButton2");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        contratar.setText("Contratar");
+        contratar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                contratarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, -1, -1));
+        jPanel1.add(contratar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, -1, -1));
 
         Buscar.setActionCommand("Buscar");
         Buscar.setBorderPainted(false);
@@ -259,17 +259,17 @@ public class MenuUsuarios extends javax.swing.JFrame {
         pres.setVisible(true);
     }//GEN-LAST:event_PuntuarActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void contratarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contratarActionPerformed
        this.setVisible(false);
-       AnhadirEmpleados e =  new AnhadirEmpleados(pr);
+       AnhadirEmpleados e =  new AnhadirEmpleados(pr,this);
        e.setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_contratarActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void despedirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_despedirActionPerformed
        this.setVisible(false);
-       DespedirEmpleados de = new DespedirEmpleados(pr);
+       DespedirEmpleados de = new DespedirEmpleados(pr,this);
        de.setVisible(true);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_despedirActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
@@ -331,9 +331,9 @@ public class MenuUsuarios extends javax.swing.JFrame {
     private javax.swing.JButton Comprar;
     private javax.swing.JButton Puntuar;
     private javax.swing.JButton Salir;
+    private javax.swing.JButton contratar;
+    private javax.swing.JButton despedir;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
