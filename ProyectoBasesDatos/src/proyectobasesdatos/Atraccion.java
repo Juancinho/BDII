@@ -12,6 +12,7 @@ public class Atraccion {
     private String nombre, ubicacion, descripcion;
     private int aforo, alturaMin;   
     private float costeMantenimiento;
+    private float beneficios;
 
     public Atraccion(String nombre, String ubicacion, String descripcion, int aforo, int alturaMin, float costeMantenimiento) {
         this.nombre = nombre;
@@ -29,11 +30,18 @@ public class Atraccion {
         this.aforo = aforo;
         this.alturaMin = alturaMin;
     }
-
+      
+    //Constructor con beneficios para la función de administrador1
+      
+      public Atraccion(String nombre,Float beneficios) {
+        this.nombre = nombre;
+        this.beneficios=beneficios;
+    }
 
     public String getNombre() {
         return nombre;
     }
+    
 
     public String getUbicacion() {
         return ubicacion;
@@ -54,7 +62,12 @@ public class Atraccion {
     public float getCosteMantenimiento() {
         return costeMantenimiento;
     }
-
+    
+    
+    
+    public float getBeneficios(){
+        return this.beneficios;
+    }
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
