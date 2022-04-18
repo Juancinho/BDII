@@ -94,7 +94,7 @@
       </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JComboBox&lt;&gt;()"/>
-        <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="String [] array = pr.getEspectaculosDAO().a&#xf1;osRegistrados().toArray(new String[pr.getEspectaculosDAO().a&#xf1;osRegistrados().size()]);"/>
+        <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="String [] array = pr.getAtraccionesDAO().a&#xf1;osRegistrados().toArray(new String[pr.getAtraccionesDAO().a&#xf1;osRegistrados().size()]);"/>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
@@ -113,10 +113,10 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTable" name="tablaEspectaculo">
+        <Component class="javax.swing.JTable" name="tablaBeneficios">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="new ModeloTablaAsistir()" type="code"/>
+              <Connection code="new ModeloTablaBeneficios()" type="code"/>
             </Property>
           </Properties>
         </Component>
@@ -126,6 +126,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Cerrar Atracci&#xf3;n"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonCerrarAtraccionActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

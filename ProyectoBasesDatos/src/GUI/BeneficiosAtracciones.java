@@ -119,9 +119,11 @@ public class BeneficiosAtracciones extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>                        
 
-    private void selectorAnhoActionPerformed(java.awt.event.ActionEvent evt) {                                             
+
+    private void selectorAnhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectorAnhoActionPerformed
         consultarBeneficios();
-    }                                            
+    }//GEN-LAST:event_selectorAnhoActionPerformed
+
 
     private void botonAtrasActionPerformed(java.awt.event.ActionEvent evt) {                                           
 
@@ -133,6 +135,11 @@ public class BeneficiosAtracciones extends javax.swing.JFrame {
         // TODO add your handling code here:
         cerrarAtraccion();
     }                                                    
+
+    private void botonCerrarAtraccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCerrarAtraccionActionPerformed
+        // TODO add your handling code here:
+        cerrarAtraccion();
+    }//GEN-LAST:event_botonCerrarAtraccionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -180,7 +187,8 @@ public class BeneficiosAtracciones extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JComboBox<String> selectorAnho;
     private javax.swing.JTable tablaBeneficios;
-    // End of variables declaration                   
+
+    // End of variables declaration//GEN-END:variables
     public void consultarBeneficios() {
         ModeloTablaBeneficios m;
         String anho;
