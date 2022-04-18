@@ -274,7 +274,7 @@ public class MenuUsuarios extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        BeneficiosAtracciones ba = new BeneficiosAtracciones(pr);
+        BeneficiosAtracciones ba = new BeneficiosAtracciones(pr,this);
         ba.setVisible(true);
         
         
