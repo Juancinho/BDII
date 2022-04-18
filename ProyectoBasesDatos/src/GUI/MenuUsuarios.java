@@ -68,6 +68,7 @@ public class MenuUsuarios extends javax.swing.JFrame {
         Cancelar = new javax.swing.JButton();
         Puntuar = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        regalarEntradas = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -81,11 +82,11 @@ public class MenuUsuarios extends javax.swing.JFrame {
         jLayeredPane1.setLayout(jLayeredPane1Layout);
         jLayeredPane1Layout.setHorizontalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         jLayeredPane1Layout.setVerticalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         jPanel1.add(jLayeredPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 300, -1, -1));
@@ -175,11 +176,19 @@ public class MenuUsuarios extends javax.swing.JFrame {
         });
         jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, -1, -1));
 
+        regalarEntradas.setText("Regalar Entradas");
+        regalarEntradas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                regalarEntradasActionPerformed(evt);
+            }
+        });
+        jPanel1.add(regalarEntradas, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 340, 190, 50));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Portada2.jpeg"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 440));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 450));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Portada.jpeg"))); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 440));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 450));
 
         jButton1.setText("jButton1");
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 10, -1, -1));
@@ -271,6 +280,12 @@ public class MenuUsuarios extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void regalarEntradasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regalarEntradasActionPerformed
+        RegalarEntradas r= new RegalarEntradas(pr, this, dni);
+        this.setVisible(false);
+        r.setVisible(true);
+    }//GEN-LAST:event_regalarEntradasActionPerformed
+
     
     /**
      * @param args the command line arguments
@@ -324,5 +339,6 @@ public class MenuUsuarios extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton regalarEntradas;
     // End of variables declaration//GEN-END:variables
 }

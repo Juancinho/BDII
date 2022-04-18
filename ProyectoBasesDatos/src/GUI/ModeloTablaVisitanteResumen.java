@@ -4,49 +4,52 @@
  */
 package GUI;
 
+import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
-import proyectobasesdatos.Asistir;//Importamos la clase asisitr
+import proyectobasesdatos.VisitanteResumen;
 
-public class ModeloTablaBeneficios extends AbstractTableModel { //MANOTE: antes ponía ModeloTablaAsistir pero no compilaba
-    private java.util.List<Asistir> asistencia;
+/**
+ *
+ * @author alumnogreibd
+ */
+public class ModeloTablaVisitanteResumen extends AbstractTableModel{
+    private java.util.List<VisitanteResumen> visitantesResumen;
 
-    public ModeloTablaBeneficios() { //MANOTE: antes ponía ModeloTablaAsistir pero no compilaba
-        this.asistencia = new java.util.ArrayList<>();
+    public ModeloTablaVisitanteResumen() {
+        this.visitantesResumen = new ArrayList<>();
     }
-
     
-    @Override
+    
+     @Override
     public int getColumnCount() {
         return 3;
     }
-
-
-    public int getRowCount() {
-        return asistencia.size();
+    
+     public int getRowCount() {
+        return visitantesResumen.size();
     }
-
- 
-    @Override
+     
+     
+     @Override
 
     public String getColumnName(int col) {
         String nombre = "";
 
         switch (col) {
             case 0:
-                nombre = "Nombre";
+                nombre = "DNI";
                 break;
             case 1:
-                nombre = "Hora";
+                nombre = "Nombre";
                 break;
             case 2:
-                nombre = "Asistencia";
-                break;           
+                nombre = "Dinero Gastado";
+                break;         
         }
         return nombre;
     }
-
     
-    @Override
+     @Override
 
     public Class getColumnClass(int col) {
         Class clase = null;
@@ -59,12 +62,12 @@ public class ModeloTablaBeneficios extends AbstractTableModel { //MANOTE: antes 
                 clase = java.lang.Integer.class;
                 break;
             case 2:
-                clase = java.lang.Integer.class;
-                break;           
+                clase = java.lang.Float.class;
+                break;         
         }
         return clase;
     }
-
+   
    
     @Override
     public boolean isCellEditable(int row, int col) {
@@ -77,27 +80,25 @@ public class ModeloTablaBeneficios extends AbstractTableModel { //MANOTE: antes 
 
         switch (col) {
             case 0:
-                resultado = asistencia.get(row).getNombre();
+                resultado = visitantesResumen.get(row).getDNI();
                 break;
             case 1:
-                resultado = asistencia.get(row).getHoraInicio();
+                resultado = visitantesResumen.get(row).getNombre();
                 break;
             case 2:
-                resultado = asistencia.get(row).getAsistencia();
+                resultado = visitantesResumen.get(row).getDineroGastado();
                 break;
-
         }
         return resultado;
     }
     
     
-    public void setFilas(java.util.List<Asistir> asistencias) {
-        this.asistencia = asistencias;
+    public void setFilas(ArrayList<VisitanteResumen> visitantesResumen) {
+        this.visitantesResumen = visitantesResumen;
         fireTableDataChanged();
     }
     
-      public Asistir obtenerAsistencia(int i){
-        return this.asistencia.get(i);
+      public VisitanteResumen obtenerVisitanteResumen(int i){
+        return this.visitantesResumen.get(i);
     }
-
 }
