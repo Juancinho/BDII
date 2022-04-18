@@ -7,11 +7,13 @@ package GUI;
 import javax.swing.table.AbstractTableModel;
 import proyectobasesdatos.Atraccion;//Importamos la clase atraccion
 
+
 public class ModeloTablaBeneficios extends AbstractTableModel {
     private java.util.List<Atraccion> atraccion;
 
     public ModeloTablaBeneficios() {
         this.atraccion = new java.util.ArrayList<>();
+
     }
 
     
