@@ -153,5 +153,6 @@ public class AtraccionesDAO {
         }
         return atraccion;   //MANOTE: Esto supongo que lo tiene que recoger algo de la interfaz y darle un tratamiento adecuado
     }
+    
 
 }

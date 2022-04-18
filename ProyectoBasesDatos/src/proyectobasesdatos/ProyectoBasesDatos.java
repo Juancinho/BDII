@@ -13,6 +13,7 @@ import BaseDatos.HosteleriaDAO;
 import BaseDatos.HostelerosDAO;
 import BaseDatos.IrDAO;
 import BaseDatos.TrabajadoresDAO;
+import BaseDatos.VisitantesDAO;
 import java.sql.*;
 import javax.swing.UIManager;
 import com.formdev.flatlaf.FlatLightLaf;
@@ -34,6 +35,9 @@ public class ProyectoBasesDatos {
     private ComerDAO comerDAO;
     private TrabajadoresDAO trabajadoresDAO;
     private HostelerosDAO hostelerosDAO;
+    private VisitantesDAO visitantesDAO;
+
+   
 
     public ProyectoBasesDatos() throws SQLException {
 
@@ -57,6 +61,7 @@ public class ProyectoBasesDatos {
         comerDAO = new ComerDAO(conexion);
         trabajadoresDAO = new TrabajadoresDAO(conexion);
         hostelerosDAO = new HostelerosDAO(conexion);
+        visitantesDAO = new VisitantesDAO(conexion);
     }
 
     public IrDAO getIrDAO() {
@@ -101,6 +106,9 @@ public class ProyectoBasesDatos {
 
     public HostelerosDAO getHostelerosDAO() {
         return hostelerosDAO;
+    }
+     public VisitantesDAO getVisitantesDAO() {
+        return visitantesDAO;
     }
 
     public static void main(String[] args) throws SQLException {
