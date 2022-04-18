@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import proyectobasesdatos.Atraccion;
 
 /**
@@ -74,33 +76,7 @@ public class AtraccionesDAO {
         return resultado;
     }
 
-    /*public java.util.List<Atraccion> consultarAtraccionPorAltura(String nombre, int alturaMin) {
-        java.util.List<Atraccion> resultado = new java.util.ArrayList<>();
-        Atraccion atraccionActual;
 
-        ResultSet rsAtracciones;
-        PreparedStatement stmAtracciones = null;
-
-        String consulta = "select nombre, aforo, alturamin, ubicacion,descripcion "
-                + " from atracciones "
-                + " where nombre like ? "
-                + " and alturamin <= ?";
-
-        try {
-            stmAtracciones = conexion.prepareStatement(consulta);
-            stmAtracciones.setString(1, "%" + nombre + "%");
-            stmAtracciones.setInt(2, alturaMin);
-            rsAtracciones = stmAtracciones.executeQuery();
-            while (rsAtracciones.next()) {
-                atraccionActual = new Atraccion(rsAtracciones.getString("nombre"), rsAtracciones.getInt("aforo"), rsAtracciones.getInt("alturamin"), rsAtracciones.getString("ubicacion"), rsAtracciones.getString("descripcion"));
-                resultado.add(atraccionActual);
-
-            }
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-        return resultado;
-    }*/
     public ArrayList<Atraccion> consultarAtraccionAltura(int alturaMin) {  //FU2  
 
         ArrayList<Atraccion> resultado = new java.util.ArrayList<>();
@@ -154,5 +130,93 @@ public class AtraccionesDAO {
         return atraccion;   //MANOTE: Esto supongo que lo tiene que recoger algo de la interfaz y darle un tratamiento adecuado
     }
     
+
+    
+    public ArrayList<Atraccion> beneficiosPorAnho(String anho){
+        ArrayList<Atraccion> resultado = new java.util.ArrayList<>();
+        ResultSet rsConsultaBeneficios;
+        PreparedStatement stmBeneficios = null;
+        String inicioAnho = anho + "-01" + "-01";   
+        String finAnho = anho + "-12" + "-31";
+        
+        try {
+            stmBeneficios = conexion.prepareStatement("select i.atraccion, sum(case when i.vip='NO' then 6\n" +
+                "when i.vip='SI' then 12 end)-avg(a.costemantenimiento)  as Beneficios\n" +
+                "from ir i, atracciones a\n" +
+                "where a.nombre =i.atraccion \n" +
+                "and i.fechavisita >= ?\n" +
+                "and i.fechavisita <=?\n" +
+                "group by(i.atraccion)");           
+            stmBeneficios.setDate(1, java.sql.Date.valueOf(inicioAnho));
+            stmBeneficios.setDate(2, java.sql.Date.valueOf(finAnho));
+            
+        
+            rsConsultaBeneficios = stmBeneficios.executeQuery();
+            while (rsConsultaBeneficios.next()) {
+               
+                Atraccion atraccion = new Atraccion(rsConsultaBeneficios.getString(1),rsConsultaBeneficios.getFloat(2));
+                resultado.add(atraccion);
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            try {
+                stmBeneficios.close();
+            } catch (SQLException e) {
+                System.out.println("Imposible cerrar cursores");
+            }
+        }
+        return resultado;  
+    
+    
+    }
+    
+    
+    
+    
+    
+    
+    public ArrayList<String> añosRegistrados() {
+        ArrayList<String> resultado = new java.util.ArrayList<>();
+
+        ResultSet rsAtracciones;
+        PreparedStatement stmAtracciones = null;
+        
+        try {
+            stmAtracciones = conexion.prepareStatement("select distinct (EXTRACT(YEAR FROM fechavisita)) as ano from ir order by  ano asc;"); 
+            rsAtracciones = stmAtracciones.executeQuery();
+            while (rsAtracciones.next()) {  
+                resultado.add(String.valueOf(rsAtracciones.getInt(1)));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            try {
+                stmAtracciones.close();
+            } catch (SQLException e) {
+                System.out.println("Imposible cerrar cursores");
+            }
+        }
+        return resultado;
+    }
+    
+    
+    
+    
+    public void cerrarAtraccion(String nombre){
+        PreparedStatement stmAtraccion = null;
+        try{
+            stmAtraccion = conexion.prepareStatement("DELETE from atracciones where nombre =?");
+            stmAtraccion.setString(1,nombre);
+            stmAtraccion.executeUpdate();
+            
+        }catch(SQLException ex){
+            Logger.getLogger(AtraccionesDAO.class.getName()).log(Level.SEVERE, null, ex);
+            
+        
+        }
+    }
+
 
 }
