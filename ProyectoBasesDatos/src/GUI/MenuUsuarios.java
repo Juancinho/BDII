@@ -58,6 +58,9 @@ public class MenuUsuarios extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        trabEsp = new javax.swing.JButton();
+        hosteleros = new javax.swing.JButton();
+        trabAtra = new javax.swing.JButton();
         jLayeredPane1 = new javax.swing.JLayeredPane();
         despedir = new javax.swing.JButton();
         contratar = new javax.swing.JButton();
@@ -77,6 +80,31 @@ public class MenuUsuarios extends javax.swing.JFrame {
         setUndecorated(true);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        trabEsp.setText("TrabEsp");
+        trabEsp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                trabEspActionPerformed(evt);
+            }
+        });
+        jPanel1.add(trabEsp, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, -1, -1));
+
+        hosteleros.setText("Hosteleros");
+        hosteleros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hostelerosActionPerformed(evt);
+            }
+        });
+        jPanel1.add(hosteleros, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, -1, -1));
+
+        trabAtra.setText("TrabAtra");
+        trabAtra.setActionCommand("");
+        trabAtra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                trabAtraActionPerformed(evt);
+            }
+        });
+        jPanel1.add(trabAtra, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, -1, -1));
 
         javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
         jLayeredPane1.setLayout(jLayeredPane1Layout);
@@ -286,6 +314,24 @@ public class MenuUsuarios extends javax.swing.JFrame {
         r.setVisible(true);
     }//GEN-LAST:event_regalarEntradasActionPerformed
 
+    private void trabAtraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trabAtraActionPerformed
+        TablaTrabajAtracc ta = new TablaTrabajAtracc(pr);
+        this.setVisible(false);
+        ta.setVisible(true);
+    }//GEN-LAST:event_trabAtraActionPerformed
+
+    private void trabEspActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trabEspActionPerformed
+       TablaTrabajEspec ta = new TablaTrabajEspec(pr);
+        this.setVisible(false);
+        ta.setVisible(true);
+    }//GEN-LAST:event_trabEspActionPerformed
+
+    private void hostelerosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hostelerosActionPerformed
+        TablaHosteleros ta = new TablaHosteleros(pr);
+        this.setVisible(false);
+        ta.setVisible(true);
+    }//GEN-LAST:event_hostelerosActionPerformed
+
     
     /**
      * @param args the command line arguments
@@ -333,6 +379,7 @@ public class MenuUsuarios extends javax.swing.JFrame {
     private javax.swing.JButton Salir;
     private javax.swing.JButton contratar;
     private javax.swing.JButton despedir;
+    private javax.swing.JButton hosteleros;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
@@ -340,5 +387,7 @@ public class MenuUsuarios extends javax.swing.JFrame {
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton regalarEntradas;
+    private javax.swing.JButton trabAtra;
+    private javax.swing.JButton trabEsp;
     // End of variables declaration//GEN-END:variables
 }
