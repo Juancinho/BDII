@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import proyectobasesdatos.Espectaculo;
 import proyectobasesdatos.Asistir;
+import proyectobasesdatos.Trabajador;
 /**
  *
  * @author alumnogreibd
@@ -214,6 +215,34 @@ public class EspectaculosDAO {
         return resultado;   
 
     }
+public ArrayList<Trabajador> consultarTrabajadorEspectaculos() {  //FA2  
 
+        ArrayList<Trabajador> resultado = new java.util.ArrayList<>();
+        Trabajador trabajactual;
+        
+        ResultSet rsTrabajador;
+        PreparedStatement stmTrabajador = null;
+
+        try {
+            stmTrabajador = conexion.prepareStatement("SELECT dni, nombre, direccion, salario, telefono, fechainicio, fechanacimiento, nombreatraccion, nombreespectaculo FROM trabajadoresparque");
+            rsTrabajador = stmTrabajador.executeQuery();
+            while (rsTrabajador.next()) {  
+                trabajactual = new Trabajador(rsTrabajador.getString("DNI"), rsTrabajador.getString("nombre"), rsTrabajador.getString("direccion"), rsTrabajador.getFloat("salario"), rsTrabajador.getString("telefono"), rsTrabajador.getString("fechainicio"), rsTrabajador.getString("fechanacimiento"), null, rsTrabajador.getString("nombreespectaculo"));
+                if(rsTrabajador.getString("nombreespectaculo") != null){
+                resultado.add(trabajactual);
+                }
+                
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            try {
+                stmTrabajador.close();
+            } catch (SQLException e) {
+                System.out.println("Imposible cerrar cursores");
+            }
+        }
+        return resultado;   
+    }
     
 }
