@@ -13,13 +13,13 @@ import javax.swing.JOptionPane;
 public class RegalarEntradas extends javax.swing.JFrame {
 
     private proyectobasesdatos.ProyectoBasesDatos pr;
-    private MenuUsuarios padre;
-    private String dni;
+    private MenuAdministradores padre;
+    //private String dni;
 
-    public RegalarEntradas(proyectobasesdatos.ProyectoBasesDatos pr, MenuUsuarios padre, String dni) {
+    public RegalarEntradas(proyectobasesdatos.ProyectoBasesDatos pr, MenuAdministradores padre) {
         this.pr = pr;
         this.padre = padre;
-        this.dni = dni;
+        //this.dni = dni;
         initComponents();
     }
 

@@ -18,7 +18,7 @@ import javax.swing.JOptionPane;
 public class AnhadirEmpleados extends javax.swing.JFrame {
 
     private proyectobasesdatos.ProyectoBasesDatos pr;
-    private MenuUsuarios padre;
+    private MenuAdministradores padre;
 
     public AnhadirEmpleados() {
         initComponents();
@@ -38,7 +38,7 @@ public class AnhadirEmpleados extends javax.swing.JFrame {
         jComboBoxRestaurante.setEnabled(false);
     }
 
-    public AnhadirEmpleados(proyectobasesdatos.ProyectoBasesDatos pr, MenuUsuarios padre) {
+    public AnhadirEmpleados(proyectobasesdatos.ProyectoBasesDatos pr, MenuAdministradores padre) {
         this.pr = pr;
         this.padre = padre;
         initComponents();

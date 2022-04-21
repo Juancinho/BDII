@@ -198,8 +198,9 @@ public class AccesoUsuario extends javax.swing.JFrame {
         }
         else{
             if (pr.getDaoUsuarios().validarUsuario(dni, Contraseña.getText(), "Administrador")) {
+                MenuAdministradores ma = new MenuAdministradores(pr,padreAdministradores);
                 this.setVisible(false);
-                padreAdministradores.setVisible(true);
+                ma.setVisible(true);
             }
             else etiquetaFallo.setVisible(true);
         }
