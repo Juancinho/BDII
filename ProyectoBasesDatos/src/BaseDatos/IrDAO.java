@@ -31,9 +31,9 @@ public class IrDAO {
             stmIr.setString(3, nombreAtraccion);
             rsIr = stmIr.executeQuery();
             if (rsIr.next()) {   //MANOTE: Este next devuelve un booleano pero también coloca el cursor en la siguiente fila (la primera vez que se le llama en la primera, la segunda en la segunda,...)
-                existe=true;
+                existe = true;
             } else {
-                existe=false;
+                existe = false;
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -93,6 +93,7 @@ public class IrDAO {
         }
 
     }
+
     
     public int comprobarNumeroVisitantes(Date fecha, String nombreAtraccion) {
         ResultSet rsIr;
@@ -126,6 +127,41 @@ public class IrDAO {
             stmIr.setDate(1, fecha);
             stmIr.setString(2, nombreAtraccion);
             rsIr = stmIr.executeQuery();
+           } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            try {
+                stmIr.close();
+            } catch (SQLException e) {
+                System.out.println("Imposible cerrar cursores");
+            }
+        }
+  return true;
+    }
+
+
+    public void regalarEntrada(String dni) {
+
+        PreparedStatement stmIr = null;
+
+        try {
+            stmIr = conexion.prepareStatement("INSERT INTO ir (fechaVisita, VIP, visitante, atraccion)\n"
+                    + "SELECT CURRENT_DATE + INTERVAL '1 day', 'SI', ?, a.nombre\n"
+                    + "FROM atracciones a, ir i\n"
+                    + "WHERE a.nombre = i.atraccion\n"
+                    + "AND i.visitante LIKE ?\n"
+                    + "GROUP BY a.nombre\n"
+                    + "HAVING count(a.nombre) >= all (SELECT count(a2.nombre)\n"
+                    + "FROM atracciones a2, ir i2\n"
+                    + "WHERE a2.nombre = i2.atraccion\n"
+                    + "AND i2.visitante LIKE ?\n"
+                    + "GROUP BY  a2.nombre)\n"
+            );
+
+            stmIr.setString(1, dni);
+            stmIr.setString(2, dni);
+            stmIr.setString(3, dni);
+            stmIr.executeUpdate();
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -136,7 +172,7 @@ public class IrDAO {
                 System.out.println("Imposible cerrar cursores");
             }
         }
-        return true;
+
     }
-    
+
 }

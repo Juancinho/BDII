@@ -11,13 +11,24 @@ package GUI;
 public class DespedirEmpleados extends javax.swing.JFrame {
 
     private proyectobasesdatos.ProyectoBasesDatos pr;
+    private MenuUsuarios padre;
 
     public DespedirEmpleados() {
         initComponents();
     }
 
-    public DespedirEmpleados(proyectobasesdatos.ProyectoBasesDatos pr) {
+    public DespedirEmpleados(proyectobasesdatos.ProyectoBasesDatos pr ) {
         this.pr = pr;
+        
+        initComponents();
+        ModeloTablaHosteleros th = (ModeloTablaHosteleros) tablaHosteleros.getModel();
+        th.setFilas(pr.getHostelerosDAO().getHosteleros());
+        ModeloTablaTrabajadores tt = (ModeloTablaTrabajadores) tablaTrabajadores.getModel();
+        tt.setFilas(pr.getTrabajadoresDAO().getTrabajadores());
+    }
+    public DespedirEmpleados(proyectobasesdatos.ProyectoBasesDatos pr,MenuUsuarios padre ) {
+        this.pr = pr;
+        this.padre = padre;
         initComponents();
         ModeloTablaHosteleros th = (ModeloTablaHosteleros) tablaHosteleros.getModel();
         th.setFilas(pr.getHostelerosDAO().getHosteleros());
@@ -119,8 +130,13 @@ public class DespedirEmpleados extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Hosteleros", jPanel2);
 
-        atras.setText("jButton1");
+        atras.setText("Atrás");
         atras.setActionCommand("Atrás");
+        atras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                atrasActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -132,7 +148,7 @@ public class DespedirEmpleados extends javax.swing.JFrame {
                         .addGap(16, 16, 16)
                         .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 657, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(297, 297, 297)
+                        .addGap(307, 307, 307)
                         .addComponent(atras)))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
@@ -155,6 +171,11 @@ public class DespedirEmpleados extends javax.swing.JFrame {
 
     private void despedirTrabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_despedirTrabActionPerformed
         despedirTrabajador();    }//GEN-LAST:event_despedirTrabActionPerformed
+
+    private void atrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasActionPerformed
+       this.setVisible(false);
+       padre.setVisible(true);
+    }//GEN-LAST:event_atrasActionPerformed
 
     /**
      * @param args the command line arguments

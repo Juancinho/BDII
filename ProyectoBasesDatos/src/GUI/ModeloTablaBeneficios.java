@@ -5,24 +5,27 @@
 package GUI;
 
 import javax.swing.table.AbstractTableModel;
-import proyectobasesdatos.Asistir;//Importamos la clase asisitr
+import proyectobasesdatos.Atraccion;//Importamos la clase atraccion
+
+
 
 public class ModeloTablaBeneficios extends AbstractTableModel {
-    private java.util.List<Asistir> asistencia;
+    private java.util.List<Atraccion> atraccion;
 
     public ModeloTablaBeneficios() {
-        this.asistencia = new java.util.ArrayList<>();
+        this.atraccion = new java.util.ArrayList<>();
+
     }
 
     
     @Override
     public int getColumnCount() {
-        return 3;
+        return 2;
     }
 
 
     public int getRowCount() {
-        return asistencia.size();
+        return atraccion.size();
     }
 
  
@@ -33,14 +36,11 @@ public class ModeloTablaBeneficios extends AbstractTableModel {
 
         switch (col) {
             case 0:
-                nombre = "Nombre";
+                nombre = "Atraccion";
                 break;
             case 1:
-                nombre = "Hora";
-                break;
-            case 2:
-                nombre = "Asistencia";
-                break;           
+                nombre = "Beneficios";
+                break;       
         }
         return nombre;
     }
@@ -56,11 +56,9 @@ public class ModeloTablaBeneficios extends AbstractTableModel {
                 clase = java.lang.String.class;
                 break;
             case 1:
-                clase = java.lang.Integer.class;
+                clase = java.lang.Float.class;
                 break;
-            case 2:
-                clase = java.lang.Integer.class;
-                break;           
+         
         }
         return clase;
     }
@@ -77,13 +75,10 @@ public class ModeloTablaBeneficios extends AbstractTableModel {
 
         switch (col) {
             case 0:
-                resultado = asistencia.get(row).getNombre();
+                resultado = this.atraccion.get(row).getNombre();
                 break;
             case 1:
-                resultado = asistencia.get(row).getHoraInicio();
-                break;
-            case 2:
-                resultado = asistencia.get(row).getAsistencia();
+                resultado = this.atraccion.get(row).getBeneficios();
                 break;
 
         }
@@ -91,13 +86,13 @@ public class ModeloTablaBeneficios extends AbstractTableModel {
     }
     
     
-    public void setFilas(java.util.List<Asistir> asistencias) {
-        this.asistencia = asistencias;
+    public void setFilas(java.util.List<Atraccion> atracciones) {
+        this.atraccion = atracciones;
         fireTableDataChanged();
     }
     
-      public Asistir obtenerAsistencia(int i){
-        return this.asistencia.get(i);
+      public Atraccion obtenerAtraccion(int i){
+        return this.atraccion.get(i);
     }
 
 }

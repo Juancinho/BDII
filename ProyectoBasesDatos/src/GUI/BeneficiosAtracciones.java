@@ -10,7 +10,7 @@ package GUI;
  */
 public class BeneficiosAtracciones extends javax.swing.JFrame {
     private proyectobasesdatos.ProyectoBasesDatos pr;
-    //private MenuBusquedas padre;
+    private MenuUsuarios padre;
     /**
      * Creates new form EspectaculomasPopularAño
      */
@@ -19,9 +19,9 @@ public class BeneficiosAtracciones extends javax.swing.JFrame {
         this.botonCerrarAtraccion.setVisible(false);
     }
     
-    public BeneficiosAtracciones(proyectobasesdatos.ProyectoBasesDatos pr) {
+    public BeneficiosAtracciones(proyectobasesdatos.ProyectoBasesDatos pr,MenuUsuarios padre) {
         this.pr = pr;
-        //this.padre=padre;
+        this.padre=padre;
         initComponents();
     }
 
@@ -36,11 +36,11 @@ public class BeneficiosAtracciones extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        String [] array = pr.getEspectaculosDAO().añosRegistrados().toArray(new String[pr.getEspectaculosDAO().añosRegistrados().size()]);
+        String [] array = pr.getAtraccionesDAO().añosRegistrados().toArray(new String[pr.getAtraccionesDAO().añosRegistrados().size()]);
         selectorAnho = new javax.swing.JComboBox<>();
         botonAtras = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tablaEspectaculo = new javax.swing.JTable();
+        tablaBeneficios = new javax.swing.JTable();
         botonCerrarAtraccion = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -65,10 +65,15 @@ public class BeneficiosAtracciones extends javax.swing.JFrame {
             }
         });
 
-        tablaEspectaculo.setModel(new ModeloTablaAsistir());
-        jScrollPane1.setViewportView(tablaEspectaculo);
+        tablaBeneficios.setModel(new ModeloTablaBeneficios());
+        jScrollPane1.setViewportView(tablaBeneficios);
 
         botonCerrarAtraccion.setText("Cerrar Atracción");
+        botonCerrarAtraccion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCerrarAtraccionActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -115,14 +120,19 @@ public class BeneficiosAtracciones extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void selectorAnhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectorAnhoActionPerformed
-        consultarEspectaculo();
+        consultarBeneficios();
     }//GEN-LAST:event_selectorAnhoActionPerformed
 
     private void botonAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAtrasActionPerformed
 
        this.setVisible(false);
-       //padre.setVisible(true);
+       padre.setVisible(true);
     }//GEN-LAST:event_botonAtrasActionPerformed
+
+    private void botonCerrarAtraccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCerrarAtraccionActionPerformed
+        // TODO add your handling code here:
+        cerrarAtraccion();
+    }//GEN-LAST:event_botonCerrarAtraccionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -153,6 +163,10 @@ public class BeneficiosAtracciones extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -169,18 +183,26 @@ public class BeneficiosAtracciones extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JComboBox<String> selectorAnho;
-    private javax.swing.JTable tablaEspectaculo;
+    private javax.swing.JTable tablaBeneficios;
     // End of variables declaration//GEN-END:variables
-    public void consultarEspectaculo() {
-        ModeloTablaAsistir m;
+    public void consultarBeneficios() {
+        ModeloTablaBeneficios m;
         String anho;
         anho = (String)selectorAnho.getSelectedItem();        
-        m = (ModeloTablaAsistir) tablaEspectaculo.getModel();     
-        m.setFilas(pr.getEspectaculosDAO().espectaculoMasPopularPorAnho(anho));
-        
-        
-
-        
+        m = (ModeloTablaBeneficios) tablaBeneficios.getModel();     
+        m.setFilas(pr.getAtraccionesDAO().beneficiosPorAnho(anho)); 
+    }
+    
+    
+    public void cerrarAtraccion(){
+        String anho;
+        anho = (String)selectorAnho.getSelectedItem();
+        pr.getAtraccionesDAO().cerrarAtraccion(tablaBeneficios.getValueAt(tablaBeneficios.getSelectedRow(), 0).toString());
+        ModeloTablaBeneficios m = (ModeloTablaBeneficios) tablaBeneficios.getModel();
+        m.setFilas(pr.getAtraccionesDAO().beneficiosPorAnho(anho));
+    
+    
+    
     }
 
 
