@@ -10,7 +10,7 @@ package GUI;
  */
 public class BeneficiosAtracciones extends javax.swing.JFrame {
     private proyectobasesdatos.ProyectoBasesDatos pr;
-    private MenuUsuarios padre;
+    private MenuAdministradores padre;
     /**
      * Creates new form EspectaculomasPopularAño
      */
@@ -19,7 +19,7 @@ public class BeneficiosAtracciones extends javax.swing.JFrame {
         this.botonCerrarAtraccion.setVisible(false);
     }
     
-    public BeneficiosAtracciones(proyectobasesdatos.ProyectoBasesDatos pr,MenuUsuarios padre) {
+    public BeneficiosAtracciones(proyectobasesdatos.ProyectoBasesDatos pr,MenuAdministradores padre) {
         this.pr = pr;
         this.padre=padre;
         initComponents();

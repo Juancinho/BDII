@@ -11,7 +11,7 @@ package GUI;
 public class DespedirEmpleados extends javax.swing.JFrame {
 
     private proyectobasesdatos.ProyectoBasesDatos pr;
-    private MenuUsuarios padre;
+    private MenuAdministradores padre;
 
     public DespedirEmpleados() {
         initComponents();
@@ -26,7 +26,7 @@ public class DespedirEmpleados extends javax.swing.JFrame {
         ModeloTablaTrabajadores tt = (ModeloTablaTrabajadores) tablaTrabajadores.getModel();
         tt.setFilas(pr.getTrabajadoresDAO().getTrabajadores());
     }
-    public DespedirEmpleados(proyectobasesdatos.ProyectoBasesDatos pr,MenuUsuarios padre ) {
+    public DespedirEmpleados(proyectobasesdatos.ProyectoBasesDatos pr,MenuAdministradores padre ) {
         this.pr = pr;
         this.padre = padre;
         initComponents();
