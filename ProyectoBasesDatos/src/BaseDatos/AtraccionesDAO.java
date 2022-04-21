@@ -1,6 +1,7 @@
 package BaseDatos;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.sql.ResultSet;
@@ -129,6 +130,7 @@ public class AtraccionesDAO {
             }
         }
         return atraccion;   //MANOTE: Esto supongo que lo tiene que recoger algo de la interfaz y darle un tratamiento adecuado
+
     }
     
 
@@ -246,5 +248,6 @@ public class AtraccionesDAO {
         }
         return resultado;   
     }
+
 
 }

@@ -153,8 +153,7 @@ public class AccesoUsuario extends javax.swing.JFrame {
 
     private void AtrásActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtrásActionPerformed
         this.setVisible(false);
-        MenuUsuarios mu= new MenuUsuarios(pr);
-        mu.setVisible(true);
+        padre.setVisible(true);
     }//GEN-LAST:event_AtrásActionPerformed
 
     private void RegistrarmeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarmeActionPerformed
