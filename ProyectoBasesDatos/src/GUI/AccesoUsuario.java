@@ -12,19 +12,31 @@ public class AccesoUsuario extends javax.swing.JFrame {
 
     private proyectobasesdatos.ProyectoBasesDatos pr;
     private String dni;
-
-    private MenuUsuarios padre;
+    private MenuInicio padreAdministradores;
+    private MenuUsuarios padreUsuarios;
     
     public AccesoUsuario() {
         initComponents();
         etiquetaFallo.setVisible(false);
     }
 
-     public AccesoUsuario(proyectobasesdatos.ProyectoBasesDatos pr, MenuUsuarios padre) {
-
+    public AccesoUsuario(proyectobasesdatos.ProyectoBasesDatos pr, MenuUsuarios padre) {
         this.pr = pr;
-        this.padre = padre;
+        this.padreUsuarios = padre;
+        padreAdministradores=null;
         initComponents();
+        AccesoAdministradores.setVisible(false);
+        etiquetaFallo.setVisible(false);
+    }
+     
+    public AccesoUsuario(proyectobasesdatos.ProyectoBasesDatos pr, MenuInicio padre) {
+        this.pr = pr;
+        this.padreAdministradores = padre;
+        padreUsuarios=null;
+        initComponents();
+        AccesoUsuarios.setVisible(false);
+        Registrarme.setVisible(false);
+        Registrarme.setEnabled(false);
         etiquetaFallo.setVisible(false);
     }
 
@@ -37,7 +49,8 @@ public class AccesoUsuario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        AccesoAdministradores = new javax.swing.JLabel();
+        AccesoUsuarios = new javax.swing.JLabel();
         DNI_Label = new javax.swing.JLabel();
         DNI = new javax.swing.JTextField();
         Contraseña_Label = new javax.swing.JLabel();
@@ -50,7 +63,9 @@ public class AccesoUsuario extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        jLabel1.setText("Acceso Usuarios");
+        AccesoAdministradores.setText("Acceso Administradores");
+
+        AccesoUsuarios.setText("Acceso Usuarios");
 
         DNI_Label.setText("DNI");
 
@@ -93,58 +108,64 @@ public class AccesoUsuario extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(145, 145, 145)
-                                    .addComponent(jLabel1))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(40, 40, 40)
-                                    .addComponent(Entrar)
-                                    .addGap(32, 32, 32)
-                                    .addComponent(Registrarme)
-                                    .addGap(30, 30, 30)
-                                    .addComponent(Atrás)))
-                            .addGap(8, 8, 8))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(21, 21, 21)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(DNI_Label)
-                                    .addGap(40, 40, 40))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(Contraseña_Label)
-                                    .addGap(20, 20, 20)))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(Contraseña)
-                                .addComponent(DNI, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(130, 130, 130)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(20, 20, 20)
+                                .addComponent(AccesoUsuarios))
+                            .addComponent(AccesoAdministradores)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(52, 52, 52)
+                        .addComponent(DNI_Label)
+                        .addGap(40, 40, 40)
+                        .addComponent(DNI, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(92, 92, 92)
-                        .addComponent(etiquetaFallo)))
-                .addContainerGap(38, Short.MAX_VALUE))
+                        .addComponent(etiquetaFallo))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(Contraseña_Label)
+                        .addGap(20, 20, 20)
+                        .addComponent(Contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(57, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(Entrar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Registrarme)
+                .addGap(45, 45, 45)
+                .addComponent(Atrás)
+                .addGap(38, 38, 38))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(jLabel1)
-                .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(DNI_Label)
+                .addGap(40, 40, 40)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(AccesoUsuarios)
+                    .addComponent(AccesoAdministradores))
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(DNI_Label))
                     .addComponent(DNI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Contraseña_Label)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(Contraseña_Label))
                     .addComponent(Contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
                 .addComponent(etiquetaFallo)
                 .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Entrar)
-                    .addComponent(Registrarme)
-                    .addComponent(Atrás))
-                .addContainerGap(45, Short.MAX_VALUE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(Atrás)
+                        .addComponent(Registrarme)))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         pack();
@@ -153,23 +174,35 @@ public class AccesoUsuario extends javax.swing.JFrame {
 
     private void AtrásActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtrásActionPerformed
         this.setVisible(false);
-        padre.setVisible(true);
+        if(padreUsuarios==null)
+            padreAdministradores.setVisible(true);
+        else
+            padreUsuarios.setVisible(true);
     }//GEN-LAST:event_AtrásActionPerformed
 
     private void RegistrarmeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistrarmeActionPerformed
-        RegistroUsuarios mu = new RegistroUsuarios(pr, padre, dni);
+        RegistroUsuarios mu = new RegistroUsuarios(pr, padreUsuarios, dni);
         this.setVisible(false);
         mu.setVisible(true);
     }//GEN-LAST:event_RegistrarmeActionPerformed
 
     private void EntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EntrarActionPerformed
         dni=DNI.getText();
-        if (pr.validarUsuario(dni, Contraseña.getText())) {
-            MenuUsuarios mu = new MenuUsuarios(pr,dni);
-            this.setVisible(false);
-            mu.setVisible(true);
+        if(padreUsuarios!=null){
+            if (pr.getDaoUsuarios().validarUsuario(dni, Contraseña.getText(), "Normal")) {
+                MenuUsuarios mu = new MenuUsuarios(pr,dni);
+                this.setVisible(false);
+                mu.setVisible(true);//Aquí cambiar para que vuelva al padre dándole valor al dni y cambiando lo que se ve
+            }
+            else etiquetaFallo.setVisible(true);
         }
-        else etiquetaFallo.setVisible(true);
+        else{
+            if (pr.getDaoUsuarios().validarUsuario(dni, Contraseña.getText(), "Administrador")) {
+                this.setVisible(false);
+                padreAdministradores.setVisible(true);
+            }
+            else etiquetaFallo.setVisible(true);
+        }
     }//GEN-LAST:event_EntrarActionPerformed
 
     private void DNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DNIActionPerformed
@@ -212,6 +245,8 @@ public class AccesoUsuario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel AccesoAdministradores;
+    private javax.swing.JLabel AccesoUsuarios;
     private javax.swing.JButton Atrás;
     private javax.swing.JPasswordField Contraseña;
     private javax.swing.JLabel Contraseña_Label;
@@ -220,6 +255,5 @@ public class AccesoUsuario extends javax.swing.JFrame {
     private javax.swing.JButton Entrar;
     private javax.swing.JButton Registrarme;
     private javax.swing.JLabel etiquetaFallo;
-    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
