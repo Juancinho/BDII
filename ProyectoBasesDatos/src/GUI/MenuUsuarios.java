@@ -13,7 +13,7 @@ import java.util.logging.Logger;
  * @author alumnogreibd
  */
 public class MenuUsuarios extends javax.swing.JFrame {
-
+    private MenuInicio padre;
     private proyectobasesdatos.ProyectoBasesDatos pr;
     private String dni;
    // private Inicio padre;
@@ -29,8 +29,9 @@ public class MenuUsuarios extends javax.swing.JFrame {
      *
      * @param pr
      */
-    public MenuUsuarios(proyectobasesdatos.ProyectoBasesDatos pr) {
+    public MenuUsuarios(proyectobasesdatos.ProyectoBasesDatos pr, MenuInicio padre) {
         this.pr = pr;
+        this.padre=padre;
         initComponents();
         jLabel1.setVisible(false);
         Comprar.setEnabled(false);
@@ -214,7 +215,7 @@ public class MenuUsuarios extends javax.swing.JFrame {
             ac.setVisible(true);
         }
         else{
-            MenuUsuarios mu = new MenuUsuarios(pr);
+            MenuUsuarios mu = new MenuUsuarios(pr,padre);
             mu.setVisible(true);
         }
     }//GEN-LAST:event_AccederActionPerformed

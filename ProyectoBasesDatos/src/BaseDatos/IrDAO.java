@@ -93,4 +93,50 @@ public class IrDAO {
         }
 
     }
+    
+    public int comprobarNumeroVisitantes(Date fecha, String nombreAtraccion) {
+        ResultSet rsIr;
+        PreparedStatement stmIr = null;
+        int numero=-1;
+        
+        try {
+            stmIr = conexion.prepareStatement("SELECT count(visitante) as numero FROM ir WHERE fechavisita = ? AND  atraccion = ?");
+            stmIr.setDate(1, fecha);
+            stmIr.setString(2, nombreAtraccion);
+            rsIr = stmIr.executeQuery();
+            numero=rsIr.getInt("numero");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            try {
+                stmIr.close();
+            } catch (SQLException e) {
+                System.out.println("Imposible cerrar cursores");
+            }
+        }
+        return numero;
+    }
+    
+    public boolean devolverDinero(Date fecha, String nombreAtraccion) {
+        ResultSet rsIr;
+        PreparedStatement stmIr = null;
+
+        try {
+            stmIr = conexion.prepareStatement("SELECT visitante, VIP as numero FROM ir WHERE fechavisita = ? AND  atraccion = ?");
+            stmIr.setDate(1, fecha);
+            stmIr.setString(2, nombreAtraccion);
+            rsIr = stmIr.executeQuery();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            try {
+                stmIr.close();
+            } catch (SQLException e) {
+                System.out.println("Imposible cerrar cursores");
+            }
+        }
+        return true;
+    }
+    
 }
