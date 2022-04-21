@@ -48,6 +48,11 @@ public class MenuInicio extends javax.swing.JFrame {
 
         Aministrador.setBorderPainted(false);
         Aministrador.setContentAreaFilled(false);
+        Aministrador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AministradorActionPerformed(evt);
+            }
+        });
         jPanel1.add(Aministrador, new org.netbeans.lib.awtextra.AbsoluteConstraints(124, 233, 230, 170));
 
         Usuario.setBorderPainted(false);
@@ -99,6 +104,12 @@ public class MenuInicio extends javax.swing.JFrame {
         this.setVisible(false);
         mu.setVisible(true);
     }//GEN-LAST:event_UsuarioActionPerformed
+
+    private void AministradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AministradorActionPerformed
+        AccesoUsuario ac= new AccesoUsuario(pr,this);
+        this.setVisible(false);
+        ac.setVisible(true);
+    }//GEN-LAST:event_AministradorActionPerformed
 
     /**
      * @param args the command line arguments

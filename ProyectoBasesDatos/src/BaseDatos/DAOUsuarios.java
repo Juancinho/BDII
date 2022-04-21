@@ -28,7 +28,7 @@ public class DAOUsuarios extends AbstractDAO {
         this.conexion = conexion;
     }
 
-    public boolean validarUsuario(String idUsuario, String clave) {
+    public boolean validarUsuario(String idUsuario, String clave, String tipo) {
         boolean resultado = false;
         Connection con;
         PreparedStatement stmUsuario = null;
@@ -39,12 +39,13 @@ public class DAOUsuarios extends AbstractDAO {
         try {
             stmUsuario = con.prepareStatement("select dni, clave, tipo_usuario "
                     + "from usuario "
-                    + "where dni = ? and clave = ?");
+                    + "where dni = ? and clave = ? and tipo_usuario = ?");
             stmUsuario.setString(1, idUsuario);
             stmUsuario.setString(2, clave);
+            stmUsuario.setString(3, tipo);
             rsUsuario = stmUsuario.executeQuery();
-            if (rsUsuario.next()) {
-                return true;
+            if (rsUsuario.next()){
+                    resultado=true;
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
