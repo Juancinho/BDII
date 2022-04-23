@@ -514,7 +514,7 @@ public class AnhadirEmpleados extends javax.swing.JFrame {
             }
             JOptionPane.showMessageDialog(rootPane, "Trabajador añadido");
         } else {
-            pr.getHostelerosDAO().anhadirHostelero(dni.getText(), nombre.getText(), direccion.getText(), telefono.getText(), hoy2, nacimiento2, jComboBoxRestaurante.getSelectedItem().toString());
+            pr.getHostelerosDAO().anhadirHostelero(dni.getText(), nombre.getText(), direccion.getText(), telefono.getText(), hoy2, nacimiento2, jComboBoxRestaurante.getSelectedItem().toString(),sueldo);
             JOptionPane.showMessageDialog(rootPane, "Hostelero añadido");
         }
 

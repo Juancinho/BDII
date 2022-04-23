@@ -23,6 +23,8 @@ public class DespedirEmpleados extends javax.swing.JFrame {
         initComponents();
         limiteVacio.setVisible(false);
         limiteMax.setVisible(false);
+        limiteVacio2.setVisible(false);
+        limiteMax2.setVisible(false);
         ModeloTablaHosteleros th = (ModeloTablaHosteleros) tablaHosteleros.getModel();
         th.setFilas(pr.getHostelerosDAO().getHosteleros());
         ModeloTablaTrabajadores tt = (ModeloTablaTrabajadores) tablaTrabajadores.getModel();
@@ -52,6 +54,10 @@ public class DespedirEmpleados extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaHosteleros = new javax.swing.JTable();
         despedirHost = new javax.swing.JButton();
+        despedirRecientes2 = new javax.swing.JButton();
+        limite2 = new javax.swing.JTextField();
+        limiteVacio2 = new javax.swing.JLabel();
+        limiteMax2 = new javax.swing.JLabel();
         atras = new javax.swing.JButton();
 
         jLabel1.setText("jLabel1");
@@ -110,7 +116,7 @@ public class DespedirEmpleados extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 332, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 344, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(limiteMax)
@@ -134,28 +140,58 @@ public class DespedirEmpleados extends javax.swing.JFrame {
             }
         });
 
+        despedirRecientes2.setText("Despedir Recientes");
+        despedirRecientes2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                despedirRecientes2ActionPerformed(evt);
+            }
+        });
+
+        limiteVacio2.setForeground(new java.awt.Color(255, 0, 51));
+        limiteVacio2.setText("Introduce límite");
+
+        limiteMax2.setForeground(new java.awt.Color(255, 0, 51));
+        limiteMax2.setText("Limite max. 5");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 654, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 654, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(279, 279, 279)
-                        .addComponent(despedirHost)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(limiteVacio2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(limiteMax2)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addComponent(limite2, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(despedirRecientes2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(despedirHost)
+                        .addGap(117, 117, 117))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(despedirHost)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(limiteVacio2)
+                    .addComponent(limiteMax2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(limite2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(despedirRecientes2)
+                    .addComponent(despedirHost))
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("Hosteleros", jPanel2);
@@ -226,6 +262,23 @@ public class DespedirEmpleados extends javax.swing.JFrame {
 
     }//GEN-LAST:event_despedirRecientesActionPerformed
 
+    private void despedirRecientes2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_despedirRecientes2ActionPerformed
+int lim;
+        limiteVacio2.setVisible(false);
+        limiteMax2.setVisible(false);
+        if (limite2.getText().isBlank()) {
+            limiteVacio2.setVisible(true);
+        } else {
+            lim = Integer.parseInt(limite2.getText());
+            if (lim > 5) {
+                limiteMax2.setVisible(true);
+
+            } else {
+
+                despedirHostelerosRecientes();
+            }
+        }    }//GEN-LAST:event_despedirRecientes2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -265,6 +318,7 @@ public class DespedirEmpleados extends javax.swing.JFrame {
     private javax.swing.JButton atras;
     private javax.swing.JButton despedirHost;
     private javax.swing.JButton despedirRecientes;
+    private javax.swing.JButton despedirRecientes2;
     private javax.swing.JButton despedirTrab;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
@@ -273,8 +327,11 @@ public class DespedirEmpleados extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField limite;
+    private javax.swing.JTextField limite2;
     private javax.swing.JLabel limiteMax;
+    private javax.swing.JLabel limiteMax2;
     private javax.swing.JLabel limiteVacio;
+    private javax.swing.JLabel limiteVacio2;
     private javax.swing.JTable tablaHosteleros;
     private javax.swing.JTable tablaTrabajadores;
     // End of variables declaration//GEN-END:variables
@@ -299,6 +356,14 @@ public void despedirHostelero() {
         }
         ModeloTablaTrabajadores t = (ModeloTablaTrabajadores) tablaTrabajadores.getModel();
         t.setFilas(pr.getTrabajadoresDAO().getTrabajadores());
+    }
+     public void despedirHostelerosRecientes() {
+        int lim = Integer.parseInt(limite2.getText());
+        for (int i = 0; i < lim; i++) {
+            pr.getHostelerosDAO().despedirRecientes(lim);
+        }
+        ModeloTablaHosteleros t = (ModeloTablaHosteleros) tablaHosteleros.getModel();
+        t.setFilas(pr.getHostelerosDAO().getHosteleros());
     }
 
 }
