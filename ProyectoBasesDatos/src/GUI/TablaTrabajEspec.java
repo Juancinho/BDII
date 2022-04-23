@@ -10,6 +10,7 @@ package GUI;
  */
 public class TablaTrabajEspec extends javax.swing.JFrame {
     private proyectobasesdatos.ProyectoBasesDatos pr;
+     private MenuEmpleados padre;
     /**
      * Creates new form TablaHosteleros
      */
@@ -17,8 +18,9 @@ public class TablaTrabajEspec extends javax.swing.JFrame {
         initComponents();
     }
 
-    public TablaTrabajEspec(proyectobasesdatos.ProyectoBasesDatos pr) {
+    public TablaTrabajEspec(proyectobasesdatos.ProyectoBasesDatos pr,MenuEmpleados padre) {
         this.pr = pr;
+        this.padre=padre;
         initComponents();
     }
     /**
@@ -34,13 +36,15 @@ public class TablaTrabajEspec extends javax.swing.JFrame {
         TablaTrabajEspec = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         Buscar = new javax.swing.JToggleButton();
+        atras = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         TablaTrabajEspec.setModel(new ModeloTablaTrabajEspectaculos());
         jScrollPane1.setViewportView(TablaTrabajEspec);
 
-        jLabel1.setText("Trabajadores Atracciones");
+        jLabel1.setText("Trabajadores Espectáculos");
 
         Buscar.setText("Buscar");
         Buscar.addActionListener(new java.awt.event.ActionListener() {
@@ -49,14 +53,17 @@ public class TablaTrabajEspec extends javax.swing.JFrame {
             }
         });
 
+        atras.setText("Atrás");
+        atras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                atrasActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(Buscar)
-                .addGap(33, 33, 33))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -64,7 +71,12 @@ public class TablaTrabajEspec extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 658, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(269, 269, 269)
-                        .addComponent(jLabel1)))
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(196, 196, 196)
+                        .addComponent(Buscar)
+                        .addGap(147, 147, 147)
+                        .addComponent(atras)))
                 .addContainerGap(42, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -75,16 +87,24 @@ public class TablaTrabajEspec extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(Buscar)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Buscar)
+                    .addComponent(atras))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
         mostrarTrabajEspec();
     }//GEN-LAST:event_BuscarActionPerformed
+
+    private void atrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasActionPerformed
+        this.setVisible(false);
+        padre.setVisible(true);
+    }//GEN-LAST:event_atrasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -127,6 +147,7 @@ public class TablaTrabajEspec extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton Buscar;
     private javax.swing.JTable TablaTrabajEspec;
+    private javax.swing.JButton atras;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables

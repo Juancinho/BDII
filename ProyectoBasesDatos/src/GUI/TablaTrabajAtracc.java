@@ -10,6 +10,7 @@ package GUI;
  */
 public class TablaTrabajAtracc extends javax.swing.JFrame {
     private proyectobasesdatos.ProyectoBasesDatos pr;
+     private MenuEmpleados padre;
     /**
      * Creates new form TablaHosteleros
      */
@@ -17,8 +18,9 @@ public class TablaTrabajAtracc extends javax.swing.JFrame {
         initComponents();
     }
 
-    public TablaTrabajAtracc(proyectobasesdatos.ProyectoBasesDatos pr) {
+    public TablaTrabajAtracc(proyectobasesdatos.ProyectoBasesDatos pr,MenuEmpleados padre) {
         this.pr = pr;
+        this.padre=padre;
         initComponents();
     }
     /**
@@ -37,6 +39,7 @@ public class TablaTrabajAtracc extends javax.swing.JFrame {
         atras = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         TablaTrabajAtracc.setModel(new ModeloTablaTrabajAtracciones());
         jScrollPane1.setViewportView(TablaTrabajAtracc);
@@ -51,6 +54,11 @@ public class TablaTrabajAtracc extends javax.swing.JFrame {
         });
 
         atras.setText("Atrás");
+        atras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                atrasActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -65,9 +73,9 @@ public class TablaTrabajAtracc extends javax.swing.JFrame {
                         .addGap(269, 269, 269)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(227, 227, 227)
+                        .addGap(210, 210, 210)
                         .addComponent(Buscar)
-                        .addGap(136, 136, 136)
+                        .addGap(177, 177, 177)
                         .addComponent(atras)))
                 .addContainerGap(42, Short.MAX_VALUE))
         );
@@ -86,11 +94,17 @@ public class TablaTrabajAtracc extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
         mostrarTrabajAtracc();
     }//GEN-LAST:event_BuscarActionPerformed
+
+    private void atrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasActionPerformed
+       this.setVisible(false);
+        padre.setVisible(true);
+    }//GEN-LAST:event_atrasActionPerformed
 
     /**
      * @param args the command line arguments

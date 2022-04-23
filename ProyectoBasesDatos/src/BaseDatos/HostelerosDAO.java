@@ -26,7 +26,7 @@ public class HostelerosDAO {
         this.conexion = conexion;
     }
 
-    public void anhadirHostelero(String dni, String nombre, String direccion, String telefono, Date fechaInicio, Date fechaNacimiento, String restaurante) throws SQLException {
+    public void anhadirHostelero(String dni, String nombre, String direccion, String telefono, Date fechaInicio, Date fechaNacimiento, String restaurante,float salario) throws SQLException {
         PreparedStatement stmTrabajador = null;
         stmTrabajador = conexion.prepareStatement("INSERT INTO hosteleros (dni,nombre,direccion,telefono,fechainicio,fechanacimiento,nombreestablecimiento,salario) values(?,?,?,?,?,?,?,?)");
         stmTrabajador.setString(1, dni);
@@ -36,7 +36,7 @@ public class HostelerosDAO {
         stmTrabajador.setDate(5, fechaInicio);
         stmTrabajador.setDate(6, fechaNacimiento);
         stmTrabajador.setString(7, restaurante);
-        stmTrabajador.setInt(8, 2);
+        stmTrabajador.setFloat(8, salario);
         stmTrabajador.executeUpdate();
         stmTrabajador.close();
 
@@ -48,7 +48,7 @@ public class HostelerosDAO {
         ResultSet rsHosteleros;
         PreparedStatement stmHosteleros = null;
         try {
-            stmHosteleros = conexion.prepareStatement("select * from hosteleros");
+            stmHosteleros = conexion.prepareStatement("select * from hosteleros order by fechainicio");
             rsHosteleros = stmHosteleros.executeQuery();
             while (rsHosteleros.next()) {
                 hostelero = new Hostelero(rsHosteleros.getString("dni"), rsHosteleros.getString("nombre"), rsHosteleros.getString("direccion"), rsHosteleros.getFloat("salario"), rsHosteleros.getString("telefono"), rsHosteleros.getString("fechainicio"), rsHosteleros.getString("fechanacimiento"), rsHosteleros.getString("nombreestablecimiento"));
@@ -68,6 +68,18 @@ public class HostelerosDAO {
         try {
             stmHosteleros = conexion.prepareStatement("DELETE from hosteleros where dni = ?");
             stmHosteleros.setString(1, dni);
+            stmHosteleros.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(HostelerosDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    public void despedirRecientes(int limite) {
+
+        PreparedStatement stmHosteleros = null;
+        try {
+            stmHosteleros = conexion.prepareStatement("	delete from  hosteleros  where dni in(select dni from hosteleros t where fechainicio >=all(select fechainicio from hosteleros)order by salario desc limit 1)");
             stmHosteleros.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(HostelerosDAO.class.getName()).log(Level.SEVERE, null, ex);

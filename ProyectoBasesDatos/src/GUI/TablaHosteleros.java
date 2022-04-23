@@ -10,6 +10,7 @@ package GUI;
  */
 public class TablaHosteleros extends javax.swing.JFrame {
     private proyectobasesdatos.ProyectoBasesDatos pr;
+     private MenuEmpleados padre;
     /**
      * Creates new form TablaHosteleros
      */
@@ -17,8 +18,9 @@ public class TablaHosteleros extends javax.swing.JFrame {
         initComponents();
     }
 
-    public TablaHosteleros(proyectobasesdatos.ProyectoBasesDatos pr) {
+    public TablaHosteleros(proyectobasesdatos.ProyectoBasesDatos pr,MenuEmpleados padre) {
         this.pr = pr;
+        this.padre=padre;
         initComponents();
     }
     /**
@@ -37,6 +39,7 @@ public class TablaHosteleros extends javax.swing.JFrame {
         atras = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         TablaHosteleros.setModel(new ModeloTablaHosteleros());
         jScrollPane1.setViewportView(TablaHosteleros);
@@ -69,13 +72,13 @@ public class TablaHosteleros extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(31, 31, 31)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 658, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(53, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(210, Short.MAX_VALUE)
                 .addComponent(Buscar)
-                .addGap(147, 147, 147)
+                .addGap(171, 171, 171)
                 .addComponent(atras)
-                .addGap(223, 223, 223))
+                .addGap(210, 210, 210))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -92,6 +95,7 @@ public class TablaHosteleros extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
@@ -99,7 +103,8 @@ public class TablaHosteleros extends javax.swing.JFrame {
     }//GEN-LAST:event_BuscarActionPerformed
 
     private void atrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasActionPerformed
-        // TODO add your handling code here:
+        this.setVisible(false);
+        padre.setVisible(true);
     }//GEN-LAST:event_atrasActionPerformed
 
     /**

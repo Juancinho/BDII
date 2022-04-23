@@ -92,7 +92,7 @@ public class TrabajadoresDAO {
         ResultSet rsTrabajadores;
         PreparedStatement stmTrabajadores = null;
         try {
-            stmTrabajadores = conexion.prepareStatement("select * from trabajadoresparque");
+            stmTrabajadores = conexion.prepareStatement("select * from trabajadoresparque order by fechainicio");
             rsTrabajadores = stmTrabajadores.executeQuery();
             while (rsTrabajadores.next()) {
                 trabajador = new Trabajador(rsTrabajadores.getString("dni"), rsTrabajadores.getString("nombre"), rsTrabajadores.getString("direccion"), rsTrabajadores.getFloat("salario"), rsTrabajadores.getString("telefono"), rsTrabajadores.getString("fechainicio"), rsTrabajadores.getString("fechanacimiento"), rsTrabajadores.getString("nombreatraccion"),rsTrabajadores.getString("nombreespectaculo"));
@@ -112,6 +112,17 @@ public class TrabajadoresDAO {
             stmTrabajadores = conexion.prepareStatement("DELETE from trabajadoresparque where dni = ?");
             stmTrabajadores.setString(1, dni);
             stmTrabajadores.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(HostelerosDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+            public void despedirRecientes(int limite) {
+
+        PreparedStatement stmTrabajadores = null;
+        try {
+            stmTrabajadores = conexion.prepareStatement("	delete from  trabajadoresparque  where dni in(select dni from trabajadoresparque t where fechainicio >=all(select fechainicio from trabajadoresparque)order by salario desc limit 1)");
+                      stmTrabajadores.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(HostelerosDAO.class.getName()).log(Level.SEVERE, null, ex);
         }

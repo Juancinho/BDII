@@ -54,45 +54,16 @@ public class MenuAdministradores extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        trabEsp = new javax.swing.JButton();
-        hosteleros = new javax.swing.JButton();
-        trabAtra = new javax.swing.JButton();
         jLayeredPane1 = new javax.swing.JLayeredPane();
-        despedir = new javax.swing.JButton();
-        contratar = new javax.swing.JButton();
         Salir = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         regalarEntradas = new javax.swing.JButton();
+        trabajadores = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        trabEsp.setText("TrabEsp");
-        trabEsp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                trabEspActionPerformed(evt);
-            }
-        });
-        jPanel1.add(trabEsp, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, -1, -1));
-
-        hosteleros.setText("Hosteleros");
-        hosteleros.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                hostelerosActionPerformed(evt);
-            }
-        });
-        jPanel1.add(hosteleros, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, -1, -1));
-
-        trabAtra.setText("TrabAtra");
-        trabAtra.setActionCommand("");
-        trabAtra.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                trabAtraActionPerformed(evt);
-            }
-        });
-        jPanel1.add(trabAtra, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, -1, -1));
 
         javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
         jLayeredPane1.setLayout(jLayeredPane1Layout);
@@ -107,24 +78,7 @@ public class MenuAdministradores extends javax.swing.JFrame {
 
         jPanel1.add(jLayeredPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 300, -1, -1));
 
-        despedir.setText("Despedir");
-        despedir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                despedirActionPerformed(evt);
-            }
-        });
-        jPanel1.add(despedir, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 20, -1, -1));
-
-        contratar.setText("Contratar");
-        contratar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                contratarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(contratar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 20, -1, -1));
-
         Salir.setText("Salir");
-        Salir.setActionCommand("Salir");
         Salir.setBorderPainted(false);
         Salir.setContentAreaFilled(false);
         Salir.addActionListener(new java.awt.event.ActionListener() {
@@ -140,7 +94,7 @@ public class MenuAdministradores extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, -1, -1));
+        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 50, -1, -1));
 
         regalarEntradas.setText("Regalar Entradas");
         regalarEntradas.addActionListener(new java.awt.event.ActionListener() {
@@ -149,6 +103,14 @@ public class MenuAdministradores extends javax.swing.JFrame {
             }
         });
         jPanel1.add(regalarEntradas, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 340, 190, 50));
+
+        trabajadores.setText("Gestión de Empleados");
+        trabajadores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                trabajadoresActionPerformed(evt);
+            }
+        });
+        jPanel1.add(trabajadores, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 170, 180, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -165,6 +127,20 @@ public class MenuAdministradores extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void regalarEntradasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regalarEntradasActionPerformed
+        RegalarEntradas r= new RegalarEntradas(pr, this);
+        this.setVisible(false);
+        r.setVisible(true);
+    }//GEN-LAST:event_regalarEntradasActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        BeneficiosAtracciones ba = new BeneficiosAtracciones(pr,this);
+        ba.setVisible(true);
+
+    }//GEN-LAST:event_jButton4ActionPerformed
+
     private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
         // TODO add your handling code here:
         System.exit(0);
@@ -175,50 +151,11 @@ public class MenuAdministradores extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_SalirActionPerformed
 
-    private void contratarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contratarActionPerformed
-       this.setVisible(false);
-       AnhadirEmpleados e =  new AnhadirEmpleados(pr,this);
-       e.setVisible(true);
-    }//GEN-LAST:event_contratarActionPerformed
-
-    private void despedirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_despedirActionPerformed
-       this.setVisible(false);
-       DespedirEmpleados de = new DespedirEmpleados(pr,this);
-       de.setVisible(true);
-    }//GEN-LAST:event_despedirActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+    private void trabajadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trabajadoresActionPerformed
+        MenuEmpleados me=new MenuEmpleados(pr, this);
         this.setVisible(false);
-        BeneficiosAtracciones ba = new BeneficiosAtracciones(pr,this);
-        ba.setVisible(true);
-        
-        
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void regalarEntradasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regalarEntradasActionPerformed
-        RegalarEntradas r= new RegalarEntradas(pr, this);
-        this.setVisible(false);
-        r.setVisible(true);
-    }//GEN-LAST:event_regalarEntradasActionPerformed
-
-    private void trabAtraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trabAtraActionPerformed
-        TablaTrabajAtracc ta = new TablaTrabajAtracc(pr);
-        this.setVisible(false);
-        ta.setVisible(true);
-    }//GEN-LAST:event_trabAtraActionPerformed
-
-    private void trabEspActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trabEspActionPerformed
-       TablaTrabajEspec ta = new TablaTrabajEspec(pr);
-        this.setVisible(false);
-        ta.setVisible(true);
-    }//GEN-LAST:event_trabEspActionPerformed
-
-    private void hostelerosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hostelerosActionPerformed
-        TablaHosteleros ta = new TablaHosteleros(pr);
-        this.setVisible(false);
-        ta.setVisible(true);
-    }//GEN-LAST:event_hostelerosActionPerformed
+        me.setVisible(true);
+    }//GEN-LAST:event_trabajadoresActionPerformed
 
     
     /**
@@ -261,14 +198,10 @@ public class MenuAdministradores extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Salir;
-    private javax.swing.JButton contratar;
-    private javax.swing.JButton despedir;
-    private javax.swing.JButton hosteleros;
     private javax.swing.JButton jButton4;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton regalarEntradas;
-    private javax.swing.JButton trabAtra;
-    private javax.swing.JButton trabEsp;
+    private javax.swing.JButton trabajadores;
     // End of variables declaration//GEN-END:variables
 }
