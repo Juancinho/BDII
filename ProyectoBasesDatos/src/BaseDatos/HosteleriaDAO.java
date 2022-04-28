@@ -26,7 +26,7 @@ public class HosteleriaDAO {
         PreparedStatement stmEstablecimientos = null;
 
         try {
-            stmEstablecimientos = conexion.prepareStatement("SELECT nombreestablecimiento FROM hosteleria"); 
+            stmEstablecimientos = conexion.prepareStatement("SELECT nombreestablecimiento FROM hosteleria order by nombreestablecimiento"); 
             rsEstablecimientos = stmEstablecimientos.executeQuery();
             while (rsEstablecimientos.next()) {   //MANOTE: Este next devuelve un booleano pero también coloca el cursor en la siguiente fila (la primera vez que se le llama en la primera, la segunda en la segunda,...)
                 resultado.add(rsEstablecimientos.getString("nombreestablecimiento"));
@@ -52,7 +52,7 @@ public class HosteleriaDAO {
         PreparedStatement stmHosteleria = null;
 
         try {
-            stmHosteleria = conexion.prepareStatement("SELECT nombreestablecimiento, ubicacion, aforo, horaInicio, horaFin FROM hosteleria WHERE nombreestablecimiento like ? ");
+            stmHosteleria = conexion.prepareStatement("SELECT nombreestablecimiento, ubicacion, aforo, horaInicio, horaFin FROM hosteleria WHERE nombreestablecimiento like ? order by nombreestablecimiento");
             stmHosteleria.setString(1, '%' +nombreEstablecimiento+ '%');
             rsHosteleria = stmHosteleria.executeQuery();
             while (rsHosteleria.next()) {
