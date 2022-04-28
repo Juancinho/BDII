@@ -40,9 +40,11 @@ public class MenuConsultarDatos extends javax.swing.JFrame {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+        String[] array2 = pr.getAtraccionesDAO().atraccionesActivas().toArray(new String[pr.getAtraccionesDAO().atraccionesActivas().size()]);
         comboAtracciones = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaAtracciones = new javax.swing.JTable();
+        mostrarTodasAtrac = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         buscaTematica = new javax.swing.JComboBox<>();
@@ -55,8 +57,10 @@ public class MenuConsultarDatos extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tablaRestaurante = new javax.swing.JTable();
-        textoRestaurante = new javax.swing.JTextField();
-        buscarRestaurante = new javax.swing.JButton();
+        String[] array =pr.getHosteleriaDAO().establecimientosActivos().toArray(new String[pr.getHosteleriaDAO().establecimientosActivos().size()]);
+
+        restaurante = new javax.swing.JComboBox<>();
+        mostrarTodo = new javax.swing.JButton();
         atras = new javax.swing.JButton();
         salir = new javax.swing.JButton();
 
@@ -65,7 +69,7 @@ public class MenuConsultarDatos extends javax.swing.JFrame {
 
         jLabel2.setText("Atracción:");
 
-        comboAtracciones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "TODAS", "VivaVigo", "Drakkar", "Agroterro", "O percebeiro", "Cuncas de queimada", "Fodechincho", "Horta encantada", "Carrusel", "Planadoras", "Meigas", "O segredo dos Celtas" }));
+        comboAtracciones.setModel(new javax.swing.DefaultComboBoxModel<>(array2));
         comboAtracciones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboAtraccionesActionPerformed(evt);
@@ -76,21 +80,29 @@ public class MenuConsultarDatos extends javax.swing.JFrame {
         tablaAtracciones.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
         jScrollPane1.setViewportView(tablaAtracciones);
 
+        mostrarTodasAtrac.setText("Mostrar Todo");
+        mostrarTodasAtrac.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mostrarTodasAtracActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(jLabel2)
-                        .addGap(26, 26, 26)
-                        .addComponent(comboAtracciones, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 776, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(21, 21, 21)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 776, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jLabel2)
+                .addGap(26, 26, 26)
+                .addComponent(comboAtracciones, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(mostrarTodasAtrac, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(105, 105, 105))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -98,7 +110,8 @@ public class MenuConsultarDatos extends javax.swing.JFrame {
                 .addGap(28, 28, 28)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(comboAtracciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(comboAtracciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(mostrarTodasAtrac))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18))
@@ -182,16 +195,17 @@ public class MenuConsultarDatos extends javax.swing.JFrame {
         tablaRestaurante.setModel(new ModeloTablaRestaurante());
         jScrollPane3.setViewportView(tablaRestaurante);
 
-        textoRestaurante.addActionListener(new java.awt.event.ActionListener() {
+        restaurante.setModel(new javax.swing.DefaultComboBoxModel<>(array));
+        restaurante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textoRestauranteActionPerformed(evt);
+                restauranteActionPerformed(evt);
             }
         });
 
-        buscarRestaurante.setText("Buscar");
-        buscarRestaurante.addActionListener(new java.awt.event.ActionListener() {
+        mostrarTodo.setText("Mostrar Todo");
+        mostrarTodo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buscarRestauranteActionPerformed(evt);
+                mostrarTodoActionPerformed(evt);
             }
         });
 
@@ -202,13 +216,13 @@ public class MenuConsultarDatos extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addComponent(jLabel4)
-                .addGap(18, 18, 18)
-                .addComponent(textoRestaurante, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 145, Short.MAX_VALUE)
-                .addComponent(buscarRestaurante)
-                .addGap(114, 114, 114))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(restaurante, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(63, 63, 63)
+                .addComponent(mostrarTodo, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(16, Short.MAX_VALUE)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 781, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -218,8 +232,8 @@ public class MenuConsultarDatos extends javax.swing.JFrame {
                 .addGap(28, 28, 28)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(textoRestaurante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buscarRestaurante))
+                    .addComponent(restaurante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(mostrarTodo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
@@ -302,12 +316,20 @@ public class MenuConsultarDatos extends javax.swing.JFrame {
         buscarEspectaculo();
     }//GEN-LAST:event_buscarActionPerformed
 
-    private void textoRestauranteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textoRestauranteActionPerformed
+    private void restauranteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_restauranteActionPerformed
         buscarRestaurante();
-    }//GEN-LAST:event_textoRestauranteActionPerformed
+    }//GEN-LAST:event_restauranteActionPerformed
 
-    private void buscarRestauranteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarRestauranteActionPerformed
-        buscarRestaurante();    }//GEN-LAST:event_buscarRestauranteActionPerformed
+    private void mostrarTodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarTodoActionPerformed
+        ModeloTablaRestaurante t = (ModeloTablaRestaurante) tablaRestaurante.getModel();
+        t.setFilas(pr.getHosteleriaDAO().datosBasicosEstablecimiento(" "));
+    }//GEN-LAST:event_mostrarTodoActionPerformed
+
+    private void mostrarTodasAtracActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarTodasAtracActionPerformed
+        ModeloTablaAtraccion m = (ModeloTablaAtraccion) tablaAtracciones.getModel();
+        m.setFilas(pr.getAtraccionesDAO().consultarAtraccion(""));
+
+    }//GEN-LAST:event_mostrarTodasAtracActionPerformed
 
     /**
      * @param args the command line arguments
@@ -352,7 +374,6 @@ public class MenuConsultarDatos extends javax.swing.JFrame {
     private javax.swing.JTextField buscaEspectaculo;
     private javax.swing.JComboBox<String> buscaTematica;
     private javax.swing.JButton buscar;
-    private javax.swing.JButton buscarRestaurante;
     private javax.swing.JComboBox<String> comboAtracciones;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -365,27 +386,20 @@ public class MenuConsultarDatos extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JButton mostrarTodasAtrac;
+    private javax.swing.JButton mostrarTodo;
+    private javax.swing.JComboBox<String> restaurante;
     private javax.swing.JButton salir;
     private javax.swing.JTable tablaAtracciones;
     private javax.swing.JTable tablaEspectaculo;
     private javax.swing.JTable tablaRestaurante;
-    private javax.swing.JTextField textoRestaurante;
     // End of variables declaration//GEN-END:variables
 
     public void buscarAtraccion() {
+    
+       ModeloTablaAtraccion m = (ModeloTablaAtraccion) tablaAtracciones.getModel();
+        m.setFilas(pr.getAtraccionesDAO().consultarAtraccion(comboAtracciones.getSelectedItem().toString()));
 
-        ModeloTablaAtraccion m;
-
-        m = (ModeloTablaAtraccion) tablaAtracciones.getModel();
-
-        if (comboAtracciones.getSelectedItem().toString().equals("TODAS")) {
-            m.setFilas(pr.getAtraccionesDAO().consultarAtraccion(""));
-        } else {
-            m.setFilas(pr.getAtraccionesDAO().consultarAtraccion(comboAtracciones.getSelectedItem().toString()));
-        }
-        if (m.getRowCount() > 0) {
-            tablaAtracciones.setRowSelectionInterval(0, 0);
-        }
     }
 
     public void buscarEspectaculo() {
@@ -402,7 +416,7 @@ public class MenuConsultarDatos extends javax.swing.JFrame {
 
     public void buscarRestaurante() {
         ModeloTablaRestaurante t = (ModeloTablaRestaurante) tablaRestaurante.getModel();
-        t.setFilas(pr.getHosteleriaDAO().datosBasicosEstablecimiento(textoRestaurante.getText()));
+        t.setFilas(pr.getHosteleriaDAO().datosBasicosEstablecimiento(restaurante.getSelectedItem().toString()));
 
     }
 }

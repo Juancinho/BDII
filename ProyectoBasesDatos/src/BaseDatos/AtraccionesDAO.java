@@ -31,7 +31,7 @@ public class AtraccionesDAO {
         PreparedStatement stmAtracciones = null;
 
         try {
-            stmAtracciones = conexion.prepareStatement("SELECT nombre FROM atracciones"); 
+            stmAtracciones = conexion.prepareStatement("SELECT nombre FROM atracciones order by nombre"); 
             rsAtracciones = stmAtracciones.executeQuery();
             while (rsAtracciones.next()) {   //MANOTE: Este next devuelve un booleano pero también coloca el cursor en la siguiente fila (la primera vez que se le llama en la primera, la segunda en la segunda,...)
                 resultado.add(rsAtracciones.getString("nombre"));
@@ -61,7 +61,7 @@ public class AtraccionesDAO {
 
         String consulta = "select nombre, aforo, alturamin, ubicacion,descripcion "
                 + " from atracciones "
-                + " where nombre like ? ";
+                + " where nombre like ? order by nombre ";
 
         try {
             stmAtracciones = conexion.prepareStatement(consulta);
