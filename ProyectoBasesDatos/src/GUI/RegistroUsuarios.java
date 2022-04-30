@@ -5,6 +5,7 @@
 package GUI;
 
 import java.sql.SQLException;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -40,10 +41,8 @@ public class RegistroUsuarios extends javax.swing.JFrame {
         avisoRepetir.setVisible(false);
         avisoTel.setVisible(false);
         avisoDNI.setVisible(false);
-    }
+        avisoFecha.setVisible(false);
 
-    public RegistroUsuarios() {
-        initComponents();
     }
 
     /**
@@ -80,6 +79,7 @@ public class RegistroUsuarios extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         avisoRepetir = new javax.swing.JLabel();
         repetirContra = new javax.swing.JPasswordField();
+        avisoFecha = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -149,6 +149,9 @@ public class RegistroUsuarios extends javax.swing.JFrame {
         avisoRepetir.setForeground(new java.awt.Color(255, 51, 51));
         avisoRepetir.setText("Las contraseñas no coinciden");
 
+        avisoFecha.setForeground(new java.awt.Color(255, 0, 51));
+        avisoFecha.setText("Fecha Incorrecta, debe ser mayor de 3 años");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -189,7 +192,7 @@ public class RegistroUsuarios extends javax.swing.JFrame {
                         .addComponent(repetirContra, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(avisoRepetir)
-                        .addContainerGap(28, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -201,20 +204,24 @@ public class RegistroUsuarios extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(avisoContra))
                             .addGroup(layout.createSequentialGroup()
+                                .addComponent(DNI, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(avisoDNI))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(avisoFecha))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(telefono, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(nameapellidos, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(nacionalidad, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(correoelectro, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(telefono, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(nameapellidos, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(nacionalidad, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(correoelectro, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jDateChooser1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(DNI, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(29, 29, 29)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(avisoCorreo)
                                     .addComponent(avisoTel)
-                                    .addComponent(avisoDNI))))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                                    .addComponent(avisoCorreo))))
+                        .addGap(0, 10, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(aviso)
@@ -250,26 +257,31 @@ public class RegistroUsuarios extends javax.swing.JFrame {
                     .addComponent(avisoTel))
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Contraseña)
-                    .addComponent(contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(avisoContra, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel8)
-                        .addComponent(repetirContra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(avisoRepetir))
-                .addGap(18, 18, 18)
-                .addComponent(aviso, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Registrarme)
-                    .addComponent(Atrás))
-                .addGap(28, 28, 28))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(21, 21, 21)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Contraseña)
+                            .addComponent(contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(avisoContra, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel8)
+                                .addComponent(repetirContra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(avisoRepetir))
+                        .addGap(18, 18, 18)
+                        .addComponent(aviso, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(15, 15, 15)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Registrarme)
+                            .addComponent(Atrás))
+                        .addGap(28, 28, 28))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(avisoFecha)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         pack();
@@ -278,7 +290,7 @@ public class RegistroUsuarios extends javax.swing.JFrame {
 
     private void AtrásActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtrásActionPerformed
 
-        AccesoUsuario in = new AccesoUsuario(pr,padre);
+        AccesoUsuario in = new AccesoUsuario(pr, padre);
         this.setVisible(false);
         in.setVisible(true);
 
@@ -292,7 +304,17 @@ public class RegistroUsuarios extends javax.swing.JFrame {
         avisoRepetir.setVisible(false);
         avisoTel.setVisible(false);
         avisoDNI.setVisible(false);
+        avisoFecha.setVisible(false);
+
         Date date = jDateChooser1.getDate();
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.HOUR_OF_DAY, 0);
+        cal.set(Calendar.MINUTE, 0);
+        cal.set(Calendar.SECOND, 0);
+        cal.set(Calendar.MILLISECOND, 1);
+        Date hoy = cal.getTime();
+        cal.add(Calendar.YEAR, -3);
+        Date tresAños = cal.getTime();
         if (!DNI.getText().isBlank() && !nameapellidos.getText().isBlank() && !nacionalidad.getText().isBlank() && !contraseña.getText().isBlank() && !telefono.getText().isBlank() && date != null && !repetirContra.getText().isBlank()) {
             if (DNI.getText().length() != 9) {
                 avisoDNI.setVisible(true);
@@ -314,13 +336,17 @@ public class RegistroUsuarios extends javax.swing.JFrame {
                 avisoRepetir.setVisible(true);
                 error = 1;
             }
+            if (date.after(tresAños)) {
+                avisoFecha.setVisible(true);
+                error = 1;
+            }
             if (error == 0) {
                 try {
-                    dni=DNI.getText();
+                    dni = DNI.getText();
                     java.sql.Date sqlDate = new java.sql.Date(date.getTime());
                     pr.getDaoUsuarios().registrarUsuario(dni, nameapellidos.getText(), nacionalidad.getText(), correoelectro.getText(), contraseña.getText(), telefono.getText(), sqlDate);
                     this.setVisible(false);
-                    MenuUsuarios nm = new MenuUsuarios(pr,dni);
+                    MenuUsuarios nm = new MenuUsuarios(pr, dni);
                     nm.setVisible(true);
                 } catch (SQLException ex) {
                     Logger.getLogger(RegistroUsuarios.class.getName()).log(Level.SEVERE, null, ex);
@@ -341,45 +367,6 @@ public class RegistroUsuarios extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RegistroUsuarios.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RegistroUsuarios.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RegistroUsuarios.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RegistroUsuarios.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new RegistroUsuarios().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Atrás;
@@ -392,6 +379,7 @@ public class RegistroUsuarios extends javax.swing.JFrame {
     private javax.swing.JLabel avisoContra;
     private javax.swing.JLabel avisoCorreo;
     private javax.swing.JLabel avisoDNI;
+    private javax.swing.JLabel avisoFecha;
     private javax.swing.JLabel avisoRepetir;
     private javax.swing.JLabel avisoTel;
     private javax.swing.JPasswordField contraseña;

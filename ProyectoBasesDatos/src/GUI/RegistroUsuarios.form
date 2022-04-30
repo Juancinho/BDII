@@ -72,7 +72,7 @@
                       <Component id="repetirContra" min="-2" pref="261" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="avisoRepetir" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="28" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -87,25 +87,30 @@
                               <Component id="avisoContra" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="telefono" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="nameapellidos" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="nacionalidad" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="correoelectro" alignment="0" min="-2" pref="261" max="-2" attributes="0"/>
-                                      <Component id="jDateChooser1" alignment="0" min="-2" pref="207" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="DNI" min="-2" pref="263" max="-2" attributes="0"/>
+                              <Component id="DNI" min="-2" pref="263" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="avisoDNI" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jDateChooser1" min="-2" pref="207" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="avisoFecha" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="telefono" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="nameapellidos" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="nacionalidad" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="correoelectro" alignment="0" min="-2" pref="261" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="avisoCorreo" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="avisoTel" min="-2" max="-2" attributes="0"/>
-                                  <Component id="avisoDNI" min="-2" max="-2" attributes="0"/>
+                                  <Component id="avisoCorreo" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -151,31 +156,39 @@
               </Group>
               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                  <Component id="jDateChooser1" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="Contraseña" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="contraseña" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="avisoContra" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace pref="28" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                      <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="repetirContra" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                          <Component id="jDateChooser1" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="Contraseña" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="contraseña" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="avisoContra" alignment="3" min="-2" pref="35" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="28" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                              <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="repetirContra" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="avisoRepetir" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="aviso" min="-2" pref="17" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="Registrarme" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="Atrás" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="avisoRepetir" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="avisoFecha" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="aviso" min="-2" pref="17" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="Registrarme" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="Atrás" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -336,6 +349,14 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JPasswordField" name="repetirContra">
+    </Component>
+    <Component class="javax.swing.JLabel" name="avisoFecha">
+      <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="33" green="0" red="ff" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Fecha Incorrecta, debe ser mayor de 3 a&#xf1;os"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>
