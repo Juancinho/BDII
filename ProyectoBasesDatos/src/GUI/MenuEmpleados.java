@@ -32,115 +32,86 @@ public class MenuEmpleados extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        contratar = new javax.swing.JButton();
-        despedir = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
         trabAtra = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         trabEsp = new javax.swing.JButton();
         hosteleros = new javax.swing.JButton();
+        despedir = new javax.swing.JButton();
+        contratar = new javax.swing.JButton();
         atras = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        MenuEmpleados = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        contratar.setText("Contratar");
-        contratar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                contratarActionPerformed(evt);
-            }
-        });
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        despedir.setText("Despedir");
-        despedir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                despedirActionPerformed(evt);
-            }
-        });
-
-        trabAtra.setText("Trabajadores Atracciones");
+        trabAtra.setBorderPainted(false);
+        trabAtra.setContentAreaFilled(false);
         trabAtra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 trabAtraActionPerformed(evt);
             }
         });
+        jPanel1.add(trabAtra, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 250, 190, 20));
 
-        jLabel1.setText("Listados:");
-
-        trabEsp.setText("Trabajadores Espectáculos");
+        trabEsp.setBorderPainted(false);
+        trabEsp.setContentAreaFilled(false);
         trabEsp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 trabEspActionPerformed(evt);
             }
         });
+        jPanel1.add(trabEsp, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 273, 200, 20));
 
-        hosteleros.setText("Hosteleros");
+        hosteleros.setBorderPainted(false);
+        hosteleros.setContentAreaFilled(false);
         hosteleros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 hostelerosActionPerformed(evt);
             }
         });
+        jPanel1.add(hosteleros, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 300, 90, 20));
 
-        atras.setText("Atrás");
+        despedir.setBorderPainted(false);
+        despedir.setContentAreaFilled(false);
+        despedir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                despedirActionPerformed(evt);
+            }
+        });
+        jPanel1.add(despedir, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 280, 230, 80));
+
+        contratar.setBorderPainted(false);
+        contratar.setContentAreaFilled(false);
+        contratar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                contratarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(contratar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, 230, 70));
+
+        atras.setBorderPainted(false);
+        atras.setContentAreaFilled(false);
         atras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 atrasActionPerformed(evt);
             }
         });
+        jPanel1.add(atras, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 410, 60, 30));
 
-        jLabel2.setText("Administración:");
+        MenuEmpleados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/MenuEmpleados.jpeg"))); // NOI18N
+        jPanel1.add(MenuEmpleados, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(hosteleros)
-                .addGap(74, 74, 74)
-                .addComponent(atras)
-                .addGap(48, 48, 48))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(188, 188, 188)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGap(176, 176, 176)
-                            .addComponent(despedir))
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(contratar)
-                                .addComponent(jLabel2))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(124, 124, 124)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(trabEsp)
-                            .addComponent(trabAtra, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(144, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(jLabel2)
-                .addGap(30, 30, 30)
-                .addComponent(contratar)
-                .addGap(18, 18, 18)
-                .addComponent(despedir)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(trabAtra)
-                .addGap(18, 18, 18)
-                .addComponent(trabEsp)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(hosteleros)
-                    .addComponent(atras))
-                .addContainerGap(35, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -217,12 +188,12 @@ public class MenuEmpleados extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel MenuEmpleados;
     private javax.swing.JButton atras;
     private javax.swing.JButton contratar;
     private javax.swing.JButton despedir;
     private javax.swing.JButton hosteleros;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JButton trabAtra;
     private javax.swing.JButton trabEsp;
     // End of variables declaration//GEN-END:variables
