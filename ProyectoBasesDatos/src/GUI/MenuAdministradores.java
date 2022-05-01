@@ -59,6 +59,8 @@ public class MenuAdministradores extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         regalarEntradas = new javax.swing.JButton();
         trabajadores = new javax.swing.JButton();
+        GestionFalloAtraccion = new javax.swing.JButton();
+        Atras = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -86,7 +88,7 @@ public class MenuAdministradores extends javax.swing.JFrame {
                 SalirActionPerformed(evt);
             }
         });
-        jPanel1.add(Salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(724, 400, 70, 30));
+        jPanel1.add(Salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 380, 70, 30));
 
         jButton4.setText("Beneficios");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -111,6 +113,24 @@ public class MenuAdministradores extends javax.swing.JFrame {
             }
         });
         jPanel1.add(trabajadores, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 170, 180, 40));
+
+        GestionFalloAtraccion.setText("Gestión Fallo Atracción");
+        GestionFalloAtraccion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GestionFalloAtraccionActionPerformed(evt);
+            }
+        });
+        jPanel1.add(GestionFalloAtraccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 260, -1, -1));
+
+        Atras.setText("Atrás");
+        Atras.setBorderPainted(false);
+        Atras.setContentAreaFilled(false);
+        Atras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AtrasActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Atras, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 390, 70, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -157,6 +177,17 @@ public class MenuAdministradores extends javax.swing.JFrame {
         me.setVisible(true);
     }//GEN-LAST:event_trabajadoresActionPerformed
 
+    private void GestionFalloAtraccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GestionFalloAtraccionActionPerformed
+        GestionarFalloAtraccion gfa= new GestionarFalloAtraccion(pr,this);
+        this.setVisible(false);
+        gfa.setVisible(true);
+    }//GEN-LAST:event_GestionFalloAtraccionActionPerformed
+
+    private void AtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtrasActionPerformed
+        this.setVisible(false);
+        padre.setVisible(true);
+    }//GEN-LAST:event_AtrasActionPerformed
+
     
     /**
      * @param args the command line arguments
@@ -197,6 +228,8 @@ public class MenuAdministradores extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Atras;
+    private javax.swing.JButton GestionFalloAtraccion;
     private javax.swing.JButton Salir;
     private javax.swing.JButton jButton4;
     private javax.swing.JLayeredPane jLayeredPane1;
