@@ -4,6 +4,8 @@
  */
 package GUI;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author alumnogreibd
@@ -120,7 +122,9 @@ public class BeneficiosAtracciones extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void selectorAnhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectorAnhoActionPerformed
-        consultarBeneficios();
+        //consultarBeneficios();
+        cerrarAtraccion();
+        this.selectorAnho.setVisible(false);
     }//GEN-LAST:event_selectorAnhoActionPerformed
 
     private void botonAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAtrasActionPerformed
@@ -131,7 +135,7 @@ public class BeneficiosAtracciones extends javax.swing.JFrame {
 
     private void botonCerrarAtraccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCerrarAtraccionActionPerformed
         // TODO add your handling code here:
-        cerrarAtraccion();
+        //cerrarAtraccion();
     }//GEN-LAST:event_botonCerrarAtraccionActionPerformed
 
     /**
@@ -185,6 +189,9 @@ public class BeneficiosAtracciones extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> selectorAnho;
     private javax.swing.JTable tablaBeneficios;
     // End of variables declaration//GEN-END:variables
+    
+    /*
+    //Muestra el beneficio de la atracción menos rentable del año seleccionado
     public void consultarBeneficios() {
         ModeloTablaBeneficios m;
         String anho;
@@ -193,13 +200,29 @@ public class BeneficiosAtracciones extends javax.swing.JFrame {
         m.setFilas(pr.getAtraccionesDAO().beneficiosPorAnho(anho)); 
     }
     
-    
+    //Función que cierra atracción al pulsar el botón
     public void cerrarAtraccion(){
         String anho;
         anho = (String)selectorAnho.getSelectedItem();
         pr.getAtraccionesDAO().cerrarAtraccion(tablaBeneficios.getValueAt(tablaBeneficios.getSelectedRow(), 0).toString());
         ModeloTablaBeneficios m = (ModeloTablaBeneficios) tablaBeneficios.getModel();
         m.setFilas(pr.getAtraccionesDAO().beneficiosPorAnho(anho));
+    
+    
+    
+    }
+    */
+    
+    public void cerrarAtraccion(){
+        String anho;
+        String nombreAtraccion;
+        anho = (String)selectorAnho.getSelectedItem();
+        nombreAtraccion = pr.getAtraccionesDAO().atraccionMasPerdidas(anho);
+        pr.getAtraccionesDAO().cerrarAtraccion(nombreAtraccion);
+        ModeloTablaBeneficios m = (ModeloTablaBeneficios) tablaBeneficios.getModel();
+        m.setFilas(pr.getAtraccionesDAO().beneficiosPorAnho(anho));
+        JOptionPane.showMessageDialog(rootPane, "Se ha eliminado la atracción"+" "+nombreAtraccion + " correctamente.");
+        this.selectorAnho.setVisible(false);
     
     
     
