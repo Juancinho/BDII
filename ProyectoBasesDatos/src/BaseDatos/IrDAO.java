@@ -95,18 +95,30 @@ public class IrDAO {
     }
 
     
-    public int comprobarNumeroVisitantes(Date fecha, String nombreAtraccion) {
+    public int devolverDinero(Date fecha, String nombreAtraccion) {
         ResultSet rsIr;
         PreparedStatement stmIr = null;
-        int numero=-1;
+        ResultSet rsVis;
+        PreparedStatement stmVis = null;
+        float entradaVip=12, entradaNormal=8;
+        int numero=0;//Intentar distinguir entre nadie fue y un error
         
         try {
-            stmIr = conexion.prepareStatement("SELECT count(visitante) as numero FROM ir WHERE fechavisita = ? AND  atraccion = ?");
+            stmIr = conexion.prepareStatement("SELECT visitante, vip FROM ir WHERE fechavisita = ? AND  atraccion = ?");
             stmIr.setDate(1, fecha);
             stmIr.setString(2, nombreAtraccion);
             rsIr = stmIr.executeQuery();
-            numero=rsIr.getInt("numero");
+            while (rsIr.next()) {
+                numero++;
+                stmVis = conexion.prepareStatement("UPDATE visitantes SET dineroGastado = dineroGastado - ? WHERE dni = ?");
+                if(rsIr.getString("vip").equals("SI"))
+                    stmVis.setFloat(1, entradaVip);
+                else
+                    stmVis.setFloat(1, entradaNormal);
+                stmVis.setString(2, rsIr.getString("visitante"));
+            }
         } catch (SQLException e) {
+            numero=-1;
             System.out.println(e.getMessage());
         } finally {
             try {
@@ -118,28 +130,6 @@ public class IrDAO {
         return numero;
     }
     
-    public boolean devolverDinero(Date fecha, String nombreAtraccion) {
-        ResultSet rsIr;
-        PreparedStatement stmIr = null;
-
-        try {
-            stmIr = conexion.prepareStatement("SELECT visitante, VIP as numero FROM ir WHERE fechavisita = ? AND  atraccion = ?");
-            stmIr.setDate(1, fecha);
-            stmIr.setString(2, nombreAtraccion);
-            rsIr = stmIr.executeQuery();
-           } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        } finally {
-            try {
-                stmIr.close();
-            } catch (SQLException e) {
-                System.out.println("Imposible cerrar cursores");
-            }
-        }
-  return true;
-    }
-
-
     public void regalarEntrada(String dni) {
 
         PreparedStatement stmIr = null;
@@ -174,5 +164,5 @@ public class IrDAO {
         }
 
     }
-
+    
 }
