@@ -116,6 +116,7 @@ public class IrDAO {
                 else
                     stmVis.setFloat(1, entradaNormal);
                 stmVis.setString(2, rsIr.getString("visitante"));
+                stmVis.executeUpdate();
             }
         } catch (SQLException e) {
             numero=-1;

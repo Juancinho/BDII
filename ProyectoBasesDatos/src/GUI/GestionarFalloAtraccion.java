@@ -159,7 +159,7 @@ public class GestionarFalloAtraccion extends javax.swing.JFrame {
                 java.sql.Date sqlDate = new java.sql.Date(date.getTime());
                 int numero;
                 numero = pr.getIrDAO().devolverDinero(sqlDate, atraccion);
-                JOptionPane.showMessageDialog(rootPane, "El dinero ya ha sido devuelto a los "+ numero +" visitantes que han ido a la atracción "+ atraccion +" el día"+sqlDate);
+                JOptionPane.showMessageDialog(rootPane, "El dinero ya ha sido devuelto a los "+ numero +" visitantes que han ido a la atracción "+ atraccion +" el día "+sqlDate);
                 
                 /*if (!pr.getIrDAO().hayEntradaComprada(sqlDate, dni, atraccion)) {
                     MensajeError.setVisible(false);
