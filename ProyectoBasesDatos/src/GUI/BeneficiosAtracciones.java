@@ -18,7 +18,7 @@ public class BeneficiosAtracciones extends javax.swing.JFrame {
      */
     public BeneficiosAtracciones() {
         initComponents();
-        this.botonCerrarAtraccion.setVisible(false);
+        
     }
     
     public BeneficiosAtracciones(proyectobasesdatos.ProyectoBasesDatos pr,MenuAdministradores padre) {
@@ -43,7 +43,6 @@ public class BeneficiosAtracciones extends javax.swing.JFrame {
         botonAtras = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaBeneficios = new javax.swing.JTable();
-        botonCerrarAtraccion = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -70,13 +69,6 @@ public class BeneficiosAtracciones extends javax.swing.JFrame {
         tablaBeneficios.setModel(new ModeloTablaBeneficios());
         jScrollPane1.setViewportView(tablaBeneficios);
 
-        botonCerrarAtraccion.setText("Cerrar Atracción");
-        botonCerrarAtraccion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonCerrarAtraccionActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -90,11 +82,8 @@ public class BeneficiosAtracciones extends javax.swing.JFrame {
                         .addComponent(selectorAnho, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(44, 44, 44)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(botonCerrarAtraccion)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(botonAtras))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(botonAtras, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(45, Short.MAX_VALUE))
             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -111,9 +100,7 @@ public class BeneficiosAtracciones extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonCerrarAtraccion)
-                    .addComponent(botonAtras))
+                .addComponent(botonAtras)
                 .addGap(26, 26, 26))
         );
 
@@ -132,11 +119,6 @@ public class BeneficiosAtracciones extends javax.swing.JFrame {
        this.setVisible(false);
        padre.setVisible(true);
     }//GEN-LAST:event_botonAtrasActionPerformed
-
-    private void botonCerrarAtraccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCerrarAtraccionActionPerformed
-        // TODO add your handling code here:
-        //cerrarAtraccion();
-    }//GEN-LAST:event_botonCerrarAtraccionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -182,7 +164,6 @@ public class BeneficiosAtracciones extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonAtras;
-    private javax.swing.JButton botonCerrarAtraccion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -221,7 +202,7 @@ public class BeneficiosAtracciones extends javax.swing.JFrame {
         pr.getAtraccionesDAO().cerrarAtraccion(nombreAtraccion);
         ModeloTablaBeneficios m = (ModeloTablaBeneficios) tablaBeneficios.getModel();
         m.setFilas(pr.getAtraccionesDAO().beneficiosPorAnho(anho));
-        JOptionPane.showMessageDialog(rootPane, "Se ha eliminado la atracción"+" "+nombreAtraccion + " correctamente.");
+        JOptionPane.showMessageDialog(null, "Se ha eliminado la atracción"+" "+ nombreAtraccion + " correctamente.");
         this.selectorAnho.setVisible(false);
     
     
