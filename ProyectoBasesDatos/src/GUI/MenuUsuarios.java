@@ -33,20 +33,23 @@ public class MenuUsuarios extends javax.swing.JFrame {
         this.pr = pr;
         this.padre=padre;
         initComponents();
-        jLabel1.setVisible(false);
+        MenuUsuarios2.setVisible(false);
         Comprar.setEnabled(false);
         Cancelar.setEnabled(false);
         Puntuar.setEnabled(false);
     }
 
 
-      
-
-      public MenuUsuarios(proyectobasesdatos.ProyectoBasesDatos pr, String dni) {
+    public MenuUsuarios(proyectobasesdatos.ProyectoBasesDatos pr, String dni, MenuInicio padre) {
         this.pr = pr;
+        this.padre=padre;
         this.dni=dni;
         initComponents();
-        jLabel2.setVisible(false);
+        MenuUsuarios1.setVisible(false);
+    }
+      
+        public MenuInicio getPadre() {
+        return padre;
     }
 
     /**
@@ -64,11 +67,11 @@ public class MenuUsuarios extends javax.swing.JFrame {
         Acceder = new javax.swing.JButton();
         Comprar = new javax.swing.JButton();
         Salir = new javax.swing.JButton();
+        Atras = new javax.swing.JButton();
         Cancelar = new javax.swing.JButton();
         Puntuar = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        MenuUsuarios2 = new javax.swing.JLabel();
+        MenuUsuarios1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -128,6 +131,15 @@ public class MenuUsuarios extends javax.swing.JFrame {
         });
         jPanel1.add(Salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(724, 400, 70, 30));
 
+        Atras.setBorderPainted(false);
+        Atras.setContentAreaFilled(false);
+        Atras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AtrasActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Atras, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, -1, 20));
+
         Cancelar.setActionCommand("Cancelar");
         Cancelar.setBorderPainted(false);
         Cancelar.setContentAreaFilled(false);
@@ -149,14 +161,11 @@ public class MenuUsuarios extends javax.swing.JFrame {
         });
         jPanel1.add(Puntuar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 260, 220, 40));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Portada2.jpeg"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 450));
+        MenuUsuarios2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/MenuUsuarios2.jpeg"))); // NOI18N
+        jPanel1.add(MenuUsuarios2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 450));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Portada.jpeg"))); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 450));
-
-        jButton1.setText("jButton1");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 10, -1, -1));
+        MenuUsuarios1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/MenuUsuarios1.jpeg"))); // NOI18N
+        jPanel1.add(MenuUsuarios1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 450));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -224,6 +233,12 @@ public class MenuUsuarios extends javax.swing.JFrame {
         pres.setVisible(true);
     }//GEN-LAST:event_PuntuarActionPerformed
 
+    private void AtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtrasActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        padre.setVisible(true);
+    }//GEN-LAST:event_AtrasActionPerformed
+
     
     /**
      * @param args the command line arguments
@@ -264,14 +279,14 @@ public class MenuUsuarios extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Acceder;
+    private javax.swing.JButton Atras;
     private javax.swing.JButton Buscar;
     private javax.swing.JButton Cancelar;
     private javax.swing.JButton Comprar;
+    private javax.swing.JLabel MenuUsuarios1;
+    private javax.swing.JLabel MenuUsuarios2;
     private javax.swing.JButton Puntuar;
     private javax.swing.JButton Salir;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
