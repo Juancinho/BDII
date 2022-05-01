@@ -135,7 +135,7 @@ public class AtraccionesDAO {
     
 
     
-    public ArrayList<Atraccion> beneficiosPorAnho(String anho){
+        public ArrayList<Atraccion> beneficiosPorAnho(String anho){
         ArrayList<Atraccion> resultado = new java.util.ArrayList<>();
         ResultSet rsConsultaBeneficios;
         PreparedStatement stmBeneficios = null;
@@ -149,7 +149,9 @@ public class AtraccionesDAO {
                 "where a.nombre =i.atraccion \n" +
                 "and i.fechavisita >= ?\n" +
                 "and i.fechavisita <=?\n" +
-                "group by(i.atraccion)");           
+                "group by(i.atraccion)\n" +
+                "order by beneficios asc\n"+ 
+                "limit 1;");           
             stmBeneficios.setDate(1, java.sql.Date.valueOf(inicioAnho));
             stmBeneficios.setDate(2, java.sql.Date.valueOf(finAnho));
             
@@ -174,6 +176,56 @@ public class AtraccionesDAO {
     
     
     }
+        
+  
+
+    
+    public String atraccionMasPerdidas(String anho){
+        String nombreAtraccion=null;
+        ResultSet rsConsultaBeneficios;
+        PreparedStatement stmBeneficios = null;
+        String inicioAnho = anho + "-01" + "-01";   
+        String finAnho = anho + "-12" + "-31";
+        
+        try {
+            stmBeneficios = conexion.prepareStatement("select i.atraccion, sum(case when i.vip='NO' then 6\n" +
+                "when i.vip='SI' then 12 end)-avg(a.costemantenimiento)  as Beneficios\n" +
+                "from ir i, atracciones a\n" +
+                "where a.nombre =i.atraccion \n" +
+                "and i.fechavisita >= ?\n" +
+                "and i.fechavisita <=?\n" +
+                "group by(i.atraccion)\n" +
+                "order by beneficios asc\n"+ 
+                "limit 1;");           
+            stmBeneficios.setDate(1, java.sql.Date.valueOf(inicioAnho));
+            stmBeneficios.setDate(2, java.sql.Date.valueOf(finAnho));
+            
+        
+            rsConsultaBeneficios = stmBeneficios.executeQuery();
+            while (rsConsultaBeneficios.next()) {
+               
+                nombreAtraccion=rsConsultaBeneficios.getString(1);
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            try {
+                stmBeneficios.close();
+            } catch (SQLException e) {
+                System.out.println("Imposible cerrar cursores");
+            }
+        }
+        return nombreAtraccion;  
+    
+    
+    }    
+        
+        
+        
+        
+        
+        
     
     
     
@@ -213,6 +265,7 @@ public class AtraccionesDAO {
             stmAtraccion = conexion.prepareStatement("DELETE from atracciones where nombre =?");
             stmAtraccion.setString(1,nombre);
             stmAtraccion.executeUpdate();
+            System.out.println("Atracción eliminada con éxito");
             
         }catch(SQLException ex){
             Logger.getLogger(AtraccionesDAO.class.getName()).log(Level.SEVERE, null, ex);
