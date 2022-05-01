@@ -346,7 +346,7 @@ public class RegistroUsuarios extends javax.swing.JFrame {
                     java.sql.Date sqlDate = new java.sql.Date(date.getTime());
                     pr.getDaoUsuarios().registrarUsuario(dni, nameapellidos.getText(), nacionalidad.getText(), correoelectro.getText(), contraseña.getText(), telefono.getText(), sqlDate);
                     this.setVisible(false);
-                    MenuUsuarios nm = new MenuUsuarios(pr, dni);
+                    MenuUsuarios nm = new MenuUsuarios(pr, dni, padre.getPadre());
                     nm.setVisible(true);
                 } catch (SQLException ex) {
                     Logger.getLogger(RegistroUsuarios.class.getName()).log(Level.SEVERE, null, ex);
