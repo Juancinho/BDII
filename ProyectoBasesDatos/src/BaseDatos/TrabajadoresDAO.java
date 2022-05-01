@@ -128,4 +128,34 @@ public class TrabajadoresDAO {
         }
 
     }
+    
+    public String getAtraccionMenosTrabajadores() {
+        
+        String resultado =null;
+        ResultSet rsTrabajadores;
+        PreparedStatement stmTrabajadores = null;
+        try {
+            stmTrabajadores = conexion.prepareStatement("select count(nombre),nombreatraccion from trabajadoresparque \n" +
+        "where nombreatraccion is not null\n" +
+        "group by nombreatraccion\n" +
+        "order by count asc \n" +
+        " limit 1");
+            rsTrabajadores = stmTrabajadores.executeQuery();
+            while(rsTrabajadores.next()){
+                resultado=rsTrabajadores.getString("nombreatraccion");
+                //System.out.println(resultado);
+            }
+
+
+        } catch (SQLException ex) {
+            Logger.getLogger(TrabajadoresDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return resultado;
+    }        
+            
+            
+            
+            
+            
 }

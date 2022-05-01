@@ -90,6 +90,7 @@ public class AnhadirEmpleados extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         salario = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
+        asignarAutom = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -108,6 +109,11 @@ public class AnhadirEmpleados extends javax.swing.JFrame {
         jLabel6.setText("Atracción:");
 
         jComboBoxAtraccion.setModel(new javax.swing.DefaultComboBoxModel<>(array));
+        jComboBoxAtraccion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxAtraccionActionPerformed(evt);
+            }
+        });
 
         jLabel7.setText("Espectáculo:");
 
@@ -181,6 +187,13 @@ public class AnhadirEmpleados extends javax.swing.JFrame {
 
         jLabel10.setText("€");
 
+        asignarAutom.setText("Asignar automático");
+        asignarAutom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                asignarAutomActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -212,9 +225,8 @@ public class AnhadirEmpleados extends javax.swing.JFrame {
                                 .addComponent(anhadir)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(atras)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 137, Short.MAX_VALUE)
+                                        .addComponent(atras))
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                         .addGap(29, 29, 29)
                                         .addComponent(trabajadorEsp)
@@ -261,7 +273,9 @@ public class AnhadirEmpleados extends javax.swing.JFrame {
                             .addComponent(jComboBoxEspectaculo, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jComboBoxRestaurante, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(aviso))
-                .addGap(164, 164, 164))
+                .addGap(18, 18, 18)
+                .addComponent(asignarAutom)
+                .addGap(49, 49, 49))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -300,7 +314,8 @@ public class AnhadirEmpleados extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBoxAtraccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
+                    .addComponent(jLabel6)
+                    .addComponent(asignarAutom))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
@@ -420,6 +435,15 @@ public class AnhadirEmpleados extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_salarioActionPerformed
 
+    private void asignarAutomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asignarAutomActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_asignarAutomActionPerformed
+
+    private void jComboBoxAtraccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxAtraccionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxAtraccionActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -428,6 +452,7 @@ public class AnhadirEmpleados extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton Hostelero;
     private javax.swing.JButton anhadir;
+    private javax.swing.JCheckBox asignarAutom;
     private javax.swing.JButton atras;
     private javax.swing.JLabel aviso;
     private javax.swing.JLabel avisoDNI;
@@ -469,10 +494,27 @@ public class AnhadirEmpleados extends javax.swing.JFrame {
         Float sueldo = Float.parseFloat(salario.getText());
         if (!Hostelero.isSelected()) {
             if (trabajadorAtra.isSelected() && trabajadorEsp.isSelected()) {
-                pr.getTrabajadoresDAO().anhadirTrabajadorAtraEsp(dni.getText(), nombre.getText(), direccion.getText(), telefono.getText(), hoy2, nacimiento2, jComboBoxAtraccion.getSelectedItem().toString(), jComboBoxEspectaculo.getSelectedItem().toString(), sueldo);
+                
+                if(asignarAutom.isSelected()){
+                    String atraccion=pr.getTrabajadoresDAO().getAtraccionMenosTrabajadores();
+                    
+                    pr.getTrabajadoresDAO().anhadirTrabajadorAtraEsp(dni.getText(), nombre.getText(), direccion.getText(), telefono.getText(), hoy2, nacimiento2, atraccion, jComboBoxEspectaculo.getSelectedItem().toString(), sueldo);
+                
+                }else{
+                   
+                    pr.getTrabajadoresDAO().anhadirTrabajadorAtraEsp(dni.getText(), nombre.getText(), direccion.getText(), telefono.getText(), hoy2, nacimiento2, jComboBoxAtraccion.getSelectedItem().toString(), jComboBoxEspectaculo.getSelectedItem().toString(), sueldo);
+                }
+                
             } else if (trabajadorAtra.isSelected() && !trabajadorEsp.isSelected()) {
-                pr.getTrabajadoresDAO().anhadirTrabajadorAtra(dni.getText(), nombre.getText(), direccion.getText(), telefono.getText(), hoy2, nacimiento2, jComboBoxAtraccion.getSelectedItem().toString(), sueldo);
-
+                if(asignarAutom.isSelected()){
+                    String atraccion=pr.getTrabajadoresDAO().getAtraccionMenosTrabajadores();
+                    pr.getTrabajadoresDAO().anhadirTrabajadorAtra(dni.getText(), nombre.getText(), direccion.getText(), telefono.getText(), hoy2, nacimiento2, atraccion, sueldo);
+                    
+                
+                }else{
+                    pr.getTrabajadoresDAO().anhadirTrabajadorAtra(dni.getText(), nombre.getText(), direccion.getText(), telefono.getText(), hoy2, nacimiento2, jComboBoxAtraccion.getSelectedItem().toString(), sueldo);
+                }
+                
             } else if (!trabajadorAtra.isSelected() && trabajadorEsp.isSelected()) {
                 pr.getTrabajadoresDAO().anhadirTrabajadorEsp(dni.getText(), nombre.getText(), direccion.getText(), telefono.getText(), hoy2, nacimiento2, jComboBoxEspectaculo.getSelectedItem().toString(), sueldo);
 
