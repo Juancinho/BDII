@@ -120,7 +120,9 @@
                   </Group>
                   <Component id="aviso" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="164" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="asignarAutom" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -168,6 +170,7 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jComboBoxAtraccion" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="asignarAutom" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -239,6 +242,9 @@
           <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(array)" type="code"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBoxAtraccionActionPerformed"/>
+      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="String[] array = pr.getAtraccionesDAO().atraccionesActivas().toArray(new String[pr.getAtraccionesDAO().atraccionesActivas().size()]); "/>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -368,6 +374,14 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="&#x20ac;"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JCheckBox" name="asignarAutom">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Asignar autom&#xe1;tico"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="asignarAutomActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
