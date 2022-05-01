@@ -13,40 +13,53 @@ import java.util.logging.Logger;
  * @author alumnogreibd
  */
 public class MenuUsuarios extends javax.swing.JFrame {
+
     private MenuInicio padre;
     private proyectobasesdatos.ProyectoBasesDatos pr;
     private String dni;
-   // private Inicio padre;
-    
-    /**
-     *
-     */
-    public MenuUsuarios() {
-        initComponents();
-    }
 
-    /**
-     *
-     * @param pr
-     */
     public MenuUsuarios(proyectobasesdatos.ProyectoBasesDatos pr, MenuInicio padre) {
         this.pr = pr;
-        this.padre=padre;
+        this.padre = padre;
         initComponents();
-        jLabel1.setVisible(false);
+        Portada2.setVisible(false);
         Comprar.setEnabled(false);
         Cancelar.setEnabled(false);
         Puntuar.setEnabled(false);
     }
 
-
-      
-
-      public MenuUsuarios(proyectobasesdatos.ProyectoBasesDatos pr, String dni) {
+    /*public MenuUsuarios(proyectobasesdatos.ProyectoBasesDatos pr, MenuInicio padre) {
+        this.pr = pr;
+        this.padre=padre;
+        initComponents();
+        Portada2.setVisible(false);
+        Comprar.setEnabled(false);
+        Cancelar.setEnabled(false);
+        Puntuar.setEnabled(false);
+    }*/
+ /*public MenuUsuarios(proyectobasesdatos.ProyectoBasesDatos pr, String dni) {
         this.pr = pr;
         this.dni=dni;
         initComponents();
-        jLabel2.setVisible(false);
+        Portada1.setVisible(false);
+    }*/
+    public void setDni(String dni) { //Cambia la visibilidad de los botones según se esté logueado o no
+        if (dni != null) {
+            this.dni = dni;
+            Portada1.setVisible(false);
+            Portada2.setVisible(true);
+            Comprar.setEnabled(true);
+            Cancelar.setEnabled(true);
+            Puntuar.setEnabled(true);
+        } else {
+            this.dni = dni;
+            Portada2.setVisible(false);
+            Portada1.setVisible(true);
+            Comprar.setEnabled(false);
+            Cancelar.setEnabled(false);
+            Puntuar.setEnabled(false);
+        }
+
     }
 
     /**
@@ -66,9 +79,9 @@ public class MenuUsuarios extends javax.swing.JFrame {
         Salir = new javax.swing.JButton();
         Cancelar = new javax.swing.JButton();
         Puntuar = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        Volver = new javax.swing.JButton();
+        Portada2 = new javax.swing.JLabel();
+        Portada1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -149,20 +162,25 @@ public class MenuUsuarios extends javax.swing.JFrame {
         });
         jPanel1.add(Puntuar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 260, 220, 40));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Portada2.jpeg"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 450));
+        Volver.setText("Volver");
+        Volver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                VolverActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 400, -1, -1));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Portada.jpeg"))); // NOI18N
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 450));
+        Portada2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Portada2.jpeg"))); // NOI18N
+        jPanel1.add(Portada2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 450));
 
-        jButton1.setText("jButton1");
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 10, -1, -1));
+        Portada1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Portada.jpeg"))); // NOI18N
+        jPanel1.add(Portada1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 450));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -176,20 +194,18 @@ public class MenuUsuarios extends javax.swing.JFrame {
     private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        MenuBusquedas menuBusquedas = new MenuBusquedas(pr,this);
+        MenuBusquedas menuBusquedas = new MenuBusquedas(pr, this);
         menuBusquedas.setVisible(true);
     }//GEN-LAST:event_BuscarActionPerformed
 
     private void AccederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AccederActionPerformed
         // TODO add your handling code here:
-        if(dni==null){
-            AccesoUsuario ac= new AccesoUsuario(pr,this);
+        if (dni == null) {
+            Acceso ac = new Acceso(pr, this);
             this.setVisible(false);
             ac.setVisible(true);
-        }
-        else{
-            MenuUsuarios mu = new MenuUsuarios(pr,padre);
-            mu.setVisible(true);
+        } else {
+            setDni(null);
         }
     }//GEN-LAST:event_AccederActionPerformed
 
@@ -205,7 +221,7 @@ public class MenuUsuarios extends javax.swing.JFrame {
 
     private void ComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComprarActionPerformed
         // TODO add your handling code here:
-        MenuComprasReservas mcr= new MenuComprasReservas(pr, this, dni);
+        MenuComprasReservas mcr = new MenuComprasReservas(pr, this, dni);
         this.setVisible(false);
         mcr.setVisible(true);
     }//GEN-LAST:event_ComprarActionPerformed
@@ -219,59 +235,27 @@ public class MenuUsuarios extends javax.swing.JFrame {
 
     private void PuntuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PuntuarActionPerformed
         // TODO add your handling code here:
-        PuntuacionRestaurante pres = new PuntuacionRestaurante(pr,this);
+        PuntuacionRestaurante pres = new PuntuacionRestaurante(pr, this);
         this.setVisible(false);
         pres.setVisible(true);
     }//GEN-LAST:event_PuntuarActionPerformed
 
-    
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MenuUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MenuUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MenuUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MenuUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverActionPerformed
+        this.setVisible(false);
+        padre.setVisible(true);
+    }//GEN-LAST:event_VolverActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MenuUsuarios().setVisible(true);
-            }
-        });        
-    }
-    
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Acceder;
     private javax.swing.JButton Buscar;
     private javax.swing.JButton Cancelar;
     private javax.swing.JButton Comprar;
+    private javax.swing.JLabel Portada1;
+    private javax.swing.JLabel Portada2;
     private javax.swing.JButton Puntuar;
     private javax.swing.JButton Salir;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton Volver;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

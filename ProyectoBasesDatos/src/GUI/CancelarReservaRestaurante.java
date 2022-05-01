@@ -23,9 +23,7 @@ public class CancelarReservaRestaurante extends javax.swing.JFrame {
         this.padre = padre;
         this.dni = dni;
         initComponents();
-    }
-    public CancelarReservaRestaurante() {
-        initComponents();
+        MensajeError.setVisible(false);
     }
 
     /**
@@ -37,11 +35,11 @@ public class CancelarReservaRestaurante extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        Titulo = new javax.swing.JLabel();
         String[] array = pr.getHosteleriaDAO().establecimientosActivos().toArray(new String[pr.getHosteleriaDAO().establecimientosActivos().size()]);  //MANOTE: hay que pasarle al toArray un array de la misma longitud para que no lo convierta en un array de Objects
         jComboBoxRestaurantes = new javax.swing.JComboBox<>();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        Restaurante = new javax.swing.JLabel();
+        Fecha = new javax.swing.JLabel();
         CancelarReserva = new javax.swing.JButton();
         Atras = new javax.swing.JButton();
         jDateChooser = new com.toedter.calendar.JDateChooser();
@@ -50,15 +48,15 @@ public class CancelarReservaRestaurante extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        jLabel1.setText("Cancelar Reserva Restaurante");
+        Titulo.setText("Cancelar Reserva Restaurante");
 
         jComboBoxRestaurantes.setModel(new javax.swing.DefaultComboBoxModel<>(array));
 
-        jLabel2.setText("Restaurante");
+        Restaurante.setText("Restaurante");
 
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Fecha");
-        jLabel4.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        Fecha.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Fecha.setText("Fecha");
+        Fecha.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
         CancelarReserva.setText("Cancelar compra");
         CancelarReserva.addActionListener(new java.awt.event.ActionListener() {
@@ -74,7 +72,6 @@ public class CancelarReservaRestaurante extends javax.swing.JFrame {
             }
         });
 
-        MensajeError.setVisible(false);
         MensajeError.setForeground(new java.awt.Color(255, 0, 0));
         MensajeError.setText("Debe cubrir todos los campos para poder cancelar la reserva");
 
@@ -89,8 +86,8 @@ public class CancelarReservaRestaurante extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(Fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Restaurante))
                 .addGap(39, 39, 39)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jComboBoxRestaurantes, 0, 212, Short.MAX_VALUE)
@@ -98,7 +95,7 @@ public class CancelarReservaRestaurante extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addComponent(Titulo)
                 .addGap(111, 111, 111))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(48, 48, 48)
@@ -111,14 +108,14 @@ public class CancelarReservaRestaurante extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addComponent(jLabel1)
+                .addComponent(Titulo)
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBoxRestaurantes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(Restaurante))
                 .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
                 .addComponent(MensajeError)
@@ -173,50 +170,15 @@ public class CancelarReservaRestaurante extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_CancelarReservaActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CancelarReservaRestaurante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CancelarReservaRestaurante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CancelarReservaRestaurante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CancelarReservaRestaurante.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new CancelarReservaRestaurante().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Atras;
     private javax.swing.JButton CancelarReserva;
+    private javax.swing.JLabel Fecha;
     private javax.swing.JLabel MensajeError;
+    private javax.swing.JLabel Restaurante;
+    private javax.swing.JLabel Titulo;
     private javax.swing.JComboBox<String> jComboBoxRestaurantes;
     private com.toedter.calendar.JDateChooser jDateChooser;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
 }

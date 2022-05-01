@@ -22,14 +22,10 @@ public class ComprarEntradasAtracciones extends javax.swing.JFrame {
         this.pr = pr;
         this.padre = padre;
         this.dni = dni;
-
         initComponents();
+        MensajeError.setVisible(false);
     }
 
-    public ComprarEntradasAtracciones() {
-        initComponents();
-    }
-    //String[] array = pr.getAtraccionesDAO().atraccionesActivas().toArray(new String[pr.getAtraccionesDAO().atraccionesActivas().size()]);  //MANOTE: hay que pasarle al toArray un array de la misma longitud para que no lo convierta en un array de Objects
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -43,15 +39,15 @@ public class ComprarEntradasAtracciones extends javax.swing.JFrame {
         buttonGroup = new javax.swing.ButtonGroup();
         String[] array = pr.getAtraccionesDAO().atraccionesActivas().toArray(new String[pr.getAtraccionesDAO().atraccionesActivas().size()]);  //MANOTE: hay que pasarle al toArray un array de la misma longitud para que no lo convierta en un array de Objects
         jComboBoxAtracciones = new javax.swing.JComboBox<>();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        Atraccion = new javax.swing.JLabel();
+        VIP = new javax.swing.JLabel();
         VipSi = new javax.swing.JRadioButton();
         VipNo = new javax.swing.JRadioButton();
-        jLabel3 = new javax.swing.JLabel();
+        Fecha = new javax.swing.JLabel();
         Atras = new javax.swing.JButton();
         Comprar = new javax.swing.JButton();
         jDateChooser = new com.toedter.calendar.JDateChooser();
-        jLabel4 = new javax.swing.JLabel();
+        Titulo = new javax.swing.JLabel();
         MensajeError = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -59,9 +55,9 @@ public class ComprarEntradasAtracciones extends javax.swing.JFrame {
 
         jComboBoxAtracciones.setModel(new javax.swing.DefaultComboBoxModel<>(array));
 
-        jLabel1.setText("Atracción");
+        Atraccion.setText("Atracción");
 
-        jLabel2.setText("VIP");
+        VIP.setText("VIP");
 
         buttonGroup.add(VipSi);
         VipSi.setText("Sí");
@@ -69,7 +65,7 @@ public class ComprarEntradasAtracciones extends javax.swing.JFrame {
         buttonGroup.add(VipNo);
         VipNo.setText("No");
 
-        jLabel3.setText("Fecha");
+        Fecha.setText("Fecha");
 
         Atras.setText("Atrás");
         Atras.addActionListener(new java.awt.event.ActionListener() {
@@ -85,9 +81,8 @@ public class ComprarEntradasAtracciones extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setText("Comprar entrada para atracción");
+        Titulo.setText("Comprar entrada para atracción");
 
-        MensajeError.setVisible(false);
         MensajeError.setForeground(new java.awt.Color(255, 0, 51));
         MensajeError.setText("Debe cubrir todos los campos para poder comprar");
 
@@ -106,16 +101,16 @@ public class ComprarEntradasAtracciones extends javax.swing.JFrame {
                         .addGap(75, 75, 75))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
+                            .addComponent(Fecha)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
+                                .addComponent(Atraccion)
                                 .addGap(64, 64, 64)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jComboBoxAtracciones, 0, 178, Short.MAX_VALUE)
                                     .addComponent(jDateChooser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
+                        .addComponent(VIP)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(VipSi)
                         .addGap(70, 70, 70)
@@ -125,7 +120,7 @@ public class ComprarEntradasAtracciones extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(89, 89, 89)
-                        .addComponent(jLabel4))
+                        .addComponent(Titulo))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(63, 63, 63)
                         .addComponent(MensajeError)))
@@ -135,19 +130,19 @@ public class ComprarEntradasAtracciones extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addComponent(jLabel4)
+                .addComponent(Titulo)
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBoxAtracciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(Atraccion))
                 .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
+                    .addComponent(VIP)
                     .addComponent(VipSi)
                     .addComponent(VipNo))
                 .addGap(43, 43, 43)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
+                    .addComponent(Fecha)
                     .addComponent(jDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 157, Short.MAX_VALUE)
                 .addComponent(MensajeError)
@@ -208,53 +203,19 @@ public class ComprarEntradasAtracciones extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_ComprarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ComprarEntradasAtracciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ComprarEntradasAtracciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ComprarEntradasAtracciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ComprarEntradasAtracciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ComprarEntradasAtracciones().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Atraccion;
     private javax.swing.JButton Atras;
     private javax.swing.JButton Comprar;
+    private javax.swing.JLabel Fecha;
     private javax.swing.JLabel MensajeError;
+    private javax.swing.JLabel Titulo;
+    private javax.swing.JLabel VIP;
     private javax.swing.JRadioButton VipNo;
     private javax.swing.JRadioButton VipSi;
     private javax.swing.ButtonGroup buttonGroup;
     private javax.swing.JComboBox<String> jComboBoxAtracciones;
     private com.toedter.calendar.JDateChooser jDateChooser;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
 }

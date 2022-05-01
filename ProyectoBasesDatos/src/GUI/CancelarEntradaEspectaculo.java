@@ -23,11 +23,9 @@ public class CancelarEntradaEspectaculo extends javax.swing.JFrame {
         this.padre = padre;
         this.dni = dni;
         initComponents();
+        MensajeError.setVisible(false);
     }
-    
-    public CancelarEntradaEspectaculo() {
-        initComponents();
-    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -38,11 +36,11 @@ public class CancelarEntradaEspectaculo extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        Titulo = new javax.swing.JLabel();
         String[] array = pr.getEspectaculosDAO().espectaculosActivos().toArray(new String[pr.getEspectaculosDAO().espectaculosActivos().size()]);  //MANOTE: hay que pasarle al toArray un array de la misma longitud para que no lo convierta en un array de Objects
         jComboBoxEspectaculos = new javax.swing.JComboBox<>();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        Espectaculo = new javax.swing.JLabel();
+        Fecha = new javax.swing.JLabel();
         CancelarEntrada = new javax.swing.JButton();
         Atras = new javax.swing.JButton();
         jDateChooser = new com.toedter.calendar.JDateChooser();
@@ -51,15 +49,15 @@ public class CancelarEntradaEspectaculo extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        jLabel1.setText("Cancelar Entrada Espectáculo");
+        Titulo.setText("Cancelar Entrada Espectáculo");
 
         jComboBoxEspectaculos.setModel(new javax.swing.DefaultComboBoxModel<>(array));
 
-        jLabel2.setText("Espectáculo");
+        Espectaculo.setText("Espectáculo");
 
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Fecha");
-        jLabel4.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        Fecha.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Fecha.setText("Fecha");
+        Fecha.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
         CancelarEntrada.setText("Cancelar compra");
         CancelarEntrada.addActionListener(new java.awt.event.ActionListener() {
@@ -77,7 +75,6 @@ public class CancelarEntradaEspectaculo extends javax.swing.JFrame {
 
         MensajeError.setVisible(false);
 
-        MensajeError.setVisible(false);
         MensajeError.setForeground(new java.awt.Color(255, 0, 0));
         MensajeError.setText("Debe cubrir todos los campos para poder cancelar la compra");
 
@@ -93,15 +90,15 @@ public class CancelarEntradaEspectaculo extends javax.swing.JFrame {
                 .addGap(70, 70, 70))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addComponent(Titulo)
                 .addGap(102, 102, 102))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(34, 34, 34)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(Espectaculo)
+                            .addComponent(Fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(31, 31, 31)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jComboBoxEspectaculos, 0, 212, Short.MAX_VALUE)
@@ -115,14 +112,14 @@ public class CancelarEntradaEspectaculo extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addComponent(jLabel1)
+                .addComponent(Titulo)
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBoxEspectaculos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(Espectaculo))
                 .addGap(61, 61, 61)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
+                    .addComponent(Fecha)
                     .addComponent(jDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
                 .addComponent(MensajeError)
@@ -178,50 +175,15 @@ public class CancelarEntradaEspectaculo extends javax.swing.JFrame {
         
     }//GEN-LAST:event_CancelarEntradaActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CancelarEntradaEspectaculo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CancelarEntradaEspectaculo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CancelarEntradaEspectaculo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CancelarEntradaEspectaculo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new CancelarEntradaEspectaculo().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Atras;
     private javax.swing.JButton CancelarEntrada;
+    private javax.swing.JLabel Espectaculo;
+    private javax.swing.JLabel Fecha;
     private javax.swing.JLabel MensajeError;
+    private javax.swing.JLabel Titulo;
     private javax.swing.JComboBox<String> jComboBoxEspectaculos;
     private com.toedter.calendar.JDateChooser jDateChooser;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
 }

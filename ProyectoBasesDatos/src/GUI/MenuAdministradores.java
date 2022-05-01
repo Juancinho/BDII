@@ -56,7 +56,7 @@ public class MenuAdministradores extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLayeredPane1 = new javax.swing.JLayeredPane();
         Salir = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        Beneficios = new javax.swing.JButton();
         regalarEntradas = new javax.swing.JButton();
         trabajadores = new javax.swing.JButton();
         GestionFalloAtraccion = new javax.swing.JButton();
@@ -90,13 +90,13 @@ public class MenuAdministradores extends javax.swing.JFrame {
         });
         jPanel1.add(Salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 380, 70, 30));
 
-        jButton4.setText("Beneficios");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        Beneficios.setText("Beneficios");
+        Beneficios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                BeneficiosActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 50, -1, -1));
+        jPanel1.add(Beneficios, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 50, -1, -1));
 
         regalarEntradas.setText("Regalar Entradas");
         regalarEntradas.addActionListener(new java.awt.event.ActionListener() {
@@ -153,13 +153,13 @@ public class MenuAdministradores extends javax.swing.JFrame {
         r.setVisible(true);
     }//GEN-LAST:event_regalarEntradasActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void BeneficiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BeneficiosActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
         BeneficiosAtracciones ba = new BeneficiosAtracciones(pr,this);
         ba.setVisible(true);
 
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_BeneficiosActionPerformed
 
     private void SalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirActionPerformed
         // TODO add your handling code here:
@@ -189,49 +189,15 @@ public class MenuAdministradores extends javax.swing.JFrame {
     }//GEN-LAST:event_AtrasActionPerformed
 
     
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MenuAdministradores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MenuAdministradores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MenuAdministradores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MenuAdministradores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MenuAdministradores().setVisible(true);
-            }
-        });        
-    }
     
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Atras;
+    private javax.swing.JButton Beneficios;
     private javax.swing.JButton GestionFalloAtraccion;
     private javax.swing.JButton Salir;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton regalarEntradas;

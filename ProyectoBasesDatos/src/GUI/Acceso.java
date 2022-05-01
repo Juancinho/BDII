@@ -8,19 +8,19 @@ package GUI;
  *
  * @author alumnogreibd
  */
-public class AccesoUsuario extends javax.swing.JFrame {
+public class Acceso extends javax.swing.JFrame {
 
     private proyectobasesdatos.ProyectoBasesDatos pr;
     private String dni;
     private MenuInicio padreAdministradores;
     private MenuUsuarios padreUsuarios;
     
-    public AccesoUsuario() {
+    public Acceso() {
         initComponents();
         etiquetaFallo.setVisible(false);
     }
 
-    public AccesoUsuario(proyectobasesdatos.ProyectoBasesDatos pr, MenuUsuarios padre) {
+    public Acceso(proyectobasesdatos.ProyectoBasesDatos pr, MenuUsuarios padre) {
         this.pr = pr;
         this.padreUsuarios = padre;
         padreAdministradores=null;
@@ -29,7 +29,7 @@ public class AccesoUsuario extends javax.swing.JFrame {
         etiquetaFallo.setVisible(false);
     }
      
-    public AccesoUsuario(proyectobasesdatos.ProyectoBasesDatos pr, MenuInicio padre) {
+    public Acceso(proyectobasesdatos.ProyectoBasesDatos pr, MenuInicio padre) {
         this.pr = pr;
         this.padreAdministradores = padre;
         padreUsuarios=null;
@@ -190,9 +190,11 @@ public class AccesoUsuario extends javax.swing.JFrame {
         dni=DNI.getText();
         if(padreUsuarios!=null){
             if (pr.getDaoUsuarios().validarUsuario(dni, Contraseña.getText(), "Normal")) {
-                MenuUsuarios mu = new MenuUsuarios(pr,dni);
+                //MenuUsuarios mu = new MenuUsuarios(pr,dni);
+                padreUsuarios.setDni(dni);
                 this.setVisible(false);
-                mu.setVisible(true);//Aquí cambiar para que vuelva al padre dándole valor al dni y cambiando lo que se ve
+                padreUsuarios.setVisible(true);
+                //mu.setVisible(true);//Aquí cambiar para que vuelva al padre dándole valor al dni y cambiando lo que se ve
             }
             else etiquetaFallo.setVisible(true);
         }
@@ -227,20 +229,21 @@ public class AccesoUsuario extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AccesoUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Acceso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AccesoUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Acceso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AccesoUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Acceso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AccesoUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Acceso.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AccesoUsuario().setVisible(true);
+                new Acceso().setVisible(true);
             }
         });
     }

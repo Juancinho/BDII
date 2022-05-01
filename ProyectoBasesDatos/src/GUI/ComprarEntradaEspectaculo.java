@@ -22,14 +22,10 @@ public class ComprarEntradaEspectaculo extends javax.swing.JFrame {
         this.pr = pr;
         this.padre = padre;
         this.dni = dni;
-
         initComponents();
+        MensajeError.setVisible(false);
     }
     
-    
-    public ComprarEntradaEspectaculo() {
-        initComponents();
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -40,12 +36,12 @@ public class ComprarEntradaEspectaculo extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Entradasespectaculos = new javax.swing.JLabel();
+        Titulo = new javax.swing.JLabel();
         String[] array = pr.getEspectaculosDAO().espectaculosActivos().toArray(new String[pr.getEspectaculosDAO().espectaculosActivos().size()]);  //MANOTE: hay que pasarle al toArray un array de la misma longitud para que no lo convierta en un array de Objects
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jComboBoxEspectaculos = new javax.swing.JComboBox<>();
+        Espectaculo = new javax.swing.JLabel();
+        Fecha = new javax.swing.JLabel();
+        Comprar = new javax.swing.JButton();
         Atras = new javax.swing.JButton();
         jDateChooser = new com.toedter.calendar.JDateChooser();
         MensajeError = new javax.swing.JLabel();
@@ -53,24 +49,19 @@ public class ComprarEntradaEspectaculo extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        Entradasespectaculos.setText("Comprar Entrada para Espectáculo");
+        Titulo.setText("Comprar Entrada para Espectáculo");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(array));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        jComboBoxEspectaculos.setModel(new javax.swing.DefaultComboBoxModel<>(array));
+
+        Espectaculo.setText("Espectáculo");
+
+        Fecha.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Fecha.setText("Fecha");
+
+        Comprar.setText("Comprar");
+        Comprar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
-            }
-        });
-
-        jLabel1.setText("Espectáculo");
-
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Fecha");
-
-        jButton1.setText("Comprar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                ComprarActionPerformed(evt);
             }
         });
 
@@ -81,7 +72,6 @@ public class ComprarEntradaEspectaculo extends javax.swing.JFrame {
             }
         });
 
-        MensajeError.setVisible(false);
         MensajeError.setForeground(new java.awt.Color(255, 0, 0));
         MensajeError.setText("Debe cubrir todos los campos para poder comprar");
 
@@ -93,15 +83,15 @@ public class ComprarEntradaEspectaculo extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(87, 87, 87)
-                        .addComponent(Entradasespectaculos))
+                        .addComponent(Titulo))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(31, 31, 31)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(Espectaculo)
+                            .addComponent(Fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(32, 32, 32)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jComboBox1, 0, 190, Short.MAX_VALUE)
+                            .addComponent(jComboBoxEspectaculos, 0, 190, Short.MAX_VALUE)
                             .addComponent(jDateChooser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(62, 62, 62)
@@ -109,7 +99,7 @@ public class ComprarEntradaEspectaculo extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(Atras)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton1))
+                                .addComponent(Comprar))
                             .addComponent(MensajeError))))
                 .addContainerGap(84, Short.MAX_VALUE))
         );
@@ -117,20 +107,20 @@ public class ComprarEntradaEspectaculo extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addComponent(Entradasespectaculos)
+                .addComponent(Titulo)
                 .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(jComboBoxEspectaculos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Espectaculo))
                 .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
+                    .addComponent(Fecha)
                     .addComponent(jDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 171, Short.MAX_VALUE)
                 .addComponent(MensajeError)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(Comprar)
                     .addComponent(Atras))
                 .addGap(32, 32, 32))
         );
@@ -144,10 +134,10 @@ public class ComprarEntradaEspectaculo extends javax.swing.JFrame {
        padre.setVisible(true);
     }//GEN-LAST:event_AtrasActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void ComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComprarActionPerformed
         Date date;
         date = jDateChooser.getDate();
-        Object o = jComboBox1.getSelectedItem();
+        Object o = jComboBoxEspectaculos.getSelectedItem();
         if (o == null || date == null) {
             MensajeError.setVisible(true);
         } else {
@@ -174,55 +164,17 @@ public class ComprarEntradaEspectaculo extends javax.swing.JFrame {
                 
             }
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
-//MANOTE: si se puede que alguien elimine esta función de abajo
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_ComprarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ComprarEntradaEspectaculo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ComprarEntradaEspectaculo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ComprarEntradaEspectaculo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ComprarEntradaEspectaculo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ComprarEntradaEspectaculo().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Atras;
-    private javax.swing.JLabel Entradasespectaculos;
+    private javax.swing.JButton Comprar;
+    private javax.swing.JLabel Espectaculo;
+    private javax.swing.JLabel Fecha;
     private javax.swing.JLabel MensajeError;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JLabel Titulo;
+    private javax.swing.JComboBox<String> jComboBoxEspectaculos;
     private com.toedter.calendar.JDateChooser jDateChooser;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
 }
