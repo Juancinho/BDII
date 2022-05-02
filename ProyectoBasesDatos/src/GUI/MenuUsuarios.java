@@ -48,9 +48,15 @@ public class MenuUsuarios extends javax.swing.JFrame {
         MenuUsuarios1.setVisible(false);
     }
       
-        public MenuInicio getPadre() {
+    public MenuInicio getPadre() {
         return padre;
     }
+
+    public void setDni(String dni) {
+        this.dni = dni;
+    }
+        
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
