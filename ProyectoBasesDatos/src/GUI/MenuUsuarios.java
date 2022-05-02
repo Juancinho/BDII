@@ -53,6 +53,7 @@ public class MenuUsuarios extends javax.swing.JFrame {
     }
 
     public void setDni(String dni) {
+        
         this.dni = dni;
     }
         

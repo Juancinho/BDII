@@ -190,11 +190,9 @@ public class Acceso extends javax.swing.JFrame {
         dni=DNI.getText();
         if(padreUsuarios!=null){
             if (pr.getDaoUsuarios().validarUsuario(dni, Contraseña.getText(), "Normal")) {
-                //MenuUsuarios mu = new MenuUsuarios(pr,dni,padreUsuarios.getPadre());
                 this.setVisible(false);
                 padreUsuarios.setDni(dni);
-                padreUsuarios.setVisible(true);
-                //mu.setVisible(true);//Aquí cambiar para que vuelva al padre dándole valor al dni y cambiando lo que se ve
+                padreUsuarios.setVisible(true);    
             }
             else etiquetaFallo.setVisible(true);
         }
