@@ -90,13 +90,18 @@ public class MenuAdministradores extends javax.swing.JFrame {
         });
         jPanel1.add(Salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 410, 70, 30));
 
+
+        Beneficios.setText("Beneficios");
+
         Beneficios.setBorderPainted(false);
         Beneficios.setContentAreaFilled(false);
+
         Beneficios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BeneficiosActionPerformed(evt);
             }
         });
+
         jPanel1.add(Beneficios, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 200, 60));
 
         regalarEntradas.setBorderPainted(false);
@@ -195,41 +200,7 @@ public class MenuAdministradores extends javax.swing.JFrame {
     }//GEN-LAST:event_AtrasActionPerformed
 
     
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MenuAdministradores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MenuAdministradores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MenuAdministradores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MenuAdministradores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MenuAdministradores().setVisible(true);
-            }
-        });        
-    }
     
     
 

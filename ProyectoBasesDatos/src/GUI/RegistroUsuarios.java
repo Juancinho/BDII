@@ -20,15 +20,7 @@ public class RegistroUsuarios extends javax.swing.JFrame {
     private proyectobasesdatos.ProyectoBasesDatos pr;
     private String dni;
 
-    /**
-     * Creates new form RegistroUsuarios
-     */
-    public RegistroUsuarios(proyectobasesdatos.ProyectoBasesDatos pr) {
-        this.pr = pr;
-        initComponents();
-        aviso.setVisible(false);
 
-    }
 
     public RegistroUsuarios(proyectobasesdatos.ProyectoBasesDatos pr, MenuUsuarios padre, String dni) {
         this.pr = pr;
@@ -89,11 +81,6 @@ public class RegistroUsuarios extends javax.swing.JFrame {
         MADA.setText("DNI");
 
         DNI.setForeground(new java.awt.Color(204, 204, 204));
-        DNI.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DNIActionPerformed(evt);
-            }
-        });
 
         jLabel1.setText("Nombre");
 
@@ -289,10 +276,10 @@ public class RegistroUsuarios extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void AtrásActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtrásActionPerformed
+        //Acceso in = new Acceso(pr, padre);
 
-        Acceso in = new Acceso(pr, padre);
         this.setVisible(false);
-        in.setVisible(true);
+        padre.setVisible(true);
 
     }//GEN-LAST:event_AtrásActionPerformed
 
@@ -346,8 +333,10 @@ public class RegistroUsuarios extends javax.swing.JFrame {
                     java.sql.Date sqlDate = new java.sql.Date(date.getTime());
                     pr.getDaoUsuarios().registrarUsuario(dni, nameapellidos.getText(), nacionalidad.getText(), correoelectro.getText(), contraseña.getText(), telefono.getText(), sqlDate);
                     this.setVisible(false);
-                    MenuUsuarios nm = new MenuUsuarios(pr, dni, padre.getPadre());
-                    nm.setVisible(true);
+
+                    padre.setDni(dni);
+                    padre.setVisible(true);
+
                 } catch (SQLException ex) {
                     Logger.getLogger(RegistroUsuarios.class.getName()).log(Level.SEVERE, null, ex);
 
@@ -360,13 +349,6 @@ public class RegistroUsuarios extends javax.swing.JFrame {
 
     }//GEN-LAST:event_RegistrarmeActionPerformed
 
-    private void DNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DNIActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_DNIActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Atrás;

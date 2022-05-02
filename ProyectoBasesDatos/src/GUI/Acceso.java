@@ -190,6 +190,7 @@ public class Acceso extends javax.swing.JFrame {
         dni=DNI.getText();
         if(padreUsuarios!=null){
             if (pr.getDaoUsuarios().validarUsuario(dni, Contraseña.getText(), "Normal")) {
+
                 this.setVisible(false);
                 padreUsuarios.setDni(dni);
                 padreUsuarios.setVisible(true);    
