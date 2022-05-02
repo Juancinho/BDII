@@ -276,6 +276,8 @@ public class RegistroUsuarios extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void AtrásActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtrásActionPerformed
+        //Acceso in = new Acceso(pr, padre);
+
         this.setVisible(false);
         padre.setVisible(true);
 
@@ -331,8 +333,10 @@ public class RegistroUsuarios extends javax.swing.JFrame {
                     java.sql.Date sqlDate = new java.sql.Date(date.getTime());
                     pr.getDaoUsuarios().registrarUsuario(dni, nameapellidos.getText(), nacionalidad.getText(), correoelectro.getText(), contraseña.getText(), telefono.getText(), sqlDate);
                     this.setVisible(false);
+
                     padre.setDni(dni);
                     padre.setVisible(true);
+
                 } catch (SQLException ex) {
                     Logger.getLogger(RegistroUsuarios.class.getName()).log(Level.SEVERE, null, ex);
 

@@ -22,11 +22,14 @@ public class MenuUsuarios extends javax.swing.JFrame {
         this.pr = pr;
         this.padre = padre;
         initComponents();
+
         Portada2.setVisible(false);
+
         Comprar.setEnabled(false);
         Cancelar.setEnabled(false);
         Puntuar.setEnabled(false);
     }
+
 
     /*public MenuUsuarios(proyectobasesdatos.ProyectoBasesDatos pr, MenuInicio padre) {
         this.pr = pr;
@@ -38,9 +41,15 @@ public class MenuUsuarios extends javax.swing.JFrame {
         Puntuar.setEnabled(false);
     }*/
  /*public MenuUsuarios(proyectobasesdatos.ProyectoBasesDatos pr, String dni) {
+
+
+    public MenuUsuarios(proyectobasesdatos.ProyectoBasesDatos pr, String dni, MenuInicio padre) {
+
         this.pr = pr;
+        this.padre=padre;
         this.dni=dni;
         initComponents();
+
         Portada1.setVisible(false);
     }*/
     public void setDni(String dni) { //Cambia la visibilidad de los botones según se esté logueado o no
@@ -60,7 +69,18 @@ public class MenuUsuarios extends javax.swing.JFrame {
             Puntuar.setEnabled(false);
         }
 
+
+        MenuUsuarios1.setVisible(false);
     }
+      
+    public MenuInicio getPadre() {
+        return padre;
+    }
+
+
+    }
+        
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -77,11 +97,12 @@ public class MenuUsuarios extends javax.swing.JFrame {
         Acceder = new javax.swing.JButton();
         Comprar = new javax.swing.JButton();
         Salir = new javax.swing.JButton();
+        Atras = new javax.swing.JButton();
         Cancelar = new javax.swing.JButton();
         Puntuar = new javax.swing.JButton();
-        Volver = new javax.swing.JButton();
         Portada2 = new javax.swing.JLabel();
         Portada1 = new javax.swing.JLabel();
+
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -141,6 +162,15 @@ public class MenuUsuarios extends javax.swing.JFrame {
         });
         jPanel1.add(Salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(724, 400, 70, 30));
 
+        Atras.setBorderPainted(false);
+        Atras.setContentAreaFilled(false);
+        Atras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AtrasActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Atras, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, -1, 20));
+
         Cancelar.setActionCommand("Cancelar");
         Cancelar.setBorderPainted(false);
         Cancelar.setContentAreaFilled(false);
@@ -162,6 +192,7 @@ public class MenuUsuarios extends javax.swing.JFrame {
         });
         jPanel1.add(Puntuar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 260, 220, 40));
 
+
         Volver.setText("Volver");
         Volver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -175,6 +206,7 @@ public class MenuUsuarios extends javax.swing.JFrame {
 
         Portada1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Portada.jpeg"))); // NOI18N
         jPanel1.add(Portada1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 450));
+
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -202,6 +234,7 @@ public class MenuUsuarios extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (dni == null) {
             Acceso ac = new Acceso(pr, this);
+
             this.setVisible(false);
             ac.setVisible(true);
         } else {
@@ -240,22 +273,57 @@ public class MenuUsuarios extends javax.swing.JFrame {
         pres.setVisible(true);
     }//GEN-LAST:event_PuntuarActionPerformed
 
-    private void VolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverActionPerformed
+
+
+
+    private void AtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtrasActionPerformed
+        // TODO add your handling code here:
         this.setVisible(false);
         padre.setVisible(true);
-    }//GEN-LAST:event_VolverActionPerformed
+    }//GEN-LAST:event_AtrasActionPerformed
+
+    
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(MenuUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(MenuUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(MenuUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(MenuUsuarios.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Acceder;
+    private javax.swing.JButton Atras;
     private javax.swing.JButton Buscar;
     private javax.swing.JButton Cancelar;
     private javax.swing.JButton Comprar;
+
     private javax.swing.JLabel Portada1;
     private javax.swing.JLabel Portada2;
     private javax.swing.JButton Puntuar;
     private javax.swing.JButton Salir;
-    private javax.swing.JButton Volver;
+
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

@@ -120,6 +120,20 @@
             </Constraint>
           </Constraints>
         </Component>
+        <Component class="javax.swing.JButton" name="Atras">
+          <Properties>
+            <Property name="borderPainted" type="boolean" value="false"/>
+            <Property name="contentAreaFilled" type="boolean" value="false"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AtrasActionPerformed"/>
+          </Events>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="20" y="410" width="-1" height="20"/>
+            </Constraint>
+          </Constraints>
+        </Component>
         <Component class="javax.swing.JButton" name="Cancelar">
           <Properties>
             <Property name="actionCommand" type="java.lang.String" value="Cancelar"/>
@@ -153,9 +167,17 @@
             </Constraint>
           </Constraints>
         </Component>
+
         <Component class="javax.swing.JButton" name="Volver">
           <Properties>
             <Property name="text" type="java.lang.String" value="Volver"/>
+
+        <Component class="javax.swing.JLabel" name="MenuUsuarios2">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/Imagenes/MenuUsuarios2.jpeg"/>
+            </Property>
+
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="VolverActionPerformed"/>
@@ -166,10 +188,12 @@
             </Constraint>
           </Constraints>
         </Component>
+
         <Component class="javax.swing.JLabel" name="Portada2">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/Imagenes/Portada2.jpeg"/>
+
             </Property>
           </Properties>
           <Constraints>
@@ -178,6 +202,7 @@
             </Constraint>
           </Constraints>
         </Component>
+
         <Component class="javax.swing.JLabel" name="Portada1">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -190,6 +215,7 @@
             </Constraint>
           </Constraints>
         </Component>
+
       </SubComponents>
     </Container>
   </SubComponents>
