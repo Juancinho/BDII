@@ -192,15 +192,6 @@ public class MenuUsuarios extends javax.swing.JFrame {
         });
         jPanel1.add(Puntuar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 260, 220, 40));
 
-
-        Volver.setText("Volver");
-        Volver.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                VolverActionPerformed(evt);
-            }
-        });
-        jPanel1.add(Volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 400, -1, -1));
-
         Portada2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Portada2.jpeg"))); // NOI18N
         jPanel1.add(Portada2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 450));
 
