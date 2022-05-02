@@ -68,7 +68,7 @@ public class AnhadirEmpleados extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         fechaNacimiento = new com.toedter.calendar.JDateChooser();
-        jLabel6 = new javax.swing.JLabel();
+        atraccion = new javax.swing.JLabel();
         String[] array = pr.getAtraccionesDAO().atraccionesActivas().toArray(new String[pr.getAtraccionesDAO().atraccionesActivas().size()]);
         jComboBoxAtraccion = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
@@ -106,7 +106,7 @@ public class AnhadirEmpleados extends javax.swing.JFrame {
 
         jLabel5.setText("Fecha de Nacimiento:");
 
-        jLabel6.setText("Atracción:");
+        atraccion.setText("Atracción:");
 
         jComboBoxAtraccion.setModel(new javax.swing.DefaultComboBoxModel<>(array));
         jComboBoxAtraccion.addActionListener(new java.awt.event.ActionListener() {
@@ -265,7 +265,7 @@ public class AnhadirEmpleados extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7)
-                            .addComponent(jLabel6)
+                            .addComponent(atraccion)
                             .addComponent(jLabel8))
                         .addGap(29, 29, 29)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -314,7 +314,7 @@ public class AnhadirEmpleados extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBoxAtraccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6)
+                    .addComponent(atraccion)
                     .addComponent(asignarAutom))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -453,6 +453,7 @@ public class AnhadirEmpleados extends javax.swing.JFrame {
     private javax.swing.JRadioButton Hostelero;
     private javax.swing.JButton anhadir;
     private javax.swing.JCheckBox asignarAutom;
+    private javax.swing.JLabel atraccion;
     private javax.swing.JButton atras;
     private javax.swing.JLabel aviso;
     private javax.swing.JLabel avisoDNI;
@@ -470,7 +471,6 @@ public class AnhadirEmpleados extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
