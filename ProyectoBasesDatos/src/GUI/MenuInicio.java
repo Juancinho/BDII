@@ -108,7 +108,7 @@ public class MenuInicio extends javax.swing.JFrame {
     }//GEN-LAST:event_UsuarioActionPerformed
 
     private void AministradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AministradorActionPerformed
-        AccesoUsuario ac= new AccesoUsuario(pr,this);
+        Acceso ac= new Acceso(pr,this);
         this.setVisible(false);
         ac.setVisible(true);
     }//GEN-LAST:event_AministradorActionPerformed
