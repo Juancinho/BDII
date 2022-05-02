@@ -192,7 +192,7 @@ public class MenuUsuarios extends javax.swing.JFrame {
     private void AccederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AccederActionPerformed
         // TODO add your handling code here:
         if(dni==null){
-            AccesoUsuario ac= new AccesoUsuario(pr,this);
+            Acceso ac= new Acceso(pr,this);
             this.setVisible(false);
             ac.setVisible(true);
         }
