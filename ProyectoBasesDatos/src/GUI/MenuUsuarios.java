@@ -97,7 +97,6 @@ public class MenuUsuarios extends javax.swing.JFrame {
         Portada2 = new javax.swing.JLabel();
         Portada1 = new javax.swing.JLabel();
 
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
@@ -186,12 +185,11 @@ public class MenuUsuarios extends javax.swing.JFrame {
         });
         jPanel1.add(Puntuar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 260, 220, 40));
 
-        Portada2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Portada2.jpeg"))); // NOI18N
+        Portada2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/MenuUsuarios2.jpeg"))); // NOI18N
         jPanel1.add(Portada2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 450));
 
-        Portada1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Portada.jpeg"))); // NOI18N
+        Portada1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/MenuUsuarios1.jpeg"))); // NOI18N
         jPanel1.add(Portada1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 450));
-
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -278,12 +276,10 @@ public class MenuUsuarios extends javax.swing.JFrame {
     private javax.swing.JButton Buscar;
     private javax.swing.JButton Cancelar;
     private javax.swing.JButton Comprar;
-
     private javax.swing.JLabel Portada1;
     private javax.swing.JLabel Portada2;
     private javax.swing.JButton Puntuar;
     private javax.swing.JButton Salir;
-
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
