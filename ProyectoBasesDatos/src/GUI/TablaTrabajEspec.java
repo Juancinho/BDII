@@ -22,6 +22,9 @@ public class TablaTrabajEspec extends javax.swing.JFrame {
         this.pr = pr;
         this.padre=padre;
         initComponents();
+        ModeloTablaTrabajEspectaculos m;
+        m = (ModeloTablaTrabajEspectaculos) TablaTrabajEspec.getModel();
+        m.setFilas(pr.getEspectaculosDAO().consultarTrabajadorEspectaculos());
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -35,7 +38,6 @@ public class TablaTrabajEspec extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         TablaTrabajEspec = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        Buscar = new javax.swing.JToggleButton();
         atras = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -45,13 +47,6 @@ public class TablaTrabajEspec extends javax.swing.JFrame {
         jScrollPane1.setViewportView(TablaTrabajEspec);
 
         jLabel1.setText("Trabajadores Espectáculos");
-
-        Buscar.setText("Buscar");
-        Buscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BuscarActionPerformed(evt);
-            }
-        });
 
         atras.setText("Atrás");
         atras.addActionListener(new java.awt.event.ActionListener() {
@@ -73,9 +68,7 @@ public class TablaTrabajEspec extends javax.swing.JFrame {
                         .addGap(269, 269, 269)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(196, 196, 196)
-                        .addComponent(Buscar)
-                        .addGap(147, 147, 147)
+                        .addGap(301, 301, 301)
                         .addComponent(atras)))
                 .addContainerGap(42, Short.MAX_VALUE))
         );
@@ -87,19 +80,13 @@ public class TablaTrabajEspec extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Buscar)
-                    .addComponent(atras))
+                .addComponent(atras)
                 .addContainerGap(25, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
-        mostrarTrabajEspec();
-    }//GEN-LAST:event_BuscarActionPerformed
 
     private void atrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasActionPerformed
         this.setVisible(false);
@@ -145,7 +132,6 @@ public class TablaTrabajEspec extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JToggleButton Buscar;
     private javax.swing.JTable TablaTrabajEspec;
     private javax.swing.JButton atras;
     private javax.swing.JLabel jLabel1;

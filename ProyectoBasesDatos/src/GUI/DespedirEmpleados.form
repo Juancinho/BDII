@@ -81,7 +81,7 @@
                       <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
                       <Component id="limite" min="-2" pref="87" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="despedirRecientes" min="-2" max="-2" attributes="0"/>
+                      <Component id="despedirTrabRecientes" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="despedirTrab" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="152" max="-2" attributes="0"/>
@@ -108,7 +108,7 @@
                       <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="despedirTrab" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="despedirRecientes" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="despedirTrabRecientes" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="limite" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -140,12 +140,12 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="despedirTrabActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="despedirRecientes">
+            <Component class="javax.swing.JButton" name="despedirTrabRecientes">
               <Properties>
                 <Property name="label" type="java.lang.String" value="Despedir Recientes"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="despedirRecientesActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="despedirTrabRecientesActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="limite">
