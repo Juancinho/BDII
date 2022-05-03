@@ -170,7 +170,7 @@
         <Component class="javax.swing.JLabel" name="Portada2">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Imagenes/Portada2.jpeg"/>
+              <Image iconType="3" name="/Imagenes/MenuUsuarios2.jpeg"/>
             </Property>
           </Properties>
           <Constraints>
@@ -182,7 +182,7 @@
         <Component class="javax.swing.JLabel" name="Portada1">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Imagenes/Portada.jpeg"/>
+              <Image iconType="3" name="/Imagenes/MenuUsuarios1.jpeg"/>
             </Property>
           </Properties>
           <Constraints>
