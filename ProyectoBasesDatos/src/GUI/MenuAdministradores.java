@@ -56,9 +56,9 @@ public class MenuAdministradores extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLayeredPane1 = new javax.swing.JLayeredPane();
         Salir = new javax.swing.JButton();
-        Beneficios = new javax.swing.JButton();
         regalarEntradas = new javax.swing.JButton();
         trabajadores = new javax.swing.JButton();
+        Beneficios = new javax.swing.JButton();
         GestionFalloAtraccion = new javax.swing.JButton();
         Atras = new javax.swing.JButton();
         MenuAdministradores = new javax.swing.JLabel();
@@ -90,20 +90,6 @@ public class MenuAdministradores extends javax.swing.JFrame {
         });
         jPanel1.add(Salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 410, 70, 30));
 
-
-        Beneficios.setText("Beneficios");
-
-        Beneficios.setBorderPainted(false);
-        Beneficios.setContentAreaFilled(false);
-
-        Beneficios.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BeneficiosActionPerformed(evt);
-            }
-        });
-
-        jPanel1.add(Beneficios, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 200, 60));
-
         regalarEntradas.setBorderPainted(false);
         regalarEntradas.setContentAreaFilled(false);
         regalarEntradas.addActionListener(new java.awt.event.ActionListener() {
@@ -121,6 +107,15 @@ public class MenuAdministradores extends javax.swing.JFrame {
             }
         });
         jPanel1.add(trabajadores, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 260, 130, 70));
+
+        Beneficios.setBorderPainted(false);
+        Beneficios.setContentAreaFilled(false);
+        Beneficios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BeneficiosActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Beneficios, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 200, 60));
 
         GestionFalloAtraccion.setBorderPainted(false);
         GestionFalloAtraccion.setContentAreaFilled(false);

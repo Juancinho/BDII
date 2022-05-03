@@ -43,6 +43,7 @@ public class BeneficiosAtracciones extends javax.swing.JFrame {
         botonAtras = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaBeneficios = new javax.swing.JTable();
+        MenosRentable = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -69,6 +70,13 @@ public class BeneficiosAtracciones extends javax.swing.JFrame {
         tablaBeneficios.setModel(new ModeloTablaBeneficios());
         jScrollPane1.setViewportView(tablaBeneficios);
 
+        MenosRentable.setText("Eliminar atracción menos rentable");
+        MenosRentable.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenosRentableActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -82,8 +90,11 @@ public class BeneficiosAtracciones extends javax.swing.JFrame {
                         .addComponent(selectorAnho, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(44, 44, 44)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(botonAtras, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(MenosRentable)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(botonAtras))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(45, Short.MAX_VALUE))
             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -100,7 +111,9 @@ public class BeneficiosAtracciones extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                .addComponent(botonAtras)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botonAtras)
+                    .addComponent(MenosRentable))
                 .addGap(26, 26, 26))
         );
 
@@ -109,16 +122,26 @@ public class BeneficiosAtracciones extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void selectorAnhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectorAnhoActionPerformed
-        //consultarBeneficios();
-        cerrarAtraccion();
-        this.selectorAnho.setVisible(false);
+
+        String anho;
+        anho = (String)selectorAnho.getSelectedItem();
+        ModeloTablaBeneficios m = (ModeloTablaBeneficios) tablaBeneficios.getModel();
+        m.setFilas(pr.getAtraccionesDAO().beneficiosPorAnho(anho));
     }//GEN-LAST:event_selectorAnhoActionPerformed
 
     private void botonAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAtrasActionPerformed
-
+       
        this.setVisible(false);
        padre.setVisible(true);
     }//GEN-LAST:event_botonAtrasActionPerformed
+
+    private void MenosRentableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenosRentableActionPerformed
+        // TODO add your handling code here:
+        String nombreAtraccion;
+        nombreAtraccion = pr.getAtraccionesDAO().atraccionMasPerdidas();
+        pr.getAtraccionesDAO().cerrarAtraccion(nombreAtraccion);
+        JOptionPane.showMessageDialog(null, "Se ha eliminado la atracción "+ nombreAtraccion + " correctamente.");
+    }//GEN-LAST:event_MenosRentableActionPerformed
 
     /**
      * @param args the command line arguments
@@ -163,6 +186,7 @@ public class BeneficiosAtracciones extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton MenosRentable;
     private javax.swing.JButton botonAtras;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -194,7 +218,7 @@ public class BeneficiosAtracciones extends javax.swing.JFrame {
     }
     */
     
-    public void cerrarAtraccion(){
+    /*public void cerrarAtraccion(){
         String anho;
         String nombreAtraccion;
         anho = (String)selectorAnho.getSelectedItem();
@@ -203,11 +227,8 @@ public class BeneficiosAtracciones extends javax.swing.JFrame {
         ModeloTablaBeneficios m = (ModeloTablaBeneficios) tablaBeneficios.getModel();
         m.setFilas(pr.getAtraccionesDAO().beneficiosPorAnho(anho));
         JOptionPane.showMessageDialog(null, "Se ha eliminado la atracción"+" "+ nombreAtraccion + " correctamente.");
-        this.selectorAnho.setVisible(false);
-    
-    
-    
-    }
+        //this.selectorAnho.setVisible(false);
+    }*/
 
 
 
