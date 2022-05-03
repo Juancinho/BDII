@@ -37,11 +37,12 @@ public class TrabajadoresDAO {
         stmTrabajador.setDate(6, fechaNacimiento);
         stmTrabajador.setString(7, atraccion);
         stmTrabajador.setString(8, espectaculo);
-         stmTrabajador.setFloat(9, salario);
+        stmTrabajador.setFloat(9, salario);
         stmTrabajador.executeUpdate();
         stmTrabajador.close();
 
     }
+
     public void anhadirTrabajadorAtra(String dni, String nombre, String direccion, String telefono, Date fechaInicio, Date fechaNacimiento, String atraccion, float salario) throws SQLException {
         PreparedStatement stmTrabajador = null;
         stmTrabajador = conexion.prepareStatement("INSERT INTO trabajadoresparque (dni,nombre,direccion,telefono,fechainicio,fechanacimiento,nombreatraccion,salario) values(?,?,?,?,?,?,?,?)");
@@ -51,13 +52,14 @@ public class TrabajadoresDAO {
         stmTrabajador.setString(4, telefono);
         stmTrabajador.setDate(5, fechaInicio);
         stmTrabajador.setDate(6, fechaNacimiento);
-        stmTrabajador.setString(7,atraccion);      
-         stmTrabajador.setFloat(8, salario);
+        stmTrabajador.setString(7, atraccion);
+        stmTrabajador.setFloat(8, salario);
         stmTrabajador.executeUpdate();
         stmTrabajador.close();
 
     }
-    public void anhadirTrabajadorEsp(String dni, String nombre, String direccion, String telefono, Date fechaInicio, Date fechaNacimiento,  String espectaculo, float salario) throws SQLException {
+
+    public void anhadirTrabajadorEsp(String dni, String nombre, String direccion, String telefono, Date fechaInicio, Date fechaNacimiento, String espectaculo, float salario) throws SQLException {
         PreparedStatement stmTrabajador = null;
         stmTrabajador = conexion.prepareStatement("INSERT INTO trabajadoresparque (dni,nombre,direccion,telefono,fechainicio,fechanacimiento,nombreespectaculo,salario) values(?,?,?,?,?,?,?,?)");
         stmTrabajador.setString(1, dni);
@@ -65,13 +67,14 @@ public class TrabajadoresDAO {
         stmTrabajador.setString(3, direccion);
         stmTrabajador.setString(4, telefono);
         stmTrabajador.setDate(5, fechaInicio);
-        stmTrabajador.setDate(6, fechaNacimiento);     
+        stmTrabajador.setDate(6, fechaNacimiento);
         stmTrabajador.setString(7, espectaculo);
-         stmTrabajador.setFloat(8, salario);
+        stmTrabajador.setFloat(8, salario);
         stmTrabajador.executeUpdate();
         stmTrabajador.close();
 
     }
+
     public void anhadirTrabajador(String dni, String nombre, String direccion, String telefono, Date fechaInicio, Date fechaNacimiento) throws SQLException {
         PreparedStatement stmTrabajador = null;
         stmTrabajador = conexion.prepareStatement("INSERT INTO trabajadoresparque (dni,nombre,direccion,telefono,fechainicio,fechanacimiento,salario) values(?,?,?,?,?,?,?)");
@@ -80,12 +83,13 @@ public class TrabajadoresDAO {
         stmTrabajador.setString(3, direccion);
         stmTrabajador.setString(4, telefono);
         stmTrabajador.setDate(5, fechaInicio);
-        stmTrabajador.setDate(6, fechaNacimiento);       
-         stmTrabajador.setInt(7, 2);
+        stmTrabajador.setDate(6, fechaNacimiento);
+        stmTrabajador.setInt(7, 2);
         stmTrabajador.executeUpdate();
         stmTrabajador.close();
 
     }
+
     public ArrayList<Trabajador> getTrabajadores() {
         Trabajador trabajador;
         ArrayList<Trabajador> resultado = new ArrayList<>();
@@ -95,7 +99,7 @@ public class TrabajadoresDAO {
             stmTrabajadores = conexion.prepareStatement("select * from trabajadoresparque order by fechainicio");
             rsTrabajadores = stmTrabajadores.executeQuery();
             while (rsTrabajadores.next()) {
-                trabajador = new Trabajador(rsTrabajadores.getString("dni"), rsTrabajadores.getString("nombre"), rsTrabajadores.getString("direccion"), rsTrabajadores.getFloat("salario"), rsTrabajadores.getString("telefono"), rsTrabajadores.getString("fechainicio"), rsTrabajadores.getString("fechanacimiento"), rsTrabajadores.getString("nombreatraccion"),rsTrabajadores.getString("nombreespectaculo"));
+                trabajador = new Trabajador(rsTrabajadores.getString("dni"), rsTrabajadores.getString("nombre"), rsTrabajadores.getString("direccion"), rsTrabajadores.getFloat("salario"), rsTrabajadores.getString("telefono"), rsTrabajadores.getString("fechainicio"), rsTrabajadores.getString("fechanacimiento"), rsTrabajadores.getString("nombreatraccion"), rsTrabajadores.getString("nombreespectaculo"));
                 resultado.add(trabajador);
             }
 
@@ -105,7 +109,8 @@ public class TrabajadoresDAO {
 
         return resultado;
     }
-      public void despedirTrabajador(String dni) {
+
+    public void despedirTrabajador(String dni) {
 
         PreparedStatement stmTrabajadores = null;
         try {
@@ -117,45 +122,47 @@ public class TrabajadoresDAO {
         }
 
     }
-            public void despedirRecientes(int limite) {
+
+    public String getTrabajadoresRecientes() {
 
         PreparedStatement stmTrabajadores = null;
+        ResultSet rsTrabajadores;
+        String reciente = "";
         try {
-            stmTrabajadores = conexion.prepareStatement("	delete from  trabajadoresparque  where dni in(select dni from trabajadoresparque t where fechainicio >=all(select fechainicio from trabajadoresparque)order by salario desc limit 1)");
-                      stmTrabajadores.executeUpdate();
+            stmTrabajadores = conexion.prepareStatement("select dni from trabajadoresparque t where fechainicio >=all(select fechainicio from trabajadoresparque)order by salario desc limit 1");
+            rsTrabajadores = stmTrabajadores.executeQuery();
+            while (rsTrabajadores.next()) {
+                reciente = rsTrabajadores.getString("dni");
+                
+            }
         } catch (SQLException ex) {
             Logger.getLogger(HostelerosDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        return reciente;
     }
-    
+
     public String getAtraccionMenosTrabajadores() {
-        
-        String resultado =null;
+
+        String resultado = null;
         ResultSet rsTrabajadores;
         PreparedStatement stmTrabajadores = null;
         try {
-            stmTrabajadores = conexion.prepareStatement("select count(nombre),nombreatraccion from trabajadoresparque \n" +
-        "where nombreatraccion is not null\n" +
-        "group by nombreatraccion\n" +
-        "order by count asc \n" +
-        " limit 1");
+            stmTrabajadores = conexion.prepareStatement("select count(nombre),nombreatraccion from trabajadoresparque \n"
+                    + "where nombreatraccion is not null\n"
+                    + "group by nombreatraccion\n"
+                    + "order by count asc \n"
+                    + " limit 1");
             rsTrabajadores = stmTrabajadores.executeQuery();
-            while(rsTrabajadores.next()){
-                resultado=rsTrabajadores.getString("nombreatraccion");
+            while (rsTrabajadores.next()) {
+                resultado = rsTrabajadores.getString("nombreatraccion");
                 //System.out.println(resultado);
             }
-
 
         } catch (SQLException ex) {
             Logger.getLogger(TrabajadoresDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         return resultado;
-    }        
-            
-            
-            
-            
-            
+    }
+
 }

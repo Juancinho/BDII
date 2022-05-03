@@ -4,19 +4,23 @@
  */
 package GUI;
 
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import proyectobasesdatos.Trabajador;
+
 /**
  *
  * @author alumnogreibd
  */
 public class DespedirEmpleados extends javax.swing.JFrame {
-
+    
     private proyectobasesdatos.ProyectoBasesDatos pr;
     private MenuEmpleados padre;
-
+    
     public DespedirEmpleados() {
         initComponents();
     }
-
+    
     public DespedirEmpleados(proyectobasesdatos.ProyectoBasesDatos pr, MenuEmpleados padre) {
         this.pr = pr;
         this.padre = padre;
@@ -243,7 +247,7 @@ public class DespedirEmpleados extends javax.swing.JFrame {
     }//GEN-LAST:event_atrasActionPerformed
 
     private void despedirRecientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_despedirRecientesActionPerformed
-
+        
         int lim;
         limiteVacio.setVisible(false);
         limiteMax.setVisible(false);
@@ -253,9 +257,9 @@ public class DespedirEmpleados extends javax.swing.JFrame {
             lim = Integer.parseInt(limite.getText());
             if (lim > 5) {
                 limiteMax.setVisible(true);
-
+                
             } else {
-
+                
                 despedirRecientes();
             }
         }
@@ -263,7 +267,7 @@ public class DespedirEmpleados extends javax.swing.JFrame {
     }//GEN-LAST:event_despedirRecientesActionPerformed
 
     private void despedirRecientes2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_despedirRecientes2ActionPerformed
-int lim;
+        int lim;
         limiteVacio2.setVisible(false);
         limiteMax2.setVisible(false);
         if (limite2.getText().isBlank()) {
@@ -272,9 +276,9 @@ int lim;
             lim = Integer.parseInt(limite2.getText());
             if (lim > 5) {
                 limiteMax2.setVisible(true);
-
+                
             } else {
-
+                
                 despedirHostelerosRecientes();
             }
         }    }//GEN-LAST:event_despedirRecientes2ActionPerformed
@@ -339,31 +343,43 @@ public void despedirHostelero() {
         pr.getHostelerosDAO().despedirHostelero(tablaHosteleros.getValueAt(tablaHosteleros.getSelectedRow(), 0).toString());
         ModeloTablaHosteleros t = (ModeloTablaHosteleros) tablaHosteleros.getModel();
         t.setFilas(pr.getHostelerosDAO().getHosteleros());
-
+        
     }
-
+    
     public void despedirTrabajador() {
         pr.getTrabajadoresDAO().despedirTrabajador(tablaTrabajadores.getValueAt(tablaTrabajadores.getSelectedRow(), 0).toString());
         ModeloTablaTrabajadores t = (ModeloTablaTrabajadores) tablaTrabajadores.getModel();
         t.setFilas(pr.getTrabajadoresDAO().getTrabajadores());
-
+        
     }
-
+    
     public void despedirRecientes() {
+        String reciente, eliminados = "";
+        
         int lim = Integer.parseInt(limite.getText());
         for (int i = 0; i < lim; i++) {
-            pr.getTrabajadoresDAO().despedirRecientes(lim);
+            reciente = pr.getTrabajadoresDAO().getTrabajadoresRecientes();
+            pr.getTrabajadoresDAO().despedirTrabajador(reciente);
+            eliminados += " " + reciente;
         }
+        JOptionPane.showMessageDialog(rootPane, "Trabajdores despedidos: " + eliminados);
         ModeloTablaTrabajadores t = (ModeloTablaTrabajadores) tablaTrabajadores.getModel();
         t.setFilas(pr.getTrabajadoresDAO().getTrabajadores());
     }
-     public void despedirHostelerosRecientes() {
+    
+    public void despedirHostelerosRecientes() {
+        String reciente, eliminados = "";
+        
         int lim = Integer.parseInt(limite2.getText());
         for (int i = 0; i < lim; i++) {
-            pr.getHostelerosDAO().despedirRecientes(lim);
+            reciente = pr.getHostelerosDAO().getHostelerosRecientes();
+            pr.getHostelerosDAO().despedirHostelero(reciente);
+            eliminados += " " + reciente;
         }
+        JOptionPane.showMessageDialog(rootPane, "Hosteleros despedidos: " + eliminados);
+        
         ModeloTablaHosteleros t = (ModeloTablaHosteleros) tablaHosteleros.getModel();
         t.setFilas(pr.getHostelerosDAO().getHosteleros());
     }
-
+    
 }
