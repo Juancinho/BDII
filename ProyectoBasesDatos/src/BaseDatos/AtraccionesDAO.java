@@ -143,16 +143,31 @@ public class AtraccionesDAO {
         String finAnho = anho + "-12" + "-31";
         
         try {
-            stmBeneficios = conexion.prepareStatement("select i.atraccion, sum(case when i.vip='NO' then 8\n" +
+            stmBeneficios = conexion.prepareStatement("(select a.nombre, sum(case when i.vip='NO' then 8 when i.vip='SI' then 12 end)-a.costemantenimiento as Beneficios, count(*) as visitantes\n" +
+                "from ir i, atracciones a\n" +
+                "where a.nombre= i.atraccion and (i.fechavisita >= ?\n" +
+                "and i.fechavisita <= ?)\n" +
+                "group by a.nombre, a.costemantenimiento)\n" +
+                "union\n" +
+                "(select a2.nombre, -a2.costemantenimiento as Beneficios, 0 as visitantes\n" +
+                "from atracciones a2\n" +
+                "where a2.fechaapertura <= ? and 0=(select count(*) from ir where atraccion = a2.nombre and (fechavisita >= ?\n" +
+                "and fechavisita <= ?)))\n" +
+                "order by beneficios, visitantes");
+                    
+                /*    "select i.atraccion, sum(case when i.vip='NO' then 8\n" +
                 "when i.vip='SI' then 12 end)-avg(a.costemantenimiento)  as Beneficios\n, count(*)" +
                 "from ir i, atracciones a\n" +
                 "where a.nombre =i.atraccion \n" +
                 "and i.fechavisita >= ?\n" +
                 "and i.fechavisita <=?\n" +
                 "group by(i.atraccion)\n" +
-                "order by beneficios asc\n");          
+                "order by beneficios asc\n"); */         
             stmBeneficios.setDate(1, java.sql.Date.valueOf(inicioAnho));
             stmBeneficios.setDate(2, java.sql.Date.valueOf(finAnho));
+            stmBeneficios.setString(3, anho);
+            stmBeneficios.setDate(4, java.sql.Date.valueOf(inicioAnho));
+            stmBeneficios.setDate(5, java.sql.Date.valueOf(finAnho));
             
         
             rsConsultaBeneficios = stmBeneficios.executeQuery();
@@ -177,28 +192,68 @@ public class AtraccionesDAO {
     }
         
   
+    public int ultimoAnhoRegistrado() {
+        int ultimoAnho=0;
 
+        ResultSet rsAtracciones;
+        PreparedStatement stmAtracciones = null;
+        
+        try {
+            stmAtracciones = conexion.prepareStatement("select distinct (EXTRACT(YEAR FROM fechavisita)) as ano from ir order by  ano desc limit 1"); 
+            rsAtracciones = stmAtracciones.executeQuery();
+            while (rsAtracciones.next()) {  
+                ultimoAnho=rsAtracciones.getInt(1);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            try {
+                stmAtracciones.close();
+            } catch (SQLException e) {
+                System.out.println("Imposible cerrar cursores");
+            }
+        }
+        System.out.println(ultimoAnho);
+        return ultimoAnho;
+    }   
     
-    //public String atraccionMasPerdidas(String anho){
     public String atraccionMasPerdidas(){
+    //public String atraccionMasPerdidas(){
         String nombreAtraccion=null;
         ResultSet rsConsultaBeneficios;
         PreparedStatement stmBeneficios = null;
-        //String inicioAnho = anho + "-01" + "-01";   
-        //String finAnho = anho + "-12" + "-31";
-        
+        int ultAnho = ultimoAnhoRegistrado();
+        String anho = ""+ultAnho;
+        String inicioAnho = anho + "-01" + "-01";   
+        String finAnho = anho + "-12" + "-31";
         try {
-            stmBeneficios = conexion.prepareStatement("select i.atraccion, sum(case when i.vip='NO' then 8\n" +
-                "when i.vip='SI' then 12 end)-avg(a.costemantenimiento)  as Beneficios\n" +
+            stmBeneficios = conexion.prepareStatement("(select a.nombre, sum(case when i.vip='NO' then 8 when i.vip='SI' then 12 end)-a.costemantenimiento as Beneficios, count(*) as visitantes\n" +
+                "from ir i, atracciones a\n" +
+                "where a.nombre= i.atraccion and (i.fechavisita >= ?\n" +
+                "and i.fechavisita <= ?)\n" +
+                "group by a.nombre, a.costemantenimiento)\n" +
+                "union\n" +
+                "(select a2.nombre, -a2.costemantenimiento as Beneficios, 0 as visitantes\n" +
+                "from atracciones a2\n" +
+                "where a2.fechaapertura <= ? and 0=(select count(*) from ir where atraccion = a2.nombre and (fechavisita >= ?\n" +
+                "and fechavisita <= ?)))\n" +
+                "order by beneficios, visitantes\n"+
+                "limit 1"
+                    /*"select i.atraccion, sum(case when i.vip='NO' then 8\n" +
+                "when i.vip='SI' then 12 end)-a.costemantenimiento  as Beneficios\n" +
                 "from ir i, atracciones a\n" +
                 "where a.nombre =i.atraccion \n" +
-                //"and i.fechavisita >= ?\n" +
-                //"and i.fechavisita <=?\n" +
+                "and i.fechavisita >= ?\n" +
+                "and i.fechavisita <= ?\n" +
                 "group by(i.atraccion)\n" +
                 "order by beneficios asc\n"+ 
-                "limit 1;");           
-            //stmBeneficios.setDate(1, java.sql.Date.valueOf(inicioAnho));
-            //stmBeneficios.setDate(2, java.sql.Date.valueOf(finAnho));
+                "limit 1;"*/
+            );           
+            stmBeneficios.setDate(1, java.sql.Date.valueOf(inicioAnho));
+            stmBeneficios.setDate(2, java.sql.Date.valueOf(finAnho));
+            stmBeneficios.setString(3, anho);
+            stmBeneficios.setDate(4, java.sql.Date.valueOf(inicioAnho));
+            stmBeneficios.setDate(5, java.sql.Date.valueOf(finAnho));
             
         
             rsConsultaBeneficios = stmBeneficios.executeQuery();
@@ -229,7 +284,7 @@ public class AtraccionesDAO {
         PreparedStatement stmAtracciones = null;
         
         try {
-            stmAtracciones = conexion.prepareStatement("select distinct (EXTRACT(YEAR FROM fechavisita)) as ano from ir order by  ano asc;"); 
+            stmAtracciones = conexion.prepareStatement("select distinct (EXTRACT(YEAR FROM fechavisita)) as ano from ir order by  ano asc"); 
             rsAtracciones = stmAtracciones.executeQuery();
             while (rsAtracciones.next()) {  
                 resultado.add(String.valueOf(rsAtracciones.getInt(1)));
@@ -246,9 +301,7 @@ public class AtraccionesDAO {
         return resultado;
     }
     
-    
-    
-    
+     
     public void cerrarAtraccion(String nombre){
         PreparedStatement stmAtraccion = null;
         try{

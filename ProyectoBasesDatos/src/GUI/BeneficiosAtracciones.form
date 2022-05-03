@@ -95,6 +95,7 @@
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JComboBox&lt;&gt;()"/>
         <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="String [] array = pr.getAtraccionesDAO().a&#xf1;osRegistrados().toArray(new String[pr.getAtraccionesDAO().a&#xf1;osRegistrados().size()]);"/>
+        <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="BeneficiosAtracciones_selectorAnho"/>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
