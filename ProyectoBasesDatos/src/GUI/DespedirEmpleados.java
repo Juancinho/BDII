@@ -17,9 +17,7 @@ public class DespedirEmpleados extends javax.swing.JFrame {
     private proyectobasesdatos.ProyectoBasesDatos pr;
     private MenuEmpleados padre;
     
-    public DespedirEmpleados() {
-        initComponents();
-    }
+   
     
     public DespedirEmpleados(proyectobasesdatos.ProyectoBasesDatos pr, MenuEmpleados padre) {
         this.pr = pr;
@@ -50,7 +48,7 @@ public class DespedirEmpleados extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         tablaTrabajadores = new javax.swing.JTable();
         despedirTrab = new javax.swing.JButton();
-        despedirRecientes = new javax.swing.JButton();
+        despedirTrabRecientes = new javax.swing.JButton();
         limite = new javax.swing.JTextField();
         limiteVacio = new javax.swing.JLabel();
         limiteMax = new javax.swing.JLabel();
@@ -80,10 +78,10 @@ public class DespedirEmpleados extends javax.swing.JFrame {
             }
         });
 
-        despedirRecientes.setLabel("Despedir Recientes");
-        despedirRecientes.addActionListener(new java.awt.event.ActionListener() {
+        despedirTrabRecientes.setLabel("Despedir Recientes");
+        despedirTrabRecientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                despedirRecientesActionPerformed(evt);
+                despedirTrabRecientesActionPerformed(evt);
             }
         });
 
@@ -105,7 +103,7 @@ public class DespedirEmpleados extends javax.swing.JFrame {
                 .addGap(58, 58, 58)
                 .addComponent(limite, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(despedirRecientes)
+                .addComponent(despedirTrabRecientes)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(despedirTrab)
                 .addGap(152, 152, 152))
@@ -128,7 +126,7 @@ public class DespedirEmpleados extends javax.swing.JFrame {
                 .addGap(4, 4, 4)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(despedirTrab)
-                    .addComponent(despedirRecientes)
+                    .addComponent(despedirTrabRecientes)
                     .addComponent(limite, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
@@ -246,12 +244,12 @@ public class DespedirEmpleados extends javax.swing.JFrame {
         padre.setVisible(true);
     }//GEN-LAST:event_atrasActionPerformed
 
-    private void despedirRecientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_despedirRecientesActionPerformed
+    private void despedirTrabRecientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_despedirTrabRecientesActionPerformed
         
         int lim;
         limiteVacio.setVisible(false);
         limiteMax.setVisible(false);
-        if (limite.getText().isBlank()) {
+        if (limite.getText().isBlank() || !isInteger(limite.getText())) {
             limiteVacio.setVisible(true);
         } else {
             lim = Integer.parseInt(limite.getText());
@@ -260,17 +258,17 @@ public class DespedirEmpleados extends javax.swing.JFrame {
                 
             } else {
                 
-                despedirRecientes();
+                despedirTrabRecientes();
             }
         }
 
-    }//GEN-LAST:event_despedirRecientesActionPerformed
+    }//GEN-LAST:event_despedirTrabRecientesActionPerformed
 
     private void despedirRecientes2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_despedirRecientes2ActionPerformed
         int lim;
         limiteVacio2.setVisible(false);
         limiteMax2.setVisible(false);
-        if (limite2.getText().isBlank()) {
+        if (limite2.getText().isBlank() || !isInteger(limite.getText())) {
             limiteVacio2.setVisible(true);
         } else {
             lim = Integer.parseInt(limite2.getText());
@@ -283,47 +281,14 @@ public class DespedirEmpleados extends javax.swing.JFrame {
             }
         }    }//GEN-LAST:event_despedirRecientes2ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DespedirEmpleados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DespedirEmpleados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DespedirEmpleados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DespedirEmpleados.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new DespedirEmpleados().setVisible(true);
-            }
-        });
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton atras;
     private javax.swing.JButton despedirHost;
-    private javax.swing.JButton despedirRecientes;
     private javax.swing.JButton despedirRecientes2;
     private javax.swing.JButton despedirTrab;
+    private javax.swing.JButton despedirTrabRecientes;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -353,7 +318,7 @@ public void despedirHostelero() {
         
     }
     
-    public void despedirRecientes() {
+    public void despedirTrabRecientes() {
         String reciente, eliminados = "";
         
         int lim = Integer.parseInt(limite.getText());
@@ -381,5 +346,29 @@ public void despedirHostelero() {
         ModeloTablaHosteleros t = (ModeloTablaHosteleros) tablaHosteleros.getModel();
         t.setFilas(pr.getHostelerosDAO().getHosteleros());
     }
-    
+    //Función para saber si el dato introducido se puede pasar a Integer (código proveniente de stackoverflow)
+    public boolean isInteger(String str) {
+        if (str == null) {
+            return false;
+        }
+        int length = str.length();
+        if (length == 0) {
+            return false;
+        }
+        int i = 0;
+        if (str.charAt(0) == '-') {
+            if (length == 1) {
+                return false;
+            }
+            i = 1;
+        }
+        for (; i < length; i++) {
+            char c = str.charAt(i);
+            if (c < '0' || c > '9') {
+                return false;
+            }
+        }
+        return true;
+    }
+
 }

@@ -36,6 +36,7 @@ public class RegalarEntradas extends javax.swing.JFrame {
         Info = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         Regalar.setText("Regalar entradas");
         Regalar.addActionListener(new java.awt.event.ActionListener() {
@@ -106,6 +107,7 @@ public class RegalarEntradas extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void RegalarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegalarActionPerformed

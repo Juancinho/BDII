@@ -35,9 +35,7 @@
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="210" max="-2" attributes="0"/>
-                      <Component id="Buscar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="177" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="299" max="-2" attributes="0"/>
                       <Component id="atras" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -53,10 +51,7 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="382" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="Buscar" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="atras" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
+              <Component id="atras" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="25" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -80,14 +75,6 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Trabajadores Atracciones"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JToggleButton" name="Buscar">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Buscar"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BuscarActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="atras">
       <Properties>

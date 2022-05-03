@@ -21,7 +21,10 @@ public class TablaHosteleros extends javax.swing.JFrame {
     public TablaHosteleros(proyectobasesdatos.ProyectoBasesDatos pr,MenuEmpleados padre) {
         this.pr = pr;
         this.padre=padre;
-        initComponents();
+        initComponents();        
+        ModeloTablaHosteleros m;
+        m = (ModeloTablaHosteleros) TablaHosteleros.getModel();
+        m.setFilas(pr.getHostelerosDAO().getHosteleros());
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -35,7 +38,6 @@ public class TablaHosteleros extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         TablaHosteleros = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
-        Buscar = new javax.swing.JToggleButton();
         atras = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -45,13 +47,6 @@ public class TablaHosteleros extends javax.swing.JFrame {
         jScrollPane1.setViewportView(TablaHosteleros);
 
         jLabel1.setText("Hosteleros");
-
-        Buscar.setText("Buscar");
-        Buscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BuscarActionPerformed(evt);
-            }
-        });
 
         atras.setText("Atrás");
         atras.addActionListener(new java.awt.event.ActionListener() {
@@ -71,14 +66,11 @@ public class TablaHosteleros extends javax.swing.JFrame {
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(31, 31, 31)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 658, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 658, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(296, 296, 296)
+                        .addComponent(atras)))
                 .addContainerGap(53, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(210, Short.MAX_VALUE)
-                .addComponent(Buscar)
-                .addGap(171, 171, 171)
-                .addComponent(atras)
-                .addGap(210, 210, 210))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -88,19 +80,13 @@ public class TablaHosteleros extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Buscar)
-                    .addComponent(atras))
+                .addComponent(atras)
                 .addContainerGap(25, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
-        mostrarHosteleros();
-    }//GEN-LAST:event_BuscarActionPerformed
 
     private void atrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasActionPerformed
         this.setVisible(false);
@@ -143,7 +129,6 @@ public class TablaHosteleros extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JToggleButton Buscar;
     private javax.swing.JTable TablaHosteleros;
     private javax.swing.JButton atras;
     private javax.swing.JLabel jLabel1;
