@@ -135,7 +135,7 @@ public class AtraccionesDAO {
     
 
     
-        public ArrayList<Atraccion> beneficiosPorAnho(String anho){
+        public ArrayList<Atraccion> beneficiosPorAnho(int anho){
         ArrayList<Atraccion> resultado = new java.util.ArrayList<>();
         ResultSet rsConsultaBeneficios;
         PreparedStatement stmBeneficios = null;
@@ -153,19 +153,10 @@ public class AtraccionesDAO {
                 "from atracciones a2\n" +
                 "where a2.fechaapertura <= ? and 0=(select count(*) from ir where atraccion = a2.nombre and (fechavisita >= ?\n" +
                 "and fechavisita <= ?)))\n" +
-                "order by beneficios, visitantes");
-                    
-                /*    "select i.atraccion, sum(case when i.vip='NO' then 8\n" +
-                "when i.vip='SI' then 12 end)-avg(a.costemantenimiento)  as Beneficios\n, count(*)" +
-                "from ir i, atracciones a\n" +
-                "where a.nombre =i.atraccion \n" +
-                "and i.fechavisita >= ?\n" +
-                "and i.fechavisita <=?\n" +
-                "group by(i.atraccion)\n" +
-                "order by beneficios asc\n"); */         
+                "order by beneficios, visitantes");        
             stmBeneficios.setDate(1, java.sql.Date.valueOf(inicioAnho));
             stmBeneficios.setDate(2, java.sql.Date.valueOf(finAnho));
-            stmBeneficios.setString(3, anho);
+            stmBeneficios.setInt(3, anho);
             stmBeneficios.setDate(4, java.sql.Date.valueOf(inicioAnho));
             stmBeneficios.setDate(5, java.sql.Date.valueOf(finAnho));
             
@@ -190,71 +181,23 @@ public class AtraccionesDAO {
     
     
     }
-        
-  
-    public int ultimoAnhoRegistrado() {
-        int ultimoAnho=0;
-
-        ResultSet rsAtracciones;
-        PreparedStatement stmAtracciones = null;
-        
-        try {
-            stmAtracciones = conexion.prepareStatement("select distinct (EXTRACT(YEAR FROM fechavisita)) as ano from ir order by  ano desc limit 1"); 
-            rsAtracciones = stmAtracciones.executeQuery();
-            while (rsAtracciones.next()) {  
-                ultimoAnho=rsAtracciones.getInt(1);
-            }
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        } finally {
-            try {
-                stmAtracciones.close();
-            } catch (SQLException e) {
-                System.out.println("Imposible cerrar cursores");
-            }
-        }
-        System.out.println(ultimoAnho);
-        return ultimoAnho;
-    }   
     
     public String atraccionMasPerdidas(){
-    //public String atraccionMasPerdidas(){
         String nombreAtraccion=null;
         ResultSet rsConsultaBeneficios;
         PreparedStatement stmBeneficios = null;
-        int ultAnho = ultimoAnhoRegistrado();
-        String anho = ""+ultAnho;
-        String inicioAnho = anho + "-01" + "-01";   
-        String finAnho = anho + "-12" + "-31";
         try {
-            stmBeneficios = conexion.prepareStatement("(select a.nombre, sum(case when i.vip='NO' then 8 when i.vip='SI' then 12 end)-a.costemantenimiento as Beneficios, count(*) as visitantes\n" +
+            stmBeneficios = conexion.prepareStatement("(select a.nombre, sum(case when i.vip='NO' then 8 when i.vip='SI' then 12 end)-a.costemantenimiento*(extract(year from now())-a.fechaapertura) as Beneficios, count(*) as visitantes\n" +
                 "from ir i, atracciones a\n" +
-                "where a.nombre= i.atraccion and (i.fechavisita >= ?\n" +
-                "and i.fechavisita <= ?)\n" +
-                "group by a.nombre, a.costemantenimiento)\n" +
+                "where a.nombre= i.atraccion\n" +
+                "group by a.nombre, a.costemantenimiento, a.fechaapertura)\n" +
                 "union\n" +
-                "(select a2.nombre, -a2.costemantenimiento as Beneficios, 0 as visitantes\n" +
+                "(select a2.nombre, -a2.costemantenimiento*(extract(year from now())-a2.fechaapertura) as Beneficios, 0 as visitantes\n" +
                 "from atracciones a2\n" +
-                "where a2.fechaapertura <= ? and 0=(select count(*) from ir where atraccion = a2.nombre and (fechavisita >= ?\n" +
-                "and fechavisita <= ?)))\n" +
+                "where (select count(*) from ir where atraccion = a2.nombre)=0)\n" +
                 "order by beneficios, visitantes\n"+
                 "limit 1"
-                    /*"select i.atraccion, sum(case when i.vip='NO' then 8\n" +
-                "when i.vip='SI' then 12 end)-a.costemantenimiento  as Beneficios\n" +
-                "from ir i, atracciones a\n" +
-                "where a.nombre =i.atraccion \n" +
-                "and i.fechavisita >= ?\n" +
-                "and i.fechavisita <= ?\n" +
-                "group by(i.atraccion)\n" +
-                "order by beneficios asc\n"+ 
-                "limit 1;"*/
-            );           
-            stmBeneficios.setDate(1, java.sql.Date.valueOf(inicioAnho));
-            stmBeneficios.setDate(2, java.sql.Date.valueOf(finAnho));
-            stmBeneficios.setString(3, anho);
-            stmBeneficios.setDate(4, java.sql.Date.valueOf(inicioAnho));
-            stmBeneficios.setDate(5, java.sql.Date.valueOf(finAnho));
-            
+            );
         
             rsConsultaBeneficios = stmBeneficios.executeQuery();
             while (rsConsultaBeneficios.next()) {
@@ -277,8 +220,8 @@ public class AtraccionesDAO {
     }    
     
     
-    public ArrayList<String> añosRegistrados() {
-        ArrayList<String> resultado = new java.util.ArrayList<>();
+    public ArrayList<Integer> añosRegistrados() {
+        ArrayList<Integer> resultado = new java.util.ArrayList<>();
 
         ResultSet rsAtracciones;
         PreparedStatement stmAtracciones = null;
@@ -287,7 +230,7 @@ public class AtraccionesDAO {
             stmAtracciones = conexion.prepareStatement("select distinct (EXTRACT(YEAR FROM fechavisita)) as ano from ir order by  ano asc"); 
             rsAtracciones = stmAtracciones.executeQuery();
             while (rsAtracciones.next()) {  
-                resultado.add(String.valueOf(rsAtracciones.getInt(1)));
+                resultado.add(rsAtracciones.getInt(1));
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -312,8 +255,6 @@ public class AtraccionesDAO {
             
         }catch(SQLException ex){
             Logger.getLogger(AtraccionesDAO.class.getName()).log(Level.SEVERE, null, ex);
-            
-        
         }
     }
  public ArrayList<Trabajador> consultarTrabajadorAtracciones() {  //FA2  
