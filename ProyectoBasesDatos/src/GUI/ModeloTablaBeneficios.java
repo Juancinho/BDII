@@ -20,7 +20,7 @@ public class ModeloTablaBeneficios extends AbstractTableModel {
     
     @Override
     public int getColumnCount() {
-        return 2;
+        return 3;
     }
 
 
@@ -40,7 +40,10 @@ public class ModeloTablaBeneficios extends AbstractTableModel {
                 break;
             case 1:
                 nombre = "Beneficios";
-                break;       
+                break;
+            case 2:
+                nombre = "Visitantes";
+                break;
         }
         return nombre;
     }
@@ -57,6 +60,9 @@ public class ModeloTablaBeneficios extends AbstractTableModel {
                 break;
             case 1:
                 clase = java.lang.Float.class;
+                break;
+            case 2:
+                clase = java.lang.Integer.class;
                 break;
          
         }
@@ -79,6 +85,9 @@ public class ModeloTablaBeneficios extends AbstractTableModel {
                 break;
             case 1:
                 resultado = this.atraccion.get(row).getBeneficios();
+                break;
+            case 2:
+                resultado = this.atraccion.get(row).getVisitantes();
                 break;
 
         }

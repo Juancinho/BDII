@@ -144,7 +144,7 @@ public class AtraccionesDAO {
         
         try {
             stmBeneficios = conexion.prepareStatement("select i.atraccion, sum(case when i.vip='NO' then 8\n" +
-                "when i.vip='SI' then 12 end)-avg(a.costemantenimiento)  as Beneficios\n" +
+                "when i.vip='SI' then 12 end)-avg(a.costemantenimiento)  as Beneficios\n, count(*)" +
                 "from ir i, atracciones a\n" +
                 "where a.nombre =i.atraccion \n" +
                 "and i.fechavisita >= ?\n" +
@@ -158,7 +158,7 @@ public class AtraccionesDAO {
             rsConsultaBeneficios = stmBeneficios.executeQuery();
             while (rsConsultaBeneficios.next()) {
                
-                Atraccion atraccion = new Atraccion(rsConsultaBeneficios.getString(1),rsConsultaBeneficios.getFloat(2));
+                Atraccion atraccion = new Atraccion(rsConsultaBeneficios.getString(1),rsConsultaBeneficios.getFloat(2),rsConsultaBeneficios.getInt(3));
                 resultado.add(atraccion);
             }
 
