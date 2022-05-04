@@ -23,7 +23,7 @@ public class VisitantesDAO {
         this.conexion = conexion;
     }
     
-    public ArrayList<VisitanteResumen> listarPersonasConMasGasto(Integer limite){   //Parte de FU5
+    public ArrayList<VisitanteResumen> listarPersonasConMasGasto(Integer limite){   //Parte de FA5
  
         ArrayList<VisitanteResumen> resultado = new ArrayList<>();
         VisitanteResumen visResumenActual;
