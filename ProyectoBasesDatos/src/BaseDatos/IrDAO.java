@@ -147,7 +147,7 @@ public class IrDAO {
                     + "WHERE a2.nombre = i2.atraccion\n"
                     + "AND i2.visitante LIKE ?\n"
                     + "GROUP BY  a2.nombre)\n"
-                    + "limit 1\n"
+                    + "LIMIT 1"
             );
 
             stmIr.setString(1, dni);
