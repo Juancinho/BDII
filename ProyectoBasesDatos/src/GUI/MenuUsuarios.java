@@ -251,7 +251,7 @@ public class MenuUsuarios extends javax.swing.JFrame {
 
     private void PuntuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PuntuarActionPerformed
         // TODO add your handling code here:
-        PuntuacionRestaurante pres = new PuntuacionRestaurante(pr, this);
+        E1 pres = new E1(pr, this, dni);
         this.setVisible(false);
         pres.setVisible(true);
     }//GEN-LAST:event_PuntuarActionPerformed

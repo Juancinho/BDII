@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package GUI;
 
 import javax.swing.JOptionPane;
@@ -13,22 +10,16 @@ import javax.swing.JOptionPane;
 public class E1 extends javax.swing.JFrame {
 
     private proyectobasesdatos.ProyectoBasesDatos pr;
-    private MenuAdministradores padre;
-    //private String dni;
+    private MenuUsuarios padre;
+    private String dni;
 
-    public E1(proyectobasesdatos.ProyectoBasesDatos pr, MenuAdministradores padre) {
+    public E1(proyectobasesdatos.ProyectoBasesDatos pr, MenuUsuarios padre, String dni) {
         this.pr = pr;
         this.padre = padre;
-        //this.dni = dni;
+        this.dni = dni;
         initComponents();
     }
 
-    /**
-     * Creates new form regalarEntradas
-     */
-    public E1() {
-        initComponents();
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -39,9 +30,8 @@ public class E1 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        IntroducirLimite = new javax.swing.JTextField();
         SeleccionarTodoTabla = new javax.swing.JButton();
-        Regalar = new javax.swing.JButton();
+        Puntuar = new javax.swing.JButton();
         Info2 = new javax.swing.JLabel();
         Atras = new javax.swing.JButton();
         InfoButtonSeleccionar = new javax.swing.JButton();
@@ -52,23 +42,17 @@ public class E1 extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        IntroducirLimite.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                IntroducirLimiteActionPerformed(evt);
-            }
-        });
-
-        SeleccionarTodoTabla.setText("Seleccionar todo");
+        SeleccionarTodoTabla.setText("Cambiar a reseñados");
         SeleccionarTodoTabla.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SeleccionarTodoTablaActionPerformed(evt);
             }
         });
 
-        Regalar.setText("Regalar a seleccionados ");
-        Regalar.addActionListener(new java.awt.event.ActionListener() {
+        Puntuar.setText("Puntuar Restaurante");
+        Puntuar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RegalarActionPerformed(evt);
+                PuntuarActionPerformed(evt);
             }
         });
 
@@ -99,42 +83,37 @@ public class E1 extends javax.swing.JFrame {
         });
 
         Titulo.setFont(new java.awt.Font("C059", 2, 24)); // NOI18N
-        Titulo.setText("Regalar Entradas");
+        Titulo.setText("Puntuación de Restaurantes");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(80, 80, 80)
+                .addComponent(Atras)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Puntuar)
+                .addGap(278, 278, 278))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(InformacionButton)
+                    .addComponent(Info2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(InfoButtonSeleccionar)
+                .addGap(257, 257, 257))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(147, 147, 147)
-                        .addComponent(Atras)
-                        .addGap(142, 142, 142)
-                        .addComponent(Regalar)
-                        .addGap(100, 100, 100))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 631, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(SeleccionarTodoTabla)
-                    .addComponent(InfoButtonSeleccionar))
-                .addGap(0, 17, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 690, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(SeleccionarTodoTabla))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(136, 136, 136)
-                        .addComponent(Info2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(147, 147, 147)
-                        .addComponent(IntroducirLimite, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(174, 174, 174)
-                        .addComponent(InformacionButton))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(300, 300, 300)
+                        .addGap(277, 277, 277)
                         .addComponent(Titulo)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -145,32 +124,31 @@ public class E1 extends javax.swing.JFrame {
                 .addComponent(Info2)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(IntroducirLimite, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(InformacionButton))
+                    .addComponent(InformacionButton)
+                    .addComponent(InfoButtonSeleccionar))
                 .addGap(17, 17, 17)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(InfoButtonSeleccionar)
-                        .addGap(444, 444, 444)
-                        .addComponent(SeleccionarTodoTabla))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                        .addComponent(SeleccionarTodoTabla)
+                        .addGap(0, 516, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Regalar)
+                    .addComponent(Puntuar)
                     .addComponent(Atras))
-                .addGap(36, 36, 36))
+                .addGap(62, 62, 62))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void IntroducirLimiteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IntroducirLimiteActionPerformed
-        buscarMasGastadores(IntroducirLimite.getText());
-    }//GEN-LAST:event_IntroducirLimiteActionPerformed
+    private void PuntuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PuntuarActionPerformed
 
-    private void RegalarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegalarActionPerformed
-
-        int[] filasSeleccionadas;
+        
+        E1_Puntuar puntuando = new E1_Puntuar();
+        puntuando.setVisible(true);
+        this.setVisible(false);
+       /* int[] filasSeleccionadas;
 
         if (TablaVisitantesResumen.getRowCount() > 0) {
             if (TablaVisitantesResumen.getSelectedRowCount() > 0) {
@@ -182,12 +160,8 @@ public class E1 extends javax.swing.JFrame {
                 this.setVisible(false);
                 padre.setVisible(true);
             }
-        }
-    }//GEN-LAST:event_RegalarActionPerformed
-
-    private void SeleccionarTodoTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeleccionarTodoTablaActionPerformed
-        TablaVisitantesResumen.selectAll();
-    }//GEN-LAST:event_SeleccionarTodoTablaActionPerformed
+        }*/
+    }//GEN-LAST:event_PuntuarActionPerformed
 
     private void InfoButtonSeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InfoButtonSeleccionarActionPerformed
         JOptionPane.showMessageDialog(rootPane, "Para seleccionar filas debe clicar en ellas\nPuede seleccionar un conjunto de filas contiguas clicando y arrastrando\nPara seleccionar filas no contiguas use crtl+click");
@@ -206,6 +180,10 @@ public class E1 extends javax.swing.JFrame {
         );
     }//GEN-LAST:event_InformacionButtonActionPerformed
 
+    private void SeleccionarTodoTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeleccionarTodoTablaActionPerformed
+        TablaVisitantesResumen.selectAll();
+    }//GEN-LAST:event_SeleccionarTodoTablaActionPerformed
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -213,8 +191,7 @@ public class E1 extends javax.swing.JFrame {
     private javax.swing.JLabel Info2;
     private javax.swing.JButton InfoButtonSeleccionar;
     private javax.swing.JButton InformacionButton;
-    private javax.swing.JTextField IntroducirLimite;
-    private javax.swing.JButton Regalar;
+    private javax.swing.JButton Puntuar;
     private javax.swing.JButton SeleccionarTodoTabla;
     private javax.swing.JTable TablaVisitantesResumen;
     private javax.swing.JLabel Titulo;
@@ -226,7 +203,7 @@ public class E1 extends javax.swing.JFrame {
         ModeloTablaVisitanteResumen m;
         Integer limit = 10000; //Si el campo esta vacio, ponemos un limite alto
 
-        if (!IntroducirLimite.getText().isBlank()) {
+        /*if (!IntroducirLimite.getText().isBlank()) {
             if (isInteger(IntroducirLimite.getText())) {    //Si no se pudiera transformar a entero, muestra los 10000
                 limit = Integer.parseInt(limite);
             }
@@ -236,7 +213,7 @@ public class E1 extends javax.swing.JFrame {
 
         if (m.getRowCount() > 0) {
             TablaVisitantesResumen.setRowSelectionInterval(0, 0);
-        }
+        }*/
     }
 
 //Función para saber si el dato introducido se puede pasar a Integer (código proveniente de stackoverflow)

@@ -100,5 +100,30 @@ public class ComerDAO {
         }
 
     }
+    
+    public void puntuar(Date fecha, String dni, String nombreEstablecimiento, Integer puntuacion) {  //FU1
+
+        PreparedStatement stmPuntuar = null;
+        
+        try {
+            stmPuntuar = conexion.prepareStatement("UPDATE comer SET puntuacion = ? WHERE fecha = ? AND visitante = ? AND  establecimiento = ?");
+            stmPuntuar.setDate(1, fecha);
+            stmPuntuar.setString(2, dni);
+            stmPuntuar.setString(3, nombreEstablecimiento);
+            stmPuntuar.setInt(4, puntuacion);
+            stmPuntuar.executeUpdate();
+            
+            
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            try {
+                stmPuntuar.close();
+            } catch (SQLException e) {
+                System.out.println("Imposible cerrar cursores");
+            }
+        }
+
+    }
 
 }
