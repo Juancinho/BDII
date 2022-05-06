@@ -38,7 +38,7 @@ public class BeneficiosAtracciones extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        String [] array = pr.getAtraccionesDAO().añosRegistrados().toArray(new String[pr.getAtraccionesDAO().añosRegistrados().size()]);
+        Integer [] array = pr.getAtraccionesDAO().añosRegistrados().toArray(new Integer[pr.getAtraccionesDAO().añosRegistrados().size()]);
         selectorAnho = new javax.swing.JComboBox<>();
         botonAtras = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -123,8 +123,8 @@ public class BeneficiosAtracciones extends javax.swing.JFrame {
 
     private void selectorAnhoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectorAnhoActionPerformed
 
-        String anho;
-        anho = (String)selectorAnho.getSelectedItem();
+        Integer anho;
+        anho = (Integer)selectorAnho.getSelectedItem();
         ModeloTablaBeneficios m = (ModeloTablaBeneficios) tablaBeneficios.getModel();
         m.setFilas(pr.getAtraccionesDAO().beneficiosPorAnho(anho));
     }//GEN-LAST:event_selectorAnhoActionPerformed
@@ -191,7 +191,7 @@ public class BeneficiosAtracciones extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JComboBox<String> selectorAnho;
+    private javax.swing.JComboBox<Integer> selectorAnho;
     private javax.swing.JTable tablaBeneficios;
     // End of variables declaration//GEN-END:variables
     
