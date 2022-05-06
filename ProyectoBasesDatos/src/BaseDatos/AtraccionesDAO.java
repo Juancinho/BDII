@@ -197,7 +197,9 @@ public class AtraccionesDAO {
                 "where (select count(*) from ir where atraccion = a2.nombre)=0)\n" +
                 "order by beneficios, visitantes\n"+
                 "limit 1"
+                  
             );
+
         
             rsConsultaBeneficios = stmBeneficios.executeQuery();
             while (rsConsultaBeneficios.next()) {
