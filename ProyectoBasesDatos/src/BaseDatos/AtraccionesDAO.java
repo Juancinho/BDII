@@ -248,6 +248,22 @@ public class AtraccionesDAO {
                 "group by(i.atraccion)\n" +
                 "order by beneficios asc\n"+ 
                 "limit 1;"*/
+                    
+            /*"(select a.nombre, sum(case when i.vip='NO' then 8 when i.vip='SI' then 12 end)-a.costemantenimiento as Beneficios, count(*) as visitantes\n" +
+                "from ir i, atracciones a\n" +
+                "where a.nombre= i.atraccion and (i.fechavisita >= ?\n" +
+                "and i.fechavisita <= ?)\n" +
+                "group by a.nombre, a.costemantenimiento)\n" +
+                "union\n" +
+                "(select a2.nombre, -a2.costemantenimiento as Beneficios, 0 as visitantes\n" +
+                "from atracciones a2\n" +
+                "where a2.fechaapertura <= ? and 0=(select count(*) from ir where atraccion = a2.nombre and (fechavisita >= ?\n" +
+                "and fechavisita <= ?)))\n" +
+                "order by beneficios, visitantes\n"+
+                "limit 1"
+            */
+                    
+                    
             );           
             stmBeneficios.setDate(1, java.sql.Date.valueOf(inicioAnho));
             stmBeneficios.setDate(2, java.sql.Date.valueOf(finAnho));
