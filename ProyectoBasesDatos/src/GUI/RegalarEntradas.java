@@ -4,7 +4,10 @@
  */
 package GUI;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import proyectobasesdatos.VisitanteResumen;
 
@@ -113,11 +116,17 @@ public class RegalarEntradas extends javax.swing.JFrame {
     private void RegalarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegalarActionPerformed
 
         ArrayList<VisitanteResumen> afortunados;
+        ArrayList<String> dnis = new ArrayList<>();
         afortunados = buscarMasGastadores(IntroducirLimite.getText());
 
-                for (VisitanteResumen afortunado : afortunados) {
-                    pr.getIrDAO().regalarEntrada(afortunado.getDNI()); //Envío el DNI para regalar
+                for (VisitanteResumen afortunado : afortunados) { //Preparo el ArrayList de dni para enviárselo a la función que hará la transacción de regalar
+                    dnis.add(afortunado.getDNI());
                 }
+        try {
+            pr.getIrDAO().regalarEntrada(dnis); //Allí se hace una transacción-SQL (se desactiva autocommit pero luego se vuelve a activar
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
                 JOptionPane.showMessageDialog(rootPane, "Entradas regaladas con éxito a " + afortunados.size() + " persona/s (para su atracción favorita)");
                 this.setVisible(false);
                 padre.setVisible(true);

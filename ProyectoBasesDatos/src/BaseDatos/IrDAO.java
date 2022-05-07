@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Date;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 public class IrDAO {
 
@@ -94,15 +95,14 @@ public class IrDAO {
 
     }
 
-    
     public int devolverDinero(Date fecha, String nombreAtraccion) {
         ResultSet rsIr;
         PreparedStatement stmIr = null;
         ResultSet rsVis;
         PreparedStatement stmVis = null;
-        float entradaVip=12, entradaNormal=8;
-        int numero=0;//Intentar distinguir entre nadie fue y un error
-        
+        float entradaVip = 12, entradaNormal = 8;
+        int numero = 0;//Intentar distinguir entre nadie fue y un error
+
         try {
             stmIr = conexion.prepareStatement("SELECT visitante, vip FROM ir WHERE fechavisita = ? AND  atraccion = ?");
             stmIr.setDate(1, fecha);
@@ -111,15 +111,16 @@ public class IrDAO {
             while (rsIr.next()) {
                 numero++;
                 stmVis = conexion.prepareStatement("UPDATE visitantes SET dineroGastado = dineroGastado - ? WHERE dni = ?");
-                if(rsIr.getString("vip").equals("SI"))
+                if (rsIr.getString("vip").equals("SI")) {
                     stmVis.setFloat(1, entradaVip);
-                else
+                } else {
                     stmVis.setFloat(1, entradaNormal);
+                }
                 stmVis.setString(2, rsIr.getString("visitante"));
                 stmVis.executeUpdate();
             }
         } catch (SQLException e) {
-            numero=-1;
+            numero = -1;
             System.out.println(e.getMessage());
         } finally {
             try {
@@ -130,41 +131,54 @@ public class IrDAO {
         }
         return numero;
     }
-    
-    public void regalarEntrada(String dni) {
+
+    public void regalarEntrada(ArrayList<String> dnis) throws SQLException {
 
         PreparedStatement stmIr = null;
-
         try {
-            stmIr = conexion.prepareStatement("INSERT INTO ir (fechaVisita, VIP, visitante, atraccion)\n"
-                    + "SELECT CURRENT_DATE + INTERVAL '1 day', 'SI', ?, a.nombre\n"
-                    + "FROM atracciones a, ir i\n"
-                    + "WHERE a.nombre = i.atraccion\n"
-                    + "AND i.visitante LIKE ?\n"
-                    + "GROUP BY a.nombre\n"
-                    + "HAVING count(a.nombre) >= all (SELECT count(a2.nombre)\n"
-                    + "FROM atracciones a2, ir i2\n"
-                    + "WHERE a2.nombre = i2.atraccion\n"
-                    + "AND i2.visitante LIKE ?\n"
-                    + "GROUP BY  a2.nombre)\n"
-                    + "LIMIT 1"
-            );
-
-            stmIr.setString(1, dni);
-            stmIr.setString(2, dni);
-            stmIr.setString(3, dni);
-            stmIr.executeUpdate();
-
+            conexion.setAutoCommit(false); //Iniciamos la transacción
+            for (String dni : dnis) {
+                stmIr = conexion.prepareStatement("INSERT INTO ir (fechaVisita, VIP, visitante, atraccion)\n"
+                        + "SELECT CURRENT_DATE + INTERVAL '1 day', 'SI', ?, a.nombre\n"
+                        + "FROM atracciones a, ir i\n"
+                        + "WHERE a.nombre = i.atraccion\n"
+                        + "AND i.visitante LIKE ?\n"
+                        + "GROUP BY a.nombre\n"
+                        + "HAVING count(a.nombre) >= all (SELECT count(a2.nombre)\n"
+                        + "FROM atracciones a2, ir i2\n"
+                        + "WHERE a2.nombre = i2.atraccion\n"
+                        + "AND i2.visitante LIKE ?\n"
+                        + "GROUP BY  a2.nombre)\n"
+                        + "LIMIT 1"
+                );
+                stmIr.setString(1, dni);
+                stmIr.setString(2, dni);
+                stmIr.setString(3, dni);
+                stmIr.executeUpdate();
+            }
+            conexion.commit();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+            if (conexion != null) {
+                try {
+                    System.out.println("Se procede a abortar la transacción");
+                    conexion.rollback();
+                } catch (SQLException excep) {
+                    System.out.println(excep.getMessage());
+                }
+            }
+
         } finally {
+            conexion.setAutoCommit(true);
             try {
                 stmIr.close();
-            } catch (SQLException e) {
+            } catch (SQLException excep2) {
                 System.out.println("Imposible cerrar cursores");
             }
         }
-
     }
-    
+
 }
+
+
+
