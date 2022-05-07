@@ -31,11 +31,11 @@ public class E1_Puntuar extends javax.swing.JFrame {
         Titulo.setText("Valore la experiencia en " + nombreEstablecimiento + " en la fecha " + fecha.toString());
         Titulo.setHorizontalAlignment(SwingConstants.CENTER);
         Titulo.setVerticalAlignment(SwingConstants.CENTER);
-        jSliderPuntuar.setValueIsAdjusting(true);
-        jSliderPuntuar.setMajorTickSpacing(1);
-        jSliderPuntuar.setPaintTicks(true);
-        jSliderPuntuar.setPaintLabels(true);
-        jSliderPuntuar.setExtent(1);
+        //jSliderPuntuar.setValueIsAdjusting(true);
+        //jSliderPuntuar.setMajorTickSpacing(1);
+        //jSliderPuntuar.setPaintTicks(true);
+        //jSliderPuntuar.setPaintLabels(true);
+        //jSliderPuntuar.setExtent(1);
     }
 
     /**
@@ -47,10 +47,10 @@ public class E1_Puntuar extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jSliderPuntuar = new JSlider(0, 10, 10);
         Puntuar = new javax.swing.JButton();
         Titulo = new javax.swing.JLabel();
         Atras = new javax.swing.JButton();
+        jRatingPuntuar = new de.sciss.rating.j.JRating();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -70,6 +70,13 @@ public class E1_Puntuar extends javax.swing.JFrame {
             }
         });
 
+        jRatingPuntuar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jRatingPuntuar.setForeground(new java.awt.Color(102, 102, 102));
+        jRatingPuntuar.setGap(10);
+        jRatingPuntuar.setMaxCount(10);
+        jRatingPuntuar.setName(""); // NOI18N
+        jRatingPuntuar.setOpaque(true);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -77,27 +84,27 @@ public class E1_Puntuar extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(63, 63, 63)
                 .addComponent(Atras)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 236, Short.MAX_VALUE)
                 .addComponent(Puntuar)
                 .addGap(86, 86, 86))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(156, 156, 156)
-                        .addComponent(jSliderPuntuar, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(132, 132, 132)
+                        .addComponent(jRatingPuntuar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(126, 126, 126)
+                        .addGap(38, 38, 38)
                         .addComponent(Titulo)))
-                .addContainerGap(191, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(102, 102, 102)
+                .addGap(16, 16, 16)
                 .addComponent(Titulo)
-                .addGap(100, 100, 100)
-                .addComponent(jSliderPuntuar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 141, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
+                .addComponent(jRatingPuntuar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(79, 79, 79)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Puntuar)
                     .addComponent(Atras))
@@ -105,15 +112,15 @@ public class E1_Puntuar extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void PuntuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PuntuarActionPerformed
                 
-        pr.getComerDAO().puntuar(fecha, dni, nombreEstablecimiento, jSliderPuntuar.getValue());
+        pr.getComerDAO().puntuar(fecha, dni, nombreEstablecimiento, jRatingPuntuar.getMarkedCount());
         padre.buscarEvaluacionesPendientes(); //Actualizo para que ya no aparezca la comida actual como pendiente de evaluar
         this.setVisible(false);
         padre.setVisible(true);
-
     }//GEN-LAST:event_PuntuarActionPerformed
 
     private void AtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtrasActionPerformed
@@ -126,6 +133,6 @@ public class E1_Puntuar extends javax.swing.JFrame {
     private javax.swing.JButton Atras;
     private javax.swing.JButton Puntuar;
     private javax.swing.JLabel Titulo;
-    private javax.swing.JSlider jSliderPuntuar;
+    private de.sciss.rating.j.JRating jRatingPuntuar;
     // End of variables declaration//GEN-END:variables
 }
