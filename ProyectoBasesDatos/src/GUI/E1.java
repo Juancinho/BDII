@@ -166,8 +166,7 @@ public class E1 extends javax.swing.JFrame {
                 filaSeleccionada = TablaComidas.getSelectedRows(); //Así consigo el índice de la fila seleccionada
                 
                 E1_Puntuar puntuando;
-                //Date fechaComida = TablaComidas.getValueAt(filaSeleccionada[0], 0)
-                puntuando = new E1_Puntuar(pr, this, (Date)TablaComidas.getValueAt(filaSeleccionada[0], 0), TablaComidas.getValueAt(filaSeleccionada[0], 1).toString(), TablaComidas.getValueAt(filaSeleccionada[0], 2).toString());
+                puntuando = new E1_Puntuar(pr, this, (Date) TablaComidas.getValueAt(filaSeleccionada[0], 0), TablaComidas.getValueAt(filaSeleccionada[0], 1).toString(), TablaComidas.getValueAt(filaSeleccionada[0], 2).toString());
                 this.setVisible(false);
                 puntuando.setVisible(true); //Se evaluará en esa ventana
             } else{
@@ -206,7 +205,7 @@ public class E1 extends javax.swing.JFrame {
     }//GEN-LAST:event_CambioTablaActionPerformed
 
     private void InfoTablaResumidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InfoTablaResumidaActionPerformed
-        // TODO add your handling code here:
+        buscarEvaluacionesHechasResumen();
     }//GEN-LAST:event_InfoTablaResumidaActionPerformed
 
 
@@ -228,6 +227,8 @@ public class E1 extends javax.swing.JFrame {
 
         ModeloTablaComer m;
         m = (ModeloTablaComer) TablaComidas.getModel();
+        m.setNombreColumna(0, "Fecha");
+        m.setNombreColumna(3, "Puntuación");
         m.setFilas(pr.getComerDAO().comidasPendientesDeEvaluar(dni));
 
         if (m.getRowCount() > 0) {
@@ -239,6 +240,8 @@ public class E1 extends javax.swing.JFrame {
 
         ModeloTablaComer m;
         m = (ModeloTablaComer) TablaComidas.getModel();
+        m.setNombreColumna(0, "Fecha");
+        m.setNombreColumna(3, "Puntuación");
         m.setFilas(pr.getComerDAO().comidasEvaluadas(dni));
     }
     

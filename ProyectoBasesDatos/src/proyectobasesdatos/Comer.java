@@ -1,22 +1,26 @@
 
 package proyectobasesdatos;
 
+import java.sql.Date;
+
 /**
  *
  * @author alumnogreibd
  */
 public class Comer {
-    private String fecha, visitante, establecimiento;
+    private Date fecha;
+    private String visitante;
+    private String establecimiento;
     private Integer puntuacion;
 
-    public Comer(String fecha, String visitante, String establecimiento, Integer puntuacion) {
+    public Comer(Date fecha, String visitante, String establecimiento, Integer puntuacion) {
         this.fecha = fecha;
         this.visitante = visitante;
         this.establecimiento = establecimiento;
         this.puntuacion = puntuacion;
     }
 
-    public String getFecha() {
+    public Date getFecha() {
         return fecha;
     }
 
@@ -32,7 +36,7 @@ public class Comer {
         return puntuacion;
     }
 
-    public void setFecha(String fecha) {
+    public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
 

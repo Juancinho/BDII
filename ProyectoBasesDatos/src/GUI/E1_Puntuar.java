@@ -3,6 +3,8 @@ package GUI;
 
 import javax.swing.JSlider;
  import java.sql.Date;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
 
 /**
  *
@@ -20,10 +22,15 @@ public class E1_Puntuar extends javax.swing.JFrame {
      */
     public E1_Puntuar(proyectobasesdatos.ProyectoBasesDatos pr, E1 padre, Date fecha, String dni, String nombreEstablecimiento) {
         this.pr = pr;
+        this.padre = padre;
         this.fecha = fecha;
         this.dni = dni;
         this.nombreEstablecimiento = nombreEstablecimiento;
         initComponents();
+        //JLabel Titulo2 = new JLabel("Valore la experiencia en " + nombreEstablecimiento + " en la fecha " + fecha.toString(), SwingConstants.CENTER);
+        Titulo.setText("Valore la experiencia en " + nombreEstablecimiento + " en la fecha " + fecha.toString());
+        Titulo.setHorizontalAlignment(SwingConstants.CENTER);
+        Titulo.setVerticalAlignment(SwingConstants.CENTER);
         jSliderPuntuar.setValueIsAdjusting(true);
         jSliderPuntuar.setMajorTickSpacing(1);
         jSliderPuntuar.setPaintTicks(true);
@@ -42,7 +49,7 @@ public class E1_Puntuar extends javax.swing.JFrame {
 
         jSliderPuntuar = new JSlider(0, 10, 10);
         Puntuar = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        Titulo = new javax.swing.JLabel();
         Atras = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -54,7 +61,7 @@ public class E1_Puntuar extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("jLabel1");
+        Titulo.setText("Titulo (dinámico)");
 
         Atras.setText("Atrás");
         Atras.addActionListener(new java.awt.event.ActionListener() {
@@ -67,7 +74,7 @@ public class E1_Puntuar extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addGap(63, 63, 63)
                 .addComponent(Atras)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -76,21 +83,21 @@ public class E1_Puntuar extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(163, 163, 163)
-                        .addComponent(jLabel1))
+                        .addGap(156, 156, 156)
+                        .addComponent(jSliderPuntuar, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addComponent(jSliderPuntuar, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(52, Short.MAX_VALUE))
+                        .addGap(126, 126, 126)
+                        .addComponent(Titulo)))
+                .addContainerGap(191, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(52, 52, 52)
-                .addComponent(jLabel1)
-                .addGap(38, 38, 38)
-                .addComponent(jSliderPuntuar, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                .addGap(102, 102, 102)
+                .addComponent(Titulo)
+                .addGap(100, 100, 100)
+                .addComponent(jSliderPuntuar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 141, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Puntuar)
                     .addComponent(Atras))
@@ -118,7 +125,7 @@ public class E1_Puntuar extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Atras;
     private javax.swing.JButton Puntuar;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel Titulo;
     private javax.swing.JSlider jSliderPuntuar;
     // End of variables declaration//GEN-END:variables
 }
