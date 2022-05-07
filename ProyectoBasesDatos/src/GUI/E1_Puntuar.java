@@ -18,9 +18,12 @@ public class E1_Puntuar extends javax.swing.JFrame {
     /**
      * Creates new form E1_Puntuar
      */
-    public E1_Puntuar() {
+    public E1_Puntuar(proyectobasesdatos.ProyectoBasesDatos pr, E1 padre, Date fecha, String dni, String nombreEstablecimiento) {
+        this.pr = pr;
+        this.fecha = fecha;
+        this.dni = dni;
+        this.nombreEstablecimiento = nombreEstablecimiento;
         initComponents();
-
         jSliderPuntuar.setValueIsAdjusting(true);
         jSliderPuntuar.setMajorTickSpacing(1);
         jSliderPuntuar.setPaintTicks(true);
@@ -100,6 +103,7 @@ public class E1_Puntuar extends javax.swing.JFrame {
     private void PuntuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PuntuarActionPerformed
                 
         pr.getComerDAO().puntuar(fecha, dni, nombreEstablecimiento, jSliderPuntuar.getValue());
+        padre.buscarEvaluacionesPendientes(); //Actualizo para que ya no aparezca la comida actual como pendiente de evaluar
         this.setVisible(false);
         padre.setVisible(true);
 

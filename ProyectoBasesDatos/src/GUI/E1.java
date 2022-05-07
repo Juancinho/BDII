@@ -1,6 +1,7 @@
 
 package GUI;
 
+import java.sql.Date;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,6 +19,8 @@ public class E1 extends javax.swing.JFrame {
         this.padre = padre;
         this.dni = dni;
         initComponents();
+        this.buscarEvaluacionesPendientes();
+        InfoTablaResumida.setEnabled(false);
     }
 
 
@@ -30,22 +33,23 @@ public class E1 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        SeleccionarTodoTabla = new javax.swing.JButton();
+        CambioTabla = new javax.swing.JButton();
         Puntuar = new javax.swing.JButton();
         Info2 = new javax.swing.JLabel();
         Atras = new javax.swing.JButton();
         InfoButtonSeleccionar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        TablaVisitantesResumen = new javax.swing.JTable();
+        TablaComidas = new javax.swing.JTable();
         InformacionButton = new javax.swing.JButton();
         Titulo = new javax.swing.JLabel();
+        InfoTablaResumida = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        SeleccionarTodoTabla.setText("Cambiar a reseñados");
-        SeleccionarTodoTabla.addActionListener(new java.awt.event.ActionListener() {
+        CambioTabla.setText("Cambiar a reseñados");
+        CambioTabla.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SeleccionarTodoTablaActionPerformed(evt);
+                CambioTablaActionPerformed(evt);
             }
         });
 
@@ -72,8 +76,8 @@ public class E1 extends javax.swing.JFrame {
             }
         });
 
-        TablaVisitantesResumen.setModel(new ModeloTablaVisitanteResumen());
-        jScrollPane2.setViewportView(TablaVisitantesResumen);
+        TablaComidas.setModel(new ModeloTablaComer());
+        jScrollPane2.setViewportView(TablaComidas);
 
         InformacionButton.setText("Información");
         InformacionButton.addActionListener(new java.awt.event.ActionListener() {
@@ -84,6 +88,13 @@ public class E1 extends javax.swing.JFrame {
 
         Titulo.setFont(new java.awt.Font("C059", 2, 24)); // NOI18N
         Titulo.setText("Puntuación de Restaurantes");
+
+        InfoTablaResumida.setText("Mostrar información resumida");
+        InfoTablaResumida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                InfoTablaResumidaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -109,11 +120,13 @@ public class E1 extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 690, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(SeleccionarTodoTabla))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(CambioTabla, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(InfoTablaResumida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(277, 277, 277)
                         .addComponent(Titulo)))
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -129,9 +142,11 @@ public class E1 extends javax.swing.JFrame {
                 .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(SeleccionarTodoTabla)
-                        .addGap(0, 516, Short.MAX_VALUE))
-                    .addComponent(jScrollPane2))
+                        .addComponent(CambioTabla)
+                        .addGap(29, 29, 29)
+                        .addComponent(InfoTablaResumida)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 539, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Puntuar)
@@ -144,23 +159,21 @@ public class E1 extends javax.swing.JFrame {
 
     private void PuntuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PuntuarActionPerformed
 
-        
-        E1_Puntuar puntuando = new E1_Puntuar();
-        puntuando.setVisible(true);
-        this.setVisible(false);
-       /* int[] filasSeleccionadas;
+        int[] filaSeleccionada;
 
-        if (TablaVisitantesResumen.getRowCount() > 0) {
-            if (TablaVisitantesResumen.getSelectedRowCount() > 0) {
-                filasSeleccionadas = TablaVisitantesResumen.getSelectedRows(); //Así consigo los índices de las seleccionadas
-                for (int i : filasSeleccionadas) {
-                    pr.getIrDAO().regalarEntrada(TablaVisitantesResumen.getValueAt(i, 0).toString()); //Envío el DNI para regalar
-                }
-                JOptionPane.showMessageDialog(rootPane, "Entradas regaladas a " + filasSeleccionadas.length + " persona/s");
+        if (TablaComidas.getRowCount() > 0) {
+            if (TablaComidas.getSelectedRowCount() > 0 && TablaComidas.getSelectedRowCount() < 2) {
+                filaSeleccionada = TablaComidas.getSelectedRows(); //Así consigo el índice de la fila seleccionada
+                
+                E1_Puntuar puntuando;
+                //Date fechaComida = TablaComidas.getValueAt(filaSeleccionada[0], 0)
+                puntuando = new E1_Puntuar(pr, this, (Date)TablaComidas.getValueAt(filaSeleccionada[0], 0), TablaComidas.getValueAt(filaSeleccionada[0], 1).toString(), TablaComidas.getValueAt(filaSeleccionada[0], 2).toString());
                 this.setVisible(false);
-                padre.setVisible(true);
+                puntuando.setVisible(true); //Se evaluará en esa ventana
+            } else{
+                JOptionPane.showMessageDialog(rootPane,"Debe seleccionar una única fila para poder valorar el servicio recibido");
             }
-        }*/
+        }
     }//GEN-LAST:event_PuntuarActionPerformed
 
     private void InfoButtonSeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InfoButtonSeleccionarActionPerformed
@@ -180,65 +193,64 @@ public class E1 extends javax.swing.JFrame {
         );
     }//GEN-LAST:event_InformacionButtonActionPerformed
 
-    private void SeleccionarTodoTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SeleccionarTodoTablaActionPerformed
-        TablaVisitantesResumen.selectAll();
-    }//GEN-LAST:event_SeleccionarTodoTablaActionPerformed
+    private void CambioTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CambioTablaActionPerformed
+        if(CambioTabla.getText().equals("Cambiar a reseñados")){
+            buscarEvaluacionesHechas();
+            InfoTablaResumida.setEnabled(true);
+            CambioTabla.setText("Cambiar a reseñas pendientes");
+        } else{
+            buscarEvaluacionesPendientes();
+            InfoTablaResumida.setEnabled(false);
+            CambioTabla.setText("Cambiar a reseñados");
+        }
+    }//GEN-LAST:event_CambioTablaActionPerformed
+
+    private void InfoTablaResumidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InfoTablaResumidaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_InfoTablaResumidaActionPerformed
 
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Atras;
+    private javax.swing.JButton CambioTabla;
     private javax.swing.JLabel Info2;
     private javax.swing.JButton InfoButtonSeleccionar;
+    private javax.swing.JButton InfoTablaResumida;
     private javax.swing.JButton InformacionButton;
     private javax.swing.JButton Puntuar;
-    private javax.swing.JButton SeleccionarTodoTabla;
-    private javax.swing.JTable TablaVisitantesResumen;
+    private javax.swing.JTable TablaComidas;
     private javax.swing.JLabel Titulo;
     private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 
-    public void buscarMasGastadores(String limite) {
+    public void buscarEvaluacionesPendientes() {
 
-        ModeloTablaVisitanteResumen m;
-        Integer limit = 10000; //Si el campo esta vacio, ponemos un limite alto
-
-        /*if (!IntroducirLimite.getText().isBlank()) {
-            if (isInteger(IntroducirLimite.getText())) {    //Si no se pudiera transformar a entero, muestra los 10000
-                limit = Integer.parseInt(limite);
-            }
-        }
-        m = (ModeloTablaVisitanteResumen) TablaVisitantesResumen.getModel();
-        m.setFilas(pr.getVisitantesDAO().listarPersonasConMasGasto(limit));
+        ModeloTablaComer m;
+        m = (ModeloTablaComer) TablaComidas.getModel();
+        m.setFilas(pr.getComerDAO().comidasPendientesDeEvaluar(dni));
 
         if (m.getRowCount() > 0) {
-            TablaVisitantesResumen.setRowSelectionInterval(0, 0);
-        }*/
+            TablaComidas.setRowSelectionInterval(0, 0); //Para seleccionar el primer elemento
+        }
     }
 
-//Función para saber si el dato introducido se puede pasar a Integer (código proveniente de stackoverflow)
-    public boolean isInteger(String str) {
-        if (str == null) {
-            return false;
-        }
-        int length = str.length();
-        if (length == 0) {
-            return false;
-        }
-        int i = 0;
-        if (str.charAt(0) == '-') {
-            if (length == 1) {
-                return false;
-            }
-            i = 1;
-        }
-        for (; i < length; i++) {
-            char c = str.charAt(i);
-            if (c < '0' || c > '9') {
-                return false;
-            }
-        }
-        return true;
+    public void buscarEvaluacionesHechas() {
+
+        ModeloTablaComer m;
+        m = (ModeloTablaComer) TablaComidas.getModel();
+        m.setFilas(pr.getComerDAO().comidasEvaluadas(dni));
     }
+    
+    public void buscarEvaluacionesHechasResumen() {
+
+        ModeloTablaComer m;
+        m = (ModeloTablaComer) TablaComidas.getModel();
+        m.setNombreColumna(0, "Fecha última visita");
+        m.setNombreColumna(3, "Puntuación Media");
+        m.setFilas(pr.getComerDAO().comidasEvaluadasResumen(dni));
+        
+    }
+
 
 }
