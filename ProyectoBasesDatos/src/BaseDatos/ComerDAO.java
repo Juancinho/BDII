@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.sql.Date;
 import java.sql.ResultSet;
+import proyectobasesdatos.Comer;
 
 /**
  *
@@ -124,6 +125,33 @@ public class ComerDAO {
             }
         }
 
+    }
+    
+    public ArrayList<Comer> comidasPendientesDeEvaluar(String dni) {
+
+        ResultSet rsComer;
+        PreparedStatement stmComer = null;
+        Boolean existe = false;
+        ArrayList<Comer> comidas = new ArrayList<>();
+        try {
+            stmComer = conexion.prepareStatement("SELECT fecha,visitante,establecimiento,puntuacion FROM comer WHERE visitante = ? AND fecha < current_date AND puntuacion IS NULL"); //No se puede evaluar una comida que no ha sucedido
+            stmComer.setString(1, dni);
+            rsComer = stmComer.executeQuery();
+            if (rsComer.next()) {   //MANOTE: Este next devuelve un booleano pero también coloca el cursor en la siguiente fila (la primera vez que se le llama en la primera, la segunda en la segunda,...)
+                
+            } else {
+                existe=false;
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            try {
+                stmComer.close();
+            } catch (SQLException e) {
+                System.out.println("Imposible cerrar cursores");
+            }
+        }
+        return existe;   //MANOTE: Esto supongo que lo tiene que recoger algo de la interfaz y darle un tratamiento adecuado
     }
 
 }

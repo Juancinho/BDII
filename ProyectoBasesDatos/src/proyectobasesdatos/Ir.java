@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package proyectobasesdatos;
 
 /**
@@ -9,21 +6,20 @@ package proyectobasesdatos;
  * @author alumnogreibd
  */
 public class Ir {
-    private String fechaVisita, VIP, visitante, atraccion;
+    private String fechaVisita, visitante, atraccion;
+    private Integer puntuacion;
+    
 
-    public Ir(String fechaVisita, String VIP, String visitante, String atraccion) {
+    public Ir(String fechaVisita, String visitante, String atraccion, Integer puntuacion) {
         this.fechaVisita = fechaVisita;
-        this.VIP = VIP;
         this.visitante = visitante;
         this.atraccion = atraccion;
+        this.puntuacion = puntuacion;
+        
     }
 
     public String getFechaVisita() {
         return fechaVisita;
-    }
-
-    public String getVIP() {
-        return VIP;
     }
 
     public String getVisitante() {
@@ -33,14 +29,14 @@ public class Ir {
     public String getAtraccion() {
         return atraccion;
     }
+    
+    public Integer getPuntuacion(){
+        return puntuacion;
+    }
 
     
     public void setFechaVisita(String fechaVisita) {
         this.fechaVisita = fechaVisita;
-    }
-
-    public void setVIP(String VIP) {
-        this.VIP = VIP;
     }
 
     public void setVisitante(String visitante) {
@@ -49,6 +45,10 @@ public class Ir {
 
     public void setAtraccion(String atraccion) {
         this.atraccion = atraccion;
+    }
+
+    public void setPuntuacion(Integer puntuacion) {
+        this.puntuacion = puntuacion;
     }
     
     

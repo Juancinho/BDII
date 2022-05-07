@@ -1,31 +1,35 @@
 
 package GUI;
 
+import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
-import proyectobasesdatos.Hosteleria;
+import proyectobasesdatos.Comer;
 
 /**
  *
  * @author alumnogreibd
  */
-public class ModeloTablaRestaurante extends AbstractTableModel {
 
-    private java.util.List<Hosteleria> restaurantes;
 
-    public ModeloTablaRestaurante() {
-        this.restaurantes = new java.util.ArrayList<>();
+public class ModeloTablaComer extends AbstractTableModel {
+    private java.util.List<Comer> comidas;
+
+    public ModeloTablaComer() {
+        this.comidas = new ArrayList<>();
     }
 
+    
     @Override
     public int getColumnCount() {
-        return 5;
+        return 4;
     }
 
-    @Override
+
     public int getRowCount() {
-        return restaurantes.size();
+        return comidas.size();
     }
 
+ 
     @Override
 
     public String getColumnName(int col) {
@@ -33,25 +37,22 @@ public class ModeloTablaRestaurante extends AbstractTableModel {
 
         switch (col) {
             case 0:
-                nombre = "Nombre";
+                nombre = "Fecha";
                 break;
             case 1:
-                nombre = "Ubicacion";
+                nombre = "Visitante";
                 break;
             case 2:
-                nombre = "Aforo";
-                break;
+                nombre = "Restaurante";
+                break; 
             case 3:
-                nombre = "Hora Apertura";
+                nombre = "Puntuación";
                 break;
-            case 4:
-                nombre = "Hora Cierre";
-                break;
-
         }
         return nombre;
     }
 
+    
     @Override
 
     public Class getColumnClass(int col) {
@@ -65,19 +66,16 @@ public class ModeloTablaRestaurante extends AbstractTableModel {
                 clase = java.lang.String.class;
                 break;
             case 2:
-                clase = java.lang.Integer.class;
+                clase = java.lang.String.class;
                 break;
             case 3:
-                clase = java.lang.String.class;
+                clase = java.lang.Integer.class;
                 break;
-            case 4:
-                clase = java.lang.String.class;
-                break;
-
         }
         return clase;
     }
 
+   
     @Override
     public boolean isCellEditable(int row, int col) {
         return false;
@@ -89,31 +87,31 @@ public class ModeloTablaRestaurante extends AbstractTableModel {
 
         switch (col) {
             case 0:
-                resultado = restaurantes.get(row).getNombreEstablecimiento();
+                resultado = comidas.get(row).getFecha();
                 break;
             case 1:
-                resultado = restaurantes.get(row).getUbicacion();
+                resultado = comidas.get(row).getVisitante();
                 break;
             case 2:
-                resultado = restaurantes.get(row).getAforo();
+                resultado = comidas.get(row).getEstablecimiento();
                 break;
             case 3:
-                resultado = restaurantes.get(row).getHoraInicio();
-                break;
-            case 4:
-                resultado = restaurantes.get(row).getHoraFin();
+                resultado = comidas.get(row).getPuntuacion();
                 break;
 
         }
         return resultado;
     }
-
-    public void setFilas(java.util.List<Hosteleria> restaurantes) {
-        this.restaurantes = restaurantes;
+    
+    
+    public void setFilas(java.util.List<Comer> comidas) {
+        this.comidas = comidas;
         fireTableDataChanged();
     }
-
-    public Hosteleria obtenerRestaurante(int i) {
-        return this.restaurantes.get(i);
+    
+      public Comer obtenerComida(int i){
+        return this.comidas.get(i);
     }
+
+  
 }
