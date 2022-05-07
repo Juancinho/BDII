@@ -37,7 +37,6 @@ public class E1 extends javax.swing.JFrame {
         Puntuar = new javax.swing.JButton();
         Info2 = new javax.swing.JLabel();
         Atras = new javax.swing.JButton();
-        InfoButtonSeleccionar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         TablaComidas = new javax.swing.JTable();
         InformacionButton = new javax.swing.JButton();
@@ -66,13 +65,6 @@ public class E1 extends javax.swing.JFrame {
         Atras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AtrasActionPerformed(evt);
-            }
-        });
-
-        InfoButtonSeleccionar.setText("Ayuda para seleccionar");
-        InfoButtonSeleccionar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                InfoButtonSeleccionarActionPerformed(evt);
             }
         });
 
@@ -111,9 +103,7 @@ public class E1 extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(InformacionButton)
                     .addComponent(Info2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(InfoButtonSeleccionar)
-                .addGap(257, 257, 257))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -136,9 +126,7 @@ public class E1 extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(Info2)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(InformacionButton)
-                    .addComponent(InfoButtonSeleccionar))
+                .addComponent(InformacionButton)
                 .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -148,7 +136,7 @@ public class E1 extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 539, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Puntuar)
                     .addComponent(Atras))
                 .addGap(62, 62, 62))
@@ -175,20 +163,16 @@ public class E1 extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_PuntuarActionPerformed
 
-    private void InfoButtonSeleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InfoButtonSeleccionarActionPerformed
-        JOptionPane.showMessageDialog(rootPane, "Para seleccionar filas debe clicar en ellas\nPuede seleccionar un conjunto de filas contiguas clicando y arrastrando\nPara seleccionar filas no contiguas use crtl+click");
-    }//GEN-LAST:event_InfoButtonSeleccionarActionPerformed
-
     private void AtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtrasActionPerformed
         this.setVisible(false);
         padre.setVisible(true);
     }//GEN-LAST:event_AtrasActionPerformed
 
     private void InformacionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InformacionButtonActionPerformed
-        JOptionPane.showMessageDialog(rootPane, "Desde aquí puede regalar entradas de atracciones a los visitantes teniendo como información el dinero que han gastado. Pasos a seguir: "
-                + "\n\n 1.- Introduzca en el cuadro de texto el número de usuarios con mayor gasto que quiere que se muestren y pulse INTRO"
-                + "\n\n 2.- Seleccione a los visitantes que quiera regalarles una entrada (será para el día siguiente al actual y para su atracción favorita)"
-                + "\n\n 3.- Pulse Regalar a seleccionados para finalizar esta operación"
+        JOptionPane.showMessageDialog(rootPane, "Desde aquí puede valorar su experiencia en nuestros restaurantes, así como ver las reseñas que ha realizado."
+                + "\n\nSeleccione en la tabla la comida que quiere valorar y clique en Puntuar para proceder."
+                + "\n\nPulse en el botón Cambiar a reseñados para ver todas sus reseñas\t\t\t."
+                + "\nSi lo desea, puede visualizar un resumen por restaurante pulsando en Mostrar información resumida."
         );
     }//GEN-LAST:event_InformacionButtonActionPerformed
 
@@ -196,16 +180,25 @@ public class E1 extends javax.swing.JFrame {
         if(CambioTabla.getText().equals("Cambiar a reseñados")){
             buscarEvaluacionesHechas();
             InfoTablaResumida.setEnabled(true);
+            Puntuar.setEnabled(false);
             CambioTabla.setText("Cambiar a reseñas pendientes");
         } else{
             buscarEvaluacionesPendientes();
+            Puntuar.setEnabled(true);
             InfoTablaResumida.setEnabled(false);
             CambioTabla.setText("Cambiar a reseñados");
+            InfoTablaResumida.setText("Mostrar información resumida");
         }
     }//GEN-LAST:event_CambioTablaActionPerformed
 
     private void InfoTablaResumidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InfoTablaResumidaActionPerformed
-        buscarEvaluacionesHechasResumen();
+        if(InfoTablaResumida.getText().equals("Mostrar información resumida")){
+            buscarEvaluacionesHechasResumen();
+            InfoTablaResumida.setText("Mostrar información sin resumir");
+        } else{
+            buscarEvaluacionesHechas();
+            InfoTablaResumida.setText("Mostrar información resumida");
+        }
     }//GEN-LAST:event_InfoTablaResumidaActionPerformed
 
 
@@ -214,7 +207,6 @@ public class E1 extends javax.swing.JFrame {
     private javax.swing.JButton Atras;
     private javax.swing.JButton CambioTabla;
     private javax.swing.JLabel Info2;
-    private javax.swing.JButton InfoButtonSeleccionar;
     private javax.swing.JButton InfoTablaResumida;
     private javax.swing.JButton InformacionButton;
     private javax.swing.JButton Puntuar;

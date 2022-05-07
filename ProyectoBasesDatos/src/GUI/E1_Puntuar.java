@@ -4,6 +4,7 @@ package GUI;
 import javax.swing.JSlider;
  import java.sql.Date;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 
 /**
@@ -31,11 +32,7 @@ public class E1_Puntuar extends javax.swing.JFrame {
         Titulo.setText("Valore la experiencia en " + nombreEstablecimiento + " en la fecha " + fecha.toString());
         Titulo.setHorizontalAlignment(SwingConstants.CENTER);
         Titulo.setVerticalAlignment(SwingConstants.CENTER);
-        //jSliderPuntuar.setValueIsAdjusting(true);
-        //jSliderPuntuar.setMajorTickSpacing(1);
-        //jSliderPuntuar.setPaintTicks(true);
-        //jSliderPuntuar.setPaintLabels(true);
-        //jSliderPuntuar.setExtent(1);
+
     }
 
     /**
@@ -51,6 +48,7 @@ public class E1_Puntuar extends javax.swing.JFrame {
         Titulo = new javax.swing.JLabel();
         Atras = new javax.swing.JButton();
         jRatingPuntuar = new de.sciss.rating.j.JRating();
+        InfoSeleccion = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -77,6 +75,13 @@ public class E1_Puntuar extends javax.swing.JFrame {
         jRatingPuntuar.setName(""); // NOI18N
         jRatingPuntuar.setOpaque(true);
 
+        InfoSeleccion.setText("¿Problemas para seleccionar?");
+        InfoSeleccion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                InfoSeleccionActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -93,18 +98,23 @@ public class E1_Puntuar extends javax.swing.JFrame {
                         .addGap(132, 132, 132)
                         .addComponent(jRatingPuntuar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
+                        .addGap(149, 149, 149)
+                        .addComponent(InfoSeleccion))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
                         .addComponent(Titulo)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
+                .addGap(39, 39, 39)
                 .addComponent(Titulo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
-                .addComponent(jRatingPuntuar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(79, 79, 79)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addComponent(InfoSeleccion)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jRatingPuntuar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(60, 60, 60)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Puntuar)
                     .addComponent(Atras))
@@ -119,6 +129,7 @@ public class E1_Puntuar extends javax.swing.JFrame {
                 
         pr.getComerDAO().puntuar(fecha, dni, nombreEstablecimiento, jRatingPuntuar.getMarkedCount());
         padre.buscarEvaluacionesPendientes(); //Actualizo para que ya no aparezca la comida actual como pendiente de evaluar
+        JOptionPane.showMessageDialog(rootPane, "Valoración guardada\n¡Gracias por su tiempo!");
         this.setVisible(false);
         padre.setVisible(true);
     }//GEN-LAST:event_PuntuarActionPerformed
@@ -128,9 +139,15 @@ public class E1_Puntuar extends javax.swing.JFrame {
         padre.setVisible(true);
     }//GEN-LAST:event_AtrasActionPerformed
 
+    private void InfoSeleccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InfoSeleccionActionPerformed
+        JOptionPane.showMessageDialog(rootPane, "Para seleccionar un número determinado de estrellas debe clicar en la parte derecha de la estrella posicionada más a la derecha"
+                + "\nTambién puede arrastrar hasta llegar a la puntuación deseada");
+    }//GEN-LAST:event_InfoSeleccionActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Atras;
+    private javax.swing.JButton InfoSeleccion;
     private javax.swing.JButton Puntuar;
     private javax.swing.JLabel Titulo;
     private de.sciss.rating.j.JRating jRatingPuntuar;
