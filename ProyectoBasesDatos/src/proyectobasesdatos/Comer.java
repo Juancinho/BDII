@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package proyectobasesdatos;
 
 /**
@@ -10,9 +7,9 @@ package proyectobasesdatos;
  */
 public class Comer {
     private String fecha, visitante, establecimiento;
-    private float puntuacion;
+    private Integer puntuacion;
 
-    public Comer(String fecha, String visitante, String establecimiento, float puntuacion) {
+    public Comer(String fecha, String visitante, String establecimiento, Integer puntuacion) {
         this.fecha = fecha;
         this.visitante = visitante;
         this.establecimiento = establecimiento;
@@ -31,7 +28,7 @@ public class Comer {
         return establecimiento;
     }
 
-    public float getPuntuacion() {
+    public Integer getPuntuacion() {
         return puntuacion;
     }
 
@@ -47,12 +44,8 @@ public class Comer {
         this.establecimiento = establecimiento;
     }
 
-    public void setPuntuacion(float puntuacion) {
+    public void setPuntuacion(Integer puntuacion) {
         this.puntuacion = puntuacion;
     }
-    
-    
-    
-    
-    
+
 }
