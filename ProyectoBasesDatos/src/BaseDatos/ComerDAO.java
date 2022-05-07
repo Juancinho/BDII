@@ -107,10 +107,11 @@ public class ComerDAO {
 
         try {
             stmPuntuar = conexion.prepareStatement("UPDATE comer SET puntuacion = ? WHERE fecha = ? AND visitante = ? AND  establecimiento = ?");
-            stmPuntuar.setDate(1, fecha);
-            stmPuntuar.setString(2, dni);
-            stmPuntuar.setString(3, nombreEstablecimiento);
-            stmPuntuar.setInt(4, puntuacion);
+            stmPuntuar.setInt(1, puntuacion);
+            stmPuntuar.setDate(2, fecha);
+            stmPuntuar.setString(3, dni);
+            stmPuntuar.setString(4, nombreEstablecimiento);
+
             stmPuntuar.executeUpdate();
 
         } catch (SQLException e) {
@@ -137,7 +138,7 @@ public class ComerDAO {
             stmComer.setString(1, dni);
             rsComer = stmComer.executeQuery();
             while (rsComer.next()) {   //MANOTE: Este next devuelve un booleano pero también coloca el cursor en la siguiente fila (la primera vez que se le llama en la primera, la segunda en la segunda,...)
-                comerAcrual = new Comer(rsComer.getDate("fecha").toString(), rsComer.getString("visitante"), rsComer.getString("establecimiento"), rsComer.getInt("puntuacion"));
+                comerAcrual = new Comer(rsComer.getDate("fecha"), rsComer.getString("visitante"), rsComer.getString("establecimiento"), getInteger(rsComer, "puntuacion"));
                 comidas.add(comerAcrual);
             }
         } catch (SQLException e) {
@@ -163,7 +164,7 @@ public class ComerDAO {
             stmComer.setString(1, dni);
             rsComer = stmComer.executeQuery();
             while (rsComer.next()) {   //MANOTE: Este next devuelve un booleano pero también coloca el cursor en la siguiente fila (la primera vez que se le llama en la primera, la segunda en la segunda,...)
-                comerAcrual = new Comer(rsComer.getDate("fecha").toString(), rsComer.getString("visitante"), rsComer.getString("establecimiento"), rsComer.getInt("puntuacion"));
+                comerAcrual = new Comer(rsComer.getDate("fecha"), rsComer.getString("visitante"), rsComer.getString("establecimiento"), getInteger(rsComer, "puntuacion"));
                 comidas.add(comerAcrual);
             }
         } catch (SQLException e) {
@@ -185,11 +186,11 @@ public class ComerDAO {
         ArrayList<Comer> comidas = new ArrayList<>();
         Comer comerAcrual;
         try {
-            stmComer = conexion.prepareStatement("SELECT MAX(fecha),visitante,establecimiento,AVG(puntuacion) FROM comer WHERE visitante = ? AND puntuacion IS NOT NULL GROUP BY establecimiento,visitante + ORDER BY AVG(puntuacion) desc");
+            stmComer = conexion.prepareStatement("SELECT MAX(fecha) as fechaComimdaMasReciente,visitante,establecimiento,AVG(puntuacion) as PuntuacionMedia FROM comer WHERE visitante = ? AND puntuacion IS NOT NULL GROUP BY establecimiento,visitante ORDER BY AVG(puntuacion) desc");
             stmComer.setString(1, dni);
             rsComer = stmComer.executeQuery();
             while (rsComer.next()) {   //MANOTE: Este next devuelve un booleano pero también coloca el cursor en la siguiente fila (la primera vez que se le llama en la primera, la segunda en la segunda,...)
-                comerAcrual = new Comer(rsComer.getDate("MAX(fecha)").toString(), rsComer.getString("visitante"), rsComer.getString("establecimiento"), rsComer.getInt("AVG(puntuacion)"));
+                comerAcrual = new Comer(rsComer.getDate("fechaComimdaMasReciente"), rsComer.getString("visitante"), rsComer.getString("establecimiento"), rsComer.getInt("PuntuacionMedia"));
                 comidas.add(comerAcrual);
             }
         } catch (SQLException e) {
@@ -204,14 +205,13 @@ public class ComerDAO {
         return comidas;   //MANOTE: Esto supongo que lo tiene que recoger algo de la interfaz y darle un tratamiento adecuado
     }
 
-    public static Integer getInteger(ResultSet rs, String columnName) throws SQLException {
+    public static Integer getInteger(ResultSet rs, String columnName) throws SQLException {  //Método para que un null no se muestre como 0 (queremos que aparezca la columna vacía)
         int v = rs.getInt(columnName);
         if (rs.wasNull()){  //lamentablemente esto solo se puede comprobar una vez que se ha hecho el getInt
             return null;
         } else{
-            return v
+            return v;
         }
-        return rs.wasNull() ? null : v;
     }
 
 }
