@@ -36,9 +36,7 @@
                   <Component id="InformacionButton" min="-2" max="-2" attributes="0"/>
                   <Component id="Info2" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="InfoButtonSeleccionar" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="257" max="-2" attributes="0"/>
+              <EmptySpace min="257" max="32767" attributes="0"/>
           </Group>
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
@@ -68,10 +66,7 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="Info2" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="InformacionButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="InfoButtonSeleccionar" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
+              <Component id="InformacionButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
@@ -122,14 +117,6 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AtrasActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="InfoButtonSeleccionar">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Ayuda para seleccionar"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="InfoButtonSeleccionarActionPerformed"/>
       </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane2">
