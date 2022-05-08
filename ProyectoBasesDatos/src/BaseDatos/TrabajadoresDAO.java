@@ -164,5 +164,25 @@ public class TrabajadoresDAO {
 
         return resultado;
     }
-
+    public String AnhadirAdmin(String dni) throws SQLException {
+        PreparedStatement stmTrabajador = null;
+        stmTrabajador = conexion.prepareStatement("INSERT INTO usuario(dni,clave,tipo_usuario) values(?,?,?)");
+        stmTrabajador.setString(1, dni);
+        String clave = crearContraseña(dni);
+        stmTrabajador.setString(2, clave);
+        stmTrabajador.setString(3, "Administrador");
+        stmTrabajador.executeUpdate();
+        stmTrabajador.close();
+        return clave;
+    }
+    
+    public String crearContraseña(String dni){
+        String clave = "";
+ 
+	for (int i = 0; i < 5; i++) {
+            clave+=(dni.charAt((int)(Math.random() * dni.length())));
+	}
+ 
+	return clave;
+    }
 }
