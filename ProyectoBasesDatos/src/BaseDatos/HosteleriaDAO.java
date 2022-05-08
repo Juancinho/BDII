@@ -18,7 +18,7 @@ public class HosteleriaDAO {
     public HosteleriaDAO(Connection conexion) { //MANOTE: Para quien se encargue de la interfaz, aquí quizás falta una fachada
         this.conexion = conexion;
     }
-    
+
     public ArrayList<String> establecimientosActivos() {
         ArrayList<String> resultado = new java.util.ArrayList<>();
 
@@ -26,7 +26,7 @@ public class HosteleriaDAO {
         PreparedStatement stmEstablecimientos = null;
 
         try {
-            stmEstablecimientos = conexion.prepareStatement("SELECT nombreestablecimiento FROM hosteleria order by nombreestablecimiento"); 
+            stmEstablecimientos = conexion.prepareStatement("SELECT nombreestablecimiento FROM hosteleria order by nombreestablecimiento");
             rsEstablecimientos = stmEstablecimientos.executeQuery();
             while (rsEstablecimientos.next()) {   //MANOTE: Este next devuelve un booleano pero también coloca el cursor en la siguiente fila (la primera vez que se le llama en la primera, la segunda en la segunda,...)
                 resultado.add(rsEstablecimientos.getString("nombreestablecimiento"));
@@ -43,8 +43,8 @@ public class HosteleriaDAO {
         return resultado;
     }
 
-    public   java.util.List<Hosteleria>  datosBasicosEstablecimiento(String nombreEstablecimiento) {  //FU4    //MANOTE: FALTA QUE ALGUIEN REHAGA ESTA CONSULTA PARA INCLUIR EL ATRIBUTO CALCULADO PUNTUACIÖN MEDIA (SE HACE A TRAVËS DE UNA SUBCONSULTA)
-               java.util.List<Hosteleria> resultado = new java.util.ArrayList<>();
+    public java.util.List<Hosteleria> datosBasicosEstablecimiento(String nombreEstablecimiento) {  //FU4    //MANOTE: FALTA QUE ALGUIEN REHAGA ESTA CONSULTA PARA INCLUIR EL ATRIBUTO CALCULADO PUNTUACIÖN MEDIA (SE HACE A TRAVËS DE UNA SUBCONSULTA)
+        java.util.List<Hosteleria> resultado = new java.util.ArrayList<>();
 
         Hosteleria establecimiento = null;
 
@@ -53,7 +53,7 @@ public class HosteleriaDAO {
 
         try {
             stmHosteleria = conexion.prepareStatement("SELECT nombreestablecimiento, ubicacion, aforo, horaInicio, horaFin FROM hosteleria WHERE nombreestablecimiento like ? order by nombreestablecimiento");
-            stmHosteleria.setString(1, '%' +nombreEstablecimiento+ '%');
+            stmHosteleria.setString(1, '%' + nombreEstablecimiento + '%');
             rsHosteleria = stmHosteleria.executeQuery();
             while (rsHosteleria.next()) {
                 establecimiento = new Hosteleria(rsHosteleria.getString("nombreestablecimiento"), rsHosteleria.getString("ubicacion"), rsHosteleria.getInt("aforo"), rsHosteleria.getString("horainicio"), rsHosteleria.getString("horafin"));
@@ -61,7 +61,7 @@ public class HosteleriaDAO {
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
-           
+
         } finally {
             try {
                 stmHosteleria.close();
@@ -69,11 +69,11 @@ public class HosteleriaDAO {
                 System.out.println("Imposible cerrar cursores");
             }
         }
-        return resultado;  
+        return resultado;
     }
-    
- public   java.util.List<Hosteleria>  datosBasicosEstablecimientoTOP(String nombreEstablecimiento) {  //FU4    //MANOTE: FALTA QUE ALGUIEN REHAGA ESTA CONSULTA PARA INCLUIR EL ATRIBUTO CALCULADO PUNTUACIÖN MEDIA (SE HACE A TRAVËS DE UNA SUBCONSULTA)
-               java.util.List<Hosteleria> resultado = new java.util.ArrayList<>();
+
+    public java.util.List<Hosteleria> datosBasicosEstablecimientoTOP() {  //FU4    //MANOTE: FALTA QUE ALGUIEN REHAGA ESTA CONSULTA PARA INCLUIR EL ATRIBUTO CALCULADO PUNTUACIÖN MEDIA (SE HACE A TRAVËS DE UNA SUBCONSULTA)
+        java.util.List<Hosteleria> resultado = new java.util.ArrayList<>();
 
         Hosteleria establecimiento = null;
 
@@ -81,16 +81,19 @@ public class HosteleriaDAO {
         PreparedStatement stmHosteleria = null;
 
         try {
-            stmHosteleria = conexion.prepareStatement("SELECT nombreestablecimiento, ubicacion, puntuacionmedia FROM hosteleria WHERE nombreestablecimiento like ? order by nombreestablecimiento");
-            stmHosteleria.setString(1, '%' +nombreEstablecimiento+ '%');
+            stmHosteleria = conexion.prepareStatement("select h.nombreestablecimiento ,h.ubicacion ,round(avg(c.puntuacion),2) as puntuacion_media"
+                    + " from comer c , hosteleria h "
+                    + " where c.establecimiento =h.nombreestablecimiento "
+                    + " group by h.nombreestablecimiento "
+                    + " order by puntuacion_media desc,nombreestablecimiento ");            
             rsHosteleria = stmHosteleria.executeQuery();
             while (rsHosteleria.next()) {
-                establecimiento = new Hosteleria(rsHosteleria.getString("nombreestablecimiento"), rsHosteleria.getString("ubicacion"), rsHosteleria.getInt("aforo"), rsHosteleria.getString("horainicio"), rsHosteleria.getString("horafin"));
+                establecimiento = new Hosteleria(rsHosteleria.getString("nombreestablecimiento"), rsHosteleria.getString("ubicacion"), rsHosteleria.getFloat("puntuacion_media"));
                 resultado.add(establecimiento);
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
-           
+
         } finally {
             try {
                 stmHosteleria.close();
@@ -98,6 +101,6 @@ public class HosteleriaDAO {
                 System.out.println("Imposible cerrar cursores");
             }
         }
-        return resultado;  
+        return resultado;
     }
 }
