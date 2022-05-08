@@ -31,7 +31,7 @@ public class MenuBusquedas extends javax.swing.JFrame {
         atraccionesPorAltura = new javax.swing.JButton();
         espectaculoPopular = new javax.swing.JButton();
         datos = new javax.swing.JButton();
-        Lugares = new javax.swing.JButton();
+        restaurantesTOP = new javax.swing.JButton();
         atras = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
@@ -69,9 +69,14 @@ public class MenuBusquedas extends javax.swing.JFrame {
         });
         jPanel1.add(datos, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 270, 230, 70));
 
-        Lugares.setBorderPainted(false);
-        Lugares.setContentAreaFilled(false);
-        jPanel1.add(Lugares, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 260, 230, 90));
+        restaurantesTOP.setBorderPainted(false);
+        restaurantesTOP.setContentAreaFilled(false);
+        restaurantesTOP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                restaurantesTOPActionPerformed(evt);
+            }
+        });
+        jPanel1.add(restaurantesTOP, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 260, 230, 90));
 
         atras.setAlignmentY(0.0F);
         atras.setBorderPainted(false);
@@ -122,10 +127,15 @@ public class MenuBusquedas extends javax.swing.JFrame {
         mu.setVisible(true);
     }//GEN-LAST:event_datosActionPerformed
 
+    private void restaurantesTOPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_restaurantesTOPActionPerformed
+        RestaurantesTOP rt = new RestaurantesTOP(pr,this);
+        this.setVisible(false);
+        rt.setVisible(true);
+    }//GEN-LAST:event_restaurantesTOPActionPerformed
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Lugares;
     private javax.swing.JButton atraccionesPorAltura;
     private javax.swing.JButton atras;
     private javax.swing.JButton datos;
@@ -133,5 +143,6 @@ public class MenuBusquedas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton restaurantesTOP;
     // End of variables declaration//GEN-END:variables
 }
