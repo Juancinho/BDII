@@ -25,7 +25,7 @@ public class ModeloTablaRestaurantePuntuacion extends AbstractTableModel{
 
     @Override
     public int getColumnCount() {
-        return 6;
+        return 3;
     }
 
     @Override
@@ -44,17 +44,8 @@ public class ModeloTablaRestaurantePuntuacion extends AbstractTableModel{
                 break;
             case 1:
                 nombre = "Ubicacion";
-                break;
+                break;          
             case 2:
-                nombre = "Aforo";
-                break;
-            case 3:
-                nombre = "Hora Apertura";
-                break;
-            case 4:
-                nombre = "Hora Cierre";
-                break;
-            case 5:
                 nombre = "Puntuación Media";
 
         }
@@ -74,17 +65,9 @@ public class ModeloTablaRestaurantePuntuacion extends AbstractTableModel{
                 clase = java.lang.String.class;
                 break;
             case 2:
-                clase = java.lang.Integer.class;
-                break;
-            case 3:
-                clase = java.lang.String.class;
-                break;
-            case 4:
-                clase = java.lang.String.class;
-                break;
-            case 5:
                 clase = java.lang.Float.class;
                 break;
+           
 
         }
         return clase;
@@ -107,14 +90,9 @@ public class ModeloTablaRestaurantePuntuacion extends AbstractTableModel{
                 resultado = restaurantes.get(row).getUbicacion();
                 break;
             case 2:
-                resultado = restaurantes.get(row).getAforo();
+                resultado = restaurantes.get(row).getPuntuacionMedia();
                 break;
-            case 3:
-                resultado = restaurantes.get(row).getHoraInicio();
-                break;
-            case 4:
-                resultado = restaurantes.get(row).getHoraFin();
-                break;
+
 
         }
         return resultado;
