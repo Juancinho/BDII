@@ -71,5 +71,33 @@ public class HosteleriaDAO {
         }
         return resultado;  
     }
+    
+ public   java.util.List<Hosteleria>  datosBasicosEstablecimientoTOP(String nombreEstablecimiento) {  //FU4    //MANOTE: FALTA QUE ALGUIEN REHAGA ESTA CONSULTA PARA INCLUIR EL ATRIBUTO CALCULADO PUNTUACIÖN MEDIA (SE HACE A TRAVËS DE UNA SUBCONSULTA)
+               java.util.List<Hosteleria> resultado = new java.util.ArrayList<>();
 
+        Hosteleria establecimiento = null;
+
+        ResultSet rsHosteleria;
+        PreparedStatement stmHosteleria = null;
+
+        try {
+            stmHosteleria = conexion.prepareStatement("SELECT nombreestablecimiento, ubicacion, puntuacionmedia FROM hosteleria WHERE nombreestablecimiento like ? order by nombreestablecimiento");
+            stmHosteleria.setString(1, '%' +nombreEstablecimiento+ '%');
+            rsHosteleria = stmHosteleria.executeQuery();
+            while (rsHosteleria.next()) {
+                establecimiento = new Hosteleria(rsHosteleria.getString("nombreestablecimiento"), rsHosteleria.getString("ubicacion"), rsHosteleria.getInt("aforo"), rsHosteleria.getString("horainicio"), rsHosteleria.getString("horafin"));
+                resultado.add(establecimiento);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+           
+        } finally {
+            try {
+                stmHosteleria.close();
+            } catch (SQLException e) {
+                System.out.println("Imposible cerrar cursores");
+            }
+        }
+        return resultado;  
+    }
 }
