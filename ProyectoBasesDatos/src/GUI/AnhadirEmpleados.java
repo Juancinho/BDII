@@ -34,6 +34,7 @@ public class AnhadirEmpleados extends javax.swing.JFrame {
         jComboBoxAtraccion.setEnabled(false);
         jComboBoxEspectaculo.setEnabled(false);
         jComboBoxRestaurante.setEnabled(false);
+        asignarAutom.setEnabled(false);
     }
 
     public AnhadirEmpleados(proyectobasesdatos.ProyectoBasesDatos pr, MenuEmpleados padre) {
@@ -48,6 +49,7 @@ public class AnhadirEmpleados extends javax.swing.JFrame {
         jComboBoxAtraccion.setEnabled(false);
         jComboBoxEspectaculo.setEnabled(false);
         jComboBoxRestaurante.setEnabled(false);
+        asignarAutom.setEnabled(false);
     }
 
     /**
@@ -91,6 +93,7 @@ public class AnhadirEmpleados extends javax.swing.JFrame {
         salario = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         asignarAutom = new javax.swing.JCheckBox();
+        admin = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -194,6 +197,13 @@ public class AnhadirEmpleados extends javax.swing.JFrame {
             }
         });
 
+        admin.setText("Administrador");
+        admin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                adminActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -219,50 +229,47 @@ public class AnhadirEmpleados extends javax.swing.JFrame {
                         .addComponent(fechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(avisoDNI)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(dni, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jLabel2)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(direccion, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jLabel9)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(salario, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(60, 60, 60)
-                                .addComponent(anhadir)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 137, Short.MAX_VALUE)
-                                        .addComponent(atras))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addGap(29, 29, 29)
-                                        .addComponent(trabajadorEsp)
-                                        .addGap(27, 27, 27)
-                                        .addComponent(Hostelero)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE))))
-                            .addComponent(avisoDNI)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(dni, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(direccion, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel9)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(salario, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 9, Short.MAX_VALUE))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(44, 44, 44)
-                .addComponent(avisoTel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(avisoFecha)
-                .addGap(16, 16, 16))
+                                .addComponent(avisoTel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(avisoFecha)))
+                        .addGap(0, 79, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
-                .addGap(49, 49, 49)
-                .addComponent(trabajadorAtra)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(74, 74, 74)
+                .addComponent(atras)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(anhadir)
+                .addGap(75, 75, 75))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(trabajadorAtra)
+                        .addGap(18, 18, 18)
+                        .addComponent(trabajadorEsp)
+                        .addGap(26, 26, 26)
+                        .addComponent(Hostelero)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(admin))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7)
                             .addComponent(atraccion)
@@ -271,11 +278,14 @@ public class AnhadirEmpleados extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jComboBoxAtraccion, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jComboBoxEspectaculo, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBoxRestaurante, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(aviso))
-                .addGap(18, 18, 18)
-                .addComponent(asignarAutom)
+                            .addComponent(jComboBoxRestaurante, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(asignarAutom)))
                 .addGap(49, 49, 49))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(aviso)
+                .addGap(225, 225, 225))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -307,10 +317,11 @@ public class AnhadirEmpleados extends javax.swing.JFrame {
                         .addComponent(jLabel5))
                     .addComponent(fechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(7, 7, 7)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(trabajadorEsp)
+                    .addComponent(trabajadorAtra)
                     .addComponent(Hostelero)
-                    .addComponent(trabajadorAtra))
+                    .addComponent(admin))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBoxAtraccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -324,13 +335,13 @@ public class AnhadirEmpleados extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(jComboBoxRestaurante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(aviso)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(anhadir)
-                    .addComponent(atras))
-                .addGap(31, 31, 31))
+                    .addComponent(atras)
+                    .addComponent(anhadir))
+                .addGap(19, 19, 19))
         );
 
         pack();
@@ -340,6 +351,7 @@ public class AnhadirEmpleados extends javax.swing.JFrame {
     private void trabajadorAtraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trabajadorAtraActionPerformed
         if (trabajadorAtra.isSelected() && !Hostelero.isSelected()) {
             jComboBoxAtraccion.setEnabled(true);
+            asignarAutom.setEnabled(true);
             anhadir.setEnabled(true);
         } else {
             jComboBoxAtraccion.setEnabled(false);
@@ -444,6 +456,12 @@ public class AnhadirEmpleados extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBoxAtraccionActionPerformed
 
+    private void adminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminActionPerformed
+        // TODO add your handling code here:
+        if(admin.isSelected())
+            anhadir.setEnabled(true);
+    }//GEN-LAST:event_adminActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -451,6 +469,7 @@ public class AnhadirEmpleados extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton Hostelero;
+    private javax.swing.JRadioButton admin;
     private javax.swing.JButton anhadir;
     private javax.swing.JCheckBox asignarAutom;
     private javax.swing.JLabel atraccion;
@@ -518,14 +537,16 @@ public class AnhadirEmpleados extends javax.swing.JFrame {
             } else if (!trabajadorAtra.isSelected() && trabajadorEsp.isSelected()) {
                 pr.getTrabajadoresDAO().anhadirTrabajadorEsp(dni.getText(), nombre.getText(), direccion.getText(), telefono.getText(), hoy2, nacimiento2, jComboBoxEspectaculo.getSelectedItem().toString(), sueldo);
 
-            } else {
-                pr.getTrabajadoresDAO().anhadirTrabajador(dni.getText(), nombre.getText(), direccion.getText(), telefono.getText(), hoy2, nacimiento2);
+            } else if (admin.isSelected()){//Transaccion
+                String clave = pr.getTrabajadoresDAO().AnhadirAdmin(dni.getText());
+                pr.getTrabajadoresDAO().anhadirTrabajador(dni.getText(), nombre.getText(), direccion.getText(), telefono.getText(), hoy2, nacimiento2, sueldo);
+                JOptionPane.showMessageDialog(rootPane, "La clave de este administrador es: " + clave);
+                
             }
             JOptionPane.showMessageDialog(rootPane, "Trabajador añadido");
         } else {
             pr.getHostelerosDAO().anhadirHostelero(dni.getText(), nombre.getText(), direccion.getText(), telefono.getText(), hoy2, nacimiento2, jComboBoxRestaurante.getSelectedItem().toString(),sueldo);
             JOptionPane.showMessageDialog(rootPane, "Hostelero añadido");
         }
-
     }
 }

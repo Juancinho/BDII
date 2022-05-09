@@ -75,7 +75,7 @@ public class TrabajadoresDAO {
 
     }
 
-    public void anhadirTrabajador(String dni, String nombre, String direccion, String telefono, Date fechaInicio, Date fechaNacimiento) throws SQLException {
+    public void anhadirTrabajador(String dni, String nombre, String direccion, String telefono, Date fechaInicio, Date fechaNacimiento, float salario) throws SQLException {
         PreparedStatement stmTrabajador = null;
         stmTrabajador = conexion.prepareStatement("INSERT INTO trabajadoresparque (dni,nombre,direccion,telefono,fechainicio,fechanacimiento,salario) values(?,?,?,?,?,?,?)");
         stmTrabajador.setString(1, dni);
@@ -84,7 +84,7 @@ public class TrabajadoresDAO {
         stmTrabajador.setString(4, telefono);
         stmTrabajador.setDate(5, fechaInicio);
         stmTrabajador.setDate(6, fechaNacimiento);
-        stmTrabajador.setInt(7, 2);
+        stmTrabajador.setFloat(7, salario);
         stmTrabajador.executeUpdate();
         stmTrabajador.close();
 

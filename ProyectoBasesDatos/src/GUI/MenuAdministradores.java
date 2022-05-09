@@ -61,7 +61,6 @@ public class MenuAdministradores extends javax.swing.JFrame {
         Beneficios = new javax.swing.JButton();
         GestionFalloAtraccion = new javax.swing.JButton();
         Atras = new javax.swing.JButton();
-        AñadirAdministrador = new javax.swing.JToggleButton();
         MenuAdministradores = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -136,14 +135,6 @@ public class MenuAdministradores extends javax.swing.JFrame {
         });
         jPanel1.add(Atras, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, 70, 30));
 
-        AñadirAdministrador.setText("Añadir Administrador");
-        AñadirAdministrador.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AñadirAdministradorActionPerformed(evt);
-            }
-        });
-        jPanel1.add(AñadirAdministrador, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 370, -1, -1));
-
         MenuAdministradores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/MenuAdministradores.jpeg"))); // NOI18N
         jPanel1.add(MenuAdministradores, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 460));
 
@@ -203,12 +194,6 @@ public class MenuAdministradores extends javax.swing.JFrame {
         padre.setVisible(true);
     }//GEN-LAST:event_AtrasActionPerformed
 
-    private void AñadirAdministradorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AñadirAdministradorActionPerformed
-        AnhadirAdmin ae = new AnhadirAdmin(pr,this);
-        this.setVisible(false);
-        ae.setVisible(true);
-    }//GEN-LAST:event_AñadirAdministradorActionPerformed
-
     
 
     
@@ -216,7 +201,6 @@ public class MenuAdministradores extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Atras;
-    private javax.swing.JToggleButton AñadirAdministrador;
     private javax.swing.JButton Beneficios;
     private javax.swing.JButton GestionFalloAtraccion;
     private javax.swing.JLabel MenuAdministradores;
