@@ -24,6 +24,8 @@ public class Acceso extends javax.swing.JFrame {
         initComponents();
         AccesoAdministradores.setVisible(false);
         etiquetaFallo.setVisible(false);
+        cambiarContraseña.setVisible(false);
+        cambiarContraseña.setEnabled(false);
     }
      
     public Acceso(proyectobasesdatos.ProyectoBasesDatos pr, MenuInicio padre) {
@@ -35,6 +37,10 @@ public class Acceso extends javax.swing.JFrame {
         Registrarme.setVisible(false);
         Registrarme.setEnabled(false);
         etiquetaFallo.setVisible(false);
+    }
+    
+    public MenuInicio getPadreAdministradores(){
+        return padreAdministradores;
     }
 
     /**
@@ -52,6 +58,7 @@ public class Acceso extends javax.swing.JFrame {
         DNI = new javax.swing.JTextField();
         Contraseña_Label = new javax.swing.JLabel();
         Entrar = new javax.swing.JButton();
+        cambiarContraseña = new javax.swing.JButton();
         Registrarme = new javax.swing.JButton();
         Atrás = new javax.swing.JButton();
         etiquetaFallo = new javax.swing.JLabel();
@@ -59,12 +66,16 @@ public class Acceso extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         AccesoAdministradores.setText("Acceso Administradores");
+        getContentPane().add(AccesoAdministradores, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 40, -1, -1));
 
         AccesoUsuarios.setText("Acceso Usuarios");
+        getContentPane().add(AccesoUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 40, -1, -1));
 
         DNI_Label.setText("DNI");
+        getContentPane().add(DNI_Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(52, 91, -1, -1));
 
         DNI.setForeground(new java.awt.Color(204, 204, 204));
         DNI.addActionListener(new java.awt.event.ActionListener() {
@@ -72,8 +83,10 @@ public class Acceso extends javax.swing.JFrame {
                 DNIActionPerformed(evt);
             }
         });
+        getContentPane().add(DNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 88, 247, -1));
 
         Contraseña_Label.setText("Contraseña");
+        getContentPane().add(Contraseña_Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 141, -1, -1));
 
         Entrar.setText("Entrar");
         Entrar.addActionListener(new java.awt.event.ActionListener() {
@@ -81,6 +94,15 @@ public class Acceso extends javax.swing.JFrame {
                 EntrarActionPerformed(evt);
             }
         });
+        getContentPane().add(Entrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 232, -1, -1));
+
+        cambiarContraseña.setText("CambiarContraseña");
+        cambiarContraseña.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cambiarContraseñaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(cambiarContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, -1, -1));
 
         Registrarme.setText("Registrarme");
         Registrarme.addActionListener(new java.awt.event.ActionListener() {
@@ -88,6 +110,7 @@ public class Acceso extends javax.swing.JFrame {
                 RegistrarmeActionPerformed(evt);
             }
         });
+        getContentPane().add(Registrarme, new org.netbeans.lib.awtextra.AbsoluteConstraints(182, 232, -1, -1));
 
         Atrás.setText("Atrás");
         Atrás.addActionListener(new java.awt.event.ActionListener() {
@@ -95,75 +118,12 @@ public class Acceso extends javax.swing.JFrame {
                 AtrásActionPerformed(evt);
             }
         });
+        getContentPane().add(Atrás, new org.netbeans.lib.awtextra.AbsoluteConstraints(361, 232, -1, -1));
 
         etiquetaFallo.setForeground(new java.awt.Color(255, 0, 0));
         etiquetaFallo.setText("Usuario o contraseña incorrectos");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(130, 130, 130)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(20, 20, 20)
-                                .addComponent(AccesoUsuarios))
-                            .addComponent(AccesoAdministradores)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(52, 52, 52)
-                        .addComponent(DNI_Label)
-                        .addGap(40, 40, 40)
-                        .addComponent(DNI, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(92, 92, 92)
-                        .addComponent(etiquetaFallo))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(Contraseña_Label)
-                        .addGap(20, 20, 20)
-                        .addComponent(Contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(57, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(Entrar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Registrarme)
-                .addGap(45, 45, 45)
-                .addComponent(Atrás)
-                .addGap(38, 38, 38))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(AccesoUsuarios)
-                    .addComponent(AccesoAdministradores))
-                .addGap(31, 31, 31)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(DNI_Label))
-                    .addComponent(DNI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(Contraseña_Label))
-                    .addComponent(Contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addComponent(etiquetaFallo)
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Entrar)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(Atrás)
-                        .addComponent(Registrarme)))
-                .addContainerGap(28, Short.MAX_VALUE))
-        );
+        getContentPane().add(etiquetaFallo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, -1, -1));
+        getContentPane().add(Contraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 138, 247, -1));
 
         pack();
         setLocationRelativeTo(null);
@@ -187,7 +147,6 @@ public class Acceso extends javax.swing.JFrame {
         dni=DNI.getText();
         if(padreUsuarios!=null){
             if (pr.getDaoUsuarios().validarUsuario(dni, Contraseña.getText(), "Normal")) {
-
                 this.setVisible(false);
                 padreUsuarios.setDni(dni);
                 padreUsuarios.setVisible(true);    
@@ -207,6 +166,12 @@ public class Acceso extends javax.swing.JFrame {
     private void DNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DNIActionPerformed
 
     }//GEN-LAST:event_DNIActionPerformed
+
+    private void cambiarContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cambiarContraseñaActionPerformed
+        CambiarContraseña cc= new CambiarContraseña(pr,this);
+        this.setVisible(false);
+        cc.setVisible(true);
+    }//GEN-LAST:event_cambiarContraseñaActionPerformed
     
     /**
      * @param args the command line arguments
@@ -223,6 +188,7 @@ public class Acceso extends javax.swing.JFrame {
     private javax.swing.JLabel DNI_Label;
     private javax.swing.JButton Entrar;
     private javax.swing.JButton Registrarme;
+    private javax.swing.JButton cambiarContraseña;
     private javax.swing.JLabel etiquetaFallo;
     // End of variables declaration//GEN-END:variables
 }

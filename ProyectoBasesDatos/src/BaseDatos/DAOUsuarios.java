@@ -87,4 +87,30 @@ public class DAOUsuarios extends AbstractDAO {
 
     }
 
+    public boolean cambiarContraseña(String DNI, String contraseña) {
+        boolean resultado = false;
+        Connection con;
+        PreparedStatement stmUsuario = null;
+        con = conexion;
+
+        try {
+            stmUsuario = con.prepareStatement("UPDATE usuario SET clave = ? WHERE dni = ? AND tipo_usuario = ?");
+            stmUsuario.setString(1, contraseña);
+            stmUsuario.setString(2, DNI);
+            stmUsuario.setString(3, "Administrador");
+            if (stmUsuario.executeUpdate()==1){
+                    resultado=true;
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            try {
+                stmUsuario.close();
+            } catch (SQLException e) {
+                System.out.println("Imposible cerrar cursores");
+            }
+        }
+        return resultado;
+    }
+    
 }
