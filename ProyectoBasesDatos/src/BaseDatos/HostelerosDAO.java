@@ -26,17 +26,17 @@ public class HostelerosDAO {
         this.conexion = conexion;
     }
 
-    public void anhadirHostelero(String dni, String nombre, String direccion, String telefono, Date fechaInicio, Date fechaNacimiento, String restaurante, float salario) throws SQLException {
+    public void anhadirHostelero(String dni, String nombre, String direccion, String telefono,  Date fechaNacimiento, String restaurante, float salario) throws SQLException {
         PreparedStatement stmTrabajador = null;
-        stmTrabajador = conexion.prepareStatement("INSERT INTO hosteleros (dni,nombre,direccion,telefono,fechainicio,fechanacimiento,nombreestablecimiento,salario) values(?,?,?,?,?,?,?,?)");
+        stmTrabajador = conexion.prepareStatement("INSERT INTO hosteleros (dni,nombre,direccion,telefono,fechainicio,fechanacimiento,nombreestablecimiento,salario) values(?,?,?,?,now(),?,?,?)");
         stmTrabajador.setString(1, dni);
         stmTrabajador.setString(2, nombre);
         stmTrabajador.setString(3, direccion);
         stmTrabajador.setString(4, telefono);
-        stmTrabajador.setDate(5, fechaInicio);
-        stmTrabajador.setDate(6, fechaNacimiento);
-        stmTrabajador.setString(7, restaurante);
-        stmTrabajador.setFloat(8, salario);
+       
+        stmTrabajador.setDate(5, fechaNacimiento);
+        stmTrabajador.setString(6, restaurante);
+        stmTrabajador.setFloat(7, salario);
         stmTrabajador.executeUpdate();
         stmTrabajador.close();
 

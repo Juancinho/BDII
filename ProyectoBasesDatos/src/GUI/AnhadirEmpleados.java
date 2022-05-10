@@ -349,7 +349,7 @@ public class AnhadirEmpleados extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void trabajadorAtraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trabajadorAtraActionPerformed
-        if (trabajadorAtra.isSelected() && !Hostelero.isSelected()) {
+        if ((trabajadorAtra.isSelected() && !Hostelero.isSelected())||admin.isSelected()) {
             jComboBoxAtraccion.setEnabled(true);
             asignarAutom.setEnabled(true);
             anhadir.setEnabled(true);
@@ -363,7 +363,7 @@ public class AnhadirEmpleados extends javax.swing.JFrame {
     }//GEN-LAST:event_trabajadorAtraActionPerformed
 
     private void trabajadorEspActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trabajadorEspActionPerformed
-        if (trabajadorEsp.isSelected() && !Hostelero.isSelected()) {
+        if ((trabajadorEsp.isSelected() && !Hostelero.isSelected())||admin.isSelected()) {
             jComboBoxEspectaculo.setEnabled(true);
             anhadir.setEnabled(true);
         } else {
@@ -460,6 +460,8 @@ public class AnhadirEmpleados extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(admin.isSelected())
             anhadir.setEnabled(true);
+        else
+             anhadir.setEnabled(false);
     }//GEN-LAST:event_adminActionPerformed
 
     /**
@@ -507,7 +509,7 @@ public class AnhadirEmpleados extends javax.swing.JFrame {
         cal.set(Calendar.SECOND, 0);
         cal.set(Calendar.MILLISECOND, 1);
         Date hoy = cal.getTime();
-        java.sql.Date hoy2 = new java.sql.Date(hoy.getTime());
+        
         Date nacimiento = fechaNacimiento.getDate();
         java.sql.Date nacimiento2 = new java.sql.Date(nacimiento.getTime());
         Float sueldo = Float.parseFloat(salario.getText());
@@ -517,35 +519,35 @@ public class AnhadirEmpleados extends javax.swing.JFrame {
                 if(asignarAutom.isSelected()){
                     String atraccion=pr.getTrabajadoresDAO().getAtraccionMenosTrabajadores();
                     
-                    pr.getTrabajadoresDAO().anhadirTrabajadorAtraEsp(dni.getText(), nombre.getText(), direccion.getText(), telefono.getText(), hoy2, nacimiento2, atraccion, jComboBoxEspectaculo.getSelectedItem().toString(), sueldo);
+                    pr.getTrabajadoresDAO().anhadirTrabajadorAtraEsp(dni.getText(), nombre.getText(), direccion.getText(), telefono.getText(),  nacimiento2, atraccion, jComboBoxEspectaculo.getSelectedItem().toString(), sueldo);
                 
                 }else{
                    
-                    pr.getTrabajadoresDAO().anhadirTrabajadorAtraEsp(dni.getText(), nombre.getText(), direccion.getText(), telefono.getText(), hoy2, nacimiento2, jComboBoxAtraccion.getSelectedItem().toString(), jComboBoxEspectaculo.getSelectedItem().toString(), sueldo);
+                    pr.getTrabajadoresDAO().anhadirTrabajadorAtraEsp(dni.getText(), nombre.getText(), direccion.getText(), telefono.getText(), nacimiento2, jComboBoxAtraccion.getSelectedItem().toString(), jComboBoxEspectaculo.getSelectedItem().toString(), sueldo);
                 }
                 
             } else if (trabajadorAtra.isSelected() && !trabajadorEsp.isSelected()) {
                 if(asignarAutom.isSelected()){
                     String atraccion=pr.getTrabajadoresDAO().getAtraccionMenosTrabajadores();
-                    pr.getTrabajadoresDAO().anhadirTrabajadorAtra(dni.getText(), nombre.getText(), direccion.getText(), telefono.getText(), hoy2, nacimiento2, atraccion, sueldo);
+                    pr.getTrabajadoresDAO().anhadirTrabajadorAtra(dni.getText(), nombre.getText(), direccion.getText(), telefono.getText(),  nacimiento2, atraccion, sueldo);
                     
                 
                 }else{
-                    pr.getTrabajadoresDAO().anhadirTrabajadorAtra(dni.getText(), nombre.getText(), direccion.getText(), telefono.getText(), hoy2, nacimiento2, jComboBoxAtraccion.getSelectedItem().toString(), sueldo);
+                    pr.getTrabajadoresDAO().anhadirTrabajadorAtra(dni.getText(), nombre.getText(), direccion.getText(), telefono.getText(),  nacimiento2, jComboBoxAtraccion.getSelectedItem().toString(), sueldo);
                 }
                 
             } else if (!trabajadorAtra.isSelected() && trabajadorEsp.isSelected()) {
-                pr.getTrabajadoresDAO().anhadirTrabajadorEsp(dni.getText(), nombre.getText(), direccion.getText(), telefono.getText(), hoy2, nacimiento2, jComboBoxEspectaculo.getSelectedItem().toString(), sueldo);
+                pr.getTrabajadoresDAO().anhadirTrabajadorEsp(dni.getText(), nombre.getText(), direccion.getText(), telefono.getText(), nacimiento2, jComboBoxEspectaculo.getSelectedItem().toString(), sueldo);
 
             } else if (admin.isSelected()){//Transaccion
                 String clave = pr.getTrabajadoresDAO().AnhadirAdmin(dni.getText());
-                pr.getTrabajadoresDAO().anhadirTrabajador(dni.getText(), nombre.getText(), direccion.getText(), telefono.getText(), hoy2, nacimiento2, sueldo);
+                pr.getTrabajadoresDAO().anhadirTrabajador(dni.getText(), nombre.getText(), direccion.getText(), telefono.getText(),  nacimiento2, sueldo);
                 JOptionPane.showMessageDialog(rootPane, "La clave de este administrador es: " + clave);
                 
             }
             JOptionPane.showMessageDialog(rootPane, "Trabajador añadido");
         } else {
-            pr.getHostelerosDAO().anhadirHostelero(dni.getText(), nombre.getText(), direccion.getText(), telefono.getText(), hoy2, nacimiento2, jComboBoxRestaurante.getSelectedItem().toString(),sueldo);
+            pr.getHostelerosDAO().anhadirHostelero(dni.getText(), nombre.getText(), direccion.getText(), telefono.getText(),  nacimiento2, jComboBoxRestaurante.getSelectedItem().toString(),sueldo);
             JOptionPane.showMessageDialog(rootPane, "Hostelero añadido");
         }
     }

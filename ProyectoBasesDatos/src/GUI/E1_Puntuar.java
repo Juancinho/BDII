@@ -47,8 +47,8 @@ public class E1_Puntuar extends javax.swing.JFrame {
         Puntuar = new javax.swing.JButton();
         Titulo = new javax.swing.JLabel();
         Atras = new javax.swing.JButton();
-        jRatingPuntuar = new de.sciss.rating.j.JRating();
         InfoSeleccion = new javax.swing.JButton();
+        jRatingPuntuar = new de.sciss.rating.j.JRating();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -68,19 +68,14 @@ public class E1_Puntuar extends javax.swing.JFrame {
             }
         });
 
-        jRatingPuntuar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jRatingPuntuar.setForeground(new java.awt.Color(102, 102, 102));
-        jRatingPuntuar.setGap(10);
-        jRatingPuntuar.setMaxCount(10);
-        jRatingPuntuar.setName(""); // NOI18N
-        jRatingPuntuar.setOpaque(true);
-
         InfoSeleccion.setText("¿Problemas para seleccionar?");
         InfoSeleccion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 InfoSeleccionActionPerformed(evt);
             }
         });
+
+        jRatingPuntuar.setMaxCount(10);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -95,14 +90,15 @@ public class E1_Puntuar extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(132, 132, 132)
-                        .addComponent(jRatingPuntuar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(149, 149, 149)
                         .addComponent(InfoSeleccion))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(35, 35, 35)
                         .addComponent(Titulo)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jRatingPuntuar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -112,9 +108,9 @@ public class E1_Puntuar extends javax.swing.JFrame {
                 .addComponent(Titulo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addComponent(InfoSeleccion)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jRatingPuntuar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(60, 60, 60)
+                .addGap(56, 56, 56)
+                .addComponent(jRatingPuntuar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Puntuar)
                     .addComponent(Atras))
