@@ -26,48 +26,15 @@ public class TrabajadoresDAO {
         this.conexion = conexion;
     }
 
-    public void anhadirTrabajadorAtraEsp(String dni, String nombre, String direccion, String telefono, Date fechaInicio, Date fechaNacimiento, String atraccion, String espectaculo, float salario) throws SQLException {
+    public void anhadirTrabajadorAtraEsp(String dni, String nombre, String direccion, String telefono,  Date fechaNacimiento, String atraccion, String espectaculo, float salario) throws SQLException {
         PreparedStatement stmTrabajador = null;
-        stmTrabajador = conexion.prepareStatement("INSERT INTO trabajadoresparque (dni,nombre,direccion,telefono,fechainicio,fechanacimiento,nombreatraccion,nombreespectaculo,salario) values(?,?,?,?,?,?,?,?,?)");
+        stmTrabajador = conexion.prepareStatement("INSERT INTO trabajadoresparque (dni,nombre,direccion,telefono,fechainicio,fechanacimiento,nombreatraccion,nombreespectaculo,salario) values(?,?,?,?,now(),?,?,?,?)");
         stmTrabajador.setString(1, dni);
         stmTrabajador.setString(2, nombre);
         stmTrabajador.setString(3, direccion);
         stmTrabajador.setString(4, telefono);
-        stmTrabajador.setDate(5, fechaInicio);
-        stmTrabajador.setDate(6, fechaNacimiento);
-        stmTrabajador.setString(7, atraccion);
-        stmTrabajador.setString(8, espectaculo);
-        stmTrabajador.setFloat(9, salario);
-        stmTrabajador.executeUpdate();
-        stmTrabajador.close();
-
-    }
-
-    public void anhadirTrabajadorAtra(String dni, String nombre, String direccion, String telefono, Date fechaInicio, Date fechaNacimiento, String atraccion, float salario) throws SQLException {
-        PreparedStatement stmTrabajador = null;
-        stmTrabajador = conexion.prepareStatement("INSERT INTO trabajadoresparque (dni,nombre,direccion,telefono,fechainicio,fechanacimiento,nombreatraccion,salario) values(?,?,?,?,?,?,?,?)");
-        stmTrabajador.setString(1, dni);
-        stmTrabajador.setString(2, nombre);
-        stmTrabajador.setString(3, direccion);
-        stmTrabajador.setString(4, telefono);
-        stmTrabajador.setDate(5, fechaInicio);
-        stmTrabajador.setDate(6, fechaNacimiento);
-        stmTrabajador.setString(7, atraccion);
-        stmTrabajador.setFloat(8, salario);
-        stmTrabajador.executeUpdate();
-        stmTrabajador.close();
-
-    }
-
-    public void anhadirTrabajadorEsp(String dni, String nombre, String direccion, String telefono, Date fechaInicio, Date fechaNacimiento, String espectaculo, float salario) throws SQLException {
-        PreparedStatement stmTrabajador = null;
-        stmTrabajador = conexion.prepareStatement("INSERT INTO trabajadoresparque (dni,nombre,direccion,telefono,fechainicio,fechanacimiento,nombreespectaculo,salario) values(?,?,?,?,?,?,?,?)");
-        stmTrabajador.setString(1, dni);
-        stmTrabajador.setString(2, nombre);
-        stmTrabajador.setString(3, direccion);
-        stmTrabajador.setString(4, telefono);
-        stmTrabajador.setDate(5, fechaInicio);
-        stmTrabajador.setDate(6, fechaNacimiento);
+        stmTrabajador.setDate(5, fechaNacimiento);
+        stmTrabajador.setString(6, atraccion);
         stmTrabajador.setString(7, espectaculo);
         stmTrabajador.setFloat(8, salario);
         stmTrabajador.executeUpdate();
@@ -75,16 +42,45 @@ public class TrabajadoresDAO {
 
     }
 
-    public void anhadirTrabajador(String dni, String nombre, String direccion, String telefono, Date fechaInicio, Date fechaNacimiento, float salario) throws SQLException {
+    public void anhadirTrabajadorAtra(String dni, String nombre, String direccion, String telefono,  Date fechaNacimiento, String atraccion, float salario) throws SQLException {
         PreparedStatement stmTrabajador = null;
-        stmTrabajador = conexion.prepareStatement("INSERT INTO trabajadoresparque (dni,nombre,direccion,telefono,fechainicio,fechanacimiento,salario) values(?,?,?,?,?,?,?)");
+        stmTrabajador = conexion.prepareStatement("INSERT INTO trabajadoresparque (dni,nombre,direccion,telefono,fechainicio,fechanacimiento,nombreatraccion,salario) values(?,?,?,?,now(),?,?,?)");
         stmTrabajador.setString(1, dni);
         stmTrabajador.setString(2, nombre);
         stmTrabajador.setString(3, direccion);
         stmTrabajador.setString(4, telefono);
-        stmTrabajador.setDate(5, fechaInicio);
-        stmTrabajador.setDate(6, fechaNacimiento);
+        stmTrabajador.setDate(5, fechaNacimiento);
+        stmTrabajador.setString(6, atraccion);
         stmTrabajador.setFloat(7, salario);
+        stmTrabajador.executeUpdate();
+        stmTrabajador.close();
+
+    }
+
+    public void anhadirTrabajadorEsp(String dni, String nombre, String direccion, String telefono,  Date fechaNacimiento, String espectaculo, float salario) throws SQLException {
+        PreparedStatement stmTrabajador = null;
+        stmTrabajador = conexion.prepareStatement("INSERT INTO trabajadoresparque (dni,nombre,direccion,telefono,fechainicio,fechanacimiento,nombreespectaculo,salario) values(?,?,?,?,now(),?,?,?)");
+        stmTrabajador.setString(1, dni);
+        stmTrabajador.setString(2, nombre);
+        stmTrabajador.setString(3, direccion);
+        stmTrabajador.setString(4, telefono);     
+        stmTrabajador.setDate(5, fechaNacimiento);
+        stmTrabajador.setString(6, espectaculo);
+        stmTrabajador.setFloat(7, salario);
+        stmTrabajador.executeUpdate();
+        stmTrabajador.close();
+
+    }
+
+    public void anhadirTrabajador(String dni, String nombre, String direccion, String telefono,  Date fechaNacimiento, float salario) throws SQLException {
+        PreparedStatement stmTrabajador = null;
+        stmTrabajador = conexion.prepareStatement("INSERT INTO trabajadoresparque (dni,nombre,direccion,telefono,fechainicio,fechanacimiento,salario) values(?,?,?,?,now(),?,?)");
+        stmTrabajador.setString(1, dni);
+        stmTrabajador.setString(2, nombre);
+        stmTrabajador.setString(3, direccion);
+        stmTrabajador.setString(4, telefono);        
+        stmTrabajador.setDate(5, fechaNacimiento);
+        stmTrabajador.setFloat(6, salario);
         stmTrabajador.executeUpdate();
         stmTrabajador.close();
 
