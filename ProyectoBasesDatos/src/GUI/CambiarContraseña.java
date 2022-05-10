@@ -126,7 +126,7 @@ public class CambiarContraseña extends javax.swing.JFrame {
         if(!dni.isBlank() && !contrActual.isBlank() && !contrNueva.isBlank()){
             if (pr.getDaoUsuarios().validarUsuario(dni,contrActual,"Administrador")) {
                 if(contrNueva.length()<=8){
-                    if(pr.getDaoUsuarios().cambiarContraseña(dni,contrActual)){
+                    if(pr.getDaoUsuarios().cambiarContraseña(dni,contrNueva)){
                         JOptionPane.showMessageDialog(rootPane, "Se ha cambiado la contraseña");
                         MenuAdministradores ma = new MenuAdministradores(pr,padre.getPadreAdministradores());
                         this.setVisible(false);
@@ -134,7 +134,7 @@ public class CambiarContraseña extends javax.swing.JFrame {
                     }
                     else{
                         JOptionPane.showMessageDialog(rootPane, "No se ha podido cambiar la contraseña");
-                        etiquetaFallo1.setVisible(false);
+                        etiquetaFallo1.setVisible(true);
                         etiquetaFallo2.setVisible(false);
                         etiquetaFallo3.setVisible(false);
                     }
