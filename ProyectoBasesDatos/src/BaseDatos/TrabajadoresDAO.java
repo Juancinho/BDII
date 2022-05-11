@@ -160,15 +160,31 @@ public class TrabajadoresDAO {
 
         return resultado;
     }
-    public String AnhadirAdmin(String dni) throws SQLException {
+    public String AnhadirAdmin(String dni, String nombre, String direccion, String telefono, java.sql.Date nacimiento, float sueldo) {
+        String clave=null;
         PreparedStatement stmTrabajador = null;
-        stmTrabajador = conexion.prepareStatement("INSERT INTO usuario(dni,clave,tipo_usuario) values(?,?,?)");
-        stmTrabajador.setString(1, dni);
-        String clave = crearContraseña(dni);
-        stmTrabajador.setString(2, clave);
-        stmTrabajador.setString(3, "Administrador");
-        stmTrabajador.executeUpdate();
-        stmTrabajador.close();
+        try{
+            conexion.setAutoCommit(false);
+            anhadirTrabajador(dni, nombre, direccion, telefono, nacimiento, sueldo);
+            stmTrabajador = conexion.prepareStatement("INSERT INTO usuario(dni,clave,tipo_usuario) values(?,?,?)");
+            stmTrabajador.setString(1, dni);
+            clave = crearContraseña(dni);
+            stmTrabajador.setString(2, clave);
+            stmTrabajador.setString(3, "Administrador");
+            stmTrabajador.executeUpdate();
+            stmTrabajador.close();
+            conexion.commit();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+            if (conexion != null) {
+                try {
+                    System.out.println("Se procede a abortar la transacción");
+                    conexion.rollback();
+                } catch (SQLException excep) {
+                    System.out.println(excep.getMessage());
+                }
+            }
+        }
         return clave;
     }
     
