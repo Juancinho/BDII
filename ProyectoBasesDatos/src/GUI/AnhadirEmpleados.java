@@ -540,10 +540,10 @@ public class AnhadirEmpleados extends javax.swing.JFrame {
                 pr.getTrabajadoresDAO().anhadirTrabajadorEsp(dni.getText(), nombre.getText(), direccion.getText(), telefono.getText(), nacimiento2, jComboBoxEspectaculo.getSelectedItem().toString(), sueldo);
 
             } else if (admin.isSelected()){//Transaccion
-                String clave = pr.getTrabajadoresDAO().AnhadirAdmin(dni.getText());
-                pr.getTrabajadoresDAO().anhadirTrabajador(dni.getText(), nombre.getText(), direccion.getText(), telefono.getText(),  nacimiento2, sueldo);
-                JOptionPane.showMessageDialog(rootPane, "La clave de este administrador es: " + clave);
-                
+                String clave = pr.getTrabajadoresDAO().AnhadirAdmin(dni.getText(), nombre.getText(), direccion.getText(), telefono.getText(),  nacimiento2, sueldo);
+                //pr.getTrabajadoresDAO().anhadirTrabajador(dni.getText(), nombre.getText(), direccion.getText(), telefono.getText(),  nacimiento2, sueldo);
+                if(clave!=null)
+                    JOptionPane.showMessageDialog(rootPane, "La clave de este administrador es: " + clave);                
             }
             JOptionPane.showMessageDialog(rootPane, "Trabajador añadido");
         } else {
