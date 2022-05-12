@@ -4,7 +4,10 @@
  */
 package GUI;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import proyectobasesdatos.Trabajador;
 
@@ -13,12 +16,10 @@ import proyectobasesdatos.Trabajador;
  * @author alumnogreibd
  */
 public class DespedirEmpleados extends javax.swing.JFrame {
-    
+
     private proyectobasesdatos.ProyectoBasesDatos pr;
     private MenuEmpleados padre;
-    
-   
-    
+
     public DespedirEmpleados(proyectobasesdatos.ProyectoBasesDatos pr, MenuEmpleados padre) {
         this.pr = pr;
         this.padre = padre;
@@ -245,7 +246,7 @@ public class DespedirEmpleados extends javax.swing.JFrame {
     }//GEN-LAST:event_atrasActionPerformed
 
     private void despedirTrabRecientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_despedirTrabRecientesActionPerformed
-        
+
         int lim;
         limiteVacio.setVisible(false);
         limiteMax.setVisible(false);
@@ -255,9 +256,9 @@ public class DespedirEmpleados extends javax.swing.JFrame {
             lim = Integer.parseInt(limite.getText());
             if (lim > 5) {
                 limiteMax.setVisible(true);
-                
+
             } else {
-                
+
                 despedirTrabRecientes();
             }
         }
@@ -274,14 +275,13 @@ public class DespedirEmpleados extends javax.swing.JFrame {
             lim = Integer.parseInt(limite2.getText());
             if (lim > 5) {
                 limiteMax2.setVisible(true);
-                
+
             } else {
-                
+
                 despedirHostelerosRecientes();
             }
         }    }//GEN-LAST:event_despedirRecientes2ActionPerformed
 
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton atras;
@@ -308,44 +308,67 @@ public void despedirHostelero() {
         pr.getHostelerosDAO().despedirHostelero(tablaHosteleros.getValueAt(tablaHosteleros.getSelectedRow(), 0).toString());
         ModeloTablaHosteleros t = (ModeloTablaHosteleros) tablaHosteleros.getModel();
         t.setFilas(pr.getHostelerosDAO().getHosteleros());
-        
+
     }
-    
+
     public void despedirTrabajador() {
         pr.getTrabajadoresDAO().despedirTrabajador(tablaTrabajadores.getValueAt(tablaTrabajadores.getSelectedRow(), 0).toString());
         ModeloTablaTrabajadores t = (ModeloTablaTrabajadores) tablaTrabajadores.getModel();
         t.setFilas(pr.getTrabajadoresDAO().getTrabajadores());
-        
+
     }
-    
+
     public void despedirTrabRecientes() {
         String reciente, eliminados = "";
-        
+
         int lim = Integer.parseInt(limite.getText());
-        for (int i = 0; i < lim; i++) {
-            reciente = pr.getTrabajadoresDAO().getTrabajadoresRecientes();
-            pr.getTrabajadoresDAO().despedirTrabajador(reciente);
-            eliminados += " " + reciente;
+        try {
+            pr.getConexion().setAutoCommit(false);
+
+            for (int i = 0; i < lim; i++) {
+                reciente = pr.getTrabajadoresDAO().getTrabajadoresRecientes();
+                pr.getTrabajadoresDAO().despedirTrabajador(reciente);
+                eliminados += " " + reciente;
+            }
+            pr.getConexion().commit();
+        } catch (SQLException ex) {
+            try {
+                pr.getConexion().rollback();
+            } catch (SQLException ex1) {
+                Logger.getLogger(DespedirEmpleados.class.getName()).log(Level.SEVERE, null, ex1);
+            }
+            Logger.getLogger(DespedirEmpleados.class.getName()).log(Level.SEVERE, null, ex);
         }
         JOptionPane.showMessageDialog(rootPane, "Trabajdores despedidos: " + eliminados);
         ModeloTablaTrabajadores t = (ModeloTablaTrabajadores) tablaTrabajadores.getModel();
         t.setFilas(pr.getTrabajadoresDAO().getTrabajadores());
     }
-    
+
     public void despedirHostelerosRecientes() {
         String reciente, eliminados = "";
-        
         int lim = Integer.parseInt(limite2.getText());
-        for (int i = 0; i < lim; i++) {
-            reciente = pr.getHostelerosDAO().getHostelerosRecientes();
-            pr.getHostelerosDAO().despedirHostelero(reciente);
-            eliminados += " " + reciente;
+        try {
+            pr.getConexion().setAutoCommit(false);
+            for (int i = 0; i < lim; i++) {
+                reciente = pr.getHostelerosDAO().getHostelerosRecientes();
+                pr.getHostelerosDAO().despedirHostelero(reciente);
+                eliminados += " " + reciente;
+            }
+            pr.getConexion().commit();
+        } catch (SQLException ex) {
+            try {
+                pr.getConexion().rollback();
+            } catch (SQLException ex1) {
+                Logger.getLogger(DespedirEmpleados.class.getName()).log(Level.SEVERE, null, ex1);
+            }
+            Logger.getLogger(DespedirEmpleados.class.getName()).log(Level.SEVERE, null, ex);
         }
         JOptionPane.showMessageDialog(rootPane, "Hosteleros despedidos: " + eliminados);
-        
+
         ModeloTablaHosteleros t = (ModeloTablaHosteleros) tablaHosteleros.getModel();
         t.setFilas(pr.getHostelerosDAO().getHosteleros());
     }
+
     //Función para saber si el dato introducido se puede pasar a Integer (código proveniente de stackoverflow)
     public boolean isInteger(String str) {
         if (str == null) {
