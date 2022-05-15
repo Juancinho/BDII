@@ -4,7 +4,6 @@
  */
 package BaseDatos;
 
-import BaseDatos.AbstractDAO;
 import proyectobasesdatos.Usuario;
 import proyectobasesdatos.TipoUsuario;
 import java.sql.*;
@@ -13,18 +12,18 @@ import java.sql.*;
  *
  * @author basesdatos
  */
-public class UsuariosDAO extends AbstractDAO {
+public class DAOUsuarios {
 
     private java.sql.Connection conexion;
 
     /*
-   public UsuariosDAO (Connection conexion, aplicacion.FachadaAplicacion fa){
+   public DAOUsuarios (Connection conexion, aplicacion.FachadaAplicacion fa){
         super.setConexion(conexion);
         super.setFachadaAplicacion(fa);
     }
      */
 
-    public UsuariosDAO(Connection conexion) {
+    public DAOUsuarios(Connection conexion) {
         this.conexion = conexion;
     }
 
@@ -39,7 +38,7 @@ public class UsuariosDAO extends AbstractDAO {
         try {
             stmUsuario = con.prepareStatement("select dni, clave, tipousuario "
                     + "from usuarios "
-                    + "where dni = ? and clave = ? and tipo_usuario = ?");
+                    + "where dni = ? and clave = ? and tipousuario = ?");
             stmUsuario.setString(1, idUsuario);
             stmUsuario.setString(2, clave);
             stmUsuario.setString(3, tipo);
