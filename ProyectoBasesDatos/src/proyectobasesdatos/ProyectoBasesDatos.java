@@ -5,7 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
-import BaseDatos.UsuariosDAO;
+import BaseDatos.DAOUsuarios;
 import BaseDatos.AtraccionesDAO;
 import BaseDatos.ComerDAO;
 import BaseDatos.EspectaculosDAO;
@@ -28,7 +28,7 @@ public class ProyectoBasesDatos {
     private GUI.FachadaGui fgui;
     private AtraccionesDAO atraccionesDAO;
     private EspectaculosDAO espectaculosDAO;
-    private UsuariosDAO daoUsuarios;
+    private DAOUsuarios daoUsuarios;
     private HosteleriaDAO hosteleriaDAO;
     private IrDAO irDAO;
     private AsistirDAO asistirDAO;
@@ -53,7 +53,7 @@ public class ProyectoBasesDatos {
         String contrasenha = "greibd2021";
         this.conexion = DriverManager.getConnection(url, usuario, contrasenha);
         atraccionesDAO = new AtraccionesDAO(conexion);
-        daoUsuarios = new UsuariosDAO(conexion);
+        daoUsuarios = new DAOUsuarios(conexion);
         espectaculosDAO = new EspectaculosDAO(conexion);
         hosteleriaDAO = new HosteleriaDAO(conexion);
         irDAO = new IrDAO(conexion);
@@ -96,7 +96,7 @@ public class ProyectoBasesDatos {
         return conexion;
     }
 
-    public UsuariosDAO getDaoUsuarios() {
+    public DAOUsuarios getDaoUsuarios() {
         return daoUsuarios;
     }
 
