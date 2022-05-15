@@ -13,18 +13,18 @@ import java.sql.*;
  *
  * @author basesdatos
  */
-public class DAOUsuarios extends AbstractDAO {
+public class UsuariosDAO extends AbstractDAO {
 
     private java.sql.Connection conexion;
 
     /*
-   public DAOUsuarios (Connection conexion, aplicacion.FachadaAplicacion fa){
+   public UsuariosDAO (Connection conexion, aplicacion.FachadaAplicacion fa){
         super.setConexion(conexion);
         super.setFachadaAplicacion(fa);
     }
      */
 
-    public DAOUsuarios(Connection conexion) {
+    public UsuariosDAO(Connection conexion) {
         this.conexion = conexion;
     }
 
@@ -37,8 +37,8 @@ public class DAOUsuarios extends AbstractDAO {
         con = conexion;
 
         try {
-            stmUsuario = con.prepareStatement("select dni, clave, tipo_usuario "
-                    + "from usuario "
+            stmUsuario = con.prepareStatement("select dni, clave, tipousuario "
+                    + "from usuarios "
                     + "where dni = ? and clave = ? and tipo_usuario = ?");
             stmUsuario.setString(1, idUsuario);
             stmUsuario.setString(2, clave);
@@ -77,7 +77,7 @@ public class DAOUsuarios extends AbstractDAO {
         stmUsuario.setDate(6, fecha);
         stmUsuario.executeUpdate();
 
-        stmUsuario1 = con.prepareStatement("INSERT INTO usuario(DNI, clave, tipo_usuario)"
+        stmUsuario1 = con.prepareStatement("INSERT INTO usuarios(DNI, clave, tipousuario)"
                 + "VALUES (?, ?, ?)");
 
         stmUsuario1.setString(1, DNI);
@@ -94,7 +94,7 @@ public class DAOUsuarios extends AbstractDAO {
         con = conexion;
 
         try {
-            stmUsuario = con.prepareStatement("UPDATE usuario SET clave = ? WHERE dni = ? AND tipo_usuario = ?");
+            stmUsuario = con.prepareStatement("UPDATE usuarios SET clave = ? WHERE dni = ? AND tipousuario = ?");
             stmUsuario.setString(1, contraseña);
             stmUsuario.setString(2, DNI);
             stmUsuario.setString(3, "Administrador");

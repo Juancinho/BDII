@@ -166,7 +166,7 @@ public class TrabajadoresDAO {
         try{
             conexion.setAutoCommit(false);
             anhadirTrabajador(dni, nombre, direccion, telefono, nacimiento, sueldo);
-            stmTrabajador = conexion.prepareStatement("INSERT INTO usuario(dni,clave,tipo_usuario) values(?,?,?)");
+            stmTrabajador = conexion.prepareStatement("INSERT INTO usuarios(dni,clave,tipousuario) values(?,?,?)");
             stmTrabajador.setString(1, dni);
             clave = crearContraseña(dni);
             stmTrabajador.setString(2, clave);
