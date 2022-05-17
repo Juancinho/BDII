@@ -349,13 +349,18 @@ public class AnhadirEmpleados extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void trabajadorAtraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trabajadorAtraActionPerformed
-        if ((trabajadorAtra.isSelected() && !Hostelero.isSelected())||admin.isSelected()) {
+        if (trabajadorAtra.isSelected()) {
+            admin.setEnabled(false);
+            Hostelero.setEnabled(false);
             jComboBoxAtraccion.setEnabled(true);
             asignarAutom.setEnabled(true);
             anhadir.setEnabled(true);
         } else {
             jComboBoxAtraccion.setEnabled(false);
-            if (!trabajadorEsp.isSelected() && !Hostelero.isSelected()) {
+            admin.setEnabled(true);
+            Hostelero.setEnabled(true);
+            asignarAutom.setEnabled(false);
+            if (!trabajadorEsp.isSelected() && !Hostelero.isSelected() && !admin.isSelected()) {
                 anhadir.setEnabled(false);
             }
         }
@@ -363,12 +368,16 @@ public class AnhadirEmpleados extends javax.swing.JFrame {
     }//GEN-LAST:event_trabajadorAtraActionPerformed
 
     private void trabajadorEspActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_trabajadorEspActionPerformed
-        if ((trabajadorEsp.isSelected() && !Hostelero.isSelected())||admin.isSelected()) {
+        if (trabajadorEsp.isSelected()) {
+            admin.setEnabled(false);
+            Hostelero.setEnabled(false);
             jComboBoxEspectaculo.setEnabled(true);
             anhadir.setEnabled(true);
         } else {
             jComboBoxEspectaculo.setEnabled(false);
-            if (!trabajadorAtra.isSelected() && !Hostelero.isSelected()) {
+            admin.setEnabled(true);
+            Hostelero.setEnabled(true);
+            if (!trabajadorAtra.isSelected() && !Hostelero.isSelected() && !admin.isSelected()) {
                 anhadir.setEnabled(false);
             }
         }
@@ -376,21 +385,20 @@ public class AnhadirEmpleados extends javax.swing.JFrame {
 
     private void HosteleroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HosteleroActionPerformed
         if (Hostelero.isSelected()) {
+            admin.setEnabled(false);
+            asignarAutom.setEnabled(false);
+            trabajadorAtra.setEnabled(false);
+            trabajadorEsp.setEnabled(false);
             jComboBoxRestaurante.setEnabled(true);
             jComboBoxAtraccion.setEnabled(false);
             jComboBoxEspectaculo.setEnabled(false);
             anhadir.setEnabled(true);
         } else {
             jComboBoxRestaurante.setEnabled(false);
-            if (trabajadorAtra.isSelected()) {
-                jComboBoxAtraccion.setEnabled(true);
-
-            }
-            if (trabajadorEsp.isSelected()) {
-                jComboBoxEspectaculo.setEnabled(true);
-
-            }
-            if (!trabajadorAtra.isSelected() && !trabajadorEsp.isSelected()) {
+            admin.setEnabled(true);
+            trabajadorAtra.setEnabled(true);
+            trabajadorEsp.setEnabled(true);
+            if (!trabajadorAtra.isSelected() && !trabajadorEsp.isSelected() && !admin.isSelected()) {
                 anhadir.setEnabled(false);
             }
         }
@@ -458,10 +466,18 @@ public class AnhadirEmpleados extends javax.swing.JFrame {
 
     private void adminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminActionPerformed
         // TODO add your handling code here:
-        if(admin.isSelected())
+        if(admin.isSelected()){
+            trabajadorAtra.setEnabled(false);
+            trabajadorEsp.setEnabled(false);
             anhadir.setEnabled(true);
-        else
-             anhadir.setEnabled(false);
+            Hostelero.setEnabled(false);
+        }    
+        else{
+            anhadir.setEnabled(false);
+            trabajadorAtra.setEnabled(true);
+            trabajadorEsp.setEnabled(true);
+            Hostelero.setEnabled(true);
+        }
     }//GEN-LAST:event_adminActionPerformed
 
     /**
@@ -539,7 +555,7 @@ public class AnhadirEmpleados extends javax.swing.JFrame {
             } else if (!trabajadorAtra.isSelected() && trabajadorEsp.isSelected()) {
                 pr.getTrabajadoresDAO().anhadirTrabajadorEsp(dni.getText(), nombre.getText(), direccion.getText(), telefono.getText(), nacimiento2, jComboBoxEspectaculo.getSelectedItem().toString(), sueldo);
 
-            } else if (admin.isSelected()){//Transaccion
+            } else if (admin.isSelected()){
                 String clave = pr.getTrabajadoresDAO().AnhadirAdmin(dni.getText(), nombre.getText(), direccion.getText(), telefono.getText(),  nacimiento2, sueldo);
                 //pr.getTrabajadoresDAO().anhadirTrabajador(dni.getText(), nombre.getText(), direccion.getText(), telefono.getText(),  nacimiento2, sueldo);
                 if(clave!=null)

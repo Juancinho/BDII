@@ -132,7 +132,7 @@ public class TrabajadoresDAO {
                 
             }
         } catch (SQLException ex) {
-            Logger.getLogger(HostelerosDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TrabajadoresDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return reciente;
     }
