@@ -45,6 +45,7 @@ public class CambiarContraseña extends javax.swing.JFrame {
         CambiarContraseña = new javax.swing.JLabel();
         ContraseñaNueva = new javax.swing.JPasswordField();
         etiquetaFallo3 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -105,6 +106,7 @@ public class CambiarContraseña extends javax.swing.JFrame {
         etiquetaFallo3.setForeground(new java.awt.Color(255, 0, 0));
         etiquetaFallo3.setText("Máximo 8 caracteres");
         getContentPane().add(etiquetaFallo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 220, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 520, 360));
 
         pack();
         setLocationRelativeTo(null);
@@ -182,5 +184,6 @@ public class CambiarContraseña extends javax.swing.JFrame {
     private javax.swing.JLabel etiquetaFallo1;
     private javax.swing.JLabel etiquetaFallo2;
     private javax.swing.JLabel etiquetaFallo3;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

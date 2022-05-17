@@ -63,6 +63,7 @@ public class Acceso extends javax.swing.JFrame {
         Atrás = new javax.swing.JButton();
         etiquetaFallo = new javax.swing.JLabel();
         Contraseña = new javax.swing.JPasswordField();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -124,6 +125,7 @@ public class Acceso extends javax.swing.JFrame {
         etiquetaFallo.setText("Usuario o contraseña incorrectos");
         getContentPane().add(etiquetaFallo, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, -1, -1));
         getContentPane().add(Contraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 138, 247, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 330));
 
         pack();
         setLocationRelativeTo(null);
@@ -190,5 +192,6 @@ public class Acceso extends javax.swing.JFrame {
     private javax.swing.JButton Registrarme;
     private javax.swing.JButton cambiarContraseña;
     private javax.swing.JLabel etiquetaFallo;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

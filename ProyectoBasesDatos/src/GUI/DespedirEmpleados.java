@@ -332,12 +332,20 @@ public void despedirHostelero() {
             }
             pr.getConexion().commit();
         } catch (SQLException ex) {
+            eliminados="";
             try {
                 pr.getConexion().rollback();
             } catch (SQLException ex1) {
                 Logger.getLogger(DespedirEmpleados.class.getName()).log(Level.SEVERE, null, ex1);
             }
             Logger.getLogger(DespedirEmpleados.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally{
+            try {
+                pr.getConexion().setAutoCommit(true);
+            } catch (SQLException excep2) {
+                System.out.println("Error");
+            }
         }
         JOptionPane.showMessageDialog(rootPane, "Trabajdores despedidos: " + eliminados);
         ModeloTablaTrabajadores t = (ModeloTablaTrabajadores) tablaTrabajadores.getModel();
@@ -356,12 +364,20 @@ public void despedirHostelero() {
             }
             pr.getConexion().commit();
         } catch (SQLException ex) {
+            eliminados="";
             try {
                 pr.getConexion().rollback();
             } catch (SQLException ex1) {
                 Logger.getLogger(DespedirEmpleados.class.getName()).log(Level.SEVERE, null, ex1);
             }
             Logger.getLogger(DespedirEmpleados.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally{
+            try {
+                pr.getConexion().setAutoCommit(true);
+            } catch (SQLException excep2) {
+                System.out.println("Error");
+            }
         }
         JOptionPane.showMessageDialog(rootPane, "Hosteleros despedidos: " + eliminados);
 

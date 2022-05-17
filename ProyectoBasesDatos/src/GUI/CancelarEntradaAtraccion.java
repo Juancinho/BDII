@@ -160,11 +160,13 @@ public class CancelarEntradaAtraccion extends javax.swing.JFrame {
                 java.sql.Date sqlDate = new java.sql.Date(date.getTime());
                 if (!pr.getIrDAO().hayEntradaComprada(sqlDate, dni, atraccion)) {
                     MensajeError.setVisible(false);
-                    JOptionPane.showMessageDialog(rootPane, "La entrada indicada no fue adquirida por el usuario actual \n No se puede cancelar la compra");
+                    JOptionPane.showMessageDialog(rootPane, "La entrada indicada no fue adquirida por el usuario actual \nNo se puede cancelar la compra");
                 } else {
-                    pr.getIrDAO().cancelarCompra(sqlDate, dni, atraccion);
                     MensajeError.setVisible(false);
-                    JOptionPane.showMessageDialog(rootPane, "Cancelación realizada");
+                    if(pr.getIrDAO().cancelarCompra(sqlDate, dni, atraccion))
+                        JOptionPane.showMessageDialog(rootPane, "Cancelación realizada");
+                    else
+                        JOptionPane.showMessageDialog(rootPane, "Error al cancelar la entrada");
                     this.setVisible(false);
                     padre.setVisible(true);
                 }

@@ -71,28 +71,57 @@ public class IrDAO {
         } //MANOTE: Al parecer el .close() también cerraría el resultSet en caso de haberlo 
     }
 
-    public void cancelarCompra(Date fecha, String dni, String nombreAtraccion) {    //FU1
-
+    public boolean cancelarCompra(Date fecha, String dni, String nombreAtraccion) {    //FU1
+        boolean resultado=false;
+        PreparedStatement stmIr1=null;
+        ResultSet rsIr1=null;
         PreparedStatement stmIr = null;
-
-        //MANOTE: De nuevo faltan comprobaciones de que esta compra se pueda cancelar (que no haya pasado el evento)
+        PreparedStatement stmVis = null;
+        float entradaVip = 12, entradaNormal = 8;
         try {
-            stmIr = conexion.prepareStatement("DELETE FROM ir WHERE fechavisita = ? AND visitante = ? AND  atraccion = ?");
-            stmIr.setDate(1, fecha);
-            stmIr.setString(2, dni);
-            stmIr.setString(3, nombreAtraccion);
-            stmIr.executeUpdate();
-
+            stmIr1= conexion.prepareStatement("SELECT vip FROM ir WHERE fechavisita = ? AND visitante = ? AND  atraccion = ?");
+            stmIr1.setDate(1, fecha);
+            stmIr1.setString(2, dni);
+            stmIr1.setString(3, nombreAtraccion);
+            rsIr1=stmIr1.executeQuery();
+            if(rsIr1.next()){
+                conexion.setAutoCommit(false);
+                stmVis = conexion.prepareStatement("UPDATE visitantes SET dineroGastado = dineroGastado - ? WHERE dni = ?");
+                if (rsIr1.getString("vip").equals("SI")) {
+                    stmVis.setFloat(1, entradaVip);
+                } else {
+                    stmVis.setFloat(1, entradaNormal);
+                }
+                stmVis.setString(2, dni);
+                stmVis.executeUpdate();
+                stmIr = conexion.prepareStatement("DELETE FROM ir WHERE fechavisita = ? AND visitante = ? AND  atraccion = ?");
+                stmIr.setDate(1, fecha);
+                stmIr.setString(2, dni);
+                stmIr.setString(3, nombreAtraccion);
+                stmIr.executeUpdate();
+                conexion.commit();
+                resultado= true;
+            }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+            if (conexion != null) {
+                try {
+                    System.out.println("Se procede a abortar la transacción");
+                    conexion.rollback();
+                } catch (SQLException excep) {
+                    System.out.println(excep.getMessage());
+                }
+            }
         } finally {
             try {
+                conexion.setAutoCommit(true);
                 stmIr.close();
             } catch (SQLException e) {
                 System.out.println("Imposible cerrar cursores");
+                resultado=false;
             }
         }
-
+        return resultado;
     }
 
     public int devolverDinero(Date fecha, String nombreAtraccion) {
@@ -104,11 +133,11 @@ public class IrDAO {
         int numero = 0;//Intentar distinguir entre nadie fue y un error
 
         try {
-            conexion.setAutoCommit(false);
             stmIr = conexion.prepareStatement("SELECT visitante, vip FROM ir WHERE fechavisita = ? AND  atraccion = ?");
             stmIr.setDate(1, fecha);
             stmIr.setString(2, nombreAtraccion);
             rsIr = stmIr.executeQuery();
+            conexion.setAutoCommit(false);
             while (rsIr.next()) {
                 numero++;
                 stmVis = conexion.prepareStatement("UPDATE visitantes SET dineroGastado = dineroGastado - ? WHERE dni = ?");
@@ -137,15 +166,16 @@ public class IrDAO {
                 conexion.setAutoCommit(true);
                 stmIr.close();
             } catch (SQLException e) {
-                System.out.println("Imposible cerrar cursores");
+                System.out.println("Error");
             }
         }
         return numero;
     }
 
     public void regalarEntrada(ArrayList<String> dnis) throws SQLException {
-
-        PreparedStatement stmIr = null;
+        float entradaVip = 12, entradaNormal = 8;
+        PreparedStatement stmIr= null;
+        PreparedStatement stmVis = null;
         try {
             conexion.setAutoCommit(false); //Iniciamos la transacción
             for (String dni : dnis) {
@@ -166,6 +196,9 @@ public class IrDAO {
                 stmIr.setString(2, dni);
                 stmIr.setString(3, dni);
                 stmIr.executeUpdate();
+                stmVis = conexion.prepareStatement("UPDATE visitantes SET dineroGastado = dineroGastado - 12 WHERE dni = ?");
+                stmVis.setString(1, dni);
+                stmVis.executeUpdate();
             }
             conexion.commit();
         } catch (SQLException e) {
