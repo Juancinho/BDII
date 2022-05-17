@@ -104,6 +104,7 @@ public class IrDAO {
         int numero = 0;//Intentar distinguir entre nadie fue y un error
 
         try {
+            conexion.setAutoCommit(false);
             stmIr = conexion.prepareStatement("SELECT visitante, vip FROM ir WHERE fechavisita = ? AND  atraccion = ?");
             stmIr.setDate(1, fecha);
             stmIr.setString(2, nombreAtraccion);
@@ -119,11 +120,21 @@ public class IrDAO {
                 stmVis.setString(2, rsIr.getString("visitante"));
                 stmVis.executeUpdate();
             }
+            conexion.commit();
         } catch (SQLException e) {
             numero = -1;
             System.out.println(e.getMessage());
+            if (conexion != null) {
+                try {
+                    System.out.println("Se procede a abortar la transacción");
+                    conexion.rollback();
+                } catch (SQLException excep) {
+                    System.out.println(excep.getMessage());
+                }
+            }
         } finally {
             try {
+                conexion.setAutoCommit(true);
                 stmIr.close();
             } catch (SQLException e) {
                 System.out.println("Imposible cerrar cursores");
