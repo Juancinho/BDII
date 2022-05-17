@@ -185,6 +185,13 @@ public class TrabajadoresDAO {
                 }
             }
         }
+        finally{
+            try {
+                conexion.setAutoCommit(true);
+            } catch (SQLException excep2) {
+                System.out.println("Error");
+            }
+        }
         return clave;
     }
     
